@@ -1,0 +1,187 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="La cucina di Scirocco" id="metaDescription"><title>Scirocco | La Cucina</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/style.css"></head><body class="cuisine-page">
+<header class="header" id="header"><a class="brand" href="index.html"><span>SCIROCCO</span><small>CUCINA MEDITERRANEA</small></a><nav class="nav" id="nav"><a href="index.html" data-i18n="nav.home"></a><a href="index.html#ristorante" data-i18n="nav.ristorante"></a><a href="menu.html" data-i18n="nav.menu"></a><a href="index.html#contatti" data-i18n="nav.contatti"></a><div class="mobile-language-switcher language-switcher"><button data-lang="it">IT</button><span>·</span><button data-lang="en">EN</button><span>·</span><button data-lang="es">ES</button></div></nav><div class="desktop-language-switcher language-switcher"><button data-lang="it">IT</button><span>·</span><button data-lang="en">EN</button><span>·</span><button data-lang="es">ES</button></div><a class="mobile-menu-link" href="menu.html" data-i18n="nav.menu"></a><a class="btn btn-outline header-book" href="index.html#prenota" data-i18n="nav.book"></a><button class="menu-toggle" id="menuToggle" aria-label="Apri menu"><span></span><span></span></button></header>
+<main class="cantina-page">
+<section class="cantina-hero">
+<a href="index.html#ristorante" class="sea-back" aria-label="Torna al ristorante">←</a>
+<nav class="cantina-side-nav"><a href="#territori">01 TERRITORI</a><a href="#bollicine">02 BOLLICINE</a><a href="#wine-finder">03 TROVA IL TUO VINO</a><a href="#produttori">04 PRODUTTORI</a></nav>
+<div class="cantina-hero-copy"><p class="eyebrow">LA CANTINA</p><h1>Ogni bottiglia<br>racconta un luogo.</h1></div>
+</section>
+
+
+
+<section class="cantina-territori cantina-type-explorer" id="territori">
+<div class="cellar-explorer-head">
+  <div>
+    <p class="eyebrow">ESPLORA LA CANTINA</p>
+    <h2>Segui il tuo gusto</h2>
+  </div>
+  <div id="cellarSelectionStack" class="cellar-selection-stack" aria-live="polite"></div><div class="cellar-breadcrumb" aria-live="polite"><button type="button" id="cellarBack" hidden style="display:none!important">← LIVELLO PRECEDENTE</button><span id="cellarPath">SCEGLI LA TIPOLOGIA</span></div>
+</div>
+<div id="cellarExplorer" class="territory-accordion cellar-explorer"></div>
+<div id="cellarBottles" class="cellar-bottles" hidden></div>
+</section>
+
+<section class="bubbles-experience" id="bollicine">
+<div class="bubbles-head"><p class="eyebrow">LE NOSTRE BOLLICINE</p><h2>L’arte del tempo</h2></div>
+<div class="bubble-stage">
+<button class="bubble-arrow prev" type="button" aria-label="Precedente">←</button>
+<div class="bubble-visual"></div>
+<div class="bubble-copy"><span class="bubble-count">01 / 05</span><h3>CHAMPAGNE</h3><p class="bubble-place">Francia</p><p class="bubble-desc">Eleganza, tensione e profondità. Maison storiche e piccoli vigneron selezionati.</p><a class="bubble-link" href="menu.html?vino=champagne">SCOPRI LA SELEZIONE →</a></div>
+<button class="bubble-arrow next" type="button" aria-label="Successivo">→</button>
+</div>
+<div class="bubble-tabs"><button class="active" data-i="0">CHAMPAGNE</button><button data-i="1">TRENTODOC</button><button data-i="2">FRANCIACORTA</button><button data-i="3">METODO CLASSICO</button><button data-i="4">CAVA / CORPINNAT</button></div>
+</section>
+
+<section class="wine-guide" id="wine-finder">
+<div class="wine-guide-head"><p class="eyebrow">TROVA IL VINO GIUSTO</p><h2>Lasciati guidare.</h2><p>Tre domande. Una selezione costruita intorno ai tuoi gusti e al tuo piatto.</p></div>
+<div class="wine-step active" data-step="1"><span>01 / 03</span><h3>Cosa vuoi bere?</h3><div class="wine-options"><button data-key="tipo" data-value="bollicine">Bollicine</button><button data-key="tipo" data-value="bianco">Bianco</button><button data-key="tipo" data-value="rosso">Rosso</button><button data-key="tipo" data-value="rosato">Rosato</button></div></div>
+<div class="wine-step" data-step="2"><button type="button" class="wine-inline-back" aria-label="Torna alla scelta precedente">‹ INDIETRO</button><span>02 / 03</span><h3>Che carattere cerchi?</h3><div class="wine-options"><button data-key="profilo" data-value="fresco">Fresco</button><button data-key="profilo" data-value="minerale">Minerale</button><button data-key="profilo" data-value="elegante">Elegante</button><button data-key="profilo" data-value="strutturato">Strutturato</button><button data-key="profilo" data-value="aromatico">Aromatico</button></div></div>
+<div class="wine-step" data-step="3"><button type="button" class="wine-inline-back" aria-label="Torna alla scelta precedente">‹ INDIETRO</button><span>03 / 03</span><h3>Cosa mangerai?</h3><div class="wine-options"><button data-key="pairing" data-value="crudi">Crudi</button><button data-key="pairing" data-value="pesce">Pesce</button><button data-key="pairing" data-value="pasta">Pasta</button><button data-key="pairing" data-value="carne">Carne</button><button data-key="pairing" data-value="vegetali">Vegetali</button></div></div>
+<div class="wine-result"><span>LA TUA SELEZIONE</span><h3>Abbiamo trovato i vini per te.</h3><p>Una selezione coerente con le tue preferenze è pronta nella carta digitale.</p><a id="guidedWineLink" href="menu.html?sezione=vini">VEDI I VINI CONSIGLIATI →</a><button id="restartWine" type="button">RICOMINCIA</button></div>
+<div class="wine-progress"><i></i></div>
+</section>
+
+<section class="producer-story" id="produttori">
+<div class="producer-photo"></div>
+<div class="producer-story-copy"><p class="eyebrow">STORIE DI VIGNA</p><span class="producer-index">01 / 03</span><h2>Piccoli produttori</h2><p class="producer-place">Italia</p><p class="producer-desc">Vigne, persone e territori. Selezioniamo produttori capaci di raccontare il proprio luogo con identità e precisione.</p><a href="menu.html?sezione=vini">SCOPRI LA SELEZIONE →</a><div class="producer-nav"><button type="button" class="prod-prev">←</button><button type="button" class="prod-next">→</button></div></div>
+</section>
+<section class="cantina-final"><div><p class="eyebrow">TUTTE LE NOSTRE ETICHETTE</p><h2>Scopri la carta dei vini</h2><a class="btn btn-outline" href="menu.html?sezione=vini">VEDI LA CARTA DEI VINI →</a></div></section>
+<script>
+(()=>{
+const data={
+ root:[
+  {id:'bollicine',title:'BOLLICINE',sub:'Metodo classico · Champagne · Trentodoc · Corpinnat',img:'cantina-bollicine.jpg'},
+  {id:'bianchi',title:'BIANCHI',sub:'Freschezza · mineralità · territorio',img:'cantina-italia.jpg'},
+  {id:'rossi',title:'ROSSI',sub:'Eleganza · struttura · profondità',img:'cantina-francia.jpg'},
+  {id:'rosati',title:'ROSATI',sub:'Salento · Provenza · Mediterraneo',img:'cantina-spagna.jpg'}
+ ],
+ countries:{
+  bollicine:[['italia','ITALIA','Trentodoc · Franciacorta · Alta Langa','cantina-italia.jpg'],['francia','FRANCIA','Champagne','cantina-francia.jpg'],['spagna','SPAGNA','Corpinnat · Cava','cantina-spagna.jpg'],['altri','ALTRI PAESI','Metodo classico dal mondo','cantina-altri.jpg']],
+  bianchi:[['italia','ITALIA','Alto Adige · Friuli · Campania · Puglia','cantina-italia.jpg'],['francia','FRANCIA','Borgogna · Loira · Alsazia','cantina-francia.jpg'],['spagna','SPAGNA','Galizia · Catalogna · Rueda','cantina-spagna.jpg'],['altri','ALTRI PAESI','Germania · Austria · Portogallo','cantina-altri.jpg']],
+  rossi:[['italia','ITALIA','Piemonte · Toscana · Puglia · Sicilia','cantina-italia.jpg'],['francia','FRANCIA','Borgogna · Bordeaux · Rodano','cantina-francia.jpg'],['spagna','SPAGNA','Rioja · Ribera · Priorat','cantina-spagna.jpg'],['altri','ALTRI PAESI','Austria · Portogallo · Nuovo Mondo','cantina-altri.jpg']],
+  rosati:[['italia','ITALIA','Puglia · Abruzzo · Garda','cantina-italia.jpg'],['francia','FRANCIA','Provenza · Champagne Rosé','cantina-francia.jpg'],['spagna','SPAGNA','Navarra · Catalogna','cantina-spagna.jpg'],['altri','ALTRI PAESI','Mediterraneo e oltre','cantina-altri.jpg']]
+ },
+ regions:{
+  'bollicine|italia':[['trentodoc','TRENTODOC','Trentino · Metodo Classico','cantina-italia.jpg'],['franciacorta','FRANCIACORTA','Lombardia · Metodo Classico','cantina-francia.jpg'],['alta-langa','ALTA LANGA','Piemonte · Metodo Classico','cantina-spagna.jpg'],['classico-it','ALTRI METODI CLASSICI','Italia','cantina-altri.jpg']],
+  'bollicine|francia':[['champagne','CHAMPAGNE','Montagne · Vallée · Côte des Blancs','cantina-francia.jpg']],
+  'bollicine|spagna':[['corpinnat','CORPINNAT','Penedès · Catalogna','cantina-spagna.jpg'],['cava','CAVA','Catalogna e altri territori','cantina-altri.jpg']],
+  'bianchi|italia':[['alto-adige','ALTO ADIGE','Sauvignon · Chardonnay · Pinot Bianco','cantina-italia.jpg'],['friuli','FRIULI','Friulano · Ribolla · Malvasia','cantina-francia.jpg'],['campania','CAMPANIA','Fiano · Greco · Falanghina','cantina-spagna.jpg'],['puglia-bianco','PUGLIA','Verdeca · Bombino · Fiano','cantina-altri.jpg']],
+  'rossi|italia':[['piemonte','PIEMONTE','Nebbiolo · Barbera','cantina-italia.jpg'],['toscana','TOSCANA','Sangiovese · Bolgheri','cantina-francia.jpg'],['puglia-rosso','PUGLIA','Negroamaro · Primitivo','cantina-spagna.jpg'],['sicilia','SICILIA','Nerello · Nero d’Avola','cantina-altri.jpg']],
+  'rosati|italia':[['salento','SALENTO','Negroamaro · Susumaniello','cantina-italia.jpg'],['abruzzo','ABRUZZO','Cerasuolo','cantina-francia.jpg']]
+ },
+ bottles:{
+  trentodoc:[['Ferrari','Perlé','Trentodoc · Chardonnay','78 €'],['Altemasi','Riserva Graal','Trentodoc · Chardonnay / Pinot Nero','72 €'],['Letrari','Brut Riserva','Trentodoc · Chardonnay / Pinot Nero','64 €']],
+  franciacorta:[['Ca’ del Bosco','Cuvée Prestige','Franciacorta · Chardonnay / Pinot Nero','72 €'],['Barone Pizzini','Animante','Franciacorta · Chardonnay / Pinot Nero','64 €'],['1701','Brut Nature','Franciacorta · Chardonnay / Pinot Nero','68 €']],
+  'alta-langa':[['Contratto','For England','Alta Langa · Pinot Nero / Chardonnay','70 €'],['Cocchi','Bianc ’d Bianc','Alta Langa · Chardonnay','66 €'],['Ettore Germano','Rosanna','Alta Langa Rosé · Nebbiolo','62 €']],
+  'classico-it':[['D’Araprì','Pas Dosé','Metodo Classico · Puglia','54 €'],['Monsupello','Nature','Metodo Classico · Lombardia','58 €'],['Muratori','Brut','Metodo Classico · Italia','52 €']],
+  champagne:[['Maison A.','Blanc de Blancs','Champagne · Chardonnay','95 €'],['Vigneron B.','Extra Brut','Champagne · Pinot Noir / Chardonnay','88 €'],['Maison C.','Rosé','Champagne · Assemblaggio','105 €']],
+  corpinnat:[['Gramona','Imperial','Corpinnat · Xarel·lo / Macabeu','58 €'],['Recaredo','Terrers','Corpinnat · Xarel·lo','62 €'],['Llopart','Leopardi','Corpinnat · Assemblaggio','54 €']],
+  cava:[['Juvé & Camps','Reserva de la Familia','Cava · Macabeu / Xarel·lo / Parellada','48 €'],['Raventós Codorníu','Gran Reserva','Cava · Assemblaggio','44 €'],['Agustí Torelló Mata','Gran Reserva','Cava · Macabeu','50 €']]
+ }
+};
+const explorer=document.getElementById('cellarExplorer'), bottles=document.getElementById('cellarBottles'), pathEl=document.getElementById('cellarPath'), back=document.getElementById('cellarBack'), stack=document.getElementById('cellarSelectionStack');
+let path=[];
+
+function card(o,i){
+ const arr=Array.isArray(o)?o:[o.id,o.title,o.sub,o.img];
+ return `<button class="territory-panel cellar-panel ${i===0?'active':''}" data-id="${arr[0]}" style="background-image:url('assets/images/cantina/${arr[3]}')"><span class="territory-num">${String(i+1).padStart(2,'0')}</span><span class="territory-info"><strong>${arr[1]}</strong><small>${arr[2]}</small><em>ESPLORA →</em></span></button>`;
+}
+function items(){
+ if(path.length===0)return data.root;
+ if(path.length===1)return data.countries[path[0]]||[];
+ return data.regions[path[0]+'|'+path[1]]||[];
+}
+function label(id){
+ const all=[...data.root,...Object.values(data.countries).flat(),...Object.values(data.regions).flat()];
+ const x=all.find(v=>(Array.isArray(v)?v[0]:v.id)===id); return x?(Array.isArray(x)?x[1]:x.title):id.toUpperCase();
+}
+function updatePath(){
+ const names=['TIPOLOGIA','PAESE'];
+ stack.innerHTML=path.slice(0,2).map((x,i)=>`<button type="button" class="selection-chip" data-depth="${i}"><span class="selection-index">${String(i+1).padStart(2,'0')}</span><span class="selection-copy"><small>${names[i]}</small><strong>${label(x)}</strong></span><span class="selection-return" aria-hidden="true">›</span></button>`).join('');
+ stack.querySelectorAll('.selection-chip').forEach(btn=>btn.addEventListener('click',()=>{
+   const d=Number(btn.dataset.depth);
+   path=path.slice(0,d);
+   render();
+ }));
+ const level=path.length===0?1:path.length===1?2:3;
+ pathEl.textContent=level===1?'01 · SCEGLI LA TIPOLOGIA':level===2?'02 · SCEGLI IL PAESE':'03 · SCEGLI LA DENOMINAZIONE';
+ back.hidden=path.length===0;
+}
+function render(){
+ bottles.hidden=true; explorer.hidden=false; explorer.classList.remove('denomination-mode');
+ explorer.innerHTML=items().map(card).join(''); updatePath();
+ const panels=[...explorer.querySelectorAll('.cellar-panel')];
+ panels.forEach(p=>{
+   const activate=()=>{panels.forEach(x=>x.classList.remove('active'));p.classList.add('active')};
+   p.addEventListener('mouseenter',activate); p.addEventListener('focus',activate);
+   p.addEventListener('click',()=>{
+     if(!p.classList.contains('active')){activate();return}
+     path.push(p.dataset.id);
+     if(path.length===2){renderDenominations()} else {render()}
+   });
+ });
+}
+function renderDenominations(selectedId){
+ const regs=data.regions[path[0]+'|'+path[1]]||[];
+ if(!regs.length){
+   path.push('all');
+   renderBottleSelection('all');
+   return;
+ }
+ explorer.hidden=false; bottles.hidden=false; explorer.classList.add('denomination-mode');
+ const chosen=selectedId || regs[0][0];
+ explorer.innerHTML=regs.map((o,i)=>{
+   const arr=Array.isArray(o)?o:[o.id,o.title,o.sub,o.img];
+   return `<button class="territory-panel cellar-panel denomination-panel ${arr[0]===chosen?'active':''}" data-id="${arr[0]}" style="background-image:url('assets/images/cantina/${arr[3]}')"><span class="territory-num">${String(i+1).padStart(2,'0')}</span><span class="territory-info"><strong>${arr[1]}</strong><small>${arr[2]}</small><em>VEDI LE BOTTIGLIE ↓</em></span></button>`;
+ }).join('');
+ path=path.slice(0,2); updatePath();
+ explorer.querySelectorAll('.denomination-panel').forEach(p=>{
+   p.addEventListener('click',()=>{
+     explorer.querySelectorAll('.denomination-panel').forEach(x=>x.classList.remove('active'));
+     p.classList.add('active');
+     renderBottleSelection(p.dataset.id);
+   });
+ });
+ renderBottleSelection(chosen);
+}
+function renderBottleSelection(id){
+ const list=data.bottles[id]||[];
+ bottles.hidden=false;
+ const currentCountry=label(path[1]), currentType=label(path[0]);
+ bottles.innerHTML=`<div class="bottle-level-head">
+   <span>${currentType} · ${currentCountry}</span>
+   <h3>${label(id)}</h3>
+   <p>${list.length?list.length+' etichette in evidenza':'La selezione completa è disponibile nella carta dei vini.'}</p>
+ </div>
+ <div class="bottle-grid">${list.map(x=>`<article class="wine-card"><span>${x[0]}</span><h4>${x[1]}</h4><p>${x[2]}</p><strong>${x[3]}</strong><a href="menu.html?sezione=vini&zona=${id}">SCOPRI →</a></article>`).join('')||`<article class="wine-card wine-card-empty"><h4>Scopri la selezione</h4><p>Apri la carta vini già filtrata su ${label(id)}.</p></article>`}</div>
+ <a class="all-wines-link" href="menu.html?sezione=vini&tipo=${path[0]}&paese=${path[1]}&zona=${id}">VEDI TUTTA LA SELEZIONE →</a>`;
+}
+back.addEventListener('click',()=>{
+ if(path.length===2){path=path.slice(0,1);render()}
+ else if(path.length){path.pop();render()}
+});render();
+
+const bubbles=[
+['CHAMPAGNE','Francia','Eleganza, tensione e profondità. Maison storiche e piccoli vigneron selezionati.','champagne'],
+['TRENTODOC','Trentino · Italia','Montagna, Chardonnay e lunghe soste sui lieviti. Metodo classico dalla forte identità alpina.','trentodoc'],
+['FRANCIACORTA','Lombardia · Italia','Finezza e complessità da una delle denominazioni italiane più rappresentative del metodo classico.','franciacorta'],
+['METODO CLASSICO','Italia','Territori diversi uniti dal tempo: rifermentazione in bottiglia, precisione e personalità.','metodo-classico'],
+['CAVA / CORPINNAT','Catalogna · Spagna','Il volto contemporaneo delle bollicine catalane, tra tradizione, territorio e ricerca.','corpinnat']
+]; let bi=0;
+const stage=document.querySelector('.bubble-stage'), tabs=[...document.querySelectorAll('.bubble-tabs button')];
+function renderBubble(){const x=bubbles[bi];stage.querySelector('.bubble-count').textContent=String(bi+1).padStart(2,'0')+' / 05';stage.querySelector('h3').textContent=x[0];stage.querySelector('.bubble-place').textContent=x[1];stage.querySelector('.bubble-desc').textContent=x[2];stage.querySelector('.bubble-link').href='menu.html?vino='+x[3];tabs.forEach((t,i)=>t.classList.toggle('active',i===bi))}
+document.querySelector('.bubble-arrow.next').addEventListener('click',()=>{bi=(bi+1)%bubbles.length;renderBubble()});document.querySelector('.bubble-arrow.prev').addEventListener('click',()=>{bi=(bi+bubbles.length-1)%bubbles.length;renderBubble()});tabs.forEach((t,i)=>t.addEventListener('click',()=>{bi=i;renderBubble()}));
+
+const guide=document.querySelector('.wine-guide'), steps=[...guide.querySelectorAll('.wine-step')], result=guide.querySelector('.wine-result'), state={};let step=0;
+function showStep(n){steps.forEach((x,i)=>x.classList.toggle('active',i===n));result.classList.toggle('active',n===3);guide.querySelector('.wine-progress i').style.width=(Math.min(n+1,3)/3*100)+'%'}
+guide.querySelectorAll('.wine-options button').forEach(btn=>btn.addEventListener('click',()=>{state[btn.dataset.key]=btn.dataset.value;document.getElementById('guidedWineLink').href='menu.html?'+new URLSearchParams({sezione:'vini',...state});step=Math.min(step+1,3);showStep(step)}));
+guide.querySelectorAll('.wine-inline-back').forEach(btn=>btn.addEventListener('click',()=>{
+ step=Math.max(0,step-1);
+ showStep(step);
+}));document.getElementById('restartWine').addEventListener('click',()=>{step=0;showStep(0)});
+
+const producers=[['Piccoli produttori','Italia','Vigne, persone e territori. Selezioniamo produttori capaci di raccontare il proprio luogo con identità e precisione.'],['Maison e vigneron','Francia','Dalle maison storiche ai récoltant-manipulant: interpreti diversi, accomunati dalla capacità di far parlare il terroir.'],['Nuove visioni','Spagna','Una generazione di produttori che unisce vigne antiche, identità locale e una lettura contemporanea del vino.']];let pi=0;const ps=document.querySelector('.producer-story');function rp(){const x=producers[pi];ps.querySelector('.producer-index').textContent=String(pi+1).padStart(2,'0')+' / 03';ps.querySelector('h2').textContent=x[0];ps.querySelector('.producer-place').textContent=x[1];ps.querySelector('.producer-desc').textContent=x[2]}ps.querySelector('.prod-next').addEventListener('click',()=>{pi=(pi+1)%3;rp()});ps.querySelector('.prod-prev').addEventListener('click',()=>{pi=(pi+2)%3;rp()});
+})();
+</script>
+</main>
+<footer id="contatti"><div><div class="footer-brand">SCIROCCO</div><p data-i18n="footer.tagline"></p></div><div><p class="eyebrow" data-i18n="footer.contacts"></p><p><span data-i18n="footer.location"></span><br>+39 000 000 0000<br>info@scirocco.example</p></div><div><p class="eyebrow" data-i18n="footer.hours"></p><p><span data-i18n="footer.days"></span><br><span data-i18n="footer.time"></span></p></div><div><p class="eyebrow" data-i18n="footer.follow"></p><p>Instagram · Facebook</p></div></footer><script src="assets/js/i18n.js"></script><script src="assets/js/main.js"></script></body></html>

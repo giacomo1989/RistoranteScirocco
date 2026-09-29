@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "title": "Scirocco | Mediterranean Cuisine",
+    "description": "Scirocco — Mediterranean cuisine in the heart of Salento."
+  },
+  "nav": {
+    "home": "Home",
+    "ristorante": "The restaurant",
+    "menu": "Menu",
+    "prenota": "Book",
+    "contatti": "Contact",
+    "book": "Book a table",
+    "open": "Open menu"
+  },
+  "hero": {
+    "kicker": "Mediterranean cuisine<br>in the heart of Salento",
+    "copy": "The sea, the land, the people.<br>A cuisine that tells the story of Salento,<br>between tradition and contemporary creativity.",
+    "cta": "Book a table",
+    "scroll": "Discover more"
+  },
+  "cucina": {
+    "eyebrow": "Our cuisine",
+    "title": "Authentic flavours,<br>a contemporary vision",
+    "copy": "Local ingredients, fresh fish and seasonal produce. Salento tradition meets creativity in dishes inspired by the land, the sea and its people.",
+    "cta": "Discover our cuisine"
+  },
+  "cards": {
+    "territorio": {
+      "title": "THE CUISINE",
+      "copy": "Local character, exceptional ingredients and a contemporary interpretation of Salento tradition.",
+      "cta": "EXPLORE"
+    },
+    "vini": {
+      "title": "THE CELLAR",
+      "copy": "Salento in the glass, alongside a selection of Italian and international labels.",
+      "cta": "EXPLORE"
+    },
+    "ristorante": {
+      "title": "THE RESTAURANT",
+      "copy": "Stone, sea and light. Scirocco from sunset into the evening.",
+      "cta": "EXPLORE"
+    }
+  },
+  "booking": {
+    "eyebrow": "Reservations",
+    "title": "Experience<br>Scirocco",
+    "copy": "A table overlooking the sea, dinner at sunset or a special evening. We are ready to welcome you.",
+    "cta": "Book now"
+  },
+  "footer": {
+    "tagline": "Mediterranean cuisine in the heart of Salento.",
+    "contacts": "Contact",
+    "location": "Salento · Puglia",
+    "hours": "Opening hours",
+    "days": "Tue–Sun",
+    "time": "19:00 — 00:00",
+    "follow": "Follow us"
+  },
+  "alt": {
+    "food": "Contemporary Mediterranean dish",
+    "booking": "Table set at sunset overlooking the sea"
+  },
+  "cucinaPage": {
+    "metaTitle": "Scirocco | The Cuisine",
+    "metaDescription": "Scirocco cuisine — territory, sea and contemporary Salento tradition.",
+    "heroEyebrow": "The cuisine",
+    "heroTitle": "The Cuisine",
+    "heroSub": "Salento, according to Scirocco.",
+    "philoEyebrow": "Our philosophy",
+    "philoTitle": "A cuisine born from the territory",
+    "philoCopy": "The Mediterranean is our starting point. Local produce, seasonality and contemporary technique shape an essential, authentic cuisine deeply rooted in Salento.",
+    "territoryEyebrow": "The territory",
+    "territoryTitle": "Between sea and land",
+    "territoryCopy": "Fish from the Adriatic and Ionian seas, vegetables, olive oil, grains and local produce. A generous territory that inspires us every day and lives through our dishes.",
+    "seaEyebrow": "The sea",
+    "seaTitle": "The sea",
+    "seaCopy": "Fresh fish, shellfish and molluscs. The Mediterranean, every day.",
+    "landEyebrow": "The land",
+    "landTitle": "The land",
+    "landCopy": "Seasonal vegetables, olive oil, grains and the finest local produce.",
+    "signatureEyebrow": "Our signature dishes",
+    "signatureTitle": "Three interpretations of our territory",
+    "dish1": "Amberjack",
+    "dish1Sub": "Citrus · Fennel",
+    "dish2": "Spaghettone",
+    "dish2Sub": "Sea urchin · Lemon",
+    "dish3": "Octopus",
+    "dish3Sub": "Smoked potato · Olives",
+    "ctaTitle": "Discover what’s on the table",
+    "ctaCopy": "Our cuisine changes with the sea and the seasons.",
+    "ctaButton": "Discover the menu",
+    "explore": "Explore →",
+    "discoverDish": "Discover the dish"
+  },
+  "marePage": {
+    "heroEyebrow": "The sea",
+    "heroTitle": "The Sea",
+    "heroSub": "Ingredients come first.",
+    "philoEyebrow": "Our philosophy",
+    "philoTitle": "Respect, seasonality and quality of the catch.",
+    "philoCopy": "We work with Mediterranean seafood, selecting the best ingredients according to season, availability and quality. The sea changes, and our cooking follows it.",
+    "speciesEyebrow": "The catch",
+    "speciesTitle": "Our main species.",
+    "speciesNote": "An indicative selection: availability and origin change with the season and the market.",
+    "species": {
+      "ricciola": "Amberjack",
+      "dentice": "Dentex",
+      "scorfano": "Scorpionfish",
+      "triglia": "Red mullet",
+      "tonno": "Tuna",
+      "gambero": "Red prawn",
+      "scampo": "Langoustine",
+      "ostriche": "Oysters",
+      "cozze": "Mussels"
+    },
+    "origins": {
+      "ricciola": "Ionian · Mediterranean",
+      "dentice": "Adriatic · Ionian",
+      "scorfano": "Mediterranean",
+      "triglia": "Adriatic · Ionian",
+      "tonno": "Mediterranean · subject to availability",
+      "gambero": "Ionian · Mediterranean",
+      "scampo": "Adriatic · Ionian",
+      "ostriche": "Mediterranean · selection",
+      "cozze": "Adriatic · Ionian"
+    },
+    "rawEyebrow": "Raw seafood",
+    "rawTitle": "The sea, unmasked.",
+    "rawCopy": "Tartare, carpaccio, shellfish, oysters and selected fish. Our raw preparations put quality, freshness and careful handling first, with proper food-safety procedures and cold-chain management.",
+    "rawCta": "Discover raw dishes →",
+    "originEyebrow": "Origin",
+    "originTitle": "Three seas, one idea.",
+    "ionio": "Fish and shellfish, according to season and availability.",
+    "adriatico": "Fish, molluscs and local-market selections when available.",
+    "mediterraneo": "Selections chosen whenever quality and seasonality call for them.",
+    "methodsEyebrow": "How we cook it",
+    "methodsTitle": "Three interpretations.",
+    "methodRaw": "Raw",
+    "methodRawCopy": "The ingredient takes centre stage.",
+    "methodFire": "Fire",
+    "methodFireCopy": "Embers, grill and direct cooking.",
+    "methodKitchen": "Kitchen",
+    "methodKitchenCopy": "Contemporary technique while keeping the product recognizable.",
+    "seeDishes": "See dishes →",
+    "dishesEyebrow": "Our seafood dishes",
+    "dishesTitle": "A few proposals.",
+    "dishScampo": "Langoustine",
+    "dishScampoSub": "Caviar · Lemon · Green oil",
+    "ctaTitle": "Discover all our seafood dishes on the menu.",
+    "ctaButton": "Discover the menu →"
+  },
+  "terra": {
+    "hero": {
+      "eyebrow": "THE LAND",
+      "title": "THE LAND",
+      "subtitle": "Gardens, olive trees, grains and seasonality."
+    },
+    "philosophy": {
+      "eyebrow": "OUR PHILOSOPHY",
+      "title": "The land sets the rhythm.",
+      "text": "Our cuisine begins with seasonality, local ingredients and a dialogue with producers who share our focus on quality and territory."
+    },
+    "origin": {
+      "eyebrow": "ORIGIN",
+      "title": "Salento and Puglia.",
+      "text": "Vegetables, legumes, grains, extra virgin olive oil and aromatic herbs come mainly from the region, chosen at their best moment."
+    },
+    "ingredients": {
+      "eyebrow": "INGREDIENTS",
+      "title": "Our main ingredients.",
+      "tomato": "Tomato",
+      "eggplant": "Eggplant",
+      "artichoke": "Artichoke",
+      "chicory": "Chicory",
+      "beans": "Broad beans",
+      "wheat": "Wheat",
+      "oil": "EVO oil",
+      "legumes": "Legumes",
+      "herbs": "Aromatic herbs",
+      "note": "We follow what the land offers, choosing each ingredient when it reaches its finest expression."
+    },
+    "season": {
+      "eyebrow": "THE SEASON",
+      "title": "Every ingredient, at its moment.",
+      "text": "We follow nature's rhythm, working with ingredients when flavour, texture and identity are at their best."
+    },
+    "methods": {
+      "garden": {
+        "title": "GARDEN",
+        "text": "Freshness from the land."
+      },
+      "fire": {
+        "title": "FIRE",
+        "text": "Tradition and contemporary technique."
+      },
+      "kitchen": {
+        "title": "KITCHEN",
+        "text": "From the land to the plate."
+      }
+    },
+    "dishes": {
+      "eyebrow": "OUR DISHES",
+      "title": "A selection from the land.",
+      "orecchiette": "Orecchiette with turnip greens",
+      "parmigiana": "Eggplant parmigiana",
+      "fave": "Broad bean purée and chicory",
+      "artichoke": "Roasted artichoke with EVO oil and citrus"
+    },
+    "cta": {
+      "title": "Discover all the dishes on our menu.",
+      "button": "DISCOVER THE MENU →"
+    }
+  }
+}

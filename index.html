@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <meta
+        name="description"
+        content="Scirocco — cucina mediterranea nel cuore del Salento."
+        id="metaDescription"
+    >
+
+    <title>Scirocco | Cucina Mediterranea</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="assets/css/style.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header" id="header">
+
+        <!-- Brand -->
+        <a class="brand" href="#home">
+            <span>SCIROCCO</span>
+            <small>CUCINA MEDITERRANEA</small>
+        </a>
+
+
+        <!-- Navigation -->
+        <nav class="nav" id="nav">
+
+            <a href="#home" data-i18n="nav.home"></a>
+            <a
+                href="#ristorante"
+                data-i18n="nav.ristorante"
+            ></a>
+
+            <a
+                href="menu.html"
+                data-i18n="nav.menu"
+            ></a>
+
+            <a
+                href="#contatti"
+                data-i18n="nav.contatti"
+            ></a>
+
+
+            <!-- Language switcher MOBILE -->
+            <div
+                class="mobile-language-switcher language-switcher"
+                aria-label="Language"
+            >
+                <button data-lang="it">IT</button>
+                <span>·</span>
+
+                <button data-lang="en">EN</button>
+                <span>·</span>
+
+                <button data-lang="es">ES</button>
+            </div>
+
+        </nav>
+
+
+        <!-- Language switcher DESKTOP -->
+        <div
+            class="desktop-language-switcher language-switcher"
+            aria-label="Language"
+        >
+            <button data-lang="it">IT</button>
+            <span>·</span>
+
+            <button data-lang="en">EN</button>
+            <span>·</span>
+
+            <button data-lang="es">ES</button>
+        </div>
+
+
+        <!-- Mobile direct MENU button -->
+        <a
+            class="mobile-menu-link"
+            href="menu.html"
+            data-i18n="nav.menu"
+        ></a>
+
+
+        <!-- Booking CTA -->
+        <a
+            class="btn btn-outline header-book"
+            href="#prenota"
+            data-i18n="nav.book"
+        ></a>
+
+
+        <!-- Hamburger -->
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Apri menu"
+        >
+            <span></span>
+            <span></span>
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main>
+
+
+        <!-- =====================
+             HERO
+        ====================== -->
+
+        <section class="hero" id="home">
+
+            <div class="hero-bg"></div>
+
+            <div class="hero-shade"></div>
+
+
+            <div class="hero-content reveal">
+
+                <div class="wave">
+                    ⌁
+                </div>
+
+                <h1>
+                    Scirocco
+                </h1>
+
+                <p
+                    class="eyebrow hero-kicker"
+                    data-i18n="hero.kicker"
+                    data-i18n-html
+                ></p>
+
+                <p
+                    class="hero-copy"
+                    data-i18n="hero.copy"
+                    data-i18n-html
+                ></p>
+
+                <a
+                    class="btn btn-outline"
+                    href="#prenota"
+                    data-i18n="hero.cta"
+                ></a>
+
+            </div>
+
+
+            <!-- Scroll indicator -->
+            <a class="scroll" href="#ristorante">
+
+                <span data-i18n="hero.scroll"></span>
+
+                <b>↓</b>
+
+            </a>
+
+        </section>
+
+
+        <!-- =====================
+             LA CUCINA
+        ====================== -->
+
+        <section
+            class="split section restaurant-intro"
+            id="ristorante"
+        >
+
+            <div class="split-copy reveal">
+
+                <p
+                    class="eyebrow"
+                    data-i18n="cucina.eyebrow"
+                ></p>
+
+                <h2
+                    data-i18n="cucina.title"
+                    data-i18n-html
+                ></h2>
+
+                <p data-i18n="cucina.copy"></p>
+
+            </div>
+
+
+            <div
+                class="split-image food-image"
+                role="img"
+                data-i18n-aria="alt.food"
+            ></div>
+
+        </section>
+
+
+        <!-- =====================
+             ESPERIENZE
+        ====================== -->
+
+        <section
+            class="cards restaurant-cards"
+        >
+
+
+            <!-- TERRITORIO -->
+
+            <article class="card territory">
+
+                <div class="card-overlay"></div>
+
+                <div class="card-copy">
+
+                    <p
+                        class="eyebrow"
+                        data-i18n="cards.territorio.title"
+                    ></p>
+
+                    <p
+                        data-i18n="cards.territorio.copy"
+                    ></p>
+
+                    <a href="cucina.html">
+
+                        <span
+                            data-i18n="cards.territorio.cta"
+                        ></span>
+
+                        →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- VINI -->
+
+            <article class="card wine">
+
+                <div class="card-overlay"></div>
+
+                <div class="card-copy">
+
+                    <p
+                        class="eyebrow"
+                        data-i18n="cards.vini.title"
+                    ></p>
+
+                    <p
+                        data-i18n="cards.vini.copy"
+                    ></p>
+
+                    <a href="cantina.html">
+
+                        <span
+                            data-i18n="cards.vini.cta"
+                        ></span>
+
+                        →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- RISTORANTE -->
+
+            <article
+                class="card restaurant"
+            >
+
+                <div class="card-overlay"></div>
+
+                <div class="card-copy">
+
+                    <p
+                        class="eyebrow"
+                        data-i18n="cards.ristorante.title"
+                    ></p>
+
+                    <p
+                        data-i18n="cards.ristorante.copy"
+                    ></p>
+
+                    <a href="#contatti">
+
+                        <span
+                            data-i18n="cards.ristorante.cta"
+                        ></span>
+
+                        →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =====================
+             PRENOTAZIONE
+        ====================== -->
+
+        <section
+            class="booking section"
+            id="prenota"
+        >
+
+            <div class="booking-copy reveal">
+
+                <p
+                    class="eyebrow"
+                    data-i18n="booking.eyebrow"
+                ></p>
+
+                <h2
+                    data-i18n="booking.title"
+                    data-i18n-html
+                ></h2>
+
+                <p data-i18n="booking.copy"></p>
+
+                <a
+                    class="btn btn-dark"
+                    href="mailto:prenotazioni@scirocco.example"
+                    data-i18n="booking.cta"
+                ></a>
+
+            </div>
+
+
+            <div
+                class="booking-image"
+                role="img"
+                data-i18n-aria="alt.booking"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer id="contatti">
+
+
+        <!-- Brand -->
+        <div>
+
+            <div class="footer-brand">
+                SCIROCCO
+            </div>
+
+            <p data-i18n="footer.tagline"></p>
+
+        </div>
+
+
+        <!-- Contacts -->
+        <div>
+
+            <p
+                class="eyebrow"
+                data-i18n="footer.contacts"
+            ></p>
+
+            <p>
+                <span data-i18n="footer.location"></span>
+                <br>
+
+                +39 000 000 0000
+                <br>
+
+                info@scirocco.example
+            </p>
+
+        </div>
+
+
+        <!-- Opening hours -->
+        <div>
+
+            <p
+                class="eyebrow"
+                data-i18n="footer.hours"
+            ></p>
+
+            <p>
+                <span data-i18n="footer.days"></span>
+                <br>
+
+                <span data-i18n="footer.time"></span>
+            </p>
+
+        </div>
+
+
+        <!-- Social -->
+        <div>
+
+            <p
+                class="eyebrow"
+                data-i18n="footer.follow"
+            ></p>
+
+            <p>
+                Instagram · Facebook
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

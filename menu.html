@@ -1,0 +1,85 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Menu digitale Scirocco"><title>Scirocco | Menu</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/style.css">
+<style id="menu-header-dark-fix">
+/* MENU ONLY — solid dark header for readability on light background */
+body.menu-page header,
+body.menu-page .site-header,
+.menu-page header.site-header,
+.menu-page .header {
+  background: #1b1a18 !important;
+  color: #fff !important;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+body.menu-page header a,
+body.menu-page header button,
+body.menu-page .site-header a,
+body.menu-page .site-header button,
+.menu-page .header a,
+.menu-page .header button {
+  color: #fff !important;
+}
+</style>
+
+
+
+
+<style id="menu-sticky-below-visible-header">
+body.menu-page #menuCategoryBar{
+  position:sticky !important;
+  /* z-index intentionally untouched: preserve original stacking below product sheet */
+}
+</style>
+
+
+</head><body class="digital-menu-page menu-page">
+<header class="menu-mobile-header"><a class="menu-mobile-brand" href="index.html">SCIROCCO</a><a href="cantina.html" class="menu-mobile-cellar">CANTINA</a><button id="menuLangToggle" class="menu-mobile-more" aria-label="Lingua">IT</button><div class="menu-lang-popover" id="menuLangPopover"><button data-menu-lang="it">IT</button><button data-menu-lang="en">EN</button><button data-menu-lang="es">ES</button></div></header>
+<header class="header menu-desktop-header" id="header"><a class="brand" href="index.html"><span>SCIROCCO</span><small>CUCINA MEDITERRANEA</small></a><nav class="nav"><a href="index.html">HOME</a><a href="cucina.html">CUCINA</a><a href="cantina.html">CANTINA</a><a href="index.html#contatti">CONTATTI</a></nav><div class="language-switcher"><button data-menu-lang="it">IT</button><span>·</span><button data-menu-lang="en">EN</button><span>·</span><button data-menu-lang="es">ES</button></div><a class="btn btn-outline" href="index.html#prenota">PRENOTA</a></header>
+<main class="digital-menu-main"><section class="menu-intro"><p class="eyebrow" id="menuEyebrow">SCIROCCO</p><h1 id="menuTitle">Il Menu</h1><p id="menuIntro">Una cucina mediterranea contemporanea, tra mare e terra.</p></section><nav class="menu-category-bar" id="menuCategoryBar" aria-label="Categorie menu"></nav><section class="menu-list" id="menuList" aria-live="polite"></section><div class="menu-wine-gateway"><div><p class="eyebrow">LA CANTINA</p><h2 id="wineGatewayTitle">Scopri la nostra selezione di vini</h2></div><a href="cantina.html" id="wineGatewayLink">ESPLORA →</a></div></main>
+<div class="dish-sheet-backdrop" id="dishBackdrop" hidden></div><aside class="dish-sheet" id="dishSheet" aria-hidden="true" role="dialog" aria-modal="true"><div class="dish-sheet-handle"></div><button class="dish-sheet-close" id="dishClose" aria-label="Chiudi">×</button><div id="dishSheetContent"></div></aside>
+<script src="assets/js/menu.js"></script>
+
+
+<script id="menu-sticky-visible-header-offset">
+(function(){
+  const bar=document.getElementById('menuCategoryBar');
+  const mobileHeader=document.querySelector('.menu-mobile-header');
+  const desktopHeader=document.querySelector('#header.menu-desktop-header');
+  if(!bar)return;
+
+  function isVisible(el){
+    if(!el)return false;
+    const cs=window.getComputedStyle(el);
+    const rect=el.getBoundingClientRect();
+    return cs.display!=='none' && cs.visibility!=='hidden' && rect.height>0;
+  }
+
+  function syncCategoryTop(){
+    let activeHeader=null;
+
+    if(isVisible(mobileHeader)) activeHeader=mobileHeader;
+    else if(isVisible(desktopHeader)) activeHeader=desktopHeader;
+
+    const headerHeight=activeHeader
+      ? Math.ceil(activeHeader.getBoundingClientRect().height)
+      : 0;
+
+    bar.style.setProperty('top', headerHeight+'px', 'important');
+  }
+
+  syncCategoryTop();
+  window.addEventListener('DOMContentLoaded',syncCategoryTop);
+  window.addEventListener('load',syncCategoryTop);
+  window.addEventListener('resize',syncCategoryTop);
+  window.addEventListener('orientationchange',syncCategoryTop);
+
+  if('ResizeObserver' in window){
+    const ro=new ResizeObserver(syncCategoryTop);
+    if(mobileHeader)ro.observe(mobileHeader);
+    if(desktopHeader)ro.observe(desktopHeader);
+  }
+})();
+</script>
+
+
+</body></html>

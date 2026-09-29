@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "title": "Scirocco | Cucina Mediterranea",
+    "description": "Scirocco — cucina mediterranea nel cuore del Salento."
+  },
+  "nav": {
+    "home": "Home",
+    "ristorante": "Il ristorante",
+    "menu": "Menu",
+    "prenota": "Prenota",
+    "contatti": "Contatti",
+    "book": "Prenota un tavolo",
+    "open": "Apri menu"
+  },
+  "hero": {
+    "kicker": "Cucina mediterranea<br>nel cuore del Salento",
+    "copy": "Il mare, la terra, le persone.<br>Una cucina che racconta il Salento,<br>tra tradizione e contemporaneità.",
+    "cta": "Prenota un tavolo",
+    "scroll": "Scopri di più"
+  },
+  "cucina": {
+    "eyebrow": "La nostra cucina",
+    "title": "Sapori autentici,<br>uno sguardo contemporaneo",
+    "copy": "Ingredienti locali, pesce fresco, prodotti di stagione. La tradizione salentina incontra la creatività in piatti che parlano di territorio, mare e persone.",
+    "cta": "Scopri la cucina"
+  },
+  "cards": {
+    "territorio": {
+      "title": "LA CUCINA",
+      "copy": "Territorio, materia prima e una nuova interpretazione della tradizione salentina.",
+      "cta": "ESPLORA"
+    },
+    "vini": {
+      "title": "LA CANTINA",
+      "copy": "Il Salento nel calice e una selezione di etichette italiane e internazionali.",
+      "cta": "ESPLORA"
+    },
+    "ristorante": {
+      "title": "IL RISTORANTE",
+      "copy": "Pietra, mare e luce. Scirocco dal tramonto alla sera.",
+      "cta": "ESPLORA"
+    }
+  },
+  "booking": {
+    "eyebrow": "Prenota",
+    "title": "Vivi l’esperienza<br>Scirocco",
+    "copy": "Un tavolo vista mare, una cena al tramonto o una serata speciale. Siamo pronti ad accoglierti.",
+    "cta": "Prenota ora"
+  },
+  "footer": {
+    "tagline": "Cucina mediterranea nel cuore del Salento.",
+    "contacts": "Contatti",
+    "location": "Salento · Puglia",
+    "hours": "Orari",
+    "days": "Mar–Dom",
+    "time": "19:00 — 00:00",
+    "follow": "Seguici"
+  },
+  "alt": {
+    "food": "Piatto mediterraneo contemporaneo",
+    "booking": "Tavolo apparecchiato al tramonto sul mare"
+  },
+  "cucinaPage": {
+    "metaTitle": "Scirocco | La Cucina",
+    "metaDescription": "La cucina di Scirocco — territorio, mare e tradizione salentina contemporanea.",
+    "heroEyebrow": "La cucina",
+    "heroTitle": "La Cucina",
+    "heroSub": "Il Salento, secondo Scirocco.",
+    "philoEyebrow": "La filosofia",
+    "philoTitle": "Una cucina che nasce dal territorio",
+    "philoCopy": "Il Mediterraneo come punto di partenza. Prodotti locali, stagionalità e tecnica contemporanea per una cucina essenziale, autentica e profondamente legata al Salento.",
+    "territoryEyebrow": "Il territorio",
+    "territoryTitle": "Tra mare e terra",
+    "territoryCopy": "Il pescato dell’Adriatico e dello Ionio, gli ortaggi, l’olio, i grani e le produzioni locali. Un territorio generoso che ci ispira ogni giorno e che raccontiamo nei nostri piatti.",
+    "seaEyebrow": "Il mare",
+    "seaTitle": "Il mare",
+    "seaCopy": "Pescato fresco, crostacei e molluschi. Il Mediterraneo, ogni giorno.",
+    "landEyebrow": "La terra",
+    "landTitle": "La terra",
+    "landCopy": "Ortaggi di stagione, olio, grani e le migliori produzioni locali.",
+    "signatureEyebrow": "I nostri piatti signature",
+    "signatureTitle": "Tre interpretazioni del nostro territorio",
+    "dish1": "Ricciola",
+    "dish1Sub": "Agrumi · Finocchio",
+    "dish2": "Spaghettone",
+    "dish2Sub": "Ricci di mare · Limone",
+    "dish3": "Polpo",
+    "dish3Sub": "Patata affumicata · Olive",
+    "ctaTitle": "Scopri cosa c’è in tavola",
+    "ctaCopy": "La nostra cucina cambia seguendo il mare e le stagioni.",
+    "ctaButton": "Scopri il menu",
+    "explore": "Esplora →",
+    "discoverDish": "Scopri il piatto"
+  },
+  "marePage": {
+    "heroEyebrow": "Il mare",
+    "heroTitle": "Il Mare",
+    "heroSub": "La materia prima prima di tutto.",
+    "philoEyebrow": "La nostra filosofia",
+    "philoTitle": "Rispetto, stagionalità e qualità del pescato.",
+    "philoCopy": "Lavoriamo il pesce del Mediterraneo selezionando le migliori materie prime in base alla stagione, alla disponibilità e alla qualità. Un mare che cambia, una cucina che lo segue.",
+    "speciesEyebrow": "Il pescato",
+    "speciesTitle": "Le principali specie.",
+    "speciesNote": "Una selezione indicativa: disponibilità e provenienza cambiano seguendo stagione e mercato.",
+    "species": {
+      "ricciola": "Ricciola",
+      "dentice": "Dentice",
+      "scorfano": "Scorfano",
+      "triglia": "Triglia",
+      "tonno": "Tonno",
+      "gambero": "Gambero rosso",
+      "scampo": "Scampo",
+      "ostriche": "Ostriche",
+      "cozze": "Cozze"
+    },
+    "origins": {
+      "ricciola": "Ionio · Mediterraneo",
+      "dentice": "Adriatico · Ionio",
+      "scorfano": "Mediterraneo",
+      "triglia": "Adriatico · Ionio",
+      "tonno": "Mediterraneo · secondo disponibilità",
+      "gambero": "Ionio · Mediterraneo",
+      "scampo": "Adriatico · Ionio",
+      "ostriche": "Mediterraneo · selezione",
+      "cozze": "Adriatico · Ionio"
+    },
+    "rawEyebrow": "Il crudo",
+    "rawTitle": "Il mare, senza maschere.",
+    "rawCopy": "Tartare, carpacci, crostacei, ostriche e pescato selezionato. Il crudo mette al centro qualità, freschezza e una lavorazione attenta, nel rispetto delle corrette procedure di sicurezza alimentare e della catena del freddo.",
+    "rawCta": "Scopri i crudi →",
+    "originEyebrow": "Provenienza",
+    "originTitle": "Tre mari, un’unica idea.",
+    "ionio": "Pescato e crostacei, secondo stagione e disponibilità.",
+    "adriatico": "Pesce, molluschi e selezioni dai mercati locali quando disponibili.",
+    "mediterraneo": "Selezioni utilizzate quando qualità e stagionalità lo richiedono.",
+    "methodsEyebrow": "Come lo cuciniamo",
+    "methodsTitle": "Tre interpretazioni.",
+    "methodRaw": "Crudo",
+    "methodRawCopy": "Materia prima protagonista.",
+    "methodFire": "Fuoco",
+    "methodFireCopy": "Brace, griglia e cotture dirette.",
+    "methodKitchen": "Cucina",
+    "methodKitchenCopy": "Tecnica contemporanea senza perdere la riconoscibilità del prodotto.",
+    "seeDishes": "Vedi i piatti →",
+    "dishesEyebrow": "I nostri piatti di mare",
+    "dishesTitle": "Alcune proposte.",
+    "dishScampo": "Scampo",
+    "dishScampoSub": "Caviale · Limone · Olio verde",
+    "ctaTitle": "Scopri tutti i piatti di mare nel nostro menu.",
+    "ctaButton": "Scopri il menu →"
+  },
+  "terra": {
+    "hero": {
+      "eyebrow": "LA TERRA",
+      "title": "LA TERRA",
+      "subtitle": "Orti, ulivi, grani e stagionalità."
+    },
+    "philosophy": {
+      "eyebrow": "LA NOSTRA FILOSOFIA",
+      "title": "La terra detta il ritmo.",
+      "text": "La nostra cucina nasce dal rispetto per la stagionalità, dalla selezione di materie prime locali e dal dialogo con produttori che condividono la nostra attenzione per qualità e territorio."
+    },
+    "origin": {
+      "eyebrow": "PROVENIENZA",
+      "title": "Salento e Puglia.",
+      "text": "Ortaggi, legumi, grani, olio extravergine ed erbe aromatiche provengono prevalentemente dal territorio, scegliendo ogni prodotto nel suo momento migliore."
+    },
+    "ingredients": {
+      "eyebrow": "LE MATERIE PRIME",
+      "title": "Le principali materie prime.",
+      "tomato": "Pomodoro",
+      "eggplant": "Melanzana",
+      "artichoke": "Carciofo",
+      "chicory": "Cicoria",
+      "beans": "Fave",
+      "wheat": "Grano",
+      "oil": "Olio EVO",
+      "legumes": "Legumi",
+      "herbs": "Erbe aromatiche",
+      "note": "Seguiamo ciò che la terra offre, scegliendo ogni ingrediente quando raggiunge la sua espressione migliore."
+    },
+    "season": {
+      "eyebrow": "LA STAGIONE",
+      "title": "Ogni ingrediente, al suo momento.",
+      "text": "Seguiamo il ritmo della natura per lavorare gli ingredienti quando esprimono al meglio sapore, consistenza e identità."
+    },
+    "methods": {
+      "garden": {
+        "title": "ORTO",
+        "text": "La freschezza del territorio."
+      },
+      "fire": {
+        "title": "FUOCO",
+        "text": "Tradizione e contemporaneità."
+      },
+      "kitchen": {
+        "title": "CUCINA",
+        "text": "Dal territorio al piatto."
+      }
+    },
+    "dishes": {
+      "eyebrow": "I NOSTRI PIATTI",
+      "title": "Alcune proposte dalla terra.",
+      "orecchiette": "Orecchiette alle cime di rapa",
+      "parmigiana": "Parmigiana di melanzane",
+      "fave": "Purea di fave e cicoria",
+      "artichoke": "Carciofo arrostito con olio EVO e agrumi"
+    },
+    "cta": {
+      "title": "Scopri tutti i piatti nel nostro menu.",
+      "button": "SCOPRI IL MENU →"
+    }
+  }
+}
