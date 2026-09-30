@@ -774,3 +774,241 @@ body.wine-page header button,
     grid-template-columns:repeat(2,minmax(0,1fr))!important;
   }
 }
+
+/* ===== Mobile Carta Vini: entry cards always on one row ===== */
+@media(max-width:720px){
+  .wine-entry-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .wine-entry-card:first-child{
+    border-right:1px solid rgba(27,26,24,.18)!important;
+  }
+}
+
+/* ===== Wine Guide — 6 choices: 2 columns × 3 rows ===== */
+@media(max-width:900px){
+  #wineGuide .wine-step[data-guide-step="1"] .wine-options,
+  #wineGuide .wine-step[data-guide-step="2"] .wine-options{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+
+/* ===== Wine Guide — Character Wheel 3D Premium (canonical) ===== */
+.wine-character-wheel{display:none}
+
+@media(max-width:900px){
+  #wineGuide .wine-step[data-guide-step="1"] > .wine-options{
+    display:none!important;
+  }
+
+  #wineGuide .wine-character-wheel{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    margin-top:22px;
+  }
+
+  #wineGuide .wine-wheel-stage{
+    position:relative;
+    display:block;
+    width:100%;
+    height:390px;
+    min-height:390px;
+    overflow:hidden;
+    perspective:1050px;
+    perspective-origin:50% 50%;
+    transform-style:preserve-3d;
+    border-top:1px solid rgba(198,169,107,.18);
+    border-bottom:1px solid rgba(198,169,107,.18);
+    outline:none;
+    touch-action:pan-x;
+    user-select:none;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%);
+  }
+
+  #wineGuide .wine-wheel-track{
+    position:absolute;
+    inset:0;
+    transform-style:preserve-3d;
+  }
+
+  #wineGuide .wine-wheel-option{
+    position:absolute;
+    left:0;
+    right:0;
+    top:50%;
+    height:76px;
+    margin-top:-38px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    transform-origin:50% 50%;
+    backface-visibility:hidden;
+    transition:
+      transform .5s cubic-bezier(.2,.78,.22,1),
+      opacity .42s ease,
+      filter .42s ease;
+  }
+
+  #wineGuide .wine-wheel-option strong{
+    display:block;
+    margin:0;
+    font-family:"Cormorant Garamond",serif;
+    font-size:18px;
+    font-weight:500;
+    line-height:1;
+    letter-spacing:.055em;
+    color:rgba(244,240,232,.52);
+    white-space:nowrap;
+  }
+
+  #wineGuide .wine-wheel-option small{
+    display:none;
+  }
+
+  /* Cylinder geometry: adjacent labels never enter the central selection band. */
+  #wineGuide .wine-wheel-option[data-depth="-2"]{
+    transform:translate3d(0,-150px,-240px) rotateX(-58deg) scale(.66);
+    opacity:.10;
+    filter:blur(.7px);
+  }
+  #wineGuide .wine-wheel-option[data-depth="-1"]{
+    transform:translate3d(0,-105px,-105px) rotateX(-34deg) scale(.82);
+    opacity:.40;
+  }
+  #wineGuide .wine-wheel-option[data-depth="0"]{
+    transform:translate3d(0,0,55px) rotateX(0deg) scale(1);
+    opacity:1;
+    z-index:5;
+  }
+  #wineGuide .wine-wheel-option[data-depth="1"]{
+    transform:translate3d(0,105px,-105px) rotateX(34deg) scale(.82);
+    opacity:.40;
+  }
+  #wineGuide .wine-wheel-option[data-depth="2"]{
+    transform:translate3d(0,150px,-240px) rotateX(58deg) scale(.66);
+    opacity:.10;
+    filter:blur(.7px);
+  }
+
+  #wineGuide .wine-wheel-option.is-current{
+    height:104px;
+    margin-top:-52px;
+  }
+
+  #wineGuide .wine-wheel-option.is-current strong{
+    font-size:42px;
+    color:#c6a96b;
+    letter-spacing:.035em;
+  }
+
+  #wineGuide .wine-wheel-option.is-current small{
+    display:block;
+    margin-top:11px;
+    font-family:Inter,sans-serif;
+    font-size:10px;
+    font-weight:400;
+    line-height:1.35;
+    letter-spacing:.08em;
+    color:rgba(244,240,232,.72);
+    white-space:nowrap;
+  }
+
+  #wineGuide .wine-wheel-center-line{
+    position:absolute;
+    left:8%;
+    right:8%;
+    top:50%;
+    height:126px;
+    transform:translateY(-50%);
+    border-top:1px solid rgba(198,169,107,.52);
+    border-bottom:1px solid rgba(198,169,107,.52);
+    background:rgba(198,169,107,.012);
+    pointer-events:none;
+    z-index:4;
+  }
+
+  #wineGuide .wine-wheel-center-line::before,
+  #wineGuide .wine-wheel-center-line::after{
+    content:"";
+    position:absolute;
+    top:-1px;
+    width:38px;
+    height:1px;
+    background:#c6a96b;
+  }
+  #wineGuide .wine-wheel-center-line::before{left:0}
+  #wineGuide .wine-wheel-center-line::after{right:0}
+
+  #wineGuide .wine-wheel-meta{
+    display:flex;
+    justify-content:center;
+    padding-top:16px;
+  }
+
+  #wineGuide .wine-wheel-meta em{
+    color:rgba(198,169,107,.72);
+    font:500 8px Inter,sans-serif;
+    font-style:normal;
+    letter-spacing:.20em;
+  }
+
+  #wineGuide .wine-wheel-confirm{
+    width:100%;
+    min-height:52px;
+    margin-top:17px;
+    border:1px solid rgba(198,169,107,.58);
+    background:transparent;
+    color:#c6a96b;
+    font:600 9px Inter,sans-serif;
+    letter-spacing:.14em;
+    cursor:pointer;
+    transition:background .22s ease,color .22s ease;
+  }
+
+  #wineGuide .wine-wheel-confirm:active,
+  #wineGuide .wine-wheel-confirm.is-selected{
+    background:#c6a96b;
+    color:#11110e;
+  }
+}
+
+@media(max-width:390px){
+  #wineGuide .wine-wheel-stage{
+    height:350px;
+    min-height:350px;
+  }
+  #wineGuide .wine-wheel-option[data-depth="-2"]{
+    transform:translate3d(0,-136px,-230px) rotateX(-58deg) scale(.64);
+  }
+  #wineGuide .wine-wheel-option[data-depth="-1"]{
+    transform:translate3d(0,-96px,-100px) rotateX(-34deg) scale(.80);
+  }
+  #wineGuide .wine-wheel-option[data-depth="1"]{
+    transform:translate3d(0,96px,-100px) rotateX(34deg) scale(.80);
+  }
+  #wineGuide .wine-wheel-option[data-depth="2"]{
+    transform:translate3d(0,136px,-230px) rotateX(58deg) scale(.64);
+  }
+  #wineGuide .wine-wheel-option.is-current strong{
+    font-size:38px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #wineGuide .wine-wheel-option{
+    transition:none!important;
+  }
+}
+
+
+/* Character Wheel: hidden depth items must not be forced visible by display:flex. */
+@media(max-width:900px){
+  #wineGuide .wine-wheel-option[hidden]{
+    display:none!important;
+  }
+}

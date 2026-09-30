@@ -9,8 +9,8 @@ it:{
  categories:{sparkling:'BOLLICINE',white:'BIANCHI',red:'ROSSI',rose:'ROSATI'},all:'TUTTI',
  guideTitle:'Trova il vino giusto',guideIntro:'Tre domande per trovare le bottiglie più adatte al tuo gusto e a ciò che mangerai.',
  questions:['Cosa vuoi bere?','Che carattere cerchi?','Cosa mangerai?'],
- styles:{fresh:'FRESCO',mineral:'MINERALE',elegant:'ELEGANTE',structured:'STRUTTURATO',aromatic:'AROMATICO'},
- foods:{raw:'CRUDI',fish:'PESCE',pasta:'PASTA',meat:'CARNE',vegetables:'VEGETALI'},
+ styles:{fresh:'FRESCO',mineral:'MINERALE',elegant:'ELEGANTE',structured:'STRUTTURATO',aromatic:'AROMATICO',soft:'MORBIDO'},
+ foods:{raw:'CRUDI',fish:'PESCE',pasta:'PASTA',meat:'CARNE',vegetables:'VEGETALI',dessert:'DOLCE'},
  countries:{all:'TUTTI',italy:'ITALIA',france:'FRANCIA',spain:'SPAGNA'},
  results:'PER TE ABBIAMO SCELTO',noResults:'Nessuna bottiglia corrisponde esattamente. Prova a cambiare una scelta.',
  perfectWith:'PERFETTO CON',facts:{denomination:'DENOMINAZIONE',grapes:'UVE',vintage:'ANNATA',dosage:'DOSAGGIO',aging:'AFFINAMENTO',format:'FORMATO'}
@@ -23,8 +23,8 @@ en:{
  categories:{sparkling:'SPARKLING',white:'WHITES',red:'REDS',rose:'ROSÉ'},all:'ALL',
  guideTitle:'Find the right wine',guideIntro:'Three questions to find bottles suited to your taste and your food.',
  questions:['What would you like to drink?','What character are you looking for?','What will you eat?'],
- styles:{fresh:'FRESH',mineral:'MINERAL',elegant:'ELEGANT',structured:'STRUCTURED',aromatic:'AROMATIC'},
- foods:{raw:'RAW',fish:'FISH',pasta:'PASTA',meat:'MEAT',vegetables:'VEGETABLES'},
+ styles:{fresh:'FRESH',mineral:'MINERAL',elegant:'ELEGANT',structured:'STRUCTURED',aromatic:'AROMATIC',soft:'SOFT'},
+ foods:{raw:'RAW',fish:'FISH',pasta:'PASTA',meat:'MEAT',vegetables:'VEGETABLES',dessert:'DESSERT'},
  countries:{all:'ALL',italy:'ITALY',france:'FRANCE',spain:'SPAIN'},
  results:'SELECTED FOR YOU',noResults:'No bottle matches exactly. Try changing one choice.',
  perfectWith:'PERFECT WITH',facts:{denomination:'APPELLATION',grapes:'GRAPES',vintage:'VINTAGE',dosage:'DOSAGE',aging:'AGING',format:'FORMAT'}
@@ -37,8 +37,8 @@ es:{
  categories:{sparkling:'ESPUMOSOS',white:'BLANCOS',red:'TINTOS',rose:'ROSADOS'},all:'TODOS',
  guideTitle:'Encuentra el vino ideal',guideIntro:'Tres preguntas para encontrar las botellas más adecuadas a tu gusto y a lo que comerás.',
  questions:['¿Qué quieres beber?','¿Qué carácter buscas?','¿Qué vas a comer?'],
- styles:{fresh:'FRESCO',mineral:'MINERAL',elegant:'ELEGANTE',structured:'ESTRUCTURADO',aromatic:'AROMÁTICO'},
- foods:{raw:'CRUDOS',fish:'PESCADO',pasta:'PASTA',meat:'CARNE',vegetables:'VEGETALES'},
+ styles:{fresh:'FRESCO',mineral:'MINERAL',elegant:'ELEGANTE',structured:'ESTRUCTURADO',aromatic:'AROMÁTICO',soft:'SUAVE'},
+ foods:{raw:'CRUDOS',fish:'PESCADO',pasta:'PASTA',meat:'CARNE',vegetables:'VEGETALES',dessert:'POSTRE'},
  countries:{all:'TODOS',italy:'ITALIA',france:'FRANCIA',spain:'ESPAÑA'},
  results:'HEMOS ELEGIDO PARA TI',noResults:'Ninguna botella coincide exactamente. Prueba a cambiar una opción.',
  perfectWith:'PERFECTO CON',facts:{denomination:'DENOMINACIÓN',grapes:'UVAS',vintage:'AÑADA',dosage:'DOSAGE',aging:'CRIANZA',format:'FORMATO'}
@@ -94,14 +94,16 @@ const guideDescriptors={
   mineral:{it:'Teso · sapido · verticale',en:'Tense · saline · vertical',es:'Tenso · salino · vertical'},
   elegant:{it:'Fine · equilibrato · persistente',en:'Fine · balanced · persistent',es:'Fino · equilibrado · persistente'},
   structured:{it:'Intenso · complesso · profondo',en:'Intense · complex · deep',es:'Intenso · complejo · profundo'},
-  aromatic:{it:'Espressivo · fragrante · avvolgente',en:'Expressive · fragrant · enveloping',es:'Expresivo · fragante · envolvente'}
+  aromatic:{it:'Espressivo · fragrante · avvolgente',en:'Expressive · fragrant · enveloping',es:'Expresivo · fragante · envolvente'},
+  soft:{it:'Rotondo · armonioso · vellutato',en:'Round · harmonious · velvety',es:'Redondo · armonioso · aterciopelado'}
  },
  food:{
   raw:{it:'Ostriche · tartare · carpacci',en:'Oysters · tartare · carpaccio',es:'Ostras · tartar · carpaccio'},
   fish:{it:'Brace · forno · Mediterraneo',en:'Grill · oven · Mediterranean',es:'Brasa · horno · Mediterráneo'},
   pasta:{it:'Primi di mare e di terra',en:'Sea and land pasta dishes',es:'Pastas de mar y tierra'},
   meat:{it:'Secondi · cotture alla brace',en:'Mains · grilled preparations',es:'Segundos · cocciones a la brasa'},
-  vegetables:{it:'Orto · legumi · cucina vegetale',en:'Garden · legumes · vegetables',es:'Huerta · legumbres · vegetales'}
+  vegetables:{it:'Orto · legumi · cucina vegetale',en:'Garden · legumes · vegetables',es:'Huerta · legumbres · vegetales'},
+  dessert:{it:'Cioccolato · agrumi · fine pasto',en:'Chocolate · citrus · dessert',es:'Chocolate · cítricos · postre'}
  }
 };
 function guideDesc(group,key){
@@ -124,6 +126,25 @@ function updateTastePath(){
 function guideOptionMarkup(group,key,label){
  return `<button type="button" class="wine-choice" data-guide-value="${key}"><span class="wine-choice-label">${label}</span><small>${guideDesc(group,key)}</small><b>→</b></button>`;
 }
+
+const characterKeys=['fresh','mineral','elegant','structured','aromatic','soft'];
+let characterWheelIndex=0;
+function characterWheelLabel(key){return ui().styles[key]||key}
+function wheelOffset(index,current,total){let d=index-current;if(d>total/2)d-=total;if(d<-total/2)d+=total;return d}
+function renderCharacterWheel(){
+ const track=$('#wineWheelTrack'),counter=$('#wineWheelCounter'),confirm=$('#wineWheelConfirm');
+ if(!track)return;
+ const total=characterKeys.length;
+ track.innerHTML=characterKeys.map((key,index)=>{
+  const d=wheelOffset(index,characterWheelIndex,total),visible=Math.abs(d)<=2;
+  return `<div class="wine-wheel-option${d===0?' is-current':''}" role="option" aria-selected="${d===0?'true':'false'}" data-wheel-index="${index}" data-depth="${d}" ${visible?'':'hidden'}><strong>${characterWheelLabel(key)}</strong><small>${d===0?guideDesc('style',key):''}</small></div>`;
+ }).join('');
+ if(counter)counter.textContent=`${String(characterWheelIndex+1).padStart(2,'0')} / ${String(total).padStart(2,'0')}`;
+ if(confirm){const choose=lang==='en'?'CHOOSE':lang==='es'?'ELEGIR':'SCEGLI';confirm.textContent=`${choose} ${characterWheelLabel(characterKeys[characterWheelIndex])} →`;confirm.classList.remove('is-selected')}
+}
+function moveCharacterWheel(delta){characterWheelIndex=(characterWheelIndex+delta+characterKeys.length)%characterKeys.length;renderCharacterWheel()}
+function confirmCharacterWheel(){guide.style=characterKeys[characterWheelIndex];const c=$('#wineWheelConfirm');if(c)c.classList.add('is-selected');setTimeout(()=>showGuideStep(2),220)}
+function syncCharacterWheel(){const selected=guide.style?characterKeys.indexOf(guide.style):-1;characterWheelIndex=selected>=0?selected:0;renderCharacterWheel()}
 function renderGuide(){
  const u=ui();
  const sets=[
@@ -136,6 +157,7 @@ function renderGuide(){
   $(`#guideOptions${i}`).innerHTML=entries.map(([key,label])=>guideOptionMarkup(group,key,label)).join('');
  });
  updateTastePath();
+ syncCharacterWheel();
  showGuideStep(guideStep);
 }
 function showGuideStep(step){
@@ -183,7 +205,7 @@ function handleGuideClick(event){
   showGuideStep(guideStep-1);
  }
 }
-const foodMap={raw:['ostriche','ricciola-agrumi'],fish:['ostriche','ricciola-agrumi','polpo-patata','dentice-brace'],pasta:['spaghettone-ricci','orecchiette-cime-rapa'],meat:[],vegetables:['parmigiana-melanzane','fave-cicoria','carciofo-arrostito']};
+const foodMap={raw:['ostriche','ricciola-agrumi'],fish:['ostriche','ricciola-agrumi','polpo-patata','dentice-brace'],pasta:['spaghettone-ricci','orecchiette-cime-rapa'],meat:[],vegetables:['parmigiana-melanzane','fave-cicoria','carciofo-arrostito'],dessert:['sorbetto-limone','cremoso-cioccolato']};
 function renderGuideResults(){
  const u=ui(),foodIds=foodMap[guide.food]||[];
  const scored=data.wines.filter(w=>w.active&&w.type===guide.type)
@@ -243,6 +265,18 @@ function initEvents(){
  if(wineGuide&&!wineGuide.dataset.eventsBound){
   wineGuide.addEventListener('click',handleGuideClick);
   wineGuide.dataset.eventsBound='1';
+ }
+ const wheelConfirm=$('#wineWheelConfirm'),wheelStage=$('#wineWheelStage');
+ if(wheelConfirm)wheelConfirm.onclick=confirmCharacterWheel;
+ if(wheelStage&&!wheelStage.dataset.wheelBound){
+  let startY=null,dragging=false;
+  wheelStage.addEventListener('pointerdown',e=>{startY=e.clientY;dragging=false;if(wheelStage.setPointerCapture)wheelStage.setPointerCapture(e.pointerId)});
+  wheelStage.addEventListener('pointermove',e=>{if(startY!==null&&Math.abs(e.clientY-startY)>8)dragging=true});
+  wheelStage.addEventListener('pointerup',e=>{if(startY===null)return;const dy=e.clientY-startY;startY=null;if(Math.abs(dy)>24)moveCharacterWheel(dy<0?1:-1)});
+  wheelStage.addEventListener('pointercancel',()=>{startY=null});
+  wheelStage.addEventListener('click',e=>{const o=e.target.closest('[data-wheel-index]');if(!o||dragging){dragging=false;return}const target=Number(o.dataset.wheelIndex);if(Number.isFinite(target)&&target!==characterWheelIndex){let d=target-characterWheelIndex;if(d>characterKeys.length/2)d-=characterKeys.length;if(d<-characterKeys.length/2)d+=characterKeys.length;moveCharacterWheel(d>0?1:-1)}});
+  wheelStage.addEventListener('keydown',e=>{if(e.key==='ArrowUp'){e.preventDefault();moveCharacterWheel(-1)}if(e.key==='ArrowDown'){e.preventDefault();moveCharacterWheel(1)}if(e.key==='Enter'||e.key===' '){e.preventDefault();confirmCharacterWheel()}});
+  wheelStage.dataset.wheelBound='1';
  }
 
  $('#openWineList').onclick=()=>show('catalog');$('#openWineGuide').onclick=()=>show('guide');$('#closeWineList').onclick=()=>show(null);const closeWineGuide=$('#closeWineGuide');if(closeWineGuide)closeWineGuide.onclick=()=>show(null);

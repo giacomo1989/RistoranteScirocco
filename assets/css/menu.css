@@ -45,3 +45,8 @@ body.menu-page #menuCategoryBar{
   .menu-product{grid-template-columns:58px minmax(0,1fr) auto 15px;gap:12px;min-height:82px}
   .menu-product-thumb{width:58px;height:58px}
 }
+
+/* Products without an image keep the exact same row geometry as products with thumbnails. */
+.menu-product-thumb--empty{
+  visibility:hidden;
+}

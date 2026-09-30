@@ -1292,3 +1292,23 @@ footer p {
 
 /* Cantina — stato utility */
 .cellar-back-hidden{display:none!important}
+
+/* ===== Mobile menu navigation: 4 × 2, no horizontal scroll ===== */
+@media(max-width:900px){
+  .menu-category-bar{
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    padding:0!important;
+    overflow:visible!important;
+    overflow-x:hidden!important;
+  }
+  .menu-category-bar button{
+    width:100%!important;
+    min-width:0!important;
+    padding:13px 3px!important;
+    font-size:10px!important;
+    line-height:1.15!important;
+    letter-spacing:.08em!important;
+    white-space:nowrap;
+  }
+}
