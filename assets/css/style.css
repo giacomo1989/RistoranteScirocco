@@ -1226,3 +1226,69 @@ footer p {
 .dish-gallery-dots span{display:block;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);transition:.2s}
 .dish-gallery-dots span.active{background:#fff;transform:scale(1.25)}
 @media(max-width:900px){.dish-gallery-arrow{width:36px;height:36px;font-size:27px}.dish-gallery-arrow.prev{left:12px}.dish-gallery-arrow.next{right:12px}.dish-gallery-dots{bottom:10px}}
+
+
+/* ===== MENU / WINE SELECTOR — editorial, squared ===== */
+.menu-card-selector{
+  width:min(1180px,calc(100% - 40px));
+  margin:0 auto 20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border:1px solid rgba(27,26,24,.22);
+  background:#f4f0e8;
+}
+.menu-card-selector__item{
+  position:relative;
+  min-height:58px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  color:#1b1a18;
+  text-decoration:none;
+  border-radius:0;
+  font-family:Inter,sans-serif;
+  transition:background .2s ease,color .2s ease;
+}
+.menu-card-selector__item + .menu-card-selector__item{
+  border-left:1px solid rgba(27,26,24,.22);
+}
+.menu-card-selector__item.is-active{
+  background:#1b1a18;
+  color:#fff;
+}
+.menu-card-selector__index{
+  font-size:9px;
+  letter-spacing:.12em;
+  opacity:.55;
+}
+.menu-card-selector__label{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.13em;
+}
+.menu-card-selector__arrow{
+  margin-left:auto;
+  font-size:18px;
+  font-weight:300;
+  line-height:1;
+}
+.menu-card-selector__item:not(.is-active):hover{
+  background:#ebe4d7;
+}
+@media(max-width:720px){
+  .menu-card-selector{
+    width:calc(100% - 32px);
+    margin-bottom:14px;
+  }
+  .menu-card-selector__item{
+    min-height:52px;
+    padding:0 14px;
+    gap:9px;
+  }
+  .menu-card-selector__label{font-size:10px}
+  .menu-card-selector__index{font-size:8px}
+}
+
+/* Cantina — stato utility */
+.cellar-back-hidden{display:none!important}

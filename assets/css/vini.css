@@ -1,0 +1,776 @@
+/* Scirocco — Carta Vini digitale
+   Stili specifici di vini.html.
+   Intro e selettore condivisi restano in style.css. */
+
+body.wine-page header,
+body.wine-page .site-header,
+.wine-page header.site-header,
+.wine-page .header{
+  background:#1b1a18 !important;
+  color:#fff !important;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+body.wine-page header a,
+body.wine-page header button,
+.wine-page .header a,
+.wine-page .header button{color:#fff !important}
+
+.wine-page .wine-category-bar{
+  position:sticky;
+  z-index:12;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(18px,4vw,48px);
+  width:100%;
+  padding:15px 18px;
+  background:#f4f0e8;
+  border-top:1px solid rgba(27,26,24,.08);
+  border-bottom:1px solid rgba(27,26,24,.12);
+}
+.wine-category-bar a{
+  color:#6b665e;
+  text-decoration:none;
+  font:600 11px/1 Inter,sans-serif;
+  letter-spacing:.12em;
+  white-space:nowrap;
+}
+.wine-category-bar a.is-active{color:#1b1a18}
+.wine-category-bar a.is-active::after{
+  content:"";
+  display:block;
+  width:100%;
+  height:1px;
+  margin-top:7px;
+  background:#1b1a18;
+}
+.wine-list-placeholder{
+  width:min(1180px,calc(100% - 40px));
+  margin:0 auto;
+  padding:48px 0 100px;
+  border-bottom:1px solid rgba(27,26,24,.12);
+}
+.wine-list-placeholder p{
+  margin:0;
+  color:#817b71;
+  font:400 12px/1.7 Inter,sans-serif;
+  letter-spacing:.04em;
+}
+@media(max-width:720px){
+  .wine-page .wine-category-bar{
+    justify-content:flex-start;
+    overflow-x:auto;
+    gap:24px;
+    padding-left:16px;
+    padding-right:16px;
+    scrollbar-width:none;
+  }
+  .wine-page .wine-category-bar::-webkit-scrollbar{display:none}
+  .wine-category-bar a{font-size:10px}
+  .wine-list-placeholder{width:calc(100% - 32px)}
+}
+
+
+/* ===== Carta Vini — ingressi ===== */
+.wine-entry-grid{width:min(1180px,calc(100% - 40px));margin:34px auto 28px;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(27,26,24,.18)}
+.wine-entry-card{appearance:none;border:0;border-bottom:1px solid rgba(27,26,24,.18);background:transparent;color:#1b1a18;min-height:150px;padding:28px 24px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;text-align:left;cursor:pointer}
+.wine-entry-card:first-child{border-right:1px solid rgba(27,26,24,.18)}
+.wine-entry-card:hover,.wine-entry-card.is-active{background:#eee8dc}
+.wine-entry-number{font:500 9px/1 Inter,sans-serif;letter-spacing:.15em;opacity:.45}
+.wine-entry-copy{display:flex;flex-direction:column;gap:8px}
+.wine-entry-copy strong{font:500 clamp(23px,3vw,34px)/1 "Cormorant Garamond",serif}
+.wine-entry-copy small{font:400 12px/1.55 Inter,sans-serif;color:#716b62}
+.wine-entry-arrow{font:300 24px/1 Inter,sans-serif}
+.wine-section-head{width:min(1180px,calc(100% - 40px));margin:0 auto;padding:34px 0 28px}
+.wine-section-head h2{margin:8px 0 0;font:500 clamp(34px,5vw,54px)/1 "Cormorant Garamond",serif}
+.wine-section-head>p:not(.eyebrow){max-width:600px;color:#716b62;font:400 13px/1.65 Inter,sans-serif}
+.wine-back{border:0;background:none;padding:0 0 30px;color:#1b1a18;font:500 10px/1 Inter,sans-serif;letter-spacing:.12em;cursor:pointer}
+.wine-category-bar button{appearance:none;border:0;background:none;padding:0;color:#6b665e;font:600 11px/1 Inter,sans-serif;letter-spacing:.12em;white-space:nowrap;cursor:pointer}
+.wine-category-bar button.is-active{color:#1b1a18}
+.wine-category-bar button.is-active::after{content:"";display:block;width:100%;height:1px;margin-top:7px;background:#1b1a18}
+.wine-filter-stack{width:min(1180px,calc(100% - 40px));margin:22px auto 4px;display:flex;gap:8px;overflow:auto;scrollbar-width:none}
+.wine-filter-stack::-webkit-scrollbar{display:none}
+.wine-filter{flex:0 0 auto;border:1px solid rgba(27,26,24,.18);background:transparent;padding:10px 14px;color:#59544d;font:500 9px/1 Inter,sans-serif;letter-spacing:.1em;cursor:pointer}
+.wine-filter.is-active{background:#1b1a18;color:#fff;border-color:#1b1a18}
+.wine-products{width:min(1180px,calc(100% - 40px));margin:0 auto;padding:20px 0 100px}
+.wine-product{width:100%;border:0;border-bottom:1px solid rgba(27,26,24,.13);background:transparent;padding:20px 0;display:grid;grid-template-columns:78px 1fr auto;gap:18px;align-items:center;text-align:left;color:#1b1a18;cursor:pointer}
+.wine-product-image{width:78px;height:94px;object-fit:cover;background:#e8e1d5}
+.wine-product-copy{min-width:0}
+.wine-product-producer{display:block;margin-bottom:5px;font:500 9px/1 Inter,sans-serif;letter-spacing:.11em;color:#817a70;text-transform:uppercase}
+.wine-product-name{display:block;font:500 23px/1.05 "Cormorant Garamond",serif}
+.wine-product-meta{display:block;margin-top:7px;font:400 11px/1.45 Inter,sans-serif;color:#716b62}
+.wine-product-price{font:500 13px/1 Inter,sans-serif;white-space:nowrap}
+
+/* ===== Wine Guide ===== */
+.wine-guide-progress{width:min(760px,calc(100% - 40px));margin:0 auto 18px;display:flex;gap:6px}
+.wine-guide-progress span{height:2px;flex:1;background:rgba(27,26,24,.14)}
+.wine-guide-progress span.is-active,.wine-guide-progress span.is-done{background:#1b1a18}
+.wine-guide-stage{width:min(760px,calc(100% - 40px));margin:0 auto;padding:16px 0 100px}
+.wine-guide-question{font:500 clamp(30px,5vw,46px)/1.05 "Cormorant Garamond",serif;margin:0 0 26px}
+.wine-guide-options{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid rgba(27,26,24,.15)}
+.wine-guide-option{min-height:76px;border:0;border-bottom:1px solid rgba(27,26,24,.15);background:transparent;text-align:left;padding:18px;color:#1b1a18;font:500 11px/1.2 Inter,sans-serif;letter-spacing:.1em;cursor:pointer}
+.wine-guide-option:nth-child(odd){border-right:1px solid rgba(27,26,24,.15)}
+.wine-guide-option:hover{background:#eee8dc}
+.wine-guide-nav{margin-top:22px}
+.wine-guide-nav button{border:0;background:none;padding:0;color:#1b1a18;font:500 10px/1 Inter,sans-serif;letter-spacing:.1em;cursor:pointer}
+.wine-guide-results-title{font:500 32px/1 "Cormorant Garamond",serif;margin:0 0 12px}
+
+/* ===== Wine sheet ===== */
+.wine-sheet-gallery{height:270px;background:#ebe4d7}
+.wine-sheet-gallery img{width:100%;height:100%;object-fit:cover}
+.wine-sheet-producer{margin:-4px 0 14px;font:500 11px/1.4 Inter,sans-serif;letter-spacing:.08em;color:#6d675f;text-transform:uppercase}
+.wine-sheet-facts{margin:22px 0;border-top:1px solid rgba(27,26,24,.13)}
+.wine-fact{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-bottom:1px solid rgba(27,26,24,.13);font:400 11px/1.4 Inter,sans-serif}
+.wine-fact span:first-child{color:#817a70}
+.wine-fact span:last-child{text-align:right}
+.wine-sheet-price{font:500 22px/1 "Cormorant Garamond",serif;margin:20px 0 28px}
+
+@media(max-width:720px){
+ .wine-entry-grid{width:calc(100% - 32px);grid-template-columns:1fr;margin-top:24px;margin-bottom:60px}
+ .wine-entry-card{min-height:112px;padding:22px 12px}
+ .wine-entry-card:first-child{border-right:0}
+ .wine-section-head,.wine-filter-stack,.wine-products{width:calc(100% - 32px)}
+ .wine-category-bar{justify-content:flex-start}
+ .wine-product{grid-template-columns:62px 1fr auto;gap:13px}
+ .wine-product-image{width:62px;height:78px}
+ .wine-product-name{font-size:21px}
+ .wine-guide-progress,.wine-guide-stage{width:calc(100% - 32px)}
+ .wine-guide-options{grid-template-columns:1fr}
+ .wine-guide-option:nth-child(odd){border-right:0}
+}
+
+/* ===== Miniature interattive — Carta Vini ===== */
+.wine-product{grid-template-columns:58px minmax(0,1fr) auto 16px}
+.wine-product-image{width:58px;height:82px;object-fit:contain;background:transparent}
+.wine-product-arrow{font:300 23px/1 "Cormorant Garamond",serif;opacity:.42}
+@media(max-width:720px){
+  .wine-product{grid-template-columns:48px minmax(0,1fr) auto 14px;gap:12px;min-height:92px}
+  .wine-product-image{width:48px;height:72px}
+  .wine-product-arrow{font-size:21px}
+}
+
+/* V43 — active wine mode + tighter transition into content */
+.wine-entry-grid + .wine-catalog,
+.wine-entry-grid + .wine-guide{
+  margin-top:0;
+}
+@media (max-width:700px){
+  .wine-entry-grid{margin-bottom:18px}
+}
+
+/* V45 — Cantina Wine Finder, scoped only to #wineGuide */
+#wineGuide{min-height:610px;padding:80px 8vw;background:#11110e;color:#f3efe7;grid-template-columns:34% 66%;position:relative}
+#wineGuide:not([hidden]){display:grid}
+#wineGuide .wine-guide-head{padding-right:5vw}
+#wineGuide .wine-guide-head h2{font:400 clamp(46px,5vw,76px) "Cormorant Garamond",serif;margin:20px 0}
+#wineGuide .wine-guide-head>p:not(.eyebrow){font-size:17px;line-height:1.5}
+#wineGuide .wine-step,#wineGuide .wine-result{display:none;align-self:center;padding-left:5vw;border-left:1px solid #494940}
+#wineGuide .wine-step.active,#wineGuide .wine-result.active{display:block}
+#wineGuide .wine-step>span,#wineGuide .wine-result>span{font:9px Inter,sans-serif;letter-spacing:.25em;opacity:.6}
+#wineGuide .wine-step h3,#wineGuide .wine-result h3{font:400 clamp(40px,4vw,62px) "Cormorant Garamond",serif;margin:20px 0 35px}
+#wineGuide .wine-options{display:flex;flex-wrap:wrap;gap:10px}
+#wineGuide .wine-options button{min-width:135px;padding:17px 22px;border:1px solid #66665e;background:transparent;color:#fff;font:10px Inter,sans-serif;letter-spacing:.12em;cursor:pointer}
+#wineGuide .wine-options button:hover{background:#f3efe7;color:#1b1b19}
+#wineGuide .wine-inline-back{display:block;margin:0 0 20px;padding:0;border:0;background:none;color:#aaa;font:9px Inter,sans-serif;letter-spacing:.14em;cursor:pointer}
+#wineGuide .wine-result>button{display:block;margin-top:18px;border:0;background:none;color:#aaa;text-decoration:underline;cursor:pointer}
+#wineGuide .wine-progress{position:absolute;left:42%;right:8vw;bottom:55px;height:1px;background:#444}
+#wineGuide .wine-progress i{display:block;height:1px;width:33%;background:#f3efe7;transition:.5s}
+#wineGuide #guideResultList{display:grid;gap:1px;max-height:350px;overflow:auto}
+#wineGuide #guideResultList .wine-product{background:#f3efe7;color:#1b1b19}
+@media(max-width:900px){
+ #wineGuide{grid-template-columns:1fr;padding:60px 25px 90px}
+ #wineGuide .wine-guide-head{padding:0 0 45px}
+ #wineGuide .wine-step,#wineGuide .wine-result{padding:40px 0 0;border-left:0;border-top:1px solid #494940}
+ #wineGuide .wine-progress{left:25px;right:25px;bottom:45px}
+}
+
+/* ===== V47 WINE GUIDE — DIGITAL SOMMELIER ===== */
+#wineGuide .wine-taste-path{
+  display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:34px;
+  font:600 9px Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase;
+}
+#wineGuide .wine-taste-path span{transition:.3s}
+#wineGuide .wine-taste-path .is-set{color:#f3efe7}
+#wineGuide .wine-taste-path .is-empty{color:#686861}
+#wineGuide .wine-taste-path i{font-style:normal;color:#686861;font-weight:400}
+#wineGuide .wine-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#494940;border:1px solid #494940}
+#wineGuide .wine-options .wine-choice{
+  min-width:0;min-height:94px;padding:20px 22px;background:#11110e;border:0;
+  display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;
+  text-align:left;color:#f3efe7;position:relative;
+}
+#wineGuide .wine-options .wine-choice:hover{background:#f3efe7;color:#1b1b19}
+#wineGuide .wine-choice-label{font:500 12px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+#wineGuide .wine-choice small{grid-column:1;font:400 11px Inter,sans-serif;letter-spacing:.02em;opacity:.55;margin-top:8px}
+#wineGuide .wine-choice b{grid-column:2;grid-row:1/3;align-self:center;font:300 19px Inter,sans-serif;opacity:.55}
+#wineGuide .wine-result.active{align-self:start;padding-top:15px}
+#wineGuide .wine-result>h3:empty{display:none}
+#wineGuide #guideResultList{display:block;max-height:none;overflow:visible;margin-top:20px}
+#wineGuide .wine-guide-hero-card{
+  width:100%;min-height:270px;border:1px solid #57574f;background:#181815;color:#f3efe7;
+  display:grid;grid-template-columns:34% 66%;padding:0;text-align:left;cursor:pointer;overflow:hidden;
+  transition:background .25s ease;
+}
+#wineGuide .wine-guide-hero-card:hover{background:#20201c}
+#wineGuide .wine-guide-hero-visual{min-height:270px;background:#24241f;overflow:hidden;display:block}
+#wineGuide .wine-guide-hero-visual img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+#wineGuide .wine-guide-hero-card:hover img{transform:scale(1.025)}
+#wineGuide .wine-guide-hero-copy{padding:30px;display:flex;flex-direction:column;min-width:0}
+#wineGuide .wine-guide-hero-copy>small{font:500 9px Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;opacity:.6}
+#wineGuide .wine-guide-hero-copy>strong{font:400 clamp(27px,2.7vw,42px) "Cormorant Garamond",serif;line-height:.95;margin:12px 0 7px}
+#wineGuide .wine-guide-hero-copy>em{font:400 12px Inter,sans-serif;font-style:normal;opacity:.65}
+#wineGuide .wine-guide-reason{font:400 13px/1.5 Inter,sans-serif;opacity:.72;margin:20px 0}
+#wineGuide .wine-guide-hero-bottom{margin-top:auto;display:flex;align-items:end;justify-content:space-between;gap:20px}
+#wineGuide .wine-guide-hero-bottom b{font:400 25px "Cormorant Garamond",serif}
+#wineGuide .wine-guide-hero-bottom i{font:600 9px Inter,sans-serif;font-style:normal;letter-spacing:.14em}
+#wineGuide .wine-guide-alternatives{margin-top:24px}
+#wineGuide .wine-guide-alternatives>p{font:600 8px Inter,sans-serif;letter-spacing:.18em;margin:0 0 10px;opacity:.6}
+#wineGuide .wine-guide-alternatives .wine-product{border:0;border-top:1px solid #494940;background:transparent!important;color:#f3efe7!important}
+#wineGuide .wine-guide-alternatives .wine-product:last-child{border-bottom:1px solid #494940}
+@media(max-width:900px){
+ #wineGuide .wine-taste-path{margin-top:25px}
+ #wineGuide .wine-options{grid-template-columns:1fr}
+ #wineGuide .wine-options .wine-choice{min-height:78px}
+ #wineGuide .wine-result.active{padding-top:40px}
+ #wineGuide .wine-guide-hero-card{grid-template-columns:31% 69%;min-height:220px}
+ #wineGuide .wine-guide-hero-visual{min-height:220px}
+ #wineGuide .wine-guide-hero-copy{padding:22px 18px}
+ #wineGuide .wine-guide-reason{font-size:11px;margin:14px 0}
+ #wineGuide .wine-guide-hero-bottom{align-items:flex-start;flex-direction:column;gap:8px}
+}
+
+/* ===== V52 — Wine Guide typography restore ===== */
+#wineGuide,
+#wineGuide *{
+  text-decoration:none;
+}
+#wineGuide .wine-guide-head,
+#wineGuide .wine-guide-head p,
+#wineGuide .wine-guide-head h2,
+#wineGuide .wine-step,
+#wineGuide .wine-step span,
+#wineGuide .wine-step h3,
+#wineGuide .wine-options,
+#wineGuide .wine-choice,
+#wineGuide .wine-choice span,
+#wineGuide .wine-choice small,
+#wineGuide .wine-choice b,
+#wineGuide .wine-taste-path,
+#wineGuide .wine-taste-path span,
+#wineGuide .wine-result,
+#wineGuide .wine-result span,
+#wineGuide .wine-result h3,
+#wineGuide .wine-guide-hero-card,
+#wineGuide .wine-guide-hero-card span,
+#wineGuide .wine-guide-hero-card small,
+#wineGuide .wine-guide-hero-card strong,
+#wineGuide .wine-guide-hero-card em,
+#wineGuide .wine-guide-hero-card b,
+#wineGuide .wine-guide-hero-card i,
+#wineGuide .wine-guide-alternatives,
+#wineGuide .wine-guide-alternatives p,
+#wineGuide .wine-product,
+#wineGuide .wine-product span{
+  text-decoration:none!important;
+}
+#wineGuide .wine-inline-back,
+#wineGuide #guideRestart{
+  text-decoration:none!important;
+}
+
+/* ===== V53 — Wine Guide alternative cards ===== */
+#wineGuide .wine-guide-alternatives{margin-top:30px}
+#wineGuide .wine-guide-alternatives>p{
+  margin:0 0 12px;
+  font:600 8px Inter,sans-serif;
+  letter-spacing:.18em;
+  opacity:.6;
+}
+#wineGuide .wine-guide-alt-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+#wineGuide .wine-guide-alt-card{
+  min-width:0;
+  padding:0;
+  border:1px solid #494940;
+  background:#181815;
+  color:#f3efe7;
+  text-align:left;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  transition:background .22s ease,border-color .22s ease;
+}
+#wineGuide .wine-guide-alt-card:hover{
+  background:#20201c;
+  border-color:#6a6a61;
+}
+#wineGuide .wine-guide-alt-image{
+  display:block;
+  width:100%;
+  aspect-ratio:4/3;
+  overflow:hidden;
+  background:#24241f;
+}
+#wineGuide .wine-guide-alt-image img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  transition:transform .4s ease;
+}
+#wineGuide .wine-guide-alt-card:hover img{transform:scale(1.025)}
+#wineGuide .wine-guide-alt-copy{
+  min-height:150px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+}
+#wineGuide .wine-guide-alt-copy>small{
+  font:500 8px Inter,sans-serif;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  opacity:.55;
+}
+#wineGuide .wine-guide-alt-copy>strong{
+  margin:8px 0 4px;
+  font:400 22px/1 "Cormorant Garamond",serif;
+}
+#wineGuide .wine-guide-alt-copy>em{
+  font:400 10px Inter,sans-serif;
+  font-style:normal;
+  opacity:.58;
+}
+#wineGuide .wine-guide-alt-copy>span{
+  margin-top:auto;
+  padding-top:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+#wineGuide .wine-guide-alt-copy b{
+  font:400 19px "Cormorant Garamond",serif;
+}
+#wineGuide .wine-guide-alt-copy i{
+  font:300 17px Inter,sans-serif;
+  font-style:normal;
+  opacity:.65;
+}
+@media(max-width:900px){
+ #wineGuide .wine-guide-alt-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ #wineGuide .wine-guide-alt-copy{min-height:135px;padding:13px}
+ #wineGuide .wine-guide-alt-copy>strong{font-size:19px}
+}
+@media(max-width:390px){
+ #wineGuide .wine-guide-alt-copy{padding:11px}
+ #wineGuide .wine-guide-alt-copy>strong{font-size:18px}
+}
+
+/* ===== V54 — Wine Guide navigation ===== */
+#wineGuide .wine-guide-result-actions{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin-top:22px;
+}
+#wineGuide .wine-guide-result-actions button{
+  margin:0;
+  padding:0;
+  border:0;
+  background:none;
+  color:#aaa;
+  font:500 9px Inter,sans-serif;
+  letter-spacing:.13em;
+  text-decoration:none!important;
+  cursor:pointer;
+  transition:color .2s ease;
+}
+#wineGuide .wine-guide-result-actions button:hover{color:#f3efe7}
+#wineGuide #guideModify{color:#f3efe7}
+@media(max-width:600px){
+ #wineGuide .wine-guide-result-actions{
+   justify-content:space-between;
+   gap:14px;
+ }
+}
+
+/* ===== V55 — Wine Guide: fondo uniforme tra gli step ===== */
+#wineGuide .wine-step,
+#wineGuide .wine-step.active,
+#wineGuide .wine-step[data-guide-step],
+#wineGuide .wine-guide-question,
+#wineGuide .wine-guide-question-wrap,
+#wineGuide .wine-guide-options,
+#wineGuide .wine-options{
+  background:transparent!important;
+  background-color:transparent!important;
+  box-shadow:none!important;
+}
+
+/* Le scelte restano distinguibili senza creare un secondo blocco cromatico */
+#wineGuide .wine-choice,
+#wineGuide [data-guide-value]{
+  background:transparent;
+}
+#wineGuide .wine-choice:hover,
+#wineGuide [data-guide-value]:hover{
+  background:rgba(255,255,255,.035);
+}
+
+/* ===== V56 — Wine Guide / Digital Sommelier Premium ===== */
+#wineGuide{
+  --wg-gold:#c6a96b;
+  --wg-gold-soft:#bfa36a;
+  --wg-cream:#f3efe7;
+}
+
+/* progress / editorial champagne accents */
+#wineGuide .wine-guide-progress span,
+#wineGuide #guideProgressBar{
+  background:var(--wg-gold)!important;
+}
+#wineGuide .wine-step-count,
+#wineGuide .wine-guide-step-count,
+#wineGuide [class*="step-index"]{
+  color:var(--wg-gold)!important;
+}
+
+/* Taste profile becomes a visual signature */
+#wineGuide .wine-taste-path{
+  margin-top:26px;
+  padding-top:18px;
+  border-top:1px solid rgba(198,169,107,.28);
+}
+#wineGuide .wine-taste-path>small{
+  display:block;
+  margin-bottom:13px;
+  color:var(--wg-gold);
+  font:600 8px Inter,sans-serif;
+  letter-spacing:.22em;
+}
+#wineGuide .wine-taste-path>div{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+#wineGuide .wine-taste-path>div>span{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+#wineGuide .wine-taste-path b{
+  color:var(--wg-cream);
+  font:500 10px Inter,sans-serif;
+  letter-spacing:.11em;
+}
+#wineGuide .wine-taste-path em{
+  color:var(--wg-gold);
+  font:400 7px Inter,sans-serif;
+  font-style:normal;
+  letter-spacing:.12em;
+  opacity:.72;
+}
+#wineGuide .wine-taste-path .is-empty b{opacity:.25}
+#wineGuide .wine-taste-path .is-empty em{opacity:.3}
+#wineGuide .wine-taste-path>div>i{
+  color:var(--wg-gold);
+  font-style:normal;
+  opacity:.45;
+}
+
+/* Options: editorial choices, not app buttons */
+#wineGuide .wine-choice,
+#wineGuide [data-guide-value]{
+  position:relative;
+  border-color:rgba(243,239,231,.18)!important;
+  transition:color .22s ease,border-color .22s ease,background .22s ease,transform .22s ease!important;
+}
+#wineGuide .wine-choice::after,
+#wineGuide [data-guide-value]::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:100%;
+  bottom:-1px;
+  height:1px;
+  background:var(--wg-gold);
+  transition:right .28s ease;
+}
+#wineGuide .wine-choice:hover,
+#wineGuide [data-guide-value]:hover{
+  border-color:rgba(198,169,107,.5)!important;
+  background:rgba(198,169,107,.025)!important;
+}
+#wineGuide .wine-choice:hover::after,
+#wineGuide [data-guide-value]:hover::after,
+#wineGuide .wine-choice.is-selected::after,
+#wineGuide [data-guide-value].is-selected::after{
+  right:0;
+}
+#wineGuide .wine-choice.is-selected,
+#wineGuide [data-guide-value].is-selected{
+  color:#fff;
+  border-color:var(--wg-gold)!important;
+  background:rgba(198,169,107,.045)!important;
+  transform:translateY(-1px);
+}
+
+/* Step entrance: very small, restrained editorial motion */
+#wineGuide .wine-step.active{
+  animation:wgStepIn .42s cubic-bezier(.22,.61,.36,1) both;
+}
+@keyframes wgStepIn{
+  from{opacity:0;transform:translateX(10px)}
+  to{opacity:1;transform:translateX(0)}
+}
+
+/* Narrative cellar-search interlude */
+#wineGuide .wine-guide-searching{
+  display:none;
+  min-height:220px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:20px;
+  text-align:center;
+}
+#wineGuide .wine-guide-searching.is-visible{
+  display:flex;
+  animation:wgSearchIn .3s ease both;
+}
+#wineGuide .wine-guide-searching span{
+  color:var(--wg-gold);
+  font:600 9px Inter,sans-serif;
+  letter-spacing:.2em;
+}
+#wineGuide .wine-guide-searching i{
+  position:relative;
+  display:block;
+  width:min(280px,70%);
+  height:1px;
+  overflow:hidden;
+  background:rgba(198,169,107,.2);
+}
+#wineGuide .wine-guide-searching i::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--wg-gold);
+  transform:translateX(-100%);
+  animation:wgCellarLine .65s ease-out forwards;
+}
+@keyframes wgSearchIn{from{opacity:0}to{opacity:1}}
+@keyframes wgCellarLine{to{transform:translateX(0)}}
+
+/* Result hierarchy gets a champagne signature, not a gold wash */
+#wineGuide .wine-result.active{
+  animation:wgResultIn .5s ease both;
+}
+@keyframes wgResultIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+#wineGuide .wine-guide-hero-card{
+  border-color:rgba(198,169,107,.55)!important;
+}
+#wineGuide .wine-guide-hero-card::before{
+  background:var(--wg-gold)!important;
+}
+#wineGuide .wine-guide-result-eyebrow,
+#wineGuide .wine-result-eyebrow{
+  color:var(--wg-gold)!important;
+}
+#wineGuide .wine-guide-hero-card [class*="arrow"],
+#wineGuide .wine-guide-alt-copy i{
+  color:var(--wg-gold);
+}
+#wineGuide .wine-guide-alt-card:hover{
+  border-color:rgba(198,169,107,.55);
+}
+#wineGuide .wine-inline-back,
+#wineGuide #guideModify{
+  color:var(--wg-gold)!important;
+}
+
+@media(max-width:600px){
+ #wineGuide .wine-taste-path>div{gap:8px}
+ #wineGuide .wine-taste-path b{font-size:8px;letter-spacing:.08em}
+ #wineGuide .wine-taste-path>div>i{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ #wineGuide .wine-step.active,
+ #wineGuide .wine-result.active,
+ #wineGuide .wine-guide-searching,
+ #wineGuide .wine-guide-searching i::after{
+  animation:none!important;
+ }
+ #wineGuide .wine-choice,
+ #wineGuide [data-guide-value]{transition:none!important}
+}
+
+/* ===== V57 — Wine Guide hover: griglia sempre visibile ===== */
+#wineGuide .wine-options .wine-choice:hover,
+#wineGuide .wine-choice:hover,
+#wineGuide [data-guide-value]:hover{
+  background:transparent!important;
+  background-color:transparent!important;
+}
+
+/* Anche la conferma della scelta non deve creare un blocco cromatico */
+#wineGuide .wine-options .wine-choice.is-selected,
+#wineGuide .wine-choice.is-selected,
+#wineGuide [data-guide-value].is-selected{
+  background:transparent!important;
+  background-color:transparent!important;
+}
+
+/* Il feedback premium resta affidato a linea, bordo e contenuto */
+#wineGuide .wine-options .wine-choice:hover,
+#wineGuide .wine-options .wine-choice.is-selected{
+  border-color:rgba(198,169,107,.5)!important;
+}
+#wineGuide .wine-options .wine-choice:hover .wine-choice-arrow,
+#wineGuide .wine-options .wine-choice.is-selected .wine-choice-arrow,
+#wineGuide .wine-options .wine-choice:hover [class*="arrow"],
+#wineGuide .wine-options .wine-choice.is-selected [class*="arrow"]{
+  color:var(--wg-gold)!important;
+}
+
+/* ===== V58 — Wine Guide hover champagne completo ===== */
+#wineGuide .wine-options .wine-choice:hover,
+#wineGuide .wine-options .wine-choice.is-selected{
+  color:var(--wg-gold)!important;
+}
+
+/* Titolo della scelta */
+#wineGuide .wine-options .wine-choice:hover strong,
+#wineGuide .wine-options .wine-choice:hover b,
+#wineGuide .wine-options .wine-choice:hover .wine-choice-title,
+#wineGuide .wine-options .wine-choice.is-selected strong,
+#wineGuide .wine-options .wine-choice.is-selected b,
+#wineGuide .wine-options .wine-choice.is-selected .wine-choice-title{
+  color:var(--wg-gold)!important;
+}
+
+/* Testo descrittivo abbinato: stesso champagne, leggermente più morbido */
+#wineGuide .wine-options .wine-choice:hover small,
+#wineGuide .wine-options .wine-choice:hover p,
+#wineGuide .wine-options .wine-choice:hover .wine-choice-description,
+#wineGuide .wine-options .wine-choice.is-selected small,
+#wineGuide .wine-options .wine-choice.is-selected p,
+#wineGuide .wine-options .wine-choice.is-selected .wine-choice-description{
+  color:var(--wg-gold)!important;
+  opacity:.72!important;
+}
+
+/* Freccia coerente con titolo e linea */
+#wineGuide .wine-options .wine-choice:hover span:last-child,
+#wineGuide .wine-options .wine-choice.is-selected span:last-child,
+#wineGuide .wine-options .wine-choice:hover [class*="arrow"],
+#wineGuide .wine-options .wine-choice.is-selected [class*="arrow"]{
+  color:var(--wg-gold)!important;
+}
+
+/* Nessun riempimento: la griglia rimane intatta */
+#wineGuide .wine-options .wine-choice:hover,
+#wineGuide .wine-options .wine-choice.is-selected{
+  background:transparent!important;
+  background-color:transparent!important;
+}
+
+/* ===== V62 — Visibilità esclusiva Carta Vini / Wine Guide ===== */
+#wineGuide[hidden],
+#wineCatalog[hidden]{
+  display:none!important;
+}
+
+/* ===== V63 — Wine Guide: 3 alternative mini-card anche su mobile ===== */
+#wineGuide .wine-guide-alt-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:8px;
+}
+#wineGuide .wine-guide-alt-card{
+  min-width:0;
+}
+#wineGuide .wine-guide-alt-image{
+  aspect-ratio:4/3;
+}
+#wineGuide .wine-guide-alt-copy{
+  min-height:128px;
+  padding:12px;
+}
+#wineGuide .wine-guide-alt-copy>small{
+  font-size:7px;
+  line-height:1.2;
+  letter-spacing:.10em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+#wineGuide .wine-guide-alt-copy>strong{
+  margin:6px 0 3px;
+  font-size:18px;
+  line-height:.98;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+#wineGuide .wine-guide-alt-copy>em{
+  font-size:8px;
+  line-height:1.2;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+#wineGuide .wine-guide-alt-copy>span{
+  padding-top:10px;
+}
+#wineGuide .wine-guide-alt-copy b{
+  font-size:17px;
+}
+@media(max-width:600px){
+ #wineGuide .wine-guide-alt-grid{
+   grid-template-columns:repeat(3,minmax(0,1fr))!important;
+   gap:5px;
+ }
+ #wineGuide .wine-guide-alt-copy{
+   min-height:108px;
+   padding:8px 7px;
+ }
+ #wineGuide .wine-guide-alt-copy>small{
+   font-size:6px;
+   letter-spacing:.07em;
+ }
+ #wineGuide .wine-guide-alt-copy>strong{
+   margin:5px 0 2px;
+   font-size:15px;
+   line-height:.95;
+ }
+ #wineGuide .wine-guide-alt-copy>em{
+   font-size:6.5px;
+ }
+ #wineGuide .wine-guide-alt-copy>span{
+   padding-top:7px;
+ }
+ #wineGuide .wine-guide-alt-copy b{
+   font-size:15px;
+ }
+ #wineGuide .wine-guide-alt-copy i{
+   display:none;
+ }
+}
+
+/* ===== V64 — Wine Guide: tipologia 2×2 su mobile ===== */
+@media(max-width:600px){
+  #wineGuide .wine-step[data-guide-step="0"] .wine-options{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}

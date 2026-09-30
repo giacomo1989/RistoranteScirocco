@@ -93,8 +93,8 @@
         "crudo"
       ],
       "winePairings": [
-        "champagne-bdb",
-        "trentodoc-brut"
+        "gimonnet-bdb",
+        "ferrari-perle-2019"
       ],
       "recommendedBefore": [],
       "recommendedAfter": [
@@ -143,7 +143,7 @@
         "crudo"
       ],
       "winePairings": [
-        "champagne-bdb",
+        "gimonnet-bdb",
         "vermentino-salento"
       ],
       "recommendedBefore": [
@@ -194,8 +194,8 @@
         "crudo"
       ],
       "winePairings": [
-        "champagne-bdb",
-        "trentodoc-riserva"
+        "gimonnet-bdb",
+        "ferrari-perle-2019"
       ],
       "recommendedBefore": [
         "ostriche"
@@ -242,8 +242,8 @@
         "mare"
       ],
       "winePairings": [
-        "trentodoc-brut",
-        "fiano-salento"
+        "ferrari-perle-2019",
+        "vermentino-salento"
       ],
       "recommendedBefore": [
         "ricciola-agrumi"
@@ -293,7 +293,7 @@
       ],
       "winePairings": [
         "negroamaro-rosato",
-        "primitivo-leggero"
+        "primitivo-manduria"
       ],
       "recommendedBefore": [],
       "recommendedAfter": [
@@ -339,8 +339,8 @@
         "mare"
       ],
       "winePairings": [
-        "trentodoc-riserva",
-        "champagne-bdb",
+        "ferrari-perle-2019",
+        "gimonnet-bdb",
         "vermentino-salento"
       ],
       "recommendedBefore": [
@@ -391,8 +391,7 @@
         "terra"
       ],
       "winePairings": [
-        "fiano-salento",
-        "verdeca"
+        "vermentino-salento"
       ],
       "recommendedBefore": [
         "parmigiana-melanzane"
@@ -440,7 +439,7 @@
       ],
       "winePairings": [
         "vermentino-salento",
-        "trentodoc-riserva"
+        "ferrari-perle-2019"
       ],
       "recommendedBefore": [
         "spaghettone-ricci"
@@ -487,7 +486,7 @@
         "terra"
       ],
       "winePairings": [
-        "verdeca",
+        "vermentino-salento",
         "negroamaro-rosato"
       ],
       "recommendedBefore": [
@@ -535,7 +534,7 @@
         "terra"
       ],
       "winePairings": [
-        "verdeca"
+        "vermentino-salento"
       ],
       "recommendedBefore": [
         "fave-cicoria"
@@ -621,7 +620,7 @@
         "senza-glutine"
       ],
       "winePairings": [
-        "moscato-passito"
+        "chardonnay-puglia"
       ],
       "recommendedBefore": [
         "dentice-brace",
@@ -669,7 +668,7 @@
         "vegetariano"
       ],
       "winePairings": [
-        "primitivo-dolce"
+        "primitivo-manduria"
       ],
       "recommendedBefore": [],
       "recommendedAfter": [],
@@ -681,54 +680,49 @@
   ],
   "wines": [
     {
-      "id": "champagne-bdb",
-      "name": "Champagne Blanc de Blancs",
+      "id": "ferrari-perle-2019",
+      "name": "Perlé",
+      "meta": "Trentodoc · Chardonnay"
+    },
+    {
+      "id": "cesconi-blauwal",
+      "name": "Blauwal",
+      "meta": "Trentodoc · Chardonnay, Pinot Nero"
+    },
+    {
+      "id": "gimonnet-bdb",
+      "name": "Blanc de Blancs",
       "meta": "Champagne · Chardonnay"
     },
     {
-      "id": "trentodoc-brut",
-      "name": "Trentodoc Brut",
-      "meta": "Trentino · Metodo Classico"
-    },
-    {
-      "id": "trentodoc-riserva",
-      "name": "Trentodoc Riserva",
-      "meta": "Trentino · Metodo Classico"
+      "id": "corpinnat-brut-nature",
+      "name": "Brut Nature",
+      "meta": "Corpinnat · Xarel·lo, Macabeo"
     },
     {
       "id": "vermentino-salento",
-      "name": "Vermentino del Salento",
-      "meta": "Puglia · Bianco"
+      "name": "Levante",
+      "meta": "Salento IGP · Vermentino"
     },
     {
-      "id": "fiano-salento",
-      "name": "Fiano del Salento",
-      "meta": "Puglia · Bianco"
+      "id": "chardonnay-puglia",
+      "name": "Pietra Bianca",
+      "meta": "Puglia IGP · Chardonnay"
     },
     {
-      "id": "verdeca",
-      "name": "Verdeca",
-      "meta": "Valle d’Itria · Bianco"
+      "id": "negroamaro-riserva",
+      "name": "Terra Rossa Riserva",
+      "meta": "Salice Salentino DOC · Negroamaro"
+    },
+    {
+      "id": "primitivo-manduria",
+      "name": "Maestrale",
+      "meta": "Primitivo di Manduria DOC · Primitivo"
     },
     {
       "id": "negroamaro-rosato",
-      "name": "Negroamaro Rosato",
-      "meta": "Salento · Rosato"
-    },
-    {
-      "id": "primitivo-leggero",
-      "name": "Primitivo",
-      "meta": "Puglia · Rosso"
-    },
-    {
-      "id": "moscato-passito",
-      "name": "Moscato Passito",
-      "meta": "Italia · Dolce"
-    },
-    {
-      "id": "primitivo-dolce",
-      "name": "Primitivo Dolce Naturale",
-      "meta": "Puglia · Dolce"
+      "name": "Rosa dei Venti",
+      "meta": "Salento IGP · Negroamaro"
     }
   ]
 }

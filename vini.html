@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Carta vini digitale Scirocco">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Carta Vini · Scirocco</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/vini.css">
+</head>
+
+<body class="digital-menu-page menu-page wine-page">
+<header class="menu-mobile-header">
+  <a class="menu-mobile-brand" href="index.html">SCIROCCO</a>
+  <a href="cantina.html" class="menu-mobile-cellar">CANTINA</a>
+  <button id="menuLangToggle" class="menu-mobile-more" aria-label="Lingua">IT</button>
+  <div class="menu-lang-popover" id="menuLangPopover">
+    <button data-menu-lang="it">IT</button>
+    <button data-menu-lang="en">EN</button>
+    <button data-menu-lang="es">ES</button>
+  </div>
+</header>
+
+<header class="header menu-desktop-header" id="header">
+  <a class="brand" href="index.html"><span>SCIROCCO</span><small>CUCINA MEDITERRANEA</small></a>
+  <nav class="nav">
+    <a href="index.html">HOME</a>
+    <a href="cucina.html">CUCINA</a>
+    <a href="cantina.html">CANTINA</a>
+    <a href="index.html#contatti">CONTATTI</a>
+  </nav>
+  <div class="language-switcher">
+    <button data-menu-lang="it">IT</button><span>·</span>
+    <button data-menu-lang="en">EN</button><span>·</span>
+    <button data-menu-lang="es">ES</button>
+  </div>
+  <a class="btn btn-outline" href="index.html#prenota">PRENOTA</a>
+</header>
+
+<main class="digital-menu-main">
+<section class="menu-intro">
+<p class="eyebrow">SCIROCCO</p>
+<h1 id="winePageTitle"></h1>
+<p id="winePageIntro"></p>
+</section>
+
+<nav class="menu-card-selector" aria-label="Carta digitale">
+<a class="menu-card-selector__item" href="menu.html">
+<span class="menu-card-selector__arrow" aria-hidden="true">←</span>
+<span class="menu-card-selector__index">01</span>
+<span class="menu-card-selector__label" id="wineFoodLabel"></span>
+</a>
+<a class="menu-card-selector__item is-active" href="vini.html" aria-current="page">
+<span class="menu-card-selector__index">02</span>
+<span class="menu-card-selector__label" id="wineListLabel"></span>
+</a>
+</nav>
+
+<section class="wine-entry-grid" aria-label="Esplora la carta vini">
+<button class="wine-entry-card is-active" id="openWineList" type="button">
+<span class="wine-entry-number">01</span>
+<span class="wine-entry-copy"><strong id="wineEntryListTitle"></strong><small id="wineEntryListText"></small></span>
+<span class="wine-entry-arrow">→</span>
+</button>
+<button class="wine-entry-card" id="openWineGuide" type="button">
+<span class="wine-entry-number">02</span>
+<span class="wine-entry-copy"><strong id="wineEntryGuideTitle"></strong><small id="wineEntryGuideText"></small></span>
+<span class="wine-entry-arrow">→</span>
+</button>
+</section>
+
+<section class="wine-catalog" id="wineCatalog">
+<div class="wine-section-head">
+<button class="wine-back" id="closeWineList" type="button">← <span id="wineBackHome"></span></button>
+<p class="eyebrow" id="wineCatalogEyebrow"></p>
+<h2 id="wineCatalogTitle"></h2>
+</div>
+<nav class="wine-category-bar" id="wineCategoryBar" aria-label="Categorie vini">
+<button class="is-active" data-wine-category="sparkling"></button>
+<button data-wine-category="white"></button>
+<button data-wine-category="red"></button>
+<button data-wine-category="rose"></button>
+</nav>
+<div class="wine-filter-stack" id="wineFilterStack"></div>
+<div class="wine-products" id="wineProducts" aria-live="polite"></div>
+</section>
+
+<section class="wine-guide" id="wineGuide" hidden>
+<div class="wine-guide-head">
+<p class="eyebrow">TROVA IL VINO GIUSTO</p>
+<h2 id="guideTitle"></h2>
+<p id="guideIntro"></p>
+<div class="wine-taste-path" id="wineTastePath" aria-live="polite"></div>
+</div>
+<div class="wine-step active" data-guide-step="0"><span>01 / 03</span><h3 id="guideQuestion0"></h3><div class="wine-options" id="guideOptions0"></div></div>
+<div class="wine-step" data-guide-step="1"><button type="button" class="wine-inline-back" data-guide-back>‹ INDIETRO</button><span>02 / 03</span><h3 id="guideQuestion1"></h3><div class="wine-options" id="guideOptions1"></div></div>
+<div class="wine-step" data-guide-step="2"><button type="button" class="wine-inline-back" data-guide-back>‹ INDIETRO</button><span>03 / 03</span><h3 id="guideQuestion2"></h3><div class="wine-options" id="guideOptions2"></div></div>
+<div class="wine-guide-searching" id="guideSearching" aria-live="polite"><span id="guideSearchingText"></span><i></i></div>
+<div class="wine-result" id="guideResult"><span id="guideResultEyebrow"></span><h3 id="guideResultTitle"></h3><div id="guideResultList"></div><div class="wine-guide-result-actions"><button id="guideModify" type="button"></button><button id="guideRestart" type="button"></button></div></div>
+<div class="wine-progress"><i id="guideProgressBar"></i></div>
+</section>
+</main>
+
+<div class="dish-backdrop wine-backdrop" id="wineBackdrop" hidden></div>
+<section class="dish-sheet wine-sheet" id="wineSheet" aria-hidden="true">
+<div class="dish-sheet-panel">
+<button class="dish-sheet-close" id="wineSheetClose" type="button" aria-label="Chiudi">×</button>
+<div class="dish-sheet-gallery wine-sheet-gallery">
+<img id="wineSheetImage" alt="">
+</div>
+<div class="dish-sheet-body">
+<p class="eyebrow" id="wineSheetMeta"></p>
+<h2 id="wineSheetName"></h2>
+<p class="wine-sheet-producer" id="wineSheetProducer"></p>
+<p class="dish-sheet-description" id="wineSheetDescription"></p>
+<div class="wine-sheet-facts" id="wineSheetFacts"></div>
+<div class="wine-sheet-price" id="wineSheetPrice"></div>
+<div class="dish-related-block" id="wineFoodPairingsBlock">
+<p class="eyebrow" id="wineFoodPairingsTitle"></p>
+<div class="dish-related-list" id="wineFoodPairings"></div>
+</div>
+</div>
+</div>
+</section>
+<script src="assets/js/vini.js"></script>
+</body>
+</html>
