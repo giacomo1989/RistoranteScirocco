@@ -129,20 +129,99 @@ function guideOptionMarkup(group,key,label){
 
 const characterKeys=['fresh','mineral','elegant','structured','aromatic','soft'];
 let characterWheelIndex=0;
+let wineWheelAnimating=false;
 function characterWheelLabel(key){return ui().styles[key]||key}
 function wheelOffset(index,current,total){let d=index-current;if(d>total/2)d-=total;if(d<-total/2)d+=total;return d}
 function renderCharacterWheel(){
  const track=$('#wineWheelTrack'),counter=$('#wineWheelCounter'),confirm=$('#wineWheelConfirm');
  if(!track)return;
  const total=characterKeys.length;
- track.innerHTML=characterKeys.map((key,index)=>{
-  const d=wheelOffset(index,characterWheelIndex,total),visible=Math.abs(d)<=2;
-  return `<div class="wine-wheel-option${d===0?' is-current':''}" role="option" aria-selected="${d===0?'true':'false'}" data-wheel-index="${index}" data-depth="${d}" ${visible?'':'hidden'}><strong>${characterWheelLabel(key)}</strong><small>${d===0?guideDesc('style',key):''}</small></div>`;
- }).join('');
+
+ if(track.children.length!==total){
+  track.innerHTML=characterKeys.map((key,index)=>`<div class="wine-wheel-option" role="option" aria-selected="false" data-wheel-index="${index}"><strong>${characterWheelLabel(key)}</strong><small></small></div>`).join('');
+ }
+
+ [...track.children].forEach((option,index)=>{
+  const key=characterKeys[index],d=wheelOffset(index,characterWheelIndex,total);
+  option.dataset.depth=String(d);
+  option.classList.toggle('is-current',d===0);
+  option.setAttribute('aria-selected',d===0?'true':'false');
+  const small=option.querySelector('small');
+  if(small)small.textContent=d===0?guideDesc('style',key):'';
+  option.hidden=Math.abs(d)>2;
+ });
+
  if(counter)counter.textContent=`${String(characterWheelIndex+1).padStart(2,'0')} / ${String(total).padStart(2,'0')}`;
  if(confirm){const choose=lang==='en'?'CHOOSE':lang==='es'?'ELEGIR':'SCEGLI';confirm.textContent=`${choose} ${characterWheelLabel(characterKeys[characterWheelIndex])} →`;confirm.classList.remove('is-selected')}
 }
-function moveCharacterWheel(delta){characterWheelIndex=(characterWheelIndex+delta+characterKeys.length)%characterKeys.length;renderCharacterWheel()}
+function moveCharacterWheel(delta){
+ if(wineWheelAnimating)return;
+ wineWheelAnimating=true;
+
+ const track=$('#wineWheelTrack');
+ const total=characterKeys.length;
+ const nextIndex=(characterWheelIndex+delta+total)%total;
+
+ if(!track){
+  characterWheelIndex=nextIndex;
+  renderCharacterWheel();
+  wineWheelAnimating=false;
+  return;
+ }
+
+ const options=[...track.querySelectorAll('.wine-wheel-option')];
+
+ /* FRAME 1 — prepare the sixth card just outside the visible cylinder.
+    Nothing currently visible moves yet. */
+ options.forEach((option,index)=>{
+  const nextDepth=wheelOffset(index,nextIndex,total);
+  if(Math.abs(nextDepth)<=2 && option.hidden){
+   option.hidden=false;
+   option.dataset.depth=String(delta>0?3:-3);
+   option.classList.remove('is-current');
+   option.setAttribute('aria-selected','false');
+  }
+ });
+
+ /* Force the preparation state to be painted before changing depths. */
+ void track.offsetHeight;
+
+ requestAnimationFrame(()=>{
+  requestAnimationFrame(()=>{
+   /* FRAME 2 — every mounted card advances exactly one physical level. */
+   options.forEach((option,index)=>{
+    const key=characterKeys[index];
+    const d=wheelOffset(index,nextIndex,total);
+
+    option.dataset.depth=String(d);
+    option.classList.toggle('is-current',d===0);
+    option.setAttribute('aria-selected',d===0?'true':'false');
+
+    const small=option.querySelector('small');
+    if(small)small.textContent=d===0?guideDesc('style',key):'';
+   });
+
+   characterWheelIndex=nextIndex;
+
+   const counter=$('#wineWheelCounter'),confirm=$('#wineWheelConfirm');
+   if(counter)counter.textContent=`${String(characterWheelIndex+1).padStart(2,'0')} / ${String(total).padStart(2,'0')}`;
+   if(confirm){
+    const choose=lang==='en'?'CHOOSE':lang==='es'?'ELEGIR':'SCEGLI';
+    confirm.textContent=`${choose} ${characterWheelLabel(characterKeys[characterWheelIndex])} →`;
+    confirm.classList.remove('is-selected');
+   }
+
+   /* Hide only the card that has completed its exit, after the CSS transition. */
+   window.setTimeout(()=>{
+    options.forEach((option,index)=>{
+     const d=wheelOffset(index,characterWheelIndex,total);
+     option.hidden=Math.abs(d)>2;
+    });
+    wineWheelAnimating=false;
+   },500);
+  });
+ });
+}
 function confirmCharacterWheel(){guide.style=characterKeys[characterWheelIndex];const c=$('#wineWheelConfirm');if(c)c.classList.add('is-selected');setTimeout(()=>showGuideStep(2),220)}
 function syncCharacterWheel(){const selected=guide.style?characterKeys.indexOf(guide.style):-1;characterWheelIndex=selected>=0?selected:0;renderCharacterWheel()}
 function renderGuide(){

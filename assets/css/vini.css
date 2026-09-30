@@ -872,9 +872,9 @@ body.wine-page header button,
 
   /* Cylinder geometry: adjacent labels never enter the central selection band. */
   #wineGuide .wine-wheel-option[data-depth="-2"]{
-    transform:translate3d(0,-150px,-240px) rotateX(-58deg) scale(.66);
-    opacity:.10;
-    filter:blur(.7px);
+    transform:translate3d(0,-145px,-210px) rotateX(-54deg) scale(.68);
+    opacity:.22;
+    filter:blur(.45px);
   }
   #wineGuide .wine-wheel-option[data-depth="-1"]{
     transform:translate3d(0,-105px,-105px) rotateX(-34deg) scale(.82);
@@ -890,9 +890,9 @@ body.wine-page header button,
     opacity:.40;
   }
   #wineGuide .wine-wheel-option[data-depth="2"]{
-    transform:translate3d(0,150px,-240px) rotateX(58deg) scale(.66);
-    opacity:.10;
-    filter:blur(.7px);
+    transform:translate3d(0,145px,-210px) rotateX(54deg) scale(.68);
+    opacity:.22;
+    filter:blur(.45px);
   }
 
   #wineGuide .wine-wheel-option.is-current{
@@ -983,7 +983,7 @@ body.wine-page header button,
     min-height:350px;
   }
   #wineGuide .wine-wheel-option[data-depth="-2"]{
-    transform:translate3d(0,-136px,-230px) rotateX(-58deg) scale(.64);
+    transform:translate3d(0,-128px,-200px) rotateX(-53deg) scale(.66);
   }
   #wineGuide .wine-wheel-option[data-depth="-1"]{
     transform:translate3d(0,-96px,-100px) rotateX(-34deg) scale(.80);
@@ -992,7 +992,7 @@ body.wine-page header button,
     transform:translate3d(0,96px,-100px) rotateX(34deg) scale(.80);
   }
   #wineGuide .wine-wheel-option[data-depth="2"]{
-    transform:translate3d(0,136px,-230px) rotateX(58deg) scale(.64);
+    transform:translate3d(0,128px,-200px) rotateX(53deg) scale(.66);
   }
   #wineGuide .wine-wheel-option.is-current strong{
     font-size:38px;
@@ -1005,6 +1005,30 @@ body.wine-page header button,
   }
 }
 
+
+
+/* Persistent 3D wheel: existing cards animate between depth positions. */
+@media(max-width:900px){
+  #wineGuide .wine-wheel-option{
+    transition:transform .46s cubic-bezier(.22,.72,.24,1),opacity .40s ease,filter .40s ease;
+    will-change:transform,opacity,filter;
+  }
+}
+
+
+/* Character Wheel — off-stage positions used only during the two-frame rotation. */
+@media(max-width:900px){
+  #wineGuide .wine-wheel-option[data-depth="-3"]{
+    transform:translate3d(0,-205px,-330px) rotateX(-70deg) scale(.56);
+    opacity:0;
+    filter:blur(1px);
+  }
+  #wineGuide .wine-wheel-option[data-depth="3"]{
+    transform:translate3d(0,205px,-330px) rotateX(70deg) scale(.56);
+    opacity:0;
+    filter:blur(1px);
+  }
+}
 
 /* Character Wheel: hidden depth items must not be forced visible by display:flex. */
 @media(max-width:900px){
