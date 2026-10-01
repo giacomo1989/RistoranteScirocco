@@ -1,0 +1,89 @@
+{
+  "menu": {
+    "title": "The Menu",
+    "intro": "Contemporary Mediterranean cuisine, between sea and land.",
+    "wineTitle": "Discover our wine selection",
+    "explore": "EXPLORE →",
+    "ingredients": "INGREDIENTS",
+    "allergens": "ALLERGENS",
+    "pairings": "PAIR IT WITH",
+    "before": "YOU MAY LIKE BEFORE",
+    "after": "TO CONTINUE",
+    "noAllergens": "No declared allergens",
+    "close": "Close",
+    "foodMenu": "FOOD MENU",
+    "wineList": "WINE LIST",
+    "previousPhoto": "Previous photo",
+    "nextPhoto": "Next photo"
+  },
+  "wine": {
+    "title": "The Wine List",
+    "intro": "A selection created to accompany our cuisine, from local terroirs to great appellations.",
+    "foodMenu": "FOOD MENU",
+    "wineList": "WINE LIST",
+    "entryList": "THE WINE LIST",
+    "entryListText": "Explore the complete selection",
+    "entryGuide": "FIND THE RIGHT WINE",
+    "entryGuideText": "Let our Wine Guide help you choose",
+    "back": "WINE LIST",
+    "catalogEyebrow": "THE SELECTION",
+    "catalogTitle": "The Wine List",
+    "categories": {
+      "sparkling": "SPARKLING",
+      "white": "WHITES",
+      "red": "REDS",
+      "rose": "ROSÉ"
+    },
+    "all": "ALL",
+    "guideTitle": "Find the right wine",
+    "guideIntro": "Three questions to find bottles suited to your taste and your food.",
+    "questions": [
+      "What would you like to drink?",
+      "What character are you looking for?",
+      "What will you eat?"
+    ],
+    "styles": {
+      "fresh": "FRESH",
+      "mineral": "MINERAL",
+      "elegant": "ELEGANT",
+      "structured": "STRUCTURED",
+      "aromatic": "AROMATIC",
+      "soft": "SOFT"
+    },
+    "foods": {
+      "raw": "RAW",
+      "fish": "FISH",
+      "pasta": "PASTA",
+      "meat": "MEAT",
+      "vegetables": "VEGETABLES",
+      "dessert": "DESSERT"
+    },
+    "countries": {
+      "all": "ALL",
+      "italy": "ITALY",
+      "france": "FRANCE",
+      "spain": "SPAIN"
+    },
+    "results": "SELECTED FOR YOU",
+    "noResults": "No bottle matches exactly. Try changing one choice.",
+    "perfectWith": "PERFECT WITH",
+    "facts": {
+      "denomination": "APPELLATION",
+      "grapes": "GRAPES",
+      "vintage": "VINTAGE",
+      "dosage": "DOSAGE",
+      "aging": "AGING",
+      "format": "FORMAT"
+    },
+    "profile": "YOUR PROFILE",
+    "choose": "CHOOSE",
+    "searching": "SEARCHING OUR CELLAR…",
+    "resultEyebrow": "OUR CHOICE FOR YOU",
+    "reason": "The bottle that best matches the character and pairing you selected.",
+    "alternatives": "OTHER LABELS YOU MAY LIKE",
+    "discoverWine": "DISCOVER THE WINE",
+    "restart": "START AGAIN",
+    "previousPhoto": "Previous photo",
+    "nextPhoto": "Next photo"
+  }
+}

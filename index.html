@@ -58,12 +58,7 @@
 
             <a href="#home" data-i18n="nav.home"></a>
             <a
-                href="#ristorante"
-                data-i18n="nav.ristorante"
-            ></a>
-
-            <a
-                href="menu.html"
+                href="menu/menu.html"
                 data-i18n="nav.menu"
             ></a>
 
@@ -108,7 +103,7 @@
         <!-- Mobile direct MENU button -->
         <a
             class="mobile-menu-link"
-            href="menu.html"
+            href="menu/menu.html"
             data-i18n="nav.menu"
         ></a>
 
@@ -153,10 +148,6 @@
 
 
             <div class="hero-content reveal">
-
-                <div class="wave">
-                    ⌁
-                </div>
 
                 <h1>
                     Scirocco
@@ -340,6 +331,23 @@
 
 
         <!-- =====================
+             RISTORANTE — MOBILE FINALE
+        ====================== -->
+
+        <section class="mobile-restaurant-feature restaurant-feature-split" aria-label="Il ristorante">
+            <div class="restaurant-feature-image" role="img" data-i18n-aria="alt.restaurant"></div>
+            <div class="mobile-restaurant-feature-overlay"></div>
+            <div class="mobile-restaurant-feature-copy">
+                <p class="eyebrow" data-i18n="cards.ristorante.title"></p>
+                <p data-i18n="cards.ristorante.copy"></p>
+                <a href="#contatti">
+                    <span data-i18n="cards.ristorante.cta"></span> →
+                </a>
+            </div>
+        </section>
+
+
+        <!-- =====================
              PRENOTAZIONE
         ====================== -->
 
@@ -442,16 +450,14 @@
 
         <!-- Social -->
         <div>
-
-            <p
-                class="eyebrow"
-                data-i18n="footer.follow"
-            ></p>
-
-            <p>
-                Instagram · Facebook
-            </p>
-
+            <p class="eyebrow" data-i18n="footer.follow"></p>
+            <a class="instagram-link" href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                    <circle cx="12" cy="12" r="4.2"></circle>
+                    <circle cx="17.4" cy="6.7" r="1"></circle>
+                </svg>
+            </a>
         </div>
 
     </footer>

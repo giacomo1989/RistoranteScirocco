@@ -1,0 +1,52 @@
+/* Scirocco — Menu digitale
+   Stili specifici di menu.html. */
+
+/* MENU ONLY — solid dark header for readability on light background */
+body.menu-page header,
+body.menu-page .site-header,
+.menu-page header.site-header,
+.menu-page .header {
+  background: #1b1a18 !important;
+  color: #fff !important;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+body.menu-page header a,
+body.menu-page header button,
+body.menu-page .site-header a,
+body.menu-page .site-header button,
+.menu-page .header a,
+.menu-page .header button {
+  color: #fff !important;
+}
+
+body.menu-page #menuCategoryBar{
+  position:sticky !important;
+  /* z-index intentionally untouched: preserve original stacking below product sheet */
+}
+
+/* ===== Miniature interattive — Menu Cibo ===== */
+.menu-product-thumb{
+  width:66px;
+  height:66px;
+  object-fit:cover;
+  display:block;
+  background:#e7dfd2;
+}
+.menu-product-copy{min-width:0}
+
+@media(min-width:901px){
+  .menu-product{grid-template-columns:76px 1fr auto 24px}
+  .menu-product-thumb{width:76px;height:76px}
+}
+
+@media(max-width:900px){
+  .menu-product{grid-template-columns:58px minmax(0,1fr) auto 15px;gap:12px;min-height:82px}
+  .menu-product-thumb{width:58px;height:58px}
+}
+
+/* Products without an image keep the exact same row geometry as products with thumbnails. */
+.menu-product-thumb--empty{
+  visibility:hidden;
+}

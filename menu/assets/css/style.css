@@ -1,0 +1,1328 @@
+:root {
+    --cream: #f3efe7;
+    --ink: #1b1b19;
+    --line: rgba(255, 255, 255, .55);
+
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Inter', sans-serif;
+}
+
+
+/* =====================================================
+   BASE
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 92px;
+
+    padding: 0 5.5vw;
+
+    display: flex;
+    align-items: center;
+    gap: 36px;
+
+    color: #fff;
+
+    transition: .35s;
+}
+
+.header.scrolled {
+    height: 74px;
+
+    background: rgba(25, 23, 20, .94);
+    backdrop-filter: blur(12px);
+}
+
+
+/* Brand */
+
+.brand {
+    margin-right: auto;
+    line-height: .9;
+}
+
+.brand span {
+    font: 500 28px var(--serif);
+    letter-spacing: .12em;
+}
+
+.brand small {
+    display: block;
+
+    margin-top: 8px;
+
+    font: 400 8px var(--sans);
+    letter-spacing: .25em;
+}
+
+
+/* Navigation */
+
+.nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav a,
+.btn,
+.eyebrow,
+.text-link,
+.card a,
+.scroll {
+    font-family: var(--sans);
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: 10px;
+}
+
+.nav a {
+    opacity: .9;
+}
+
+.nav a:hover {
+    opacity: .6;
+}
+
+
+/* Buttons */
+
+.btn {
+    display: inline-block;
+    padding: 17px 27px;
+}
+
+.btn-outline {
+    border: 1px solid var(--line);
+    color: #fff;
+}
+
+.btn-dark {
+    background: #1d1d1b;
+    color: #fff;
+}
+
+
+/* Hamburger */
+
+.menu-toggle {
+    display: none;
+
+    background: none;
+    border: 0;
+}
+
+
+/* =====================================================
+   LANGUAGE SWITCHER
+===================================================== */
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    font: 400 9px var(--sans);
+    letter-spacing: .16em;
+}
+
+.language-switcher button {
+    appearance: none;
+
+    border: 0;
+    background: none;
+
+    color: inherit;
+
+    padding: 5px 2px;
+
+    cursor: pointer;
+    opacity: .55;
+
+    font: inherit;
+    letter-spacing: inherit;
+}
+
+.language-switcher button.active {
+    opacity: 1;
+    border-bottom: 1px solid currentColor;
+}
+
+.language-switcher span {
+    opacity: .35;
+}
+
+
+/* Mobile-only header elements */
+
+.mobile-menu-link,
+.mobile-language-switcher {
+    display: none;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    position: relative;
+
+    height: 100vh;
+    min-height: 720px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 110px 7vw 50px;
+
+    color: #fff;
+
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+
+    background-image: url('../images/hero.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-shade {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(15, 10, 6, .68),
+            rgba(15, 10, 6, .12) 65%,
+            rgba(0, 0, 0, .12)
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 650px;
+}
+
+.wave {
+    height: 42px;
+    font-size: 52px;
+}
+
+.hero h1 {
+    margin: 35px 0 30px;
+
+    font-size: clamp(72px, 9vw, 138px);
+    font-weight: 400;
+    line-height: .78;
+
+    text-transform: uppercase;
+    letter-spacing: .015em;
+}
+
+.hero-kicker {
+    font-size: 14px !important;
+    line-height: 1.7;
+}
+
+.hero-copy {
+    margin: 38px 0;
+
+    font-size: 18px;
+    line-height: 1.45;
+}
+
+
+/* Scroll indicator */
+
+.scroll {
+    position: absolute;
+    z-index: 2;
+
+    right: 5vw;
+    bottom: 35px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.scroll b {
+    width: 46px;
+    height: 46px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid #fff;
+    border-radius: 50%;
+
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   GENERAL SECTIONS
+===================================================== */
+
+.section {
+    min-height: 620px;
+}
+
+.eyebrow {
+    letter-spacing: .35em;
+}
+
+
+/* =====================================================
+   RISTORANTE
+   Intro + Cucina / Cantina / Ristorante
+===================================================== */
+
+.restaurant-intro {
+    min-height: 380px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* Intro split */
+
+.split {
+    display: grid;
+    grid-template-columns: 45% 55%;
+
+    padding: 22px 0 22px 7vw;
+}
+
+.split-copy {
+    align-self: center;
+    padding-right: 7vw;
+}
+
+.split h2,
+.booking h2 {
+    margin: 35px 0;
+
+    font-size: clamp(42px, 4.5vw, 70px);
+    font-weight: 400;
+    line-height: .96;
+}
+
+.split-copy > p:not(.eyebrow),
+.booking-copy > p:not(.eyebrow) {
+    max-width: 570px;
+
+    font-size: 19px;
+    line-height: 1.45;
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 25px;
+}
+
+
+/* Cucina image */
+
+.split-image {
+    background-size: cover;
+    background-position: center;
+}
+
+.food-image {
+    background-image: url('../images/cucina.png');
+}
+
+
+/* =====================================================
+   RESTAURANT CARDS
+===================================================== */
+
+.restaurant-cards {
+    margin-top: 0;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    height: 510px;
+}
+
+.card {
+    position: relative;
+
+    color: #fff;
+
+    background-size: cover;
+    background-position: center;
+}
+
+.territory {
+    background-image: url('../images/territorio.png');
+}
+
+.wine {
+    background-image: url('../images/vini.png');
+}
+
+.restaurant {
+    background-image: url('../images/ristorante.png');
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            0deg,
+            rgba(0, 0, 0, .72),
+            rgba(0, 0, 0, .05) 65%
+        );
+}
+
+.card-copy {
+    position: absolute;
+
+    left: 13%;
+    right: 10%;
+    bottom: 10%;
+}
+
+.card-copy > p:not(.eyebrow) {
+    max-width: 310px;
+
+    font-size: 17px;
+    line-height: 1.35;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 15px;
+}
+
+
+/* =====================================================
+   BOOKING
+===================================================== */
+
+.booking {
+    display: grid;
+    grid-template-columns: 42% 58%;
+
+    padding: 22px 0 22px 7vw;
+}
+
+.booking-copy {
+    align-self: center;
+    padding-right: 5vw;
+}
+
+.booking-image {
+    background-image: url('../images/prenota.png');
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 50px;
+
+    padding: 70px 7vw;
+
+    background: #1b1b19;
+    color: #eee;
+}
+
+footer p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.footer-brand {
+    font-size: 35px;
+    letter-spacing: .15em;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+
+    transition: .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+
+/* =====================================================
+   TABLET / MOBILE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    /* Header */
+
+    .header {
+        height: 72px;
+
+        padding: 0 22px;
+    }
+
+    .desktop-language-switcher {
+        display: none;
+    }
+
+    .brand {
+        margin-right: auto;
+    }
+
+    .brand small {
+        display: none;
+    }
+
+
+    /* Mobile direct actions */
+
+    .mobile-menu-link {
+        display: block;
+
+        font: 500 9px var(--sans);
+        letter-spacing: .18em;
+        text-transform: uppercase;
+
+        white-space: nowrap;
+    }
+
+    .header-book {
+        display: block;
+
+        padding: 11px 13px;
+
+        font-size: 8px;
+
+        white-space: nowrap;
+    }
+
+
+    /* Hamburger */
+
+    .menu-toggle {
+        display: block;
+
+        width: 34px;
+        height: 30px;
+
+        padding: 5px;
+        margin-left: 0;
+    }
+
+    .menu-toggle span {
+        display: block;
+
+        height: 1px;
+        margin: 7px 0;
+
+        background: #fff;
+    }
+
+
+    /* Navigation drawer */
+
+    .nav {
+        display: none;
+    }
+
+    .nav.open {
+        position: absolute;
+
+        top: 72px;
+        left: 0;
+
+        width: 100%;
+        height: calc(100vh - 72px);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+
+        background: #1b1b19;
+    }
+
+    .nav.open a {
+        font-size: 13px;
+    }
+
+
+    /* Language inside drawer */
+
+    .nav.open .mobile-language-switcher {
+        display: flex;
+
+        width: 180px;
+
+        margin: 14px 0 0;
+        padding-top: 26px;
+
+        justify-content: center;
+
+        border-top: 1px solid rgba(255, 255, 255, .18);
+
+        font-size: 11px;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        min-height: 680px;
+
+        padding: 90px 24px 35px;
+    }
+
+    .hero-bg {
+        background-size: 350%;
+        background-position: 47% 4%;
+    }
+
+    .hero h1 {
+        font-size: 66px;
+    }
+
+    .hero-copy {
+        font-size: 16px;
+    }
+
+    .scroll span {
+        display: none;
+    }
+
+
+    /* Ristorante intro */
+
+    .restaurant-intro {
+        min-height: 0;
+    }
+
+    .split,
+    .booking {
+        grid-template-columns: 1fr;
+
+        padding: 0;
+    }
+
+    .split-copy,
+    .booking-copy {
+        padding: 58px 25px;
+    }
+
+    .split-image {
+        height: 380px;
+    }
+
+    .booking-image {
+        height: 440px;
+    }
+
+
+    /* Cards */
+
+    .cards {
+        grid-template-columns: 1fr;
+
+        height: auto;
+    }
+
+    .card {
+        height: 430px;
+    }
+
+    .territory,
+    .wine,
+    .restaurant {
+        background-size: 310%;
+    }
+
+
+    /* Footer */
+
+    footer {
+        grid-template-columns: 1fr 1fr;
+
+        padding: 60px 25px;
+    }
+}
+
+
+/* =====================================================
+   DESKTOP RESTAURANT COMPACTION
+===================================================== */
+
+@media (min-width: 901px) {
+
+    .restaurant-intro .split-copy {
+        padding-top: 38px;
+        padding-bottom: 38px;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 540px) {
+
+    .header {
+        gap: 11px;
+        padding: 0 15px;
+    }
+
+    .brand span {
+        font-size: 19px;
+        letter-spacing: .09em;
+    }
+
+    .mobile-menu-link {
+        font-size: 8px;
+        letter-spacing: .13em;
+    }
+
+    .header-book {
+        padding: 10px;
+
+        font-size: 7px;
+        letter-spacing: .14em;
+    }
+
+    .menu-toggle {
+        width: 29px;
+        padding: 4px;
+    }
+
+
+    /* Hero */
+
+    .hero h1 {
+        font-size: 57px;
+    }
+
+    .hero-kicker {
+        font-size: 11px !important;
+    }
+
+
+    /* Sections */
+
+    .split h2,
+    .booking h2 {
+        font-size: 44px;
+    }
+
+    .cards .card {
+        height: 390px;
+    }
+
+
+    /* Image framing */
+
+    .food-image {
+        background-size: 270%;
+    }
+
+    .booking-image {
+        background-size: 230%;
+    }
+
+
+    /* Footer */
+
+    footer {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+@media (max-width: 390px) {
+
+    .header {
+        gap: 8px;
+        padding: 0 12px;
+    }
+
+    .brand span {
+        font-size: 17px;
+    }
+
+    .header-book {
+        padding: 9px 8px;
+    }
+}
+
+/* =====================================================
+   PAGINA LA CUCINA
+===================================================== */
+.cuisine-hero{height:62vh;min-height:560px;position:relative;color:#fff;display:flex;align-items:flex-end;padding:0 6vw 70px;overflow:hidden}.cuisine-hero-bg{position:absolute;inset:0;background:url('../images/cucina-hero.png') center/cover no-repeat}.cuisine-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,8,5,.72),rgba(10,8,5,.08) 70%)}.cuisine-hero-copy{position:relative;z-index:2}.cuisine-hero h1{font-size:clamp(72px,8vw,126px);font-weight:400;line-height:.8;text-transform:uppercase;margin:18px 0}.cuisine-hero-copy>p:last-child{font-size:28px;margin:0}.cuisine-editorial{display:grid;grid-template-columns:1fr 1fr;min-height:500px;padding:16px 3vw}.cuisine-text{align-self:center;padding:60px 4vw}.cuisine-text h2,.signature h2,.menu-cta-copy h2{font-size:clamp(42px,4.3vw,68px);font-weight:400;line-height:.98;margin:20px 0}.cuisine-text>p:not(.eyebrow),.menu-cta-copy p{font-size:18px;line-height:1.5;max-width:600px}.cuisine-photo{min-height:450px;background-size:cover;background-position:center}.philosophy-photo{background-image:url('../images/cucina-filosofia.png')}.territory-photo{background-image:url('../images/cucina-territorio.png')}.sea-land{display:grid;grid-template-columns:1fr 1fr;min-height:500px}.sea-land article{position:relative;background-size:cover;background-position:center;color:#fff;display:flex;align-items:flex-end;padding:55px 6vw}.sea-panel{background-image:url('../images/cucina-mare.png')}.land-panel{background-image:url('../images/cucina-terra.png')}.panel-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,.06) 70%)}.sea-land article>div:last-child{position:relative;z-index:2;max-width:420px}.sea-land h2{font-size:52px;font-weight:400;margin:15px 0}.sea-land article p:not(.eyebrow){font-size:18px;line-height:1.45}.signature{padding:70px 6vw}.signature{display:grid;grid-template-columns:34% 66%;gap:40px;align-items:center}.signature-title h2{margin-bottom:0}.signature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;text-align:center}.dish-img{aspect-ratio:1.35;background-size:cover;background-position:center}.dish-1{background-image:url('../images/cucina-signature-1.png')}.dish-2{background-image:url('../images/cucina-signature-2.png')}.dish-3{background-image:url('../images/cucina-signature-3.png')}.signature-grid h3{font:500 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;margin:16px 0 6px}.signature-grid p{margin:0;font-size:15px}.cuisine-menu-cta{display:grid;grid-template-columns:58% 42%;min-height:330px}.menu-cta-photo{background:url('../images/cucina-menu-cta.png') center/cover no-repeat}.menu-cta-copy{align-self:center;padding:55px 5vw}.menu-cta-copy .btn{margin-top:15px}.cuisine-page footer{margin-top:0}
+@media(max-width:900px){.cuisine-hero{height:72vh;min-height:560px;padding:0 25px 55px}.cuisine-hero h1{font-size:64px}.cuisine-hero-copy>p:last-child{font-size:22px}.cuisine-editorial,.cuisine-editorial.reverse{grid-template-columns:1fr;padding:0}.cuisine-editorial.reverse .cuisine-photo{order:2}.cuisine-text{padding:65px 25px}.cuisine-photo{min-height:360px}.sea-land{grid-template-columns:1fr}.sea-land article{min-height:430px;padding:45px 25px}.signature{grid-template-columns:1fr;padding:65px 25px}.signature-grid{gap:9px}.cuisine-menu-cta{grid-template-columns:1fr}.menu-cta-photo{min-height:350px}.menu-cta-copy{padding:60px 25px}}
+@media(max-width:540px){.cuisine-hero h1{font-size:54px}.cuisine-text h2,.signature h2,.menu-cta-copy h2{font-size:42px}.signature-grid{grid-template-columns:1fr}.dish-img{aspect-ratio:1.6}.signature-grid article{margin-bottom:22px}.sea-land h2{font-size:44px}}
+
+
+/* Interactive cuisine paths and signature dishes */
+.panel-link{display:inline-block;margin-top:18px;font:500 10px var(--sans);letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.65);padding-bottom:5px}
+.signature-dish{display:block;color:inherit;min-width:0}
+.dish-img-wrap{position:relative;overflow:hidden}
+.dish-img{transition:transform .65s cubic-bezier(.2,.65,.3,1)}
+.dish-discover{position:absolute;left:50%;bottom:18px;transform:translate(-50%,10px);opacity:0;color:#fff;background:rgba(20,18,15,.72);padding:10px 14px;font:500 8px var(--sans);letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;transition:.35s}
+.signature-dish:focus-visible{outline:1px solid var(--ink);outline-offset:6px}
+@media(hover:hover) and (pointer:fine){.signature-dish:hover .dish-img{transform:scale(1.07)}.signature-dish:hover .dish-discover{opacity:1;transform:translate(-50%,0)}}
+@media(max-width:900px){.dish-discover{opacity:1;transform:translate(-50%,0);bottom:12px}}
+
+/* =====================================================
+   PAGINA IL MARE
+   Images are clean assets only: all labels/copy remain HTML.
+===================================================== */
+.sea-hero{height:62vh;min-height:560px;position:relative;color:#fff;display:flex;align-items:flex-end;padding:0 6vw 70px;overflow:hidden}.sea-hero-bg{position:absolute;inset:0;background:url('../images/mare/mare-hero.jpg') center/cover no-repeat}.sea-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,8,5,.8),rgba(10,8,5,.12) 70%)}.sea-hero-copy{position:relative;z-index:2}.sea-hero h1{font-size:clamp(72px,8vw,126px);font-weight:400;line-height:.82;text-transform:uppercase;margin:18px 0}.sea-hero-copy>p:last-child{font-size:28px;margin:0}.sea-philosophy{display:grid;grid-template-columns:1fr 1fr;padding:16px 3vw}.sea-copy{align-self:center;padding:60px 4vw}.sea-copy h2,.sea-section-head h2,.sea-raw h2{font-size:clamp(42px,4.3vw,68px);font-weight:400;line-height:.98;margin:18px 0}.sea-copy>p:not(.eyebrow),.sea-raw-copy>p:not(.eyebrow){font-size:18px;line-height:1.5;max-width:650px}.sea-photo{min-height:440px;background:center/cover no-repeat}.sea-philo-photo{background-image:url('../images/mare/mare-filosofia.jpg')}.sea-species,.sea-origin,.sea-methods,.sea-dishes{padding:64px 3vw}.sea-section-head{max-width:720px;margin-bottom:30px}.sea-section-head>p:not(.eyebrow){line-height:1.5}.species-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:8px}.species-img{aspect-ratio:1.15;background:center/cover no-repeat}.species-grid h3,.origin-grid h3,.method-grid h3,.sea-dish-grid h3{font:500 10px var(--sans);letter-spacing:.19em;text-transform:uppercase;margin:12px 0 5px}.species-grid p,.origin-grid p,.method-grid p,.sea-dish-grid p{font-size:13px;line-height:1.35;margin:0}.sp1{background-image:url('../images/mare/mare-ricciola.jpg')}.sp2{background-image:url('../images/mare/mare-dentice.jpg')}.sp3{background-image:url('../images/mare/mare-scorfano.jpg')}.sp4{background-image:url('../images/mare/mare-triglia.jpg')}.sp5{background-image:url('../images/mare/mare-tonno.jpg')}.sp6{background-image:url('../images/mare/mare-gambero.jpg')}.sp7{background-image:url('../images/mare/mare-scampo.jpg')}.sp8{background-image:url('../images/mare/mare-ostriche.jpg')}.sp9{background-image:url('../images/mare/mare-cozze.jpg')}.sea-raw{display:grid;grid-template-columns:60% 40%;background:#171613;color:#fff}.sea-raw-photo{min-height:520px;background:url('../images/mare/mare-crudo.jpg') center/cover no-repeat}.sea-raw-copy{align-self:center;padding:65px 5vw}.light-link{display:inline-block;margin-top:20px;color:#fff;border-bottom:1px solid rgba(255,255,255,.65);padding-bottom:5px}.origin-grid,.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.origin-img,.method-img{aspect-ratio:1.9;background:center/cover no-repeat}.ionio{background-image:url('../images/mare/mare-ionio.jpg')}.adriatico{background-image:url('../images/mare/mare-adriatico.jpg')}.mediterraneo{background-image:url('../images/mare/mare-mediterraneo.jpg')}.sea-methods{background:#f3f0e9}.method-card{display:block;color:inherit;min-width:0}.raw-method{background-image:url('../images/mare/mare-metodo-crudo.jpg')}.fire-method{background-image:url('../images/mare/mare-metodo-fuoco.jpg')}.kitchen-method{background-image:url('../images/mare/mare-metodo-cucina.jpg')}.method-card .method-img{transition:transform .6s ease,filter .6s ease}.method-card{overflow:hidden}.method-card span{display:inline-block;margin-top:12px;font:500 9px var(--sans);letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:4px}.method-card:focus-visible,.sea-dish-grid .signature-dish:focus-visible{outline:1px solid var(--ink);outline-offset:6px}.sea-dishes{display:grid;grid-template-columns:22% 78%;gap:28px;align-items:start}.sea-dish-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.sea-dish-img{aspect-ratio:1.28;background:center/cover no-repeat;transition:transform .65s cubic-bezier(.2,.65,.3,1)}.sd1{background-image:url('../images/mare/mare-piatto-ricciola.jpg')}.sd2{background-image:url('../images/mare/mare-piatto-scampo.jpg')}.sd3{background-image:url('../images/mare/mare-piatto-spaghettone.jpg')}.sd4{background-image:url('../images/mare/mare-piatto-polpo.jpg')}.sea-menu-cta{min-height:340px;position:relative;background:url('../images/mare/mare-menu-cta.jpg') center/cover no-repeat;color:#fff;display:flex;align-items:center;justify-content:flex-end;padding:55px 8vw;text-align:right}.sea-menu-cta-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.05),rgba(0,0,0,.7))}.sea-menu-cta>div:last-child{position:relative;z-index:2}.sea-menu-cta h2{font-size:clamp(38px,4vw,62px);font-weight:400;max-width:680px;margin:0 0 24px}.sea-page footer{margin-top:0}@media(hover:hover) and (pointer:fine){.method-card:hover .method-img{transform:scale(1.035);filter:brightness(.88)}.sea-dish-grid .signature-dish:hover .sea-dish-img{transform:scale(1.07)}}
+@media(max-width:1050px){.species-grid{grid-template-columns:repeat(5,1fr)}.sea-dishes{grid-template-columns:1fr}.sea-dish-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.sea-hero{height:72vh;min-height:560px;padding:0 25px 55px}.sea-hero h1{font-size:64px}.sea-hero-copy>p:last-child{font-size:22px}.sea-philosophy,.sea-raw{grid-template-columns:1fr}.sea-copy{padding:65px 22px}.sea-photo,.sea-raw-photo{min-height:380px}.sea-raw-copy{padding:60px 25px}.sea-species,.sea-origin,.sea-methods,.sea-dishes{padding:60px 25px}.species-grid{grid-template-columns:repeat(3,1fr)}.origin-grid,.method-grid{grid-template-columns:1fr}.origin-img,.method-img{aspect-ratio:1.7}.sea-menu-cta{min-height:380px;padding:50px 25px}}
+@media(max-width:540px){.sea-hero h1{font-size:54px}.sea-copy h2,.sea-section-head h2,.sea-raw h2{font-size:42px}.species-grid{grid-template-columns:repeat(3,1fr);gap:18px 8px}.sea-dish-grid{grid-template-columns:1fr}.sea-dish-img{aspect-ratio:1.6}.sea-menu-cta{text-align:left;justify-content:flex-start}.sea-menu-cta-shade{background:rgba(0,0,0,.48)}}
+
+/* Mare: filosofia + provenienza compatte */
+.sea-philosophy{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.7fr);gap:0;padding:16px 3vw;align-items:stretch}
+.sea-origin-compact{padding:58px 3vw 58px 2vw;border-right:1px solid var(--line);align-self:stretch}
+.sea-origin-compact h2{font-size:clamp(34px,3.3vw,52px);font-weight:400;line-height:1;margin:18px 0 30px}
+.sea-origin-list{display:grid;gap:22px}
+.sea-origin-list article+article{padding-top:20px;border-top:1px solid var(--line)}
+.sea-origin-list h3{font:500 10px var(--sans);letter-spacing:.19em;margin:0 0 7px}
+.sea-origin-list p{font-size:14px;line-height:1.45;margin:0;max-width:300px}
+.sea-philosophy-main{display:grid;grid-template-columns:minmax(300px,.9fr) minmax(340px,1.1fr);min-width:0}
+.sea-philosophy-main .sea-copy{padding:58px 3vw}
+.sea-philosophy-main .sea-photo{min-height:420px}
+@media(max-width:1050px){.sea-philosophy{grid-template-columns:1fr}.sea-origin-compact{border-right:0;border-bottom:1px solid var(--line);padding:48px 25px}.sea-origin-list{grid-template-columns:repeat(3,1fr);gap:20px}.sea-origin-list article+article{padding-top:0;border-top:0;border-left:1px solid var(--line);padding-left:20px}}
+@media(max-width:760px){.sea-philosophy-main{grid-template-columns:1fr}.sea-philosophy-main .sea-copy{padding:55px 25px}.sea-origin-list{grid-template-columns:1fr}.sea-origin-list article+article{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:18px}}
+
+/* Mare: compact horizontal card rows on desktop */
+@media (min-width:901px){
+  .species-grid{grid-template-columns:repeat(9,minmax(0,1fr));gap:8px}
+  .species-img{aspect-ratio:1.15}
+  .sea-dishes{grid-template-columns:22% minmax(0,78%);gap:28px}
+  .sea-dish-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  .sea-dish-img{aspect-ratio:1.28}
+}
+
+/* Mare: 2x2 proposals on phones */
+@media (max-width:540px){
+  .sea-dish-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 10px}
+  .sea-dish-img{aspect-ratio:1.28}
+  .sea-dish-grid h3{font-size:9px;letter-spacing:.15em;margin-top:10px}
+  .sea-dish-grid p{font-size:12px}
+}
+
+/* Mare: circular back control */
+.sea-back{position:absolute;z-index:4;top:112px;left:3vw;width:46px;height:46px;border:1px solid rgba(255,255,255,.72);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font:300 25px/1 var(--sans);transition:background .25s ease,border-color .25s ease,transform .25s ease;color .25s ease;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.sea-back:focus-visible{outline:2px solid #fff;outline-offset:4px}
+@media(hover:hover) and (pointer:fine){.sea-back:hover{background:#fff;color:var(--ink);border-color:#fff;transform:translateX(-2px)}}
+@media(max-width:900px){.sea-back{top:92px;left:22px;width:42px;height:42px;font-size:23px}}
+
+
+/* ===== LA TERRA ===== */
+.terra-page{background:var(--cream);color:var(--ink)}
+.terra-hero{min-height:540px;position:relative;display:flex;align-items:flex-end;padding:0 6% 70px;background:linear-gradient(90deg,rgba(0,0,0,.52),rgba(0,0,0,.08)),url("../images/terra/terra-hero.jpg") center/cover no-repeat;color:#fff}
+.terra-hero-content{max-width:760px}.terra-hero h1{font-family:var(--serif);font-size:clamp(4rem,8vw,7rem);font-weight:400;line-height:.9;margin:.15em 0}.terra-hero-subtitle{font-family:var(--serif);font-size:clamp(1.35rem,2.4vw,2rem)}
+.terra-intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:7vw}.terra-intro-grid article+article{border-left:1px solid var(--line);padding-left:7vw}.terra-intro h2,.terra-ingredients h2,.terra-season h2,.terra-dishes h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4vw,4rem);line-height:1}
+.terra-ingredient-grid{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:10px;margin-top:32px}.terra-ingredient-grid figure{margin:0;min-width:0}.terra-ingredient-grid img{width:100%;aspect-ratio:1/1.05;object-fit:cover;display:block}.terra-ingredient-grid figcaption{font-family:var(--serif);font-size:1rem;margin-top:10px}
+.terra-season{min-height:430px;display:grid;place-items:center;text-align:center;padding:70px 7%;color:#fff;background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.45)),url("../images/terra/terra-stagione.jpg") center/cover no-repeat}.terra-season-copy{max-width:760px}.terra-season p{font-size:1.05rem}
+.terra-method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.terra-method{position:relative;overflow:hidden;min-height:280px;color:#fff;text-decoration:none}.terra-method img{position:absolute;width:100%;height:100%;object-fit:cover;transition:transform .55s ease}.terra-method:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.75),rgba(0,0,0,.05))}.terra-method>div{position:absolute;z-index:1;left:24px;right:24px;bottom:22px}.terra-method h3{font-family:var(--serif);font-size:2rem;font-weight:400;margin:0}.terra-method span{position:absolute;right:0;bottom:0;font-size:1.8rem}@media(hover:hover){.terra-method:hover img{transform:scale(1.055)}}
+.terra-dish-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}.terra-dish{text-decoration:none;color:inherit}.terra-dish-image{overflow:hidden}.terra-dish img{display:block;width:100%;aspect-ratio:1.25/1;object-fit:cover;transition:transform .5s ease}.terra-dish h3{font-family:var(--serif);font-size:1.35rem;font-weight:400;margin:.65rem 0 0}@media(hover:hover){.terra-dish:hover img{transform:scale(1.06)}}
+.terra-menu-cta{min-height:310px;display:grid;place-items:center;text-align:center;padding:60px 6%;color:#fff;background:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.48)),url("../images/terra/terra-menu-cta.jpg") center/cover no-repeat}.terra-menu-cta h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.6rem);font-weight:400}
+@media(max-width:900px){.terra-ingredient-grid{grid-template-columns:repeat(3,1fr)}.terra-dish-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.terra-hero{min-height:460px;padding:0 22px 48px}.terra-intro-grid{grid-template-columns:1fr;gap:38px}.terra-intro-grid article+article{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:38px}.terra-method-grid{grid-template-columns:1fr}.terra-method{min-height:230px}.terra-ingredient-grid{gap:8px}.terra-ingredient-grid figcaption{font-size:.78rem}.terra-dish-grid{gap:12px}.terra-dish h3{font-size:1.05rem}}
+
+
+/* ===== TERRA V10 refinements ===== */
+.terra-page .section{
+  padding-left:clamp(28px,5vw,82px);
+  padding-right:clamp(28px,5vw,82px);
+}
+.terra-intro-photo{
+  margin-top:42px;
+  width:100%;
+  height:clamp(220px,28vw,390px);
+  overflow:hidden;
+}
+.terra-intro-photo img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center 54%;
+}
+.terra-dish-image{
+  position:relative;
+}
+.terra-dish-cta{
+  position:absolute;
+  right:16px;
+  bottom:16px;
+  width:42px;
+  height:42px;
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:1.25rem;
+  line-height:1;
+  background:rgba(0,0,0,.18);
+  opacity:0;
+  transform:translateY(6px);
+  transition:opacity .3s ease,transform .3s ease,background .3s ease;
+  z-index:2;
+}
+.terra-dish-image:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.34));
+  opacity:0;
+  transition:opacity .3s ease;
+}
+@media (hover:hover) and (pointer:fine){
+  .terra-dish:hover .terra-dish-cta{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .terra-dish:hover .terra-dish-image:after{opacity:1}
+  .terra-dish:hover .terra-dish-cta:hover{background:rgba(0,0,0,.42)}
+}
+@media (hover:none),(pointer:coarse){
+  .terra-dish-cta{opacity:1;transform:none}
+  .terra-dish-image:after{opacity:1}
+}
+@media(max-width:700px){
+  .terra-page .section{
+    padding-left:20px;
+    padding-right:20px;
+  }
+  .terra-intro-photo{
+    margin-top:30px;
+    height:230px;
+  }
+  .terra-dish-cta{
+    width:36px;
+    height:36px;
+    right:10px;
+    bottom:10px;
+  }
+}
+
+
+/* ===== TERRA V11 spacing ===== */
+.terra-ingredients{
+  padding-bottom:clamp(28px,3.2vw,48px) !important;
+}
+.terra-ingredients-note{
+  max-width:760px;
+  margin:clamp(24px,2.5vw,36px) auto 0;
+  text-align:center;
+  font-family:var(--serif);
+  font-size:clamp(1.2rem,1.7vw,1.55rem);
+  line-height:1.45;
+  font-style:italic;
+  opacity:.82;
+}
+.terra-season{
+  margin-top:0 !important;
+}
+.terra-methods{
+  padding-bottom:clamp(20px,2vw,30px) !important;
+}
+.terra-dishes{
+  padding-top:clamp(22px,2.3vw,34px) !important;
+}
+@media(max-width:700px){
+  .terra-ingredients{
+    padding-bottom:24px !important;
+  }
+  .terra-ingredients-note{
+    margin-top:22px;
+    font-size:1.08rem;
+  }
+  .terra-methods{
+    padding-bottom:16px !important;
+  }
+  .terra-dishes{
+    padding-top:20px !important;
+  }
+}
+
+/* ===== TERRA shared section height ===== */
+.terra-min-height {
+  min-height: 450px;
+}
+
+/* ===== LA CANTINA ===== */
+.cantina-page{background:#12120f;color:#f3efe7}
+.cantina-hero{height:78vh;min-height:620px;position:relative;display:flex;align-items:flex-end;padding:8vw 7vw;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,.08)),url('../images/cantina/cantina-hero.jpg') center/cover no-repeat}
+.cantina-hero-copy h1{font-size:clamp(58px,8vw,126px);font-weight:400;line-height:.82;margin:25px 0 0}
+.cantina-intro{display:grid;grid-template-columns:44% 56%;background:var(--cream);color:var(--ink)}
+.cantina-intro>div:first-child{padding:7vw}.cantina-intro h2,.cantina-territori h2,.cantina-bubbles h2,.wine-finder h2,.cantina-producers h2,.cantina-final h2{font-weight:400;font-size:clamp(40px,4.4vw,68px);line-height:.94;margin:22px 0}
+.cantina-intro p:not(.eyebrow),.cantina-bubbles p:not(.eyebrow),.wine-finder p:not(.eyebrow),.cantina-producers p:not(.eyebrow){font-size:18px;line-height:1.45}
+.cantina-intro-img{min-height:520px;background:url('../images/cantina/cantina-selezione.jpg') center/cover}
+.cantina-territori{padding:75px 2.5vw}.cantina-territori>.eyebrow,.cantina-territori>h2{text-align:center}
+.cantina-territori-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:35px}
+.cantina-territorio{height:300px;padding:28px;display:flex;align-items:flex-end;justify-content:space-between;background-size:cover;background-position:center;position:relative;font-size:27px}
+.cantina-territorio:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,.05))}
+.cantina-territorio>*{position:relative}.cantina-territorio small{display:block;font:9px var(--sans);letter-spacing:.16em;line-height:1.8;margin-top:9px}.cantina-territorio b{font-weight:300;font-size:30px}
+.cantina-territorio.italia{background-image:url('../images/cantina/cantina-italia.jpg')}.cantina-territorio.francia{background-image:url('../images/cantina/cantina-francia.jpg')}.cantina-territorio.spagna{background-image:url('../images/cantina/cantina-spagna.jpg')}.cantina-territorio.altri{background-image:url('../images/cantina/cantina-altri.jpg')}
+.cantina-bubbles{display:grid;grid-template-columns:40% 60%;background:var(--cream);color:var(--ink)}.cantina-bubbles-copy{padding:65px 7vw}
+.cantina-bubbles-list{display:grid;grid-template-columns:repeat(5,1fr);background:url('../images/cantina/cantina-bollicine.jpg') center/cover}.cantina-bubbles-list a{min-height:340px;display:flex;align-items:flex-end;justify-content:center;padding:25px 8px;color:#fff;font:11px var(--sans);letter-spacing:.1em;border-left:1px solid rgba(255,255,255,.4);background:linear-gradient(0deg,rgba(0,0,0,.55),transparent)}
+.wine-finder{padding:60px 5vw;display:grid;grid-template-columns:28% 72%;gap:35px}.wine-finder form{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:25px;align-items:end}.wine-finder fieldset{border:0;padding:0;margin:0}.wine-finder legend{font:9px var(--sans);letter-spacing:.25em;margin-bottom:14px}.wine-finder button{background:transparent;color:#eee;border:1px solid #68685f;padding:11px 14px;margin:3px;cursor:pointer}.wine-finder button.active{background:#f3efe7;color:#1b1b19}.wine-find-submit{background:#f3efe7;color:#1b1b19;padding:16px 20px;font:9px var(--sans);letter-spacing:.15em;white-space:nowrap}
+.cantina-producers{background:var(--cream);color:var(--ink);padding:70px 5vw;display:grid;grid-template-columns:30% 70%;gap:35px}.producer-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.producer-cards article{min-height:250px;padding:25px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:linear-gradient(0deg,rgba(0,0,0,.6),transparent),url('../images/cantina/cantina-produttori.jpg') center/cover}.producer-cards span{font:9px var(--sans);letter-spacing:.2em}.producer-cards h3{font-size:27px;font-weight:400;margin:8px 0}
+.cantina-final{min-height:420px;display:grid;place-items:center;text-align:center;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url('../images/cantina/cantina-hero.jpg') center/cover}.cantina-final h2{font-size:clamp(48px,6vw,85px)}
+@media(max-width:900px){.cantina-hero{min-height:600px;padding:110px 24px 55px}.cantina-intro,.cantina-bubbles,.wine-finder,.cantina-producers{grid-template-columns:1fr}.cantina-intro>div:first-child,.cantina-bubbles-copy{padding:60px 25px}.cantina-intro-img{min-height:360px}.cantina-territori-grid{grid-template-columns:1fr 1fr}.cantina-territorio{height:240px}.cantina-bubbles-list{grid-template-columns:repeat(2,1fr)}.cantina-bubbles-list a{min-height:180px}.wine-finder{padding:50px 25px}.wine-finder form{grid-template-columns:1fr}.cantina-producers{padding:55px 25px}.producer-cards{grid-template-columns:1fr}.producer-cards article{min-height:220px}}
+@media(max-width:540px){.cantina-territori-grid{grid-template-columns:1fr}.cantina-territorio{height:220px}.cantina-bubbles-list{grid-template-columns:1fr 1fr}.cantina-hero-copy h1{font-size:54px}}
+
+/* ===== CANTINA V2 EXPERIENCE ===== */
+.cantina-side-nav{position:absolute;right:4vw;bottom:7vw;z-index:3;display:flex;flex-direction:column;gap:13px;text-align:right}.cantina-side-nav a{font:9px var(--sans);letter-spacing:.22em;opacity:.65;transition:.25s}.cantina-side-nav a:hover{opacity:1;transform:translateX(-5px)}
+.territory-accordion{height:430px;display:flex;gap:5px;margin-top:40px;overflow:hidden}.territory-panel{position:relative;flex:1;border:0;padding:0 30px 30px;text-align:left;color:#fff;background-position:center;background-size:cover;cursor:pointer;overflow:hidden;transition:flex .65s cubic-bezier(.2,.75,.2,1)}.territory-panel.active{flex:3}.territory-panel:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,.05) 70%)}.territory-panel.italia{background-image:url('../images/cantina/cantina-italia.jpg')}.territory-panel.francia{background-image:url('../images/cantina/cantina-francia.jpg')}.territory-panel.spagna{background-image:url('../images/cantina/cantina-spagna.jpg')}.territory-panel.altri{background-image:url('../images/cantina/cantina-altri.jpg')}.territory-num{position:absolute;z-index:2;top:25px;left:25px;font:9px var(--sans);letter-spacing:.2em}.territory-info{position:absolute;z-index:2;left:30px;right:30px;bottom:30px}.territory-info strong{display:block;font:400 clamp(24px,2.5vw,42px) var(--serif);white-space:nowrap}.territory-info small,.territory-info em{display:block;font:8px var(--sans);letter-spacing:.15em;line-height:1.8;font-style:normal;opacity:0;transform:translateY(8px);transition:.35s}.territory-panel.active small,.territory-panel.active em{opacity:1;transform:none}.territory-info em{margin-top:15px}
+.bubbles-experience{padding:80px 5vw;background:#e9e3d8;color:#1b1b19}.bubbles-head{text-align:center}.bubbles-head h2{font-weight:400;font-size:clamp(52px,6vw,90px);margin:18px 0 40px}.bubble-stage{position:relative;min-height:540px;display:grid;grid-template-columns:58% 42%;background:#171713;color:#f3efe7;overflow:hidden}.bubble-visual{background:linear-gradient(90deg,transparent,rgba(0,0,0,.25)),url('../images/cantina/cantina-bollicine.jpg') center/cover;transition:.5s}.bubble-copy{align-self:center;padding:7vw}.bubble-count,.producer-index{font:9px var(--sans);letter-spacing:.25em;opacity:.65}.bubble-copy h3{font:400 clamp(42px,5vw,76px) var(--serif);margin:22px 0 5px}.bubble-place{font-style:italic;font-size:19px}.bubble-desc{font-size:17px;line-height:1.5;max-width:430px}.bubble-link,.producer-story-copy>a{display:inline-block;margin-top:20px;font:9px var(--sans);letter-spacing:.18em}.bubble-arrow{position:absolute;z-index:4;top:50%;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.7);background:rgba(0,0,0,.15);color:#fff;font-size:20px;cursor:pointer}.bubble-arrow.prev{left:22px}.bubble-arrow.next{right:22px}.bubble-tabs{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid rgba(0,0,0,.2);border-top:0}.bubble-tabs button{padding:18px 8px;border:0;border-right:1px solid rgba(0,0,0,.15);background:transparent;font:9px var(--sans);letter-spacing:.1em;cursor:pointer}.bubble-tabs button.active{background:#1b1b19;color:#fff}
+.wine-guide{min-height:610px;padding:80px 8vw;background:#11110e;color:#f3efe7;display:grid;grid-template-columns:34% 66%;position:relative}.wine-guide-head{padding-right:5vw}.wine-guide-head h2{font:400 clamp(46px,5vw,76px) var(--serif);margin:20px 0}.wine-guide-head>p:not(.eyebrow){font-size:17px;line-height:1.5}.wine-step,.wine-result{display:none;align-self:center;padding-left:5vw;border-left:1px solid #494940}.wine-step.active,.wine-result.active{display:block}.wine-step>span,.wine-result>span{font:9px var(--sans);letter-spacing:.25em;opacity:.6}.wine-step h3,.wine-result h3{font:400 clamp(40px,4vw,62px) var(--serif);margin:20px 0 35px}.wine-options{display:flex;flex-wrap:wrap;gap:10px}.wine-options button{min-width:135px;padding:17px 22px;border:1px solid #66665e;background:transparent;color:#fff;font:10px var(--sans);letter-spacing:.12em;cursor:pointer;transition:.25s}.wine-options button:hover{background:#f3efe7;color:#1b1b19}.wine-result a{display:inline-block;background:#f3efe7;color:#1b1b19;padding:17px 22px;font:9px var(--sans);letter-spacing:.15em}.wine-result button{display:block;margin-top:18px;border:0;background:none;color:#aaa;text-decoration:underline;cursor:pointer}.wine-progress{position:absolute;left:42%;right:8vw;bottom:55px;height:1px;background:#444}.wine-progress i{display:block;height:1px;width:33%;background:#f3efe7;transition:.5s}
+.producer-story{display:grid;grid-template-columns:58% 42%;min-height:620px;background:#f3efe7;color:#1b1b19}.producer-photo{background:url('../images/cantina/cantina-produttori.jpg') center/cover}.producer-story-copy{align-self:center;padding:7vw}.producer-story-copy h2{font:400 clamp(46px,5vw,76px) var(--serif);line-height:.95;margin:25px 0 8px}.producer-place{font-style:italic;font-size:18px}.producer-desc{font-size:17px;line-height:1.5}.producer-nav{display:flex;gap:10px;margin-top:35px}.producer-nav button{width:46px;height:46px;border:1px solid #999;border-radius:50%;background:transparent;cursor:pointer;font-size:18px}
+@keyframes cantinaPulse{0%{opacity:.78}100%{opacity:1}}.bubble-stage.pulse .bubble-copy{animation:cantinaPulse .45s ease}
+@media(max-width:900px){.cantina-side-nav{display:none}.territory-accordion{height:auto;display:block}.territory-panel{display:block;width:100%;height:115px;margin-bottom:5px;transition:height .45s}.territory-panel.active{height:280px}.bubbles-experience{padding:60px 20px}.bubble-stage{grid-template-columns:1fr;min-height:620px}.bubble-visual{min-height:330px}.bubble-copy{padding:38px 28px 60px}.bubble-tabs{grid-template-columns:1fr 1fr}.wine-guide{grid-template-columns:1fr;padding:60px 25px 90px}.wine-guide-head{padding:0 0 45px}.wine-step,.wine-result{padding:40px 0 0;border-left:0;border-top:1px solid #494940}.wine-progress{left:25px;right:25px;bottom:45px}.producer-story{grid-template-columns:1fr}.producer-photo{min-height:390px}.producer-story-copy{padding:55px 25px}}
+
+/* ===== CANTINA V3 MULTILEVEL EXPLORER ===== */
+.cellar-explorer-head{display:flex;align-items:end;justify-content:space-between;gap:30px}.cellar-explorer-head h2{margin-bottom:0}.cellar-breadcrumb{display:flex;align-items:center;gap:18px;font:9px var(--sans);letter-spacing:.16em;opacity:.8}.cellar-breadcrumb button{border:0;background:transparent;color:inherit;font:9px var(--sans);letter-spacing:.16em;cursor:pointer;padding:10px 0}.cellar-explorer .cellar-panel{background-position:center;background-size:cover}.cellar-bottles{margin-top:40px;animation:cellarIn .45s ease}.bottle-level-head{text-align:center;margin:0 auto 35px;max-width:650px}.bottle-level-head>span{font:9px var(--sans);letter-spacing:.24em}.bottle-level-head h3{font:400 clamp(44px,5vw,72px) var(--serif);margin:14px 0}.bottle-level-head p{font-size:16px}.bottle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.wine-card{min-height:280px;background:#e9e3d8;color:#1b1b19;padding:32px;display:flex;flex-direction:column;align-items:flex-start}.wine-card>span{font:9px var(--sans);letter-spacing:.2em}.wine-card h4{font:400 34px var(--serif);margin:18px 0 6px}.wine-card p{font-size:13px;line-height:1.5;opacity:.75}.wine-card strong{margin-top:auto;font:400 22px var(--serif)}.wine-card a{margin-top:20px;font:9px var(--sans);letter-spacing:.18em;border-bottom:1px solid}.wine-card-empty{grid-column:1/-1;align-items:center;justify-content:center;text-align:center}.all-wines-link{display:table;margin:28px auto 0;border:1px solid #777;padding:15px 22px;font:9px var(--sans);letter-spacing:.16em}@keyframes cellarIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:900px){.cellar-explorer-head{display:block}.cellar-breadcrumb{margin-top:25px;flex-wrap:wrap}.bottle-grid{grid-template-columns:1fr}.wine-card{min-height:230px}.cellar-explorer .territory-panel.active{height:300px}}
+
+/* ===== CANTINA V4 NAVIGATION FIX ===== */
+.cellar-breadcrumb #cellarPath button{border:0;background:none;color:inherit;padding:0;font:inherit;letter-spacing:inherit;cursor:pointer;opacity:.72}.cellar-breadcrumb #cellarPath button:hover{opacity:1;text-decoration:underline}.cellar-breadcrumb #cellarBack{border:1px solid rgba(255,255,255,.35);padding:10px 14px}.bottle-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}.bottle-nav button{border:1px solid rgba(255,255,255,.4);background:transparent;color:#f3efe7;padding:12px 16px;font:9px var(--sans);letter-spacing:.16em;cursor:pointer}.bottle-nav button:hover{background:#f3efe7;color:#1b1b19}@media(max-width:900px){.cellar-breadcrumb{align-items:flex-start}.cellar-breadcrumb #cellarPath{line-height:2}.bottle-nav{gap:8px}.bottle-nav button{padding:11px 10px;font-size:8px}}
+
+/* ===== CANTINA V5 PERSISTENT DENOMINATIONS ===== */
+.cellar-explorer.denomination-mode{height:330px;margin-bottom:0}
+.cellar-explorer.denomination-mode .denomination-panel{flex:1;transition:flex .45s ease,filter .3s ease}
+.cellar-explorer.denomination-mode .denomination-panel.active{flex:1.65}
+.cellar-explorer.denomination-mode .denomination-panel:not(.active){filter:brightness(.68)}
+.cellar-explorer.denomination-mode .denomination-panel .territory-info small,
+.cellar-explorer.denomination-mode .denomination-panel .territory-info em{opacity:0;transform:translateY(7px)}
+.cellar-explorer.denomination-mode .denomination-panel.active .territory-info small,
+.cellar-explorer.denomination-mode .denomination-panel.active .territory-info em{opacity:1;transform:none}
+.cellar-bottles:not([hidden]){padding-top:42px;border-top:1px solid rgba(255,255,255,.16)}
+.cellar-bottles .bottle-level-head{margin-top:0}
+@media(max-width:900px){
+ .cellar-explorer.denomination-mode{height:auto}
+ .cellar-explorer.denomination-mode .denomination-panel{height:92px}
+ .cellar-explorer.denomination-mode .denomination-panel.active{height:210px}
+ .cellar-explorer.denomination-mode .denomination-panel:not(.active){filter:brightness(.72)}
+ .cellar-bottles:not([hidden]){padding-top:30px}
+}
+/* ===== CANTINA V11 SAFE SELECTION STACK ===== */
+.cellar-selection-stack{display:grid;gap:7px;margin:30px 0 14px}.selection-chip{width:100%;min-height:72px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.055);color:inherit;display:grid;grid-template-columns:44px 1fr auto;align-items:center;text-align:left;padding:11px 17px;cursor:pointer}.selection-chip:hover{background:rgba(255,255,255,.1)}.selection-index{font:10px var(--sans);letter-spacing:.16em;opacity:.45}.selection-copy{display:flex;align-items:baseline;gap:18px}.selection-copy small{font:8px var(--sans);letter-spacing:.2em;opacity:.55;min-width:80px}.selection-copy strong{font:400 24px var(--serif)}.selection-return{font:8px var(--sans);letter-spacing:.18em;opacity:.65}.cellar-breadcrumb{margin-top:16px}.cellar-breadcrumb #cellarPath{font:9px var(--sans);letter-spacing:.2em;opacity:.8}@media(max-width:900px){.cellar-selection-stack{margin:24px 0 12px;gap:5px}.selection-chip{min-height:66px;grid-template-columns:32px 1fr auto;padding:10px 12px}.selection-copy{display:block}.selection-copy small{display:block;margin-bottom:3px;font-size:7px}.selection-copy strong{font-size:20px}.selection-return{font-size:7px}}
+
+/* ===== CANTINA V8 COMPACT EDITORIAL STACK ===== */
+.cellar-selection-stack{
+  gap:0;
+  margin:24px 0 16px;
+  border-top:1px solid rgba(255,255,255,.13);
+}
+.selection-chip{
+  min-height:48px;
+  padding:7px 4px;
+  grid-template-columns:34px 1fr 24px;
+  border:0;
+  border-bottom:1px solid rgba(255,255,255,.13);
+  background:transparent;
+}
+.selection-chip:hover{
+  background:rgba(255,255,255,.035);
+  border-color:rgba(255,255,255,.24);
+}
+.selection-index{
+  font-size:8px;
+  opacity:.38;
+}
+.selection-copy{
+  display:grid;
+  grid-template-columns:92px 1fr;
+  align-items:center;
+  gap:14px;
+}
+.selection-copy small{
+  min-width:0;
+  margin:0;
+  font-size:7px;
+  letter-spacing:.2em;
+  opacity:.46;
+}
+.selection-copy strong{
+  font:400 18px var(--serif);
+  letter-spacing:.025em;
+}
+.selection-return{
+  justify-self:end;
+  font:300 23px/1 var(--serif);
+  letter-spacing:0;
+  opacity:.48;
+  transform:translateX(-3px);
+  transition:opacity .2s ease,transform .2s ease;
+}
+.selection-chip:hover .selection-return{
+  opacity:.9;
+  transform:translateX(0);
+}
+.cellar-active-level{
+  margin:20px 0 12px;
+}
+@media(max-width:900px){
+  .cellar-selection-stack{
+    margin:20px 0 14px;
+  }
+  .selection-chip{
+    min-height:46px;
+    padding:6px 2px;
+    grid-template-columns:28px 1fr 22px;
+  }
+  .selection-copy{
+    display:grid;
+    grid-template-columns:72px 1fr;
+    gap:8px;
+  }
+  .selection-copy small{
+    margin:0;
+    font-size:6.5px;
+  }
+  .selection-copy strong{
+    font-size:17px;
+  }
+  .selection-return{
+    font-size:21px;
+  }
+}
+
+/* Cantina V10: legacy back control kept for JS compatibility, hidden in UI */
+#cellarBack{display:none!important;}
+
+/* ===== WINE FINDER: BACK WITHOUT LAYOUT CHANGES ===== */
+.wine-step{position:relative}
+.wine-inline-back{
+  position:absolute;
+  left:0;
+  top:-22px;
+  z-index:3;
+  border:0;
+  background:transparent;
+  color:inherit;
+  padding:0;
+  font:8px var(--sans);
+  letter-spacing:.18em;
+  opacity:.58;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:opacity .2s ease, transform .2s ease;
+}
+.wine-inline-back:hover{opacity:1;transform:translateX(-2px)}
+@media(max-width:900px){
+  .wine-inline-back{top:-20px;font-size:8px}
+}
+
+/* =====================================================
+   DIGITAL MENU — MOBILE FIRST
+===================================================== */
+.digital-menu-page{background:#f4f0e8;color:#1b1b19}.digital-menu-page.sheet-open{overflow:hidden}.menu-mobile-header{display:none}.digital-menu-main{padding:150px 6vw 80px;max-width:1180px;margin:auto}.menu-intro{max-width:760px;margin-bottom:46px}.menu-intro h1{font:500 clamp(58px,8vw,105px)/.9 var(--serif);margin:8px 0 22px}.menu-intro>p:last-child{font:400 22px/1.45 var(--serif);max-width:560px}.menu-category-bar{position:sticky;top:73px;z-index:12;display:flex;gap:0;border-top:1px solid rgba(27,27,25,.22);border-bottom:1px solid rgba(27,27,25,.22);background:rgba(244,240,232,.94);backdrop-filter:blur(12px);overflow:auto;scrollbar-width:none}.menu-category-bar::-webkit-scrollbar{display:none}.menu-category-bar button{flex:1;min-width:max-content;border:0;background:none;padding:18px 20px;font:500 9px var(--sans);letter-spacing:.17em;text-transform:uppercase;color:inherit;cursor:pointer;opacity:.48}.menu-category-bar button.active{opacity:1}.menu-category-bar button.active:after{content:'';display:block;height:1px;background:currentColor;margin:7px auto -8px;width:24px}.menu-list{padding:54px 0 72px;min-height:520px}.menu-section-heading{display:flex;align-items:baseline;gap:20px;margin-bottom:26px}.menu-section-heading span{font:500 8px var(--sans);letter-spacing:.18em;opacity:.45}.menu-section-heading h2{font:500 48px/1 var(--serif);margin:0}.menu-products{border-top:1px solid rgba(27,27,25,.18)}.menu-product{width:100%;display:grid;grid-template-columns:1fr auto 24px;gap:28px;align-items:center;text-align:left;border:0;border-bottom:1px solid rgba(27,27,25,.18);background:none;color:inherit;padding:24px 2px;cursor:pointer}.menu-product h3{font:500 26px/1.1 var(--serif);margin:0 0 6px}.menu-product p{font:300 11px/1.5 var(--sans);margin:0;opacity:.58}.menu-product strong{font:500 19px var(--serif)}.menu-product-arrow{font:300 26px var(--serif);opacity:.4;transition:.2s}.menu-product:hover .menu-product-arrow{transform:translateX(4px);opacity:1}.menu-wine-gateway{border-top:1px solid rgba(27,27,25,.2);padding:45px 0 20px;display:flex;justify-content:space-between;align-items:end;gap:30px}.menu-wine-gateway h2{font:500 38px/1.05 var(--serif);margin:10px 0 0}.menu-wine-gateway>a{font:500 9px var(--sans);letter-spacing:.18em}.dish-sheet-backdrop{position:fixed;inset:0;z-index:79;background:rgba(14,13,11,.58);opacity:0;transition:.25s}.dish-sheet-backdrop.show{opacity:1}.dish-sheet{position:fixed;z-index:80;right:0;top:0;width:min(560px,100%);height:100dvh;background:#f4f0e8;transform:translateX(105%);transition:transform .36s cubic-bezier(.22,.8,.25,1);overflow:auto;box-shadow:-20px 0 60px rgba(0,0,0,.14)}.dish-sheet.open{transform:none}.dish-sheet-handle{display:none}.dish-sheet-close{position:fixed;z-index:2;right:20px;top:18px;width:42px;height:42px;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(20,20,18,.28);color:#fff;font:300 28px/1 var(--serif);cursor:pointer}.dish-sheet-image{height:42vh;min-height:320px;background-size:cover;background-position:center}.dish-sheet-body{padding:34px 38px 70px}.dish-sheet-title{display:flex;justify-content:space-between;gap:24px;align-items:start}.dish-sheet-title small,.dish-related-card small{font:500 7px var(--sans);letter-spacing:.18em;text-transform:uppercase;opacity:.5}.dish-sheet-title h2{font:500 42px/.98 var(--serif);margin:7px 0 0}.dish-sheet-title>strong{font:500 23px var(--serif)}.dish-sheet-description{font:400 19px/1.5 var(--serif);margin:24px 0 30px}.dish-detail-block{border-top:1px solid rgba(27,27,25,.16);padding:20px 0}.dish-detail-block h4{font:500 8px var(--sans);letter-spacing:.18em;margin:0 0 12px}.dish-detail-block p{font:300 12px/1.6 var(--sans);margin:0;opacity:.72}.allergen-list{display:flex;gap:7px;flex-wrap:wrap}.allergen-list span{border:1px solid rgba(27,27,25,.2);border-radius:20px;padding:7px 10px;font:400 8px var(--sans);text-transform:uppercase;letter-spacing:.08em}.dish-detail-block.related{display:grid;grid-template-columns:1fr 1fr;gap:9px}.dish-detail-block.related h4{grid-column:1/-1}.dish-related-card{border:1px solid rgba(27,27,25,.16);background:rgba(255,255,255,.2);padding:15px;text-align:left;color:inherit;display:flex;flex-direction:column;gap:5px;cursor:pointer;min-height:94px}.dish-related-card strong{font:500 17px/1.05 var(--serif)}.dish-related-card span{font:300 8px/1.35 var(--sans);opacity:.55}.dish-related-card.wine{text-decoration:none}
+@media(max-width:900px){.menu-desktop-header{display:none!important}.menu-mobile-header{position:fixed;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:18px;z-index:30;top:0;left:0;width:100%;height:58px;padding:0 18px;background:rgba(25,23,20,.97);color:#fff}.menu-mobile-brand{font:500 18px var(--serif);letter-spacing:.12em}.menu-mobile-cellar,.menu-mobile-more{font:500 8px var(--sans);letter-spacing:.16em;color:#fff}.menu-mobile-more{border:0;background:none;padding:10px 0}.menu-lang-popover{position:absolute;right:12px;top:52px;background:#1d1b18;border:1px solid rgba(255,255,255,.15);padding:8px;display:none}.menu-lang-popover.open{display:flex}.menu-lang-popover button{border:0;background:none;color:#fff;padding:10px;font:500 8px var(--sans)}.menu-lang-popover button.active{text-decoration:underline}.digital-menu-main{padding:91px 0 48px}.menu-intro{padding:0 18px;margin-bottom:26px}.menu-intro .eyebrow{font-size:7px}.menu-intro h1{font-size:52px;margin:6px 0 12px}.menu-intro>p:last-child{font-size:17px;line-height:1.35;margin:0;max-width:310px}.menu-category-bar{top:58px;padding:0 10px}.menu-category-bar button{flex:none;padding:15px 11px;font-size:7.5px}.menu-list{padding:32px 18px 48px;min-height:460px}.menu-section-heading{gap:12px;margin-bottom:18px}.menu-section-heading h2{font-size:38px}.menu-product{grid-template-columns:1fr auto 15px;gap:12px;padding:18px 0}.menu-product h3{font-size:22px;margin-bottom:5px}.menu-product p{font-size:10px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.menu-product strong{font-size:17px}.menu-product-arrow{font-size:22px}.menu-wine-gateway{margin:0 18px;padding:32px 0 10px;align-items:end}.menu-wine-gateway h2{font-size:28px;max-width:240px}.menu-wine-gateway>a{font-size:7px;white-space:nowrap}.dish-sheet{top:auto;bottom:0;width:100%;height:min(88dvh,780px);border-radius:18px 18px 0 0;transform:translateY(105%);box-shadow:0 -20px 60px rgba(0,0,0,.18)}.dish-sheet.open{transform:none}.dish-sheet-handle{display:block;position:sticky;top:0;z-index:3;width:38px;height:4px;border-radius:4px;background:rgba(27,27,25,.25);margin:9px auto -13px}.dish-sheet-close{position:absolute;top:18px;right:16px;width:38px;height:38px}.dish-sheet-image{height:31vh;min-height:225px}.dish-sheet-body{padding:26px 20px calc(36px + env(safe-area-inset-bottom))}.dish-sheet-title h2{font-size:34px}.dish-sheet-title>strong{font-size:20px}.dish-sheet-description{font-size:17px;margin:18px 0 25px}.dish-detail-block.related{grid-template-columns:1fr;}.dish-related-card{min-height:82px}.dish-related-card strong{font-size:18px}}
+
+/* ===== MENU V6: cleaner mobile-first category navigation ===== */
+.menu-section-heading{
+  display:none !important;
+}
+.menu-category-bar button{
+  font-size:11px !important;
+}
+
+/* ===== MENU V8: products must never visually pass behind category bar ===== */
+.menu-category-bar{
+  background:#f4f0e8 !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  z-index:12; /* original stacking: product sheet remains above at 79/80 */
+}
+
+/* Small opaque guard immediately below the sticky bar.
+   It prevents the first product row from visually bleeding into the bar edge. */
+.menu-category-bar::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:1px;
+  background:#f4f0e8;
+  pointer-events:none;
+}
+
+/* ===== MENU V29: multi-image gallery inside dish sheet ===== */
+.dish-sheet-gallery{position:relative;overflow:hidden;background:#ddd6ca;touch-action:pan-y}
+.dish-sheet-gallery .dish-sheet-image{width:100%;transition:opacity .18s ease}
+.dish-gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:42px;height:42px;border:1px solid rgba(255,255,255,.62);border-radius:50%;background:rgba(20,20,18,.28);color:#fff;font:300 31px/36px var(--serif);display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.dish-gallery-arrow.prev{left:16px}.dish-gallery-arrow.next{right:16px}
+.dish-gallery-dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;display:flex;gap:6px;padding:6px 8px;border-radius:20px;background:rgba(20,20,18,.22);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.dish-gallery-dots span{display:block;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);transition:.2s}
+.dish-gallery-dots span.active{background:#fff;transform:scale(1.25)}
+@media(max-width:900px){.dish-gallery-arrow{width:36px;height:36px;font-size:27px}.dish-gallery-arrow.prev{left:12px}.dish-gallery-arrow.next{right:12px}.dish-gallery-dots{bottom:10px}}
+
+
+/* ===== MENU / WINE SELECTOR — editorial, squared ===== */
+.menu-card-selector{
+  width:min(1180px,calc(100% - 40px));
+  margin:0 auto 20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border:1px solid rgba(27,26,24,.22);
+  background:#f4f0e8;
+}
+.menu-card-selector__item{
+  position:relative;
+  min-height:58px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  color:#1b1a18;
+  text-decoration:none;
+  border-radius:0;
+  font-family:Inter,sans-serif;
+  transition:background .2s ease,color .2s ease;
+}
+.menu-card-selector__item + .menu-card-selector__item{
+  border-left:1px solid rgba(27,26,24,.22);
+}
+.menu-card-selector__item.is-active{
+  background:#1b1a18;
+  color:#fff;
+}
+.menu-card-selector__index{
+  font-size:9px;
+  letter-spacing:.12em;
+  opacity:.55;
+}
+.menu-card-selector__label{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.13em;
+}
+.menu-card-selector__arrow{
+  margin-left:auto;
+  font-size:18px;
+  font-weight:300;
+  line-height:1;
+}
+.menu-card-selector__item:not(.is-active):hover{
+  background:#ebe4d7;
+}
+@media(max-width:720px){
+  .menu-card-selector{
+    width:calc(100% - 32px);
+    margin-bottom:14px;
+  }
+  .menu-card-selector__item{
+    min-height:52px;
+    padding:0 14px;
+    gap:9px;
+  }
+  .menu-card-selector__label{font-size:10px}
+  .menu-card-selector__index{font-size:8px}
+}
+
+/* Cantina — stato utility */
+.cellar-back-hidden{display:none!important}
+
+/* ===== Mobile menu navigation: 4 × 2, no horizontal scroll ===== */
+@media(max-width:900px){
+  .menu-category-bar{
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    padding:0!important;
+    overflow:visible!important;
+    overflow-x:hidden!important;
+  }
+  .menu-category-bar button{
+    width:100%!important;
+    min-width:0!important;
+    padding:13px 3px!important;
+    font-size:10px!important;
+    line-height:1.15!important;
+    letter-spacing:.08em!important;
+    white-space:nowrap;
+  }
+}
+
+
+/* CUISINE MOBILE — gateways and signature dishes stay on one row */
+@media (max-width:900px){
+    .cuisine-page .sea-land{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .cuisine-page .sea-land article{min-width:0;padding:34px 18px;}
+    .cuisine-page .signature-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+    .cuisine-page .signature-grid article{min-width:0;margin-bottom:0;}
+    .cuisine-page .signature-grid .dish-img{aspect-ratio:1.1;}
+}
+@media (max-width:540px){
+    .cuisine-page .sea-land{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .cuisine-page .signature-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+}

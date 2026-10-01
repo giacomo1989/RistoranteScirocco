@@ -1,0 +1,1026 @@
+{
+  "version": 1,
+  "currency": "EUR",
+  "categories": [
+    {
+      "id": "crudi",
+      "order": 1,
+      "name": {
+        "it": "Crudi",
+        "en": "Raw",
+        "es": "Crudos"
+      }
+    },
+    {
+      "id": "antipasti",
+      "order": 2,
+      "name": {
+        "it": "Antipasti",
+        "en": "Starters",
+        "es": "Entrantes"
+      }
+    },
+    {
+      "id": "primi",
+      "order": 3,
+      "name": {
+        "it": "Primi",
+        "en": "First courses",
+        "es": "Primeros"
+      }
+    },
+    {
+      "id": "secondi",
+      "order": 4,
+      "name": {
+        "it": "Secondi",
+        "en": "Main courses",
+        "es": "Segundos"
+      }
+    },
+    {
+      "id": "contorni",
+      "order": 5,
+      "name": {
+        "it": "Contorni",
+        "en": "Sides",
+        "es": "Guarniciones"
+      }
+    },
+    {
+      "id": "dolci",
+      "order": 6,
+      "name": {
+        "it": "Dolci",
+        "en": "Desserts",
+        "es": "Postres"
+      }
+    },
+    {
+      "id": "bevande",
+      "order": 7,
+      "name": {
+        "it": "Bevande",
+        "en": "Drinks",
+        "es": "Bebidas"
+      }
+    },
+    {
+      "id": "amari",
+      "order": 8,
+      "name": {
+        "it": "Amari",
+        "en": "Digestifs",
+        "es": "Amargos"
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "ostriche",
+      "category": "crudi",
+      "active": true,
+      "order": 10,
+      "name": {
+        "it": "Ostriche",
+        "en": "Oysters",
+        "es": "Ostras"
+      },
+      "shortDescription": {
+        "it": "Selezione del giorno · 3 pezzi",
+        "en": "Daily selection · 3 pieces",
+        "es": "Selección del día · 3 piezas"
+      },
+      "description": {
+        "it": "Servite al naturale con limone del Salento.",
+        "en": "Served natural with Salento lemon.",
+        "es": "Servidas al natural con limón del Salento."
+      },
+      "price": 16,
+      "image": "assets/images/mare/mare-ostriche.jpg",
+      "ingredients": {
+        "it": "ostriche, limone",
+        "en": "oysters, lemon",
+        "es": "ostras, limón"
+      },
+      "allergens": [
+        "molluschi"
+      ],
+      "tags": [
+        "mare",
+        "crudo"
+      ],
+      "winePairings": [
+        "gimonnet-bdb",
+        "ferrari-perle-2019"
+      ],
+      "recommendedBefore": [],
+      "recommendedAfter": [
+        "ricciola-agrumi",
+        "spaghettone-ricci"
+      ],
+      "featured": false,
+      "images": [
+        "assets/images/mare/mare-ostriche.jpg",
+        "assets/images/menu/ostriche-02.jpg",
+        "assets/images/menu/ostriche-03.jpg"
+      ]
+    },
+    {
+      "id": "ricciola-agrumi",
+      "category": "crudi",
+      "active": true,
+      "order": 20,
+      "name": {
+        "it": "Ricciola agli agrumi",
+        "en": "Amberjack & citrus",
+        "es": "Pez limón y cítricos"
+      },
+      "shortDescription": {
+        "it": "Ricciola, agrumi, olio EVO, erbe",
+        "en": "Amberjack, citrus, EVO oil, herbs",
+        "es": "Pez limón, cítricos, AOVE, hierbas"
+      },
+      "description": {
+        "it": "Crudo di ricciola lavorato con agrumi freschi, olio extravergine ed erbe aromatiche.",
+        "en": "Raw amberjack with fresh citrus, extra virgin olive oil and aromatic herbs.",
+        "es": "Crudo de pez limón con cítricos frescos, aceite de oliva virgen extra y hierbas aromáticas."
+      },
+      "price": 20,
+      "image": "assets/images/mare/mare-piatto-ricciola.jpg",
+      "ingredients": {
+        "it": "ricciola, agrumi, olio EVO, erbe",
+        "en": "amberjack, citrus, EVO oil, herbs",
+        "es": "pez limón, cítricos, AOVE, hierbas"
+      },
+      "allergens": [
+        "pesce"
+      ],
+      "tags": [
+        "mare",
+        "crudo"
+      ],
+      "winePairings": [
+        "gimonnet-bdb",
+        "vermentino-salento"
+      ],
+      "recommendedBefore": [
+        "ostriche"
+      ],
+      "recommendedAfter": [
+        "spaghettone-ricci",
+        "dentice-brace"
+      ],
+      "featured": true,
+      "images": [
+        "assets/images/mare/mare-piatto-ricciola.jpg"
+      ]
+    },
+    {
+      "id": "scampo-caviale",
+      "category": "crudi",
+      "active": true,
+      "order": 30,
+      "name": {
+        "it": "Scampo e caviale",
+        "en": "Langoustine & caviar",
+        "es": "Cigala y caviar"
+      },
+      "shortDescription": {
+        "it": "Scampo, caviale, limone",
+        "en": "Langoustine, caviar, lemon",
+        "es": "Cigala, caviar, limón"
+      },
+      "description": {
+        "it": "Scampo crudo, caviale e una nota fresca di limone.",
+        "en": "Raw langoustine, caviar and a fresh touch of lemon.",
+        "es": "Cigala cruda, caviar y un toque fresco de limón."
+      },
+      "price": 28,
+      "image": "assets/images/mare/mare-piatto-scampo.jpg",
+      "ingredients": {
+        "it": "scampo, caviale, limone",
+        "en": "langoustine, caviar, lemon",
+        "es": "cigala, caviar, limón"
+      },
+      "allergens": [
+        "crostacei",
+        "pesce"
+      ],
+      "tags": [
+        "mare",
+        "crudo"
+      ],
+      "winePairings": [
+        "gimonnet-bdb",
+        "ferrari-perle-2019"
+      ],
+      "recommendedBefore": [
+        "ostriche"
+      ],
+      "recommendedAfter": [
+        "spaghettone-ricci"
+      ],
+      "featured": false,
+      "images": [
+        "assets/images/mare/mare-piatto-scampo.jpg"
+      ]
+    },
+    {
+      "id": "polpo-patata",
+      "category": "antipasti",
+      "active": true,
+      "order": 10,
+      "name": {
+        "it": "Polpo, patata e rosmarino",
+        "en": "Octopus, potato & rosemary",
+        "es": "Pulpo, patata y romero"
+      },
+      "shortDescription": {
+        "it": "Polpo arrostito, patata, rosmarino",
+        "en": "Roasted octopus, potato, rosemary",
+        "es": "Pulpo asado, patata, romero"
+      },
+      "description": {
+        "it": "Polpo arrostito, crema di patata e profumo di rosmarino.",
+        "en": "Roasted octopus, potato cream and rosemary.",
+        "es": "Pulpo asado, crema de patata y aroma de romero."
+      },
+      "price": 19,
+      "image": "assets/images/mare/mare-piatto-polpo.jpg",
+      "ingredients": {
+        "it": "polpo, patata, rosmarino, olio EVO",
+        "en": "octopus, potato, rosemary, EVO oil",
+        "es": "pulpo, patata, romero, AOVE"
+      },
+      "allergens": [
+        "molluschi"
+      ],
+      "tags": [
+        "mare"
+      ],
+      "winePairings": [
+        "ferrari-perle-2019",
+        "vermentino-salento"
+      ],
+      "recommendedBefore": [
+        "ricciola-agrumi"
+      ],
+      "recommendedAfter": [
+        "orecchiette-cime-rapa",
+        "dentice-brace"
+      ],
+      "featured": true,
+      "images": [
+        "assets/images/mare/mare-piatto-polpo.jpg"
+      ]
+    },
+    {
+      "id": "parmigiana-melanzane",
+      "category": "antipasti",
+      "active": true,
+      "order": 20,
+      "name": {
+        "it": "Parmigiana di melanzane",
+        "en": "Eggplant parmigiana",
+        "es": "Parmigiana de berenjena"
+      },
+      "shortDescription": {
+        "it": "Melanzana, pomodoro, basilico",
+        "en": "Eggplant, tomato, basil",
+        "es": "Berenjena, tomate, albahaca"
+      },
+      "description": {
+        "it": "La nostra parmigiana, intensa ma leggera, con pomodoro e basilico.",
+        "en": "Our rich yet light parmigiana with tomato and basil.",
+        "es": "Nuestra parmigiana, intensa pero ligera, con tomate y albahaca."
+      },
+      "price": 16,
+      "image": "assets/images/terra/terra-piatto-parmigiana.jpg",
+      "ingredients": {
+        "it": "melanzana, pomodoro, formaggio, basilico",
+        "en": "eggplant, tomato, cheese, basil",
+        "es": "berenjena, tomate, queso, albahaca"
+      },
+      "allergens": [
+        "latte"
+      ],
+      "tags": [
+        "vegetariano",
+        "terra"
+      ],
+      "winePairings": [
+        "negroamaro-rosato",
+        "primitivo-manduria"
+      ],
+      "recommendedBefore": [],
+      "recommendedAfter": [
+        "orecchiette-cime-rapa"
+      ],
+      "featured": false,
+      "images": [
+        "assets/images/terra/terra-piatto-parmigiana.jpg"
+      ]
+    },
+    {
+      "id": "spaghettone-ricci",
+      "category": "primi",
+      "active": true,
+      "order": 10,
+      "name": {
+        "it": "Spaghettone ai ricci di mare",
+        "en": "Spaghettone with sea urchin",
+        "es": "Spaghettone con erizo de mar"
+      },
+      "shortDescription": {
+        "it": "Ricci di mare, limone, prezzemolo",
+        "en": "Sea urchin, lemon, parsley",
+        "es": "Erizo de mar, limón, perejil"
+      },
+      "description": {
+        "it": "Spaghettone mantecato con polpa di riccio, limone e prezzemolo.",
+        "en": "Spaghettone with sea urchin, lemon and parsley.",
+        "es": "Spaghettone mantecado con erizo de mar, limón y perejil."
+      },
+      "price": 24,
+      "image": "assets/images/mare/mare-piatto-spaghettone.jpg",
+      "ingredients": {
+        "it": "spaghettone, ricci di mare, limone, prezzemolo",
+        "en": "spaghettone, sea urchin, lemon, parsley",
+        "es": "spaghettone, erizo de mar, limón, perejil"
+      },
+      "allergens": [
+        "glutine",
+        "molluschi"
+      ],
+      "tags": [
+        "mare"
+      ],
+      "winePairings": [
+        "ferrari-perle-2019",
+        "gimonnet-bdb",
+        "vermentino-salento"
+      ],
+      "recommendedBefore": [
+        "ostriche",
+        "ricciola-agrumi"
+      ],
+      "recommendedAfter": [
+        "dentice-brace",
+        "sorbetto-limone"
+      ],
+      "featured": true,
+      "images": [
+        "assets/images/mare/mare-piatto-spaghettone.jpg"
+      ]
+    },
+    {
+      "id": "orecchiette-cime-rapa",
+      "category": "primi",
+      "active": true,
+      "order": 20,
+      "name": {
+        "it": "Orecchiette alle cime di rapa",
+        "en": "Orecchiette with turnip greens",
+        "es": "Orecchiette con grelos"
+      },
+      "shortDescription": {
+        "it": "Cime di rapa, acciuga, mollica",
+        "en": "Turnip greens, anchovy, breadcrumbs",
+        "es": "Grelos, anchoa, miga"
+      },
+      "description": {
+        "it": "Un classico pugliese interpretato con equilibrio tra vegetale, sapidità e croccantezza.",
+        "en": "A Puglian classic balancing greens, savouriness and crunch.",
+        "es": "Un clásico de Puglia equilibrando vegetal, salinidad y textura crujiente."
+      },
+      "price": 18,
+      "image": "assets/images/terra/terra-piatto-orecchiette.jpg",
+      "ingredients": {
+        "it": "orecchiette, cime di rapa, acciuga, mollica",
+        "en": "orecchiette, turnip greens, anchovy, breadcrumbs",
+        "es": "orecchiette, grelos, anchoa, miga"
+      },
+      "allergens": [
+        "glutine",
+        "pesce"
+      ],
+      "tags": [
+        "terra"
+      ],
+      "winePairings": [
+        "vermentino-salento"
+      ],
+      "recommendedBefore": [
+        "parmigiana-melanzane"
+      ],
+      "recommendedAfter": [
+        "carciofo-arrostito"
+      ],
+      "featured": false,
+      "images": [
+        "assets/images/terra/terra-piatto-orecchiette.jpg"
+      ]
+    },
+    {
+      "id": "dentice-brace",
+      "category": "secondi",
+      "active": true,
+      "order": 10,
+      "name": {
+        "it": "Dentice alla brace",
+        "en": "Charcoal-grilled snapper",
+        "es": "Dentón a la brasa"
+      },
+      "shortDescription": {
+        "it": "Dentice, erbe mediterranee, limone",
+        "en": "Snapper, Mediterranean herbs, lemon",
+        "es": "Dentón, hierbas mediterráneas, limón"
+      },
+      "description": {
+        "it": "Dentice cotto alla brace e rifinito con erbe mediterranee e limone.",
+        "en": "Charcoal-grilled snapper finished with Mediterranean herbs and lemon.",
+        "es": "Dentón a la brasa terminado con hierbas mediterráneas y limón."
+      },
+      "price": 29,
+      "image": "assets/images/mare/mare-dentice.jpg",
+      "ingredients": {
+        "it": "dentice, erbe, limone, olio EVO",
+        "en": "snapper, herbs, lemon, EVO oil",
+        "es": "dentón, hierbas, limón, AOVE"
+      },
+      "allergens": [
+        "pesce"
+      ],
+      "tags": [
+        "mare"
+      ],
+      "winePairings": [
+        "vermentino-salento",
+        "ferrari-perle-2019"
+      ],
+      "recommendedBefore": [
+        "spaghettone-ricci"
+      ],
+      "recommendedAfter": [
+        "sorbetto-limone"
+      ],
+      "featured": false,
+      "images": [
+        "assets/images/mare/mare-dentice.jpg"
+      ]
+    },
+    {
+      "id": "fave-cicoria",
+      "category": "secondi",
+      "active": true,
+      "order": 20,
+      "name": {
+        "it": "Fave e cicoria",
+        "en": "Fava beans & chicory",
+        "es": "Habas y achicoria"
+      },
+      "shortDescription": {
+        "it": "Fave, cicoria, olio EVO",
+        "en": "Fava beans, chicory, EVO oil",
+        "es": "Habas, achicoria, AOVE"
+      },
+      "description": {
+        "it": "Fave cremose e cicoria di campo, olio extravergine pugliese.",
+        "en": "Creamy fava beans, wild chicory and Puglian extra virgin olive oil.",
+        "es": "Habas cremosas, achicoria silvestre y aceite de oliva virgen extra de Puglia."
+      },
+      "price": 17,
+      "image": "assets/images/terra/terra-piatto-fave-cicoria.jpg",
+      "ingredients": {
+        "it": "fave, cicoria, olio EVO",
+        "en": "fava beans, chicory, EVO oil",
+        "es": "habas, achicoria, AOVE"
+      },
+      "allergens": [],
+      "tags": [
+        "vegano",
+        "senza-glutine",
+        "terra"
+      ],
+      "winePairings": [
+        "vermentino-salento",
+        "negroamaro-rosato"
+      ],
+      "recommendedBefore": [
+        "parmigiana-melanzane"
+      ],
+      "recommendedAfter": [
+        "carciofo-arrostito"
+      ],
+      "featured": false,
+      "images": [
+        "assets/images/terra/terra-piatto-fave-cicoria.jpg"
+      ]
+    },
+    {
+      "id": "carciofo-arrostito",
+      "category": "contorni",
+      "active": true,
+      "order": 10,
+      "name": {
+        "it": "Carciofo arrostito",
+        "en": "Roasted artichoke",
+        "es": "Alcachofa asada"
+      },
+      "shortDescription": {
+        "it": "Carciofo, erbe, limone",
+        "en": "Artichoke, herbs, lemon",
+        "es": "Alcachofa, hierbas, limón"
+      },
+      "description": {
+        "it": "Carciofo arrostito, erbe aromatiche e limone.",
+        "en": "Roasted artichoke with aromatic herbs and lemon.",
+        "es": "Alcachofa asada con hierbas aromáticas y limón."
+      },
+      "price": 10,
+      "image": "assets/images/terra/terra-piatto-carciofo.jpg",
+      "ingredients": {
+        "it": "carciofo, erbe, limone, olio EVO",
+        "en": "artichoke, herbs, lemon, EVO oil",
+        "es": "alcachofa, hierbas, limón, AOVE"
+      },
+      "allergens": [],
+      "tags": [
+        "vegano",
+        "senza-glutine",
+        "terra"
+      ],
+      "winePairings": [
+        "vermentino-salento"
+      ],
+      "recommendedBefore": [
+        "fave-cicoria"
+      ],
+      "recommendedAfter": [
+        "sorbetto-limone"
+      ],
+      "featured": false,
+      "images": [
+        "assets/images/terra/terra-piatto-carciofo.jpg"
+      ]
+    },
+    {
+      "id": "patate-erbe",
+      "category": "contorni",
+      "active": true,
+      "order": 20,
+      "name": {
+        "it": "Patate alle erbe",
+        "en": "Herb potatoes",
+        "es": "Patatas con hierbas"
+      },
+      "shortDescription": {
+        "it": "Patate novelle, rosmarino, timo",
+        "en": "New potatoes, rosemary, thyme",
+        "es": "Patatas nuevas, romero, tomillo"
+      },
+      "description": {
+        "it": "Patate novelle arrostite con rosmarino e timo.",
+        "en": "Roasted new potatoes with rosemary and thyme.",
+        "es": "Patatas nuevas asadas con romero y tomillo."
+      },
+      "price": 8,
+      "image": "assets/images/terra/terra-metodo-fuoco.jpg",
+      "ingredients": {
+        "it": "patate, rosmarino, timo, olio EVO",
+        "en": "potatoes, rosemary, thyme, EVO oil",
+        "es": "patatas, romero, tomillo, AOVE"
+      },
+      "allergens": [],
+      "tags": [
+        "vegano",
+        "senza-glutine"
+      ],
+      "winePairings": [],
+      "recommendedBefore": [],
+      "recommendedAfter": [],
+      "featured": false,
+      "images": [
+        "assets/images/terra/terra-metodo-fuoco.jpg"
+      ]
+    },
+    {
+      "id": "sorbetto-limone",
+      "category": "dolci",
+      "active": true,
+      "order": 10,
+      "name": {
+        "it": "Sorbetto al limone",
+        "en": "Lemon sorbet",
+        "es": "Sorbete de limón"
+      },
+      "shortDescription": {
+        "it": "Limone del Salento, menta",
+        "en": "Salento lemon, mint",
+        "es": "Limón del Salento, menta"
+      },
+      "description": {
+        "it": "Fresco sorbetto al limone del Salento con menta.",
+        "en": "Fresh Salento lemon sorbet with mint.",
+        "es": "Sorbete fresco de limón del Salento con menta."
+      },
+      "price": 8,
+      "image": "assets/images/terra/terra-erbe.jpg",
+      "ingredients": {
+        "it": "limone, zucchero, menta",
+        "en": "lemon, sugar, mint",
+        "es": "limón, azúcar, menta"
+      },
+      "allergens": [],
+      "tags": [
+        "vegano",
+        "senza-glutine"
+      ],
+      "winePairings": [
+        "chardonnay-puglia"
+      ],
+      "recommendedBefore": [
+        "dentice-brace",
+        "spaghettone-ricci"
+      ],
+      "recommendedAfter": [],
+      "featured": false,
+      "images": [
+        "assets/images/terra/terra-erbe.jpg"
+      ]
+    },
+    {
+      "id": "cremoso-cioccolato",
+      "category": "dolci",
+      "active": true,
+      "order": 20,
+      "name": {
+        "it": "Cremoso al cioccolato",
+        "en": "Chocolate crémeux",
+        "es": "Cremoso de chocolate"
+      },
+      "shortDescription": {
+        "it": "Cioccolato fondente, mandorla, sale",
+        "en": "Dark chocolate, almond, salt",
+        "es": "Chocolate negro, almendra, sal"
+      },
+      "description": {
+        "it": "Cremoso al fondente con mandorla e un tocco di sale.",
+        "en": "Dark chocolate crémeux with almond and a touch of salt.",
+        "es": "Cremoso de chocolate negro con almendra y un toque de sal."
+      },
+      "price": 11,
+      "image": "assets/images/terra/terra-grano.jpg",
+      "ingredients": {
+        "it": "cioccolato, mandorla, latte, uova",
+        "en": "chocolate, almond, milk, eggs",
+        "es": "chocolate, almendra, leche, huevos"
+      },
+      "allergens": [
+        "latte",
+        "uova",
+        "frutta-a-guscio"
+      ],
+      "tags": [
+        "vegetariano"
+      ],
+      "winePairings": [
+        "primitivo-manduria"
+      ],
+      "recommendedBefore": [],
+      "recommendedAfter": [],
+      "featured": false,
+      "images": [
+        "assets/images/terra/terra-grano.jpg"
+      ]
+    },
+    {
+      "id": "acqua-panna",
+      "category": "bevande",
+      "active": true,
+      "order": 10,
+      "name": {
+        "it": "Acqua Panna",
+        "en": "Acqua Panna",
+        "es": "Acqua Panna"
+      },
+      "shortDescription": {
+        "it": "Acqua minerale naturale · 75 cl",
+        "en": "Still mineral water · 75 cl",
+        "es": "Agua mineral sin gas · 75 cl"
+      },
+      "description": {
+        "it": "Acqua minerale naturale Acqua Panna.",
+        "en": "Acqua Panna still mineral water.",
+        "es": "Agua mineral natural Acqua Panna."
+      },
+      "price": 4,
+      "image": "",
+      "ingredients": {
+        "it": "acqua minerale naturale",
+        "en": "still mineral water",
+        "es": "agua mineral natural"
+      },
+      "allergens": [],
+      "tags": [],
+      "winePairings": [],
+      "recommendedBefore": [],
+      "recommendedAfter": [],
+      "featured": false,
+      "images": []
+    },
+    {
+      "id": "acqua-ferrarelle",
+      "category": "bevande",
+      "active": true,
+      "order": 20,
+      "name": {
+        "it": "Acqua Ferrarelle",
+        "en": "Acqua Ferrarelle",
+        "es": "Acqua Ferrarelle"
+      },
+      "shortDescription": {
+        "it": "Acqua effervescente naturale · 75 cl",
+        "en": "Naturally sparkling mineral water · 75 cl",
+        "es": "Agua mineral con gas natural · 75 cl"
+      },
+      "description": {
+        "it": "Acqua minerale effervescente naturale Ferrarelle.",
+        "en": "Ferrarelle naturally sparkling mineral water.",
+        "es": "Agua mineral naturalmente efervescente Ferrarelle."
+      },
+      "price": 4,
+      "image": "",
+      "ingredients": {
+        "it": "acqua minerale effervescente naturale",
+        "en": "naturally sparkling mineral water",
+        "es": "agua mineral naturalmente efervescente"
+      },
+      "allergens": [],
+      "tags": [],
+      "winePairings": [],
+      "recommendedBefore": [],
+      "recommendedAfter": [],
+      "featured": false,
+      "images": []
+    },
+    {
+      "id": "coca-cola-zero",
+      "category": "bevande",
+      "active": true,
+      "order": 30,
+      "name": {
+        "it": "Coca-Cola Zero",
+        "en": "Coca-Cola Zero",
+        "es": "Coca-Cola Zero"
+      },
+      "shortDescription": {
+        "it": "33 cl",
+        "en": "33 cl",
+        "es": "33 cl"
+      },
+      "description": {
+        "it": "Coca-Cola Zero.",
+        "en": "Coca-Cola Zero.",
+        "es": "Coca-Cola Zero."
+      },
+      "price": 5,
+      "image": "",
+      "ingredients": {
+        "it": "bevanda analcolica",
+        "en": "soft drink",
+        "es": "refresco"
+      },
+      "allergens": [],
+      "tags": [],
+      "winePairings": [],
+      "recommendedBefore": [],
+      "recommendedAfter": [],
+      "featured": false,
+      "images": []
+    },
+    {
+      "id": "fanta",
+      "category": "bevande",
+      "active": true,
+      "order": 40,
+      "name": {
+        "it": "Fanta",
+        "en": "Fanta",
+        "es": "Fanta"
+      },
+      "shortDescription": {
+        "it": "33 cl",
+        "en": "33 cl",
+        "es": "33 cl"
+      },
+      "description": {
+        "it": "Fanta.",
+        "en": "Fanta.",
+        "es": "Fanta."
+      },
+      "price": 5,
+      "image": "",
+      "ingredients": {
+        "it": "bevanda analcolica",
+        "en": "soft drink",
+        "es": "refresco"
+      },
+      "allergens": [],
+      "tags": [],
+      "winePairings": [],
+      "recommendedBefore": [],
+      "recommendedAfter": [],
+      "featured": false,
+      "images": []
+    },
+    {
+      "id": "montenegro",
+      "category": "amari",
+      "active": true,
+      "order": 10,
+      "name": {
+        "it": "Amaro Montenegro",
+        "en": "Amaro Montenegro",
+        "es": "Amaro Montenegro"
+      },
+      "shortDescription": {
+        "it": "Amaro · 4 cl",
+        "en": "Italian bitter · 4 cl",
+        "es": "Amaro italiano · 4 cl"
+      },
+      "description": {
+        "it": "Amaro Montenegro.",
+        "en": "Amaro Montenegro.",
+        "es": "Amaro Montenegro."
+      },
+      "price": 6,
+      "image": "",
+      "ingredients": {
+        "it": "amaro",
+        "en": "Italian bitter",
+        "es": "amaro"
+      },
+      "allergens": [],
+      "tags": [],
+      "winePairings": [],
+      "recommendedBefore": [],
+      "recommendedAfter": [],
+      "featured": false,
+      "images": []
+    },
+    {
+      "id": "amaro-del-capo",
+      "category": "amari",
+      "active": true,
+      "order": 20,
+      "name": {
+        "it": "Vecchio Amaro del Capo",
+        "en": "Vecchio Amaro del Capo",
+        "es": "Vecchio Amaro del Capo"
+      },
+      "shortDescription": {
+        "it": "Amaro · 4 cl",
+        "en": "Italian bitter · 4 cl",
+        "es": "Amaro italiano · 4 cl"
+      },
+      "description": {
+        "it": "Vecchio Amaro del Capo.",
+        "en": "Vecchio Amaro del Capo.",
+        "es": "Vecchio Amaro del Capo."
+      },
+      "price": 6,
+      "image": "",
+      "ingredients": {
+        "it": "amaro",
+        "en": "Italian bitter",
+        "es": "amaro"
+      },
+      "allergens": [],
+      "tags": [],
+      "winePairings": [],
+      "recommendedBefore": [],
+      "recommendedAfter": [],
+      "featured": false,
+      "images": []
+    },
+    {
+      "id": "averna",
+      "category": "amari",
+      "active": true,
+      "order": 30,
+      "name": {
+        "it": "Amaro Averna",
+        "en": "Amaro Averna",
+        "es": "Amaro Averna"
+      },
+      "shortDescription": {
+        "it": "Amaro · 4 cl",
+        "en": "Italian bitter · 4 cl",
+        "es": "Amaro italiano · 4 cl"
+      },
+      "description": {
+        "it": "Amaro Averna.",
+        "en": "Amaro Averna.",
+        "es": "Amaro Averna."
+      },
+      "price": 6,
+      "image": "",
+      "ingredients": {
+        "it": "amaro",
+        "en": "Italian bitter",
+        "es": "amaro"
+      },
+      "allergens": [],
+      "tags": [],
+      "winePairings": [],
+      "recommendedBefore": [],
+      "recommendedAfter": [],
+      "featured": false,
+      "images": []
+    },
+    {
+      "id": "tequila",
+      "category": "amari",
+      "active": true,
+      "order": 40,
+      "name": {
+        "it": "Tequila",
+        "en": "Tequila",
+        "es": "Tequila"
+      },
+      "shortDescription": {
+        "it": "Distillato · 4 cl",
+        "en": "Spirit · 4 cl",
+        "es": "Destilado · 4 cl"
+      },
+      "description": {
+        "it": "Tequila.",
+        "en": "Tequila.",
+        "es": "Tequila."
+      },
+      "price": 7,
+      "image": "",
+      "ingredients": {
+        "it": "distillato di agave",
+        "en": "agave spirit",
+        "es": "destilado de agave"
+      },
+      "allergens": [],
+      "tags": [],
+      "winePairings": [],
+      "recommendedBefore": [],
+      "recommendedAfter": [],
+      "featured": false,
+      "images": []
+    }
+  ],
+  "wines": [
+    {
+      "id": "ferrari-perle-2019",
+      "name": "Perlé",
+      "meta": "Trentodoc · Chardonnay"
+    },
+    {
+      "id": "cesconi-blauwal",
+      "name": "Blauwal",
+      "meta": "Trentodoc · Chardonnay, Pinot Nero"
+    },
+    {
+      "id": "gimonnet-bdb",
+      "name": "Blanc de Blancs",
+      "meta": "Champagne · Chardonnay"
+    },
+    {
+      "id": "corpinnat-brut-nature",
+      "name": "Brut Nature",
+      "meta": "Corpinnat · Xarel·lo, Macabeo"
+    },
+    {
+      "id": "vermentino-salento",
+      "name": "Levante",
+      "meta": "Salento IGP · Vermentino"
+    },
+    {
+      "id": "chardonnay-puglia",
+      "name": "Pietra Bianca",
+      "meta": "Puglia IGP · Chardonnay"
+    },
+    {
+      "id": "negroamaro-riserva",
+      "name": "Terra Rossa Riserva",
+      "meta": "Salice Salentino DOC · Negroamaro"
+    },
+    {
+      "id": "primitivo-manduria",
+      "name": "Maestrale",
+      "meta": "Primitivo di Manduria DOC · Primitivo"
+    },
+    {
+      "id": "negroamaro-rosato",
+      "name": "Rosa dei Venti",
+      "meta": "Salento IGP · Negroamaro"
+    }
+  ]
+}

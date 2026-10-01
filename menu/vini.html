@@ -14,8 +14,8 @@
 
 <body class="digital-menu-page menu-page wine-page">
 <header class="menu-mobile-header">
-  <a class="menu-mobile-brand" href="index.html">SCIROCCO</a>
-  <a href="cantina.html" class="menu-mobile-cellar">CANTINA</a>
+  <a class="menu-mobile-brand" href="../index.html">SCIROCCO</a>
+  <a href="../cantina.html" class="menu-mobile-cellar">CANTINA</a>
   <button id="menuLangToggle" class="menu-mobile-more" aria-label="Lingua">IT</button>
   <div class="menu-lang-popover" id="menuLangPopover">
     <button data-menu-lang="it">IT</button>
@@ -25,19 +25,19 @@
 </header>
 
 <header class="header menu-desktop-header" id="header">
-  <a class="brand" href="index.html"><span>SCIROCCO</span><small>CUCINA MEDITERRANEA</small></a>
+  <a class="brand" href="../index.html"><span>SCIROCCO</span><small>CUCINA MEDITERRANEA</small></a>
   <nav class="nav">
-    <a href="index.html">HOME</a>
-    <a href="cucina.html">CUCINA</a>
-    <a href="cantina.html">CANTINA</a>
-    <a href="index.html#contatti">CONTATTI</a>
+    <a href="../index.html">HOME</a>
+    <a href="../cucina.html">CUCINA</a>
+    <a href="../cantina.html">CANTINA</a>
+    <a href="../index.html#contatti">CONTATTI</a>
   </nav>
   <div class="language-switcher">
     <button data-menu-lang="it">IT</button><span>·</span>
     <button data-menu-lang="en">EN</button><span>·</span>
     <button data-menu-lang="es">ES</button>
   </div>
-  <a class="btn btn-outline" href="index.html#prenota">PRENOTA</a>
+  <a class="btn btn-outline" href="../index.html#prenota">PRENOTA</a>
 </header>
 
 <main class="digital-menu-main">
@@ -49,12 +49,9 @@
 
 <nav class="menu-card-selector" aria-label="Carta digitale">
 <a class="menu-card-selector__item" href="menu.html">
-<span class="menu-card-selector__arrow" aria-hidden="true">←</span>
-<span class="menu-card-selector__index">01</span>
 <span class="menu-card-selector__label" id="wineFoodLabel"></span>
 </a>
 <a class="menu-card-selector__item is-active" href="vini.html" aria-current="page">
-<span class="menu-card-selector__index">02</span>
 <span class="menu-card-selector__label" id="wineListLabel"></span>
 </a>
 </nav>
@@ -90,13 +87,12 @@
 
 <section class="wine-guide" id="wineGuide" hidden>
 <div class="wine-guide-head">
-<p class="eyebrow">TROVA IL VINO GIUSTO</p>
 <h2 id="guideTitle"></h2>
 <p id="guideIntro"></p>
 <div class="wine-taste-path" id="wineTastePath" aria-live="polite"></div>
 </div>
-<div class="wine-step active" data-guide-step="0"><span>01 / 03</span><h3 id="guideQuestion0"></h3><div class="wine-options" id="guideOptions0"></div></div>
-<div class="wine-step" data-guide-step="1"><span>02 / 03</span><h3 id="guideQuestion1"></h3><div class="wine-options" id="guideOptions1"></div><div class="wine-character-wheel" id="wineCharacterWheel" aria-label="Selettore carattere del vino">
+<div class="wine-step active" data-guide-step="0"><div class="wine-step-heading"><span>01 / 03</span><h3 id="guideQuestion0"></h3></div><div class="wine-options" id="guideOptions0"></div></div>
+<div class="wine-step" data-guide-step="1"><div class="wine-step-heading"><span>02 / 03</span><h3 id="guideQuestion1"></h3></div><div class="wine-options" id="guideOptions1"></div><div class="wine-character-wheel" id="wineCharacterWheel" aria-label="Selettore carattere del vino">
  <div class="wine-wheel-stage" id="wineWheelStage" tabindex="0" role="listbox" aria-label="Carattere del vino">
   <div class="wine-wheel-track" id="wineWheelTrack"></div>
   <div class="wine-wheel-center-line" aria-hidden="true"></div>
@@ -104,9 +100,9 @@
  <div class="wine-wheel-meta"><em id="wineWheelCounter"></em></div>
  <button type="button" class="wine-wheel-confirm" id="wineWheelConfirm"></button>
 </div></div>
-<div class="wine-step" data-guide-step="2"><span>03 / 03</span><h3 id="guideQuestion2"></h3><div class="wine-options" id="guideOptions2"></div></div>
+<div class="wine-step" data-guide-step="2"><div class="wine-step-heading"><span>03 / 03</span><h3 id="guideQuestion2"></h3></div><div class="wine-options" id="guideOptions2"></div></div>
 <div class="wine-guide-searching" id="guideSearching" aria-live="polite"><span id="guideSearchingText"></span><i></i></div>
-<div class="wine-result" id="guideResult"><span id="guideResultEyebrow"></span><h3 id="guideResultTitle"></h3><div id="guideResultList"></div><div class="wine-guide-result-actions"><button id="guideModify" type="button"></button><button id="guideRestart" type="button"></button></div></div>
+<div class="wine-result" id="guideResult"><span id="guideResultEyebrow"></span><h3 id="guideResultTitle"></h3><div id="guideResultList"></div></div>
 <div class="wine-progress"><i id="guideProgressBar"></i></div>
 </section>
 </main>

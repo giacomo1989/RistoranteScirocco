@@ -1,0 +1,89 @@
+{
+  "menu": {
+    "title": "El Menú",
+    "intro": "Cocina mediterránea contemporánea, entre mar y tierra.",
+    "wineTitle": "Descubre nuestra selección de vinos",
+    "explore": "EXPLORAR →",
+    "ingredients": "INGREDIENTES",
+    "allergens": "ALÉRGENOS",
+    "pairings": "ACOMPÁÑALO CON",
+    "before": "ANTES TE PUEDE GUSTAR",
+    "after": "PARA CONTINUAR",
+    "noAllergens": "Sin alérgenos declarados",
+    "close": "Cerrar",
+    "foodMenu": "MENÚ COMIDA",
+    "wineList": "CARTA DE VINOS",
+    "previousPhoto": "Foto anterior",
+    "nextPhoto": "Foto siguiente"
+  },
+  "wine": {
+    "title": "La Carta de Vinos",
+    "intro": "Una selección pensada para acompañar nuestra cocina, entre territorio y grandes denominaciones.",
+    "foodMenu": "MENÚ COMIDA",
+    "wineList": "CARTA DE VINOS",
+    "entryList": "CARTA DE VINOS",
+    "entryListText": "Explora la selección completa",
+    "entryGuide": "ENCUENTRA EL VINO IDEAL",
+    "entryGuideText": "Déjate guiar por nuestro Wine Guide",
+    "back": "CARTA DE VINOS",
+    "catalogEyebrow": "LA SELECCIÓN",
+    "catalogTitle": "Carta de Vinos",
+    "categories": {
+      "sparkling": "ESPUMOSOS",
+      "white": "BLANCOS",
+      "red": "TINTOS",
+      "rose": "ROSADOS"
+    },
+    "all": "TODOS",
+    "guideTitle": "Encuentra el vino ideal",
+    "guideIntro": "Tres preguntas para encontrar las botellas más adecuadas a tu gusto y a lo que comerás.",
+    "questions": [
+      "¿Qué quieres beber?",
+      "¿Qué carácter buscas?",
+      "¿Qué vas a comer?"
+    ],
+    "styles": {
+      "fresh": "FRESCO",
+      "mineral": "MINERAL",
+      "elegant": "ELEGANTE",
+      "structured": "ESTRUCTURADO",
+      "aromatic": "AROMÁTICO",
+      "soft": "SUAVE"
+    },
+    "foods": {
+      "raw": "CRUDOS",
+      "fish": "PESCADO",
+      "pasta": "PASTA",
+      "meat": "CARNE",
+      "vegetables": "VEGETALES",
+      "dessert": "POSTRE"
+    },
+    "countries": {
+      "all": "TODOS",
+      "italy": "ITALIA",
+      "france": "FRANCIA",
+      "spain": "ESPAÑA"
+    },
+    "results": "HEMOS ELEGIDO PARA TI",
+    "noResults": "Ninguna botella coincide exactamente. Prueba a cambiar una opción.",
+    "perfectWith": "PERFECTO CON",
+    "facts": {
+      "denomination": "DENOMINACIÓN",
+      "grapes": "UVAS",
+      "vintage": "AÑADA",
+      "dosage": "DOSAGE",
+      "aging": "CRIANZA",
+      "format": "FORMATO"
+    },
+    "profile": "TU PERFIL",
+    "choose": "ELEGIR",
+    "searching": "BUSCANDO EN NUESTRA BODEGA…",
+    "resultEyebrow": "NUESTRA ELECCIÓN PARA TI",
+    "reason": "La botella que mejor interpreta el carácter y el maridaje que has elegido.",
+    "alternatives": "OTRAS ETIQUETAS QUE PODRÍAN GUSTARTE",
+    "discoverWine": "DESCUBRE EL VINO",
+    "restart": "EMPEZAR DE NUEVO",
+    "previousPhoto": "Foto anterior",
+    "nextPhoto": "Foto siguiente"
+  }
+}

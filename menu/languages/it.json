@@ -1,0 +1,89 @@
+{
+  "menu": {
+    "title": "Il Menu",
+    "intro": "Una cucina mediterranea contemporanea, tra mare e terra.",
+    "wineTitle": "Scopri la nostra selezione di vini",
+    "explore": "ESPLORA →",
+    "ingredients": "INGREDIENTI",
+    "allergens": "ALLERGENI",
+    "pairings": "ABBINALO CON",
+    "before": "PRIMA POTREBBE PIACERTI",
+    "after": "PER CONTINUARE",
+    "noAllergens": "Nessun allergene dichiarato",
+    "close": "Chiudi",
+    "foodMenu": "MENU CIBO",
+    "wineList": "CARTA VINI",
+    "previousPhoto": "Foto precedente",
+    "nextPhoto": "Foto successiva"
+  },
+  "wine": {
+    "title": "La Carta Vini",
+    "intro": "Una selezione pensata per accompagnare la nostra cucina, tra territorio e grandi denominazioni.",
+    "foodMenu": "MENU CIBO",
+    "wineList": "CARTA VINI",
+    "entryList": "CARTA DEI VINI",
+    "entryListText": "Esplora la selezione completa",
+    "entryGuide": "TROVA IL VINO GIUSTO",
+    "entryGuideText": "Lasciati guidare dal nostro Wine Guide",
+    "back": "CARTA VINI",
+    "catalogEyebrow": "LA SELEZIONE",
+    "catalogTitle": "Carta dei Vini",
+    "categories": {
+      "sparkling": "BOLLICINE",
+      "white": "BIANCHI",
+      "red": "ROSSI",
+      "rose": "ROSATI"
+    },
+    "all": "TUTTI",
+    "guideTitle": "Trova il vino giusto",
+    "guideIntro": "Tre domande per trovare le bottiglie più adatte al tuo gusto e a ciò che mangerai.",
+    "questions": [
+      "Cosa vuoi bere?",
+      "Che carattere cerchi?",
+      "Cosa mangerai?"
+    ],
+    "styles": {
+      "fresh": "FRESCO",
+      "mineral": "MINERALE",
+      "elegant": "ELEGANTE",
+      "structured": "STRUTTURATO",
+      "aromatic": "AROMATICO",
+      "soft": "MORBIDO"
+    },
+    "foods": {
+      "raw": "CRUDI",
+      "fish": "PESCE",
+      "pasta": "PASTA",
+      "meat": "CARNE",
+      "vegetables": "VEGETALI",
+      "dessert": "DOLCE"
+    },
+    "countries": {
+      "all": "TUTTI",
+      "italy": "ITALIA",
+      "france": "FRANCIA",
+      "spain": "SPAGNA"
+    },
+    "results": "PER TE ABBIAMO SCELTO",
+    "noResults": "Nessuna bottiglia corrisponde esattamente. Prova a cambiare una scelta.",
+    "perfectWith": "PERFETTO CON",
+    "facts": {
+      "denomination": "DENOMINAZIONE",
+      "grapes": "UVE",
+      "vintage": "ANNATA",
+      "dosage": "DOSAGGIO",
+      "aging": "AFFINAMENTO",
+      "format": "FORMATO"
+    },
+    "profile": "IL TUO PROFILO",
+    "choose": "SCEGLI",
+    "searching": "STIAMO CERCANDO NELLA NOSTRA CANTINA…",
+    "resultEyebrow": "LA NOSTRA SCELTA PER TE",
+    "reason": "La bottiglia che meglio interpreta il carattere e l’abbinamento che hai scelto.",
+    "alternatives": "ALTRE ETICHETTE CHE POTREBBERO PIACERTI",
+    "discoverWine": "SCOPRI IL VINO",
+    "restart": "RICOMINCIA",
+    "previousPhoto": "Foto precedente",
+    "nextPhoto": "Foto successiva"
+  }
+}

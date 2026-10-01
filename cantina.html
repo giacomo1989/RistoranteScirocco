@@ -1,10 +1,10 @@
 <!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="La cucina di Scirocco" id="metaDescription"><title>Scirocco | La Cucina</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/style.css"></head><body class="cuisine-page">
-<header class="header" id="header"><a class="brand" href="index.html"><span>SCIROCCO</span><small>CUCINA MEDITERRANEA</small></a><nav class="nav" id="nav"><a href="index.html" data-i18n="nav.home"></a><a href="index.html#ristorante" data-i18n="nav.ristorante"></a><a href="menu.html" data-i18n="nav.menu"></a><a href="index.html#contatti" data-i18n="nav.contatti"></a><div class="mobile-language-switcher language-switcher"><button data-lang="it">IT</button><span>·</span><button data-lang="en">EN</button><span>·</span><button data-lang="es">ES</button></div></nav><div class="desktop-language-switcher language-switcher"><button data-lang="it">IT</button><span>·</span><button data-lang="en">EN</button><span>·</span><button data-lang="es">ES</button></div><a class="mobile-menu-link" href="menu.html" data-i18n="nav.menu"></a><a class="btn btn-outline header-book" href="index.html#prenota" data-i18n="nav.book"></a><button class="menu-toggle" id="menuToggle" aria-label="Apri menu"><span></span><span></span></button></header>
+<header class="header" id="header"><a class="brand" href="index.html"><span>SCIROCCO</span><small>CUCINA MEDITERRANEA</small></a><nav class="nav" id="nav"><a href="index.html" data-i18n="nav.home"></a><a href="menu/menu.html" data-i18n="nav.menu"></a><a href="index.html#contatti" data-i18n="nav.contatti"></a><div class="mobile-language-switcher language-switcher"><button data-lang="it">IT</button><span>·</span><button data-lang="en">EN</button><span>·</span><button data-lang="es">ES</button></div></nav><div class="desktop-language-switcher language-switcher"><button data-lang="it">IT</button><span>·</span><button data-lang="en">EN</button><span>·</span><button data-lang="es">ES</button></div><a class="mobile-menu-link" href="menu/menu.html" data-i18n="nav.menu"></a><a class="btn btn-outline header-book" href="index.html#prenota" data-i18n="nav.book"></a><button class="menu-toggle" id="menuToggle" aria-label="Apri menu"><span></span><span></span></button></header>
 <main class="cantina-page">
 <section class="cantina-hero">
 <a href="index.html#ristorante" class="sea-back" aria-label="Torna al ristorante">←</a>
-<nav class="cantina-side-nav"><a href="#territori">01 TERRITORI</a><a href="#bollicine">02 BOLLICINE</a><a href="#wine-finder">03 TROVA IL TUO VINO</a><a href="#produttori">04 PRODUTTORI</a></nav>
-<div class="cantina-hero-copy"><p class="eyebrow">LA CANTINA</p><h1>Ogni bottiglia<br>racconta un luogo.</h1></div>
+<nav class="cantina-side-nav"><a href="#territori">01 TERRITORI</a><a href="#bollicine">02 BOLLICINE</a><a href="#produttori">03 PRODUTTORI</a></nav>
+<div class="cantina-hero-copy"><p class="eyebrow">LA CANTINA</p><h1>Ogni bottiglia<br>racconta un luogo.</h1><a class="btn btn-outline cantina-hero-wine-cta" href="menu/vini.html">SCOPRI LA CARTA DEI VINI →</a></div>
 </section>
 
 
@@ -26,26 +26,17 @@
 <div class="bubble-stage">
 <button class="bubble-arrow prev" type="button" aria-label="Precedente">←</button>
 <div class="bubble-visual"></div>
-<div class="bubble-copy"><span class="bubble-count">01 / 05</span><h3>CHAMPAGNE</h3><p class="bubble-place">Francia</p><p class="bubble-desc">Eleganza, tensione e profondità. Maison storiche e piccoli vigneron selezionati.</p><a class="bubble-link" href="menu.html?vino=champagne">SCOPRI LA SELEZIONE →</a></div>
+<div class="bubble-copy"><span class="bubble-count">01 / 05</span><h3>CHAMPAGNE</h3><p class="bubble-place">Francia</p><p class="bubble-desc">Eleganza, tensione e profondità. Maison storiche e piccoli vigneron selezionati.</p><a class="bubble-link" href="menu/vini.html?vino=champagne">SCOPRI LA SELEZIONE →</a></div>
 <button class="bubble-arrow next" type="button" aria-label="Successivo">→</button>
 </div>
 <div class="bubble-tabs"><button class="active" data-i="0">CHAMPAGNE</button><button data-i="1">TRENTODOC</button><button data-i="2">FRANCIACORTA</button><button data-i="3">METODO CLASSICO</button><button data-i="4">CAVA / CORPINNAT</button></div>
 </section>
 
-<section class="wine-guide" id="wine-finder">
-<div class="wine-guide-head"><p class="eyebrow">TROVA IL VINO GIUSTO</p><h2>Lasciati guidare.</h2><p>Tre domande. Una selezione costruita intorno ai tuoi gusti e al tuo piatto.</p></div>
-<div class="wine-step active" data-step="1"><span>01 / 03</span><h3>Cosa vuoi bere?</h3><div class="wine-options"><button data-key="tipo" data-value="bollicine">Bollicine</button><button data-key="tipo" data-value="bianco">Bianco</button><button data-key="tipo" data-value="rosso">Rosso</button><button data-key="tipo" data-value="rosato">Rosato</button></div></div>
-<div class="wine-step" data-step="2"><button type="button" class="wine-inline-back" aria-label="Torna alla scelta precedente">‹ INDIETRO</button><span>02 / 03</span><h3>Che carattere cerchi?</h3><div class="wine-options"><button data-key="profilo" data-value="fresco">Fresco</button><button data-key="profilo" data-value="minerale">Minerale</button><button data-key="profilo" data-value="elegante">Elegante</button><button data-key="profilo" data-value="strutturato">Strutturato</button><button data-key="profilo" data-value="aromatico">Aromatico</button></div></div>
-<div class="wine-step" data-step="3"><button type="button" class="wine-inline-back" aria-label="Torna alla scelta precedente">‹ INDIETRO</button><span>03 / 03</span><h3>Cosa mangerai?</h3><div class="wine-options"><button data-key="pairing" data-value="crudi">Crudi</button><button data-key="pairing" data-value="pesce">Pesce</button><button data-key="pairing" data-value="pasta">Pasta</button><button data-key="pairing" data-value="carne">Carne</button><button data-key="pairing" data-value="vegetali">Vegetali</button></div></div>
-<div class="wine-result"><span>LA TUA SELEZIONE</span><h3>Abbiamo trovato i vini per te.</h3><p>Una selezione coerente con le tue preferenze è pronta nella carta digitale.</p><a id="guidedWineLink" href="menu.html?sezione=vini">VEDI I VINI CONSIGLIATI →</a><button id="restartWine" type="button">RICOMINCIA</button></div>
-<div class="wine-progress"><i></i></div>
-</section>
 
 <section class="producer-story" id="produttori">
 <div class="producer-photo"></div>
-<div class="producer-story-copy"><p class="eyebrow">STORIE DI VIGNA</p><span class="producer-index">01 / 03</span><h2>Piccoli produttori</h2><p class="producer-place">Italia</p><p class="producer-desc">Vigne, persone e territori. Selezioniamo produttori capaci di raccontare il proprio luogo con identità e precisione.</p><a href="menu.html?sezione=vini">SCOPRI LA SELEZIONE →</a><div class="producer-nav"><button type="button" class="prod-prev">←</button><button type="button" class="prod-next">→</button></div></div>
+<div class="producer-story-copy"><p class="eyebrow">STORIE DI VIGNA</p><span class="producer-index">01 / 03</span><h2>Piccoli produttori</h2><p class="producer-place">Italia</p><p class="producer-desc">Vigne, persone e territori. Selezioniamo produttori capaci di raccontare il proprio luogo con identità e precisione.</p><a href="menu/vini.html">SCOPRI LA SELEZIONE →</a><div class="producer-nav"><button type="button" class="prod-prev">←</button><button type="button" class="prod-next">→</button></div></div>
 </section>
-<section class="cantina-final"><div><p class="eyebrow">TUTTE LE NOSTRE ETICHETTE</p><h2>Scopri la carta dei vini</h2><a class="btn btn-outline" href="menu.html?sezione=vini">VEDI LA CARTA DEI VINI →</a></div></section>
 <script>
 (()=>{
 const data={
@@ -153,8 +144,8 @@ function renderBottleSelection(id){
    <h3>${label(id)}</h3>
    <p>${list.length?list.length+' etichette in evidenza':'La selezione completa è disponibile nella carta dei vini.'}</p>
  </div>
- <div class="bottle-grid">${list.map(x=>`<article class="wine-card"><span>${x[0]}</span><h4>${x[1]}</h4><p>${x[2]}</p><strong>${x[3]}</strong><a href="menu.html?sezione=vini&zona=${id}">SCOPRI →</a></article>`).join('')||`<article class="wine-card wine-card-empty"><h4>Scopri la selezione</h4><p>Apri la carta vini già filtrata su ${label(id)}.</p></article>`}</div>
- <a class="all-wines-link" href="menu.html?sezione=vini&tipo=${path[0]}&paese=${path[1]}&zona=${id}">VEDI TUTTA LA SELEZIONE →</a>`;
+ <div class="bottle-grid">${list.map(x=>`<article class="wine-card"><span>${x[0]}</span><h4>${x[1]}</h4><p>${x[2]}</p><strong>${x[3]}</strong><a href="menu/vini.html?zona=${id}">SCOPRI →</a></article>`).join('')||`<article class="wine-card wine-card-empty"><h4>Scopri la selezione</h4><p>Apri la carta vini già filtrata su ${label(id)}.</p></article>`}</div>
+ <a class="all-wines-link" href="menu/vini.html?tipo=${path[0]}&paese=${path[1]}&zona=${id}">VEDI TUTTA LA SELEZIONE →</a>`;
 }
 back.addEventListener('click',()=>{
  if(path.length===2){path=path.slice(0,1);render()}
@@ -169,19 +160,18 @@ const bubbles=[
 ['CAVA / CORPINNAT','Catalogna · Spagna','Il volto contemporaneo delle bollicine catalane, tra tradizione, territorio e ricerca.','corpinnat']
 ]; let bi=0;
 const stage=document.querySelector('.bubble-stage'), tabs=[...document.querySelectorAll('.bubble-tabs button')];
-function renderBubble(){const x=bubbles[bi];stage.querySelector('.bubble-count').textContent=String(bi+1).padStart(2,'0')+' / 05';stage.querySelector('h3').textContent=x[0];stage.querySelector('.bubble-place').textContent=x[1];stage.querySelector('.bubble-desc').textContent=x[2];stage.querySelector('.bubble-link').href='menu.html?vino='+x[3];tabs.forEach((t,i)=>t.classList.toggle('active',i===bi))}
+function renderBubble(){const x=bubbles[bi];stage.querySelector('.bubble-count').textContent=String(bi+1).padStart(2,'0')+' / 05';stage.querySelector('h3').textContent=x[0];stage.querySelector('.bubble-place').textContent=x[1];stage.querySelector('.bubble-desc').textContent=x[2];stage.querySelector('.bubble-link').href='menu/vini.html?vino='+x[3];tabs.forEach((t,i)=>t.classList.toggle('active',i===bi))}
 document.querySelector('.bubble-arrow.next').addEventListener('click',()=>{bi=(bi+1)%bubbles.length;renderBubble()});document.querySelector('.bubble-arrow.prev').addEventListener('click',()=>{bi=(bi+bubbles.length-1)%bubbles.length;renderBubble()});tabs.forEach((t,i)=>t.addEventListener('click',()=>{bi=i;renderBubble()}));
 
-const guide=document.querySelector('.wine-guide'), steps=[...guide.querySelectorAll('.wine-step')], result=guide.querySelector('.wine-result'), state={};let step=0;
-function showStep(n){steps.forEach((x,i)=>x.classList.toggle('active',i===n));result.classList.toggle('active',n===3);guide.querySelector('.wine-progress i').style.width=(Math.min(n+1,3)/3*100)+'%'}
-guide.querySelectorAll('.wine-options button').forEach(btn=>btn.addEventListener('click',()=>{state[btn.dataset.key]=btn.dataset.value;document.getElementById('guidedWineLink').href='menu.html?'+new URLSearchParams({sezione:'vini',...state});step=Math.min(step+1,3);showStep(step)}));
-guide.querySelectorAll('.wine-inline-back').forEach(btn=>btn.addEventListener('click',()=>{
- step=Math.max(0,step-1);
- showStep(step);
-}));document.getElementById('restartWine').addEventListener('click',()=>{step=0;showStep(0)});
 
 const producers=[['Piccoli produttori','Italia','Vigne, persone e territori. Selezioniamo produttori capaci di raccontare il proprio luogo con identità e precisione.'],['Maison e vigneron','Francia','Dalle maison storiche ai récoltant-manipulant: interpreti diversi, accomunati dalla capacità di far parlare il terroir.'],['Nuove visioni','Spagna','Una generazione di produttori che unisce vigne antiche, identità locale e una lettura contemporanea del vino.']];let pi=0;const ps=document.querySelector('.producer-story');function rp(){const x=producers[pi];ps.querySelector('.producer-index').textContent=String(pi+1).padStart(2,'0')+' / 03';ps.querySelector('h2').textContent=x[0];ps.querySelector('.producer-place').textContent=x[1];ps.querySelector('.producer-desc').textContent=x[2]}ps.querySelector('.prod-next').addEventListener('click',()=>{pi=(pi+1)%3;rp()});ps.querySelector('.prod-prev').addEventListener('click',()=>{pi=(pi+2)%3;rp()});
 })();
 </script>
 </main>
-<footer id="contatti"><div><div class="footer-brand">SCIROCCO</div><p data-i18n="footer.tagline"></p></div><div><p class="eyebrow" data-i18n="footer.contacts"></p><p><span data-i18n="footer.location"></span><br>+39 000 000 0000<br>info@scirocco.example</p></div><div><p class="eyebrow" data-i18n="footer.hours"></p><p><span data-i18n="footer.days"></span><br><span data-i18n="footer.time"></span></p></div><div><p class="eyebrow" data-i18n="footer.follow"></p><p>Instagram · Facebook</p></div></footer><script src="assets/js/i18n.js"></script><script src="assets/js/main.js"></script></body></html>
+<footer id="contatti"><div><div class="footer-brand">SCIROCCO</div><p data-i18n="footer.tagline"></p></div><div><p class="eyebrow" data-i18n="footer.contacts"></p><p><span data-i18n="footer.location"></span><br>+39 000 000 0000<br>info@scirocco.example</p></div><div><p class="eyebrow" data-i18n="footer.hours"></p><p><span data-i18n="footer.days"></span><br><span data-i18n="footer.time"></span></p></div><div><p class="eyebrow" data-i18n="footer.follow"></p><a class="instagram-link" href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                    <circle cx="12" cy="12" r="4.2"></circle>
+                    <circle cx="17.4" cy="6.7" r="1"></circle>
+                </svg>
+            </a></div></footer><script src="assets/js/i18n.js"></script><script src="assets/js/main.js"></script></body></html>
