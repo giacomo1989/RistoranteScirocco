@@ -192,3 +192,25 @@
 .language-choice input:checked::before{transform:scale(1)}
 .language-choice input:disabled{opacity:.58;cursor:default}
 .language-choice:has(input:checked){border-color:#b9ad9f;background:#f1ebe3}
+
+
+/* Admin V26 — proprietary GIACOMO Wine Catalog */
+.wine-catalog-tools{background:var(--admin-surface-soft,#f7f2ea);border:1px solid var(--admin-border,#ddd4c8)}
+.catalog-help{margin:5px 0 0;max-width:690px;color:#7b7166;font:400 11px/1.55 Inter,sans-serif}
+.catalog-actions{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;margin-top:16px;align-items:stretch}.catalog-search-wrap{display:grid;grid-template-columns:1fr auto;gap:8px}.catalog-search-wrap input{min-width:0}.catalog-scan-btn{min-height:42px;border:1px solid #302c27;background:#302c27;color:#f5efe6;padding:0 15px;display:flex;align-items:center;gap:8px;cursor:pointer}.catalog-scan-btn input{display:none}.catalog-scan-btn b{font:600 9px/1 Inter,sans-serif;letter-spacing:.11em}.catalog-camera{font-size:20px;font-weight:300;transform:rotate(-20deg)}
+.catalog-results{margin-top:12px;border-top:1px solid #ddd4c8;padding-top:10px}.catalog-result-message{margin:0 0 8px;color:#7c7268;font:600 8px/1.4 Inter,sans-serif;letter-spacing:.1em}.catalog-match{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;text-align:left;border:0;border-bottom:1px solid #e3dbd0;background:transparent;padding:11px 4px;cursor:pointer}.catalog-match:hover{background:rgba(45,41,36,.035)}.catalog-match span{display:grid;gap:2px}.catalog-match b,.catalog-match strong{font:500 12px/1.25 Inter,sans-serif}.catalog-match strong{font-family:"Cormorant Garamond",serif;font-size:18px}.catalog-match small{font:400 10px/1.4 Inter,sans-serif;color:#7d746a}.catalog-match em{font:600 8px/1 Inter,sans-serif;letter-spacing:.1em;font-style:normal;color:#81766b;white-space:nowrap}.catalog-empty,.catalog-scanning{display:grid;gap:6px;padding:13px 4px}.catalog-empty b,.catalog-scanning b{font:600 9px Inter,sans-serif;letter-spacing:.11em}.catalog-empty span,.catalog-scanning small{font:400 11px/1.5 Inter,sans-serif;color:#7b7166}.catalog-scanning span{width:24px;height:1px;background:#302c27;animation:catalogPulse 1s ease-in-out infinite}@keyframes catalogPulse{50%{width:64px;opacity:.35}}
+@media(max-width:760px){.catalog-actions{grid-template-columns:1fr}.catalog-scan-btn{justify-content:center}.catalog-search-wrap{grid-template-columns:1fr}.catalog-match{align-items:flex-start}.catalog-match em{margin-top:5px}}
+
+/* Admin V27 — mobile label acquisition + honest Vision state */
+.catalog-file-input{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}
+.catalog-scan-btn{font-family:inherit}
+.catalog-vision-off{border-left:2px solid var(--admin-text,#302c27);padding-left:12px}
+.wine-scan-chooser{width:min(430px,calc(100vw - 28px))}
+.wine-scan-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0 14px}
+.wine-scan-option{appearance:none;border:1px solid var(--admin-border,#d8cec1);background:var(--admin-surface-soft,#f7f2ea);min-height:128px;padding:18px 14px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;cursor:pointer;color:var(--admin-text,#302c27);transition:transform .16s ease,background .16s ease,border-color .16s ease}
+.wine-scan-option:hover{transform:translateY(-1px);background:#f1e9df;border-color:#b9ad9f}
+.wine-scan-option span{font:300 28px/1 Inter,sans-serif;margin-bottom:15px}
+.wine-scan-option b{font:600 9px/1.25 Inter,sans-serif;letter-spacing:.1em}
+.wine-scan-option small{margin-top:6px;color:#7b7166;font:400 10px/1.35 Inter,sans-serif}
+.wine-scan-cancel{width:100%}
+@media(max-width:760px){.wine-scan-options{grid-template-columns:1fr}.wine-scan-option{min-height:92px;display:grid;grid-template-columns:38px 1fr;grid-template-rows:auto auto;column-gap:10px;justify-content:stretch}.wine-scan-option span{grid-row:1/3;margin:0;align-self:center}.wine-scan-option small{margin-top:4px}}
