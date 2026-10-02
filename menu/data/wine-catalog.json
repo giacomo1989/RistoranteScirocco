@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 1,
+  "description": "GIACOMO Wine Catalog — seed locale indipendente dalle carte dei ristoranti",
+  "wines": [
+    {
+      "id": "ferrari-perle-2019",
+      "type": "sparkling",
+      "country": "italy",
+      "region": "Trentino",
+      "denomination": "Trentodoc",
+      "producer": "Ferrari",
+      "vintage": "2019",
+      "grapes": [
+        "Chardonnay"
+      ],
+      "dosage": "Brut",
+      "aging": "60 mesi sui lieviti",
+      "format": "75 cl",
+      "name": {
+        "it": "Perlé",
+        "en": "Perlé",
+        "es": "Perlé"
+      },
+      "shortDescription": {
+        "it": "Chardonnay di montagna, fine e verticale.",
+        "en": "Mountain Chardonnay, refined and vertical.",
+        "es": "Chardonnay de montaña, fino y vertical."
+      },
+      "description": {
+        "it": "Metodo classico di grande equilibrio, con note agrumate, floreali e una trama minerale precisa.",
+        "en": "A balanced traditional-method sparkling wine with citrus, floral notes and a precise mineral texture.",
+        "es": "Método clásico de gran equilibrio, con notas cítricas, florales y una trama mineral precisa."
+      },
+      "image": "assets/images/cantina/cantina-bollicine.jpg",
+      "catalogId": "gmw-ferrari-perle-2019",
+      "searchAliases": [
+        "Ferrari",
+        "Perlé",
+        "Trentodoc"
+      ]
+    },
+    {
+      "id": "cesconi-blauwal",
+      "type": "sparkling",
+      "country": "italy",
+      "region": "Trentino",
+      "denomination": "Trentodoc",
+      "producer": "Cesconi",
+      "vintage": "NV",
+      "grapes": [
+        "Chardonnay",
+        "Pinot Nero"
+      ],
+      "dosage": "Brut",
+      "aging": "Metodo Classico",
+      "format": "75 cl",
+      "name": {
+        "it": "Blauwal",
+        "en": "Blauwal",
+        "es": "Blauwal"
+      },
+      "shortDescription": {
+        "it": "Teso, fresco e minerale.",
+        "en": "Tense, fresh and mineral.",
+        "es": "Tenso, fresco y mineral."
+      },
+      "description": {
+        "it": "Una bollicina trentina agile e gastronomica, costruita su freschezza e precisione.",
+        "en": "An agile, gastronomic Trentino sparkling wine built around freshness and precision.",
+        "es": "Un espumoso trentino ágil y gastronómico, basado en frescura y precisión."
+      },
+      "image": "assets/images/cantina/cantina-bollicine.jpg",
+      "catalogId": "gmw-cesconi-blauwal",
+      "searchAliases": [
+        "Cesconi",
+        "Blauwal",
+        "Trentodoc"
+      ]
+    },
+    {
+      "id": "gimonnet-bdb",
+      "type": "sparkling",
+      "country": "france",
+      "region": "Champagne",
+      "denomination": "Champagne",
+      "producer": "Pierre Gimonnet & Fils",
+      "vintage": "NV",
+      "grapes": [
+        "Chardonnay"
+      ],
+      "dosage": "Brut",
+      "aging": "Sur lies",
+      "format": "75 cl",
+      "name": {
+        "it": "Blanc de Blancs",
+        "en": "Blanc de Blancs",
+        "es": "Blanc de Blancs"
+      },
+      "shortDescription": {
+        "it": "Chardonnay puro, gessoso e raffinato.",
+        "en": "Pure Chardonnay, chalky and refined.",
+        "es": "Chardonnay puro, calcáreo y refinado."
+      },
+      "description": {
+        "it": "Champagne Blanc de Blancs elegante, luminoso e minerale, ideale con crudi e crostacei.",
+        "en": "Elegant, bright and mineral Blanc de Blancs Champagne, ideal with raw seafood and shellfish.",
+        "es": "Champagne Blanc de Blancs elegante, luminoso y mineral, ideal con crudos y mariscos."
+      },
+      "image": "assets/images/cantina/cantina-bollicine.jpg",
+      "catalogId": "gmw-gimonnet-bdb",
+      "searchAliases": [
+        "Pierre Gimonnet & Fils",
+        "Blanc de Blancs",
+        "Champagne"
+      ]
+    },
+    {
+      "id": "corpinnat-brut-nature",
+      "type": "sparkling",
+      "country": "spain",
+      "region": "Penedès",
+      "denomination": "Corpinnat",
+      "producer": "Gramona",
+      "vintage": "NV",
+      "grapes": [
+        "Xarel·lo",
+        "Macabeo"
+      ],
+      "dosage": "Brut Nature",
+      "aging": "Lunga permanenza sui lieviti",
+      "format": "75 cl",
+      "name": {
+        "it": "Brut Nature",
+        "en": "Brut Nature",
+        "es": "Brut Nature"
+      },
+      "shortDescription": {
+        "it": "Mediterraneo, secco e profondo.",
+        "en": "Mediterranean, dry and deep.",
+        "es": "Mediterráneo, seco y profundo."
+      },
+      "description": {
+        "it": "Profilo secco e mediterraneo, con frutto maturo, erbe e una chiusura sapida.",
+        "en": "Dry Mediterranean profile with ripe fruit, herbs and a savoury finish.",
+        "es": "Perfil seco y mediterráneo, con fruta madura, hierbas y final sabroso."
+      },
+      "image": "assets/images/cantina/cantina-bollicine.jpg",
+      "catalogId": "gmw-corpinnat-brut-nature",
+      "searchAliases": [
+        "Gramona",
+        "Brut Nature",
+        "Corpinnat"
+      ]
+    },
+    {
+      "id": "vermentino-salento",
+      "type": "white",
+      "country": "italy",
+      "region": "Puglia",
+      "denomination": "Salento IGP",
+      "producer": "Masseria del Vento",
+      "vintage": "2025",
+      "grapes": [
+        "Vermentino"
+      ],
+      "format": "75 cl",
+      "name": {
+        "it": "Levante",
+        "en": "Levante",
+        "es": "Levante"
+      },
+      "shortDescription": {
+        "it": "Agrumi, macchia mediterranea e sale.",
+        "en": "Citrus, Mediterranean herbs and salinity.",
+        "es": "Cítricos, monte mediterráneo y salinidad."
+      },
+      "description": {
+        "it": "Bianco fresco e mediterraneo, pensato per antipasti di mare e primi delicati.",
+        "en": "Fresh Mediterranean white designed for seafood starters and delicate pasta dishes.",
+        "es": "Blanco fresco y mediterráneo, pensado para entrantes de mar y pastas delicadas."
+      },
+      "image": "assets/images/cantina/cantina-bianchi.jpg",
+      "catalogId": "gmw-vermentino-salento",
+      "searchAliases": [
+        "Masseria del Vento",
+        "Levante",
+        "Salento IGP"
+      ]
+    },
+    {
+      "id": "chardonnay-puglia",
+      "type": "white",
+      "country": "italy",
+      "region": "Puglia",
+      "denomination": "Puglia IGP",
+      "producer": "Tenuta Scirocco",
+      "vintage": "2024",
+      "grapes": [
+        "Chardonnay"
+      ],
+      "format": "75 cl",
+      "name": {
+        "it": "Pietra Bianca",
+        "en": "Pietra Bianca",
+        "es": "Pietra Bianca"
+      },
+      "shortDescription": {
+        "it": "Ampio, elegante, dalla trama cremosa.",
+        "en": "Broad, elegant, with a creamy texture.",
+        "es": "Amplio, elegante y de textura cremosa."
+      },
+      "description": {
+        "it": "Chardonnay mediterraneo di buona struttura, con frutto giallo e finale sapido.",
+        "en": "Structured Mediterranean Chardonnay with yellow fruit and a savoury finish.",
+        "es": "Chardonnay mediterráneo estructurado, con fruta amarilla y final sabroso."
+      },
+      "image": "assets/images/cantina/cantina-bianchi.jpg",
+      "catalogId": "gmw-chardonnay-puglia",
+      "searchAliases": [
+        "Tenuta Scirocco",
+        "Pietra Bianca",
+        "Puglia IGP"
+      ]
+    },
+    {
+      "id": "negroamaro-riserva",
+      "type": "red",
+      "country": "italy",
+      "region": "Puglia",
+      "denomination": "Salice Salentino DOC",
+      "producer": "Tenuta Scirocco",
+      "vintage": "2022",
+      "grapes": [
+        "Negroamaro"
+      ],
+      "format": "75 cl",
+      "name": {
+        "it": "Terra Rossa Riserva",
+        "en": "Terra Rossa Riserva",
+        "es": "Terra Rossa Riserva"
+      },
+      "shortDescription": {
+        "it": "Scuro, mediterraneo e vellutato.",
+        "en": "Dark, Mediterranean and velvety.",
+        "es": "Oscuro, mediterráneo y aterciopelado."
+      },
+      "description": {
+        "it": "Rosso salentino profondo, con frutto scuro, spezie ed equilibrio tra struttura e freschezza.",
+        "en": "Deep Salento red with dark fruit, spices and a balance of structure and freshness.",
+        "es": "Tinto salentino profundo, con fruta oscura, especias y equilibrio entre estructura y frescura."
+      },
+      "image": "assets/images/cantina/cantina-rossi.jpg",
+      "catalogId": "gmw-negroamaro-riserva",
+      "searchAliases": [
+        "Tenuta Scirocco",
+        "Terra Rossa Riserva",
+        "Salice Salentino DOC"
+      ]
+    },
+    {
+      "id": "primitivo-manduria",
+      "type": "red",
+      "country": "italy",
+      "region": "Puglia",
+      "denomination": "Primitivo di Manduria DOC",
+      "producer": "Masseria del Vento",
+      "vintage": "2023",
+      "grapes": [
+        "Primitivo"
+      ],
+      "format": "75 cl",
+      "name": {
+        "it": "Maestrale",
+        "en": "Maestrale",
+        "es": "Maestrale"
+      },
+      "shortDescription": {
+        "it": "Ricco, speziato e avvolgente.",
+        "en": "Rich, spicy and enveloping.",
+        "es": "Rico, especiado y envolvente."
+      },
+      "description": {
+        "it": "Primitivo intenso ma equilibrato, con frutto maturo e spezie dolci.",
+        "en": "Intense yet balanced Primitivo with ripe fruit and sweet spices.",
+        "es": "Primitivo intenso pero equilibrado, con fruta madura y especias dulces."
+      },
+      "image": "assets/images/cantina/cantina-rossi.jpg",
+      "catalogId": "gmw-primitivo-manduria",
+      "searchAliases": [
+        "Masseria del Vento",
+        "Maestrale",
+        "Primitivo di Manduria DOC"
+      ]
+    },
+    {
+      "id": "negroamaro-rosato",
+      "type": "rose",
+      "country": "italy",
+      "region": "Puglia",
+      "denomination": "Salento IGP",
+      "producer": "Tenuta Scirocco",
+      "vintage": "2025",
+      "grapes": [
+        "Negroamaro"
+      ],
+      "format": "75 cl",
+      "name": {
+        "it": "Rosa dei Venti",
+        "en": "Rosa dei Venti",
+        "es": "Rosa dei Venti"
+      },
+      "shortDescription": {
+        "it": "Fresco, salino e delicatamente fruttato.",
+        "en": "Fresh, saline and delicately fruity.",
+        "es": "Fresco, salino y delicadamente afrutado."
+      },
+      "description": {
+        "it": "Rosato salentino gastronomico e versatile, con piccoli frutti rossi e finale sapido.",
+        "en": "Versatile gastronomic Salento rosé with small red fruits and a savoury finish.",
+        "es": "Rosado salentino gastronómico y versátil, con pequeños frutos rojos y final sabroso."
+      },
+      "image": "assets/images/cantina/cantina-rosati.jpg",
+      "catalogId": "gmw-negroamaro-rosato",
+      "searchAliases": [
+        "Tenuta Scirocco",
+        "Rosa dei Venti",
+        "Salento IGP"
+      ]
+    },
+    {
+      "id": "ferrari-maximum-bdb",
+      "type": "sparkling",
+      "country": "italy",
+      "region": "Trentino",
+      "denomination": "Trentodoc",
+      "producer": "Ferrari",
+      "vintage": "NV",
+      "grapes": [
+        "Chardonnay"
+      ],
+      "dosage": "Brut",
+      "aging": "Metodo Classico",
+      "format": "75 cl",
+      "name": {
+        "it": "Maximum Blanc de Blancs",
+        "en": "Maximum Blanc de Blancs",
+        "es": "Maximum Blanc de Blancs"
+      },
+      "shortDescription": {
+        "it": "Chardonnay fresco, fine e luminoso.",
+        "en": "Fresh, refined and bright Chardonnay.",
+        "es": "Chardonnay fresco, fino y luminoso."
+      },
+      "description": {
+        "it": "Bollicina di montagna dal profilo fresco e armonioso, con note agrumate e una trama elegante.",
+        "en": "Mountain sparkling wine with a fresh, harmonious profile, citrus notes and an elegant texture.",
+        "es": "Espumoso de montaña de perfil fresco y armonioso, con notas cítricas y una textura elegante."
+      },
+      "image": "assets/images/cantina/cantina-bollicine.jpg",
+      "catalogId": "gmw-ferrari-maximum-bdb",
+      "searchAliases": [
+        "Ferrari",
+        "Maximum Blanc de Blancs",
+        "Trentodoc"
+      ]
+    },
+    {
+      "id": "ca-del-bosco-cuvee-prestige",
+      "type": "sparkling",
+      "country": "italy",
+      "region": "Lombardia",
+      "denomination": "Franciacorta",
+      "producer": "Ca’ del Bosco",
+      "vintage": "NV",
+      "grapes": [
+        "Chardonnay",
+        "Pinot Nero",
+        "Pinot Bianco"
+      ],
+      "dosage": "Extra Brut",
+      "aging": "Metodo Classico",
+      "format": "75 cl",
+      "name": {
+        "it": "Cuvée Prestige",
+        "en": "Cuvée Prestige",
+        "es": "Cuvée Prestige"
+      },
+      "shortDescription": {
+        "it": "Elegante, cremoso e armonioso.",
+        "en": "Elegant, creamy and harmonious.",
+        "es": "Elegante, cremoso y armonioso."
+      },
+      "description": {
+        "it": "Franciacorta dalla trama fine e avvolgente, con equilibrio tra freschezza, frutto e morbidezza.",
+        "en": "Franciacorta with a fine, enveloping texture, balancing freshness, fruit and softness.",
+        "es": "Franciacorta de textura fina y envolvente, equilibrado entre frescura, fruta y suavidad."
+      },
+      "image": "assets/images/cantina/cantina-bollicine.jpg",
+      "catalogId": "gmw-ca-del-bosco-cuvee-prestige",
+      "searchAliases": [
+        "Ca’ del Bosco",
+        "Cuvée Prestige",
+        "Franciacorta"
+      ]
+    },
+    {
+      "id": "laherte-ultradition",
+      "type": "sparkling",
+      "country": "france",
+      "region": "Champagne",
+      "denomination": "Champagne",
+      "producer": "Laherte Frères",
+      "vintage": "NV",
+      "grapes": [
+        "Pinot Meunier",
+        "Chardonnay",
+        "Pinot Nero"
+      ],
+      "dosage": "Brut",
+      "aging": "Sur lies",
+      "format": "75 cl",
+      "name": {
+        "it": "Ultradition",
+        "en": "Ultradition",
+        "es": "Ultradition"
+      },
+      "shortDescription": {
+        "it": "Champagne gastronomico, fresco e materico.",
+        "en": "Gastronomic Champagne, fresh and textured.",
+        "es": "Champagne gastronómico, fresco y con textura."
+      },
+      "description": {
+        "it": "Champagne di carattere, con frutto nitido, tensione e una struttura adatta alla tavola.",
+        "en": "Characterful Champagne with clear fruit, tension and a structure made for the table.",
+        "es": "Champagne con carácter, fruta nítida, tensión y una estructura pensada para la mesa."
+      },
+      "image": "assets/images/cantina/cantina-bollicine.jpg",
+      "catalogId": "gmw-laherte-ultradition",
+      "searchAliases": [
+        "Laherte Frères",
+        "Ultradition",
+        "Champagne"
+      ]
+    },
+    {
+      "id": "raventos-blanc-de-blancs",
+      "type": "sparkling",
+      "country": "spain",
+      "region": "Penedès",
+      "denomination": "Conca del Riu Anoia",
+      "producer": "Raventós i Blanc",
+      "vintage": "NV",
+      "grapes": [
+        "Macabeo",
+        "Xarel·lo",
+        "Parellada"
+      ],
+      "dosage": "Brut",
+      "aging": "Metodo Classico",
+      "format": "75 cl",
+      "name": {
+        "it": "Blanc de Blancs",
+        "en": "Blanc de Blancs",
+        "es": "Blanc de Blancs"
+      },
+      "shortDescription": {
+        "it": "Mediterraneo, minerale e vibrante.",
+        "en": "Mediterranean, mineral and vibrant.",
+        "es": "Mediterráneo, mineral y vibrante."
+      },
+      "description": {
+        "it": "Metodo classico mediterraneo, teso e sapido, con profilo agrumato e una chiusura minerale.",
+        "en": "Mediterranean traditional-method sparkling wine, taut and savoury, with citrus notes and a mineral finish.",
+        "es": "Espumoso mediterráneo de método tradicional, tenso y sabroso, con notas cítricas y final mineral."
+      },
+      "image": "assets/images/cantina/cantina-bollicine.jpg",
+      "catalogId": "gmw-raventos-blanc-de-blancs",
+      "searchAliases": [
+        "Raventós i Blanc",
+        "Blanc de Blancs",
+        "Conca del Riu Anoia"
+      ]
+    }
+  ]
+}
