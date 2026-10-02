@@ -14,17 +14,19 @@
     "foodMenu": "MENU CIBO",
     "wineList": "CARTA VINI",
     "previousPhoto": "Foto precedente",
-    "nextPhoto": "Foto successiva"
+    "nextPhoto": "Foto successiva",
+    "drinksList": "BEVANDE",
+    "askSommelier": "CHIEDI AL SOMMELIER"
   },
   "wine": {
     "title": "La Carta Vini",
-    "intro": "Una selezione pensata per accompagnare la nostra cucina, tra territorio e grandi denominazioni.",
+    "intro": "Una selezione pensata per accompagnare la nostra cucina",
     "foodMenu": "MENU CIBO",
     "wineList": "CARTA VINI",
     "entryList": "CARTA DEI VINI",
     "entryListText": "Esplora la selezione completa",
-    "entryGuide": "TROVA IL VINO GIUSTO",
-    "entryGuideText": "Lasciati guidare dal nostro Wine Guide",
+    "entryGuide": "IL TUO SOMMELIER",
+    "entryGuideText": "Chiedi consiglio alla nostra cantina intelligente",
     "back": "CARTA VINI",
     "catalogEyebrow": "LA SELEZIONE",
     "catalogTitle": "Carta dei Vini",
@@ -35,8 +37,8 @@
       "rose": "ROSATI"
     },
     "all": "TUTTI",
-    "guideTitle": "Trova il vino giusto",
-    "guideIntro": "Tre domande per trovare le bottiglie più adatte al tuo gusto e a ciò che mangerai.",
+    "guideTitle": "Il tuo Sommelier",
+    "guideIntro": "Raccontami cosa stai cercando. Ti consiglierò qualcosa esclusivamente dalla nostra cantina.",
     "questions": [
       "Cosa vuoi bere?",
       "Che carattere cerchi?",
@@ -83,6 +85,16 @@
     "alternatives": "ALTRE ETICHETTE CHE POTREBBERO PIACERTI",
     "discoverWine": "SCOPRI IL VINO",
     "restart": "RICOMINCIA",
+    "previousPhoto": "Foto precedente",
+    "nextPhoto": "Foto successiva"
+  },
+  "drinks": {
+    "title": "Le Bevande",
+    "intro": "La nostra selezione di bevande, amari, birre, caffetteria e distillati.",
+    "foodMenu": "MENU CIBO",
+    "wineList": "CARTA VINI",
+    "drinksList": "BEVANDE",
+    "close": "Chiudi",
     "previousPhoto": "Foto precedente",
     "nextPhoto": "Foto successiva"
   }

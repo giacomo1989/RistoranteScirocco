@@ -14,7 +14,9 @@
     "foodMenu": "MENÚ COMIDA",
     "wineList": "CARTA DE VINOS",
     "previousPhoto": "Foto anterior",
-    "nextPhoto": "Foto siguiente"
+    "nextPhoto": "Foto siguiente",
+    "drinksList": "BEBIDAS",
+    "askSommelier": "PREGUNTA AL SUMILLER"
   },
   "wine": {
     "title": "La Carta de Vinos",
@@ -23,8 +25,8 @@
     "wineList": "CARTA DE VINOS",
     "entryList": "CARTA DE VINOS",
     "entryListText": "Explora la selección completa",
-    "entryGuide": "ENCUENTRA EL VINO IDEAL",
-    "entryGuideText": "Déjate guiar por nuestro Wine Guide",
+    "entryGuide": "TU SUMILLER",
+    "entryGuideText": "Pide consejo a nuestra bodega inteligente",
     "back": "CARTA DE VINOS",
     "catalogEyebrow": "LA SELECCIÓN",
     "catalogTitle": "Carta de Vinos",
@@ -35,8 +37,8 @@
       "rose": "ROSADOS"
     },
     "all": "TODOS",
-    "guideTitle": "Encuentra el vino ideal",
-    "guideIntro": "Tres preguntas para encontrar las botellas más adecuadas a tu gusto y a lo que comerás.",
+    "guideTitle": "Tu Sumiller",
+    "guideIntro": "Cuéntame qué estás buscando. Te recomendaré únicamente vinos que están realmente en nuestra bodega.",
     "questions": [
       "¿Qué quieres beber?",
       "¿Qué carácter buscas?",
@@ -83,6 +85,16 @@
     "alternatives": "OTRAS ETIQUETAS QUE PODRÍAN GUSTARTE",
     "discoverWine": "DESCUBRE EL VINO",
     "restart": "EMPEZAR DE NUEVO",
+    "previousPhoto": "Foto anterior",
+    "nextPhoto": "Foto siguiente"
+  },
+  "drinks": {
+    "title": "Bebidas",
+    "intro": "Nuestra selección de bebidas, amargos, cervezas, cafetería y destilados.",
+    "foodMenu": "MENÚ COMIDA",
+    "wineList": "CARTA DE VINOS",
+    "drinksList": "BEBIDAS",
+    "close": "Cerrar",
     "previousPhoto": "Foto anterior",
     "nextPhoto": "Foto siguiente"
   }

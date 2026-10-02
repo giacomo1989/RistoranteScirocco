@@ -14,7 +14,9 @@
     "foodMenu": "FOOD MENU",
     "wineList": "WINE LIST",
     "previousPhoto": "Previous photo",
-    "nextPhoto": "Next photo"
+    "nextPhoto": "Next photo",
+    "drinksList": "DRINKS",
+    "askSommelier": "ASK THE SOMMELIER"
   },
   "wine": {
     "title": "The Wine List",
@@ -23,8 +25,8 @@
     "wineList": "WINE LIST",
     "entryList": "THE WINE LIST",
     "entryListText": "Explore the complete selection",
-    "entryGuide": "FIND THE RIGHT WINE",
-    "entryGuideText": "Let our Wine Guide help you choose",
+    "entryGuide": "YOUR SOMMELIER",
+    "entryGuideText": "Ask our intelligent cellar for a recommendation",
     "back": "WINE LIST",
     "catalogEyebrow": "THE SELECTION",
     "catalogTitle": "The Wine List",
@@ -35,8 +37,8 @@
       "rose": "ROSÉ"
     },
     "all": "ALL",
-    "guideTitle": "Find the right wine",
-    "guideIntro": "Three questions to find bottles suited to your taste and your food.",
+    "guideTitle": "Your Sommelier",
+    "guideIntro": "Tell me what you are looking for. I will recommend only wines that are actually in our cellar.",
     "questions": [
       "What would you like to drink?",
       "What character are you looking for?",
@@ -83,6 +85,16 @@
     "alternatives": "OTHER LABELS YOU MAY LIKE",
     "discoverWine": "DISCOVER THE WINE",
     "restart": "START AGAIN",
+    "previousPhoto": "Previous photo",
+    "nextPhoto": "Next photo"
+  },
+  "drinks": {
+    "title": "Drinks",
+    "intro": "Our selection of drinks, bitters, beers, coffee and spirits.",
+    "foodMenu": "FOOD MENU",
+    "wineList": "WINE LIST",
+    "drinksList": "DRINKS",
+    "close": "Close",
     "previousPhoto": "Previous photo",
     "nextPhoto": "Next photo"
   }

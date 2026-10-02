@@ -1,0 +1,31 @@
+/* GIACOMO MENU — shared design tokens
+   Restaurant branding belongs here / restaurant.json, never in component CSS. */
+:root{
+  --gm-bg:#f3efe7;
+  --gm-surface:#f4f0e8;
+  --gm-surface-2:#eee8dc;
+  --gm-surface-3:#e7dfd2;
+  --gm-text:#1b1a18;
+  --gm-text-strong:#1b1b19;
+  --gm-muted:#716b62;
+  --gm-muted-2:#817a70;
+  --gm-line:rgba(27,26,24,.18);
+  --gm-accent:#c6a96b;
+  --gm-accent-strong:#9a7a3e;
+  --gm-dark:#11110e;
+  --gm-dark-soft:#181815;
+  --gm-dark-raised:#24241f;
+  --gm-on-dark:#f3efe7;
+  --gm-on-dark-muted:rgba(243,239,231,.62);
+  --gm-success:#667c67;
+  --gm-danger:#9a4037;
+  --gm-overlay:rgba(14,13,11,.58);
+  --gm-white:#fff;
+  --gm-font-display:'Cormorant Garamond',serif;
+  --gm-font-body:'Inter',sans-serif;
+  --gm-radius:0px;
+  --gm-radius-sheet:18px;
+  --gm-shadow-sheet:-20px 0 60px rgba(0,0,0,.14);
+}
+/* Compatibility aliases while the standalone module is progressively isolated. */
+:root{--cream:var(--gm-bg);--ink:var(--gm-text-strong);--serif:var(--gm-font-display);--sans:var(--gm-font-body)}

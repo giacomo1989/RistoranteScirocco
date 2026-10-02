@@ -1,0 +1,46 @@
+{
+  "brand": {
+    "name": "SCIROCCO",
+    "tagline": "CUCINA MEDITERRANEA"
+  },
+  "locale": {
+    "primary": "it",
+    "active": [
+      "it",
+      "en",
+      "es"
+    ],
+    "currency": "EUR"
+  },
+  "theme": {
+    "background": "#f3efe7",
+    "surface": "#f4f0e8",
+    "surfaceAlt": "#eee8dc",
+    "text": "#1b1a18",
+    "textStrong": "#1b1b19",
+    "muted": "#716b62",
+    "accent": "#c6a96b",
+    "accentStrong": "#9a7a3e",
+    "dark": "#11110e",
+    "onDark": "#f3efe7",
+    "displayFont": "'Cormorant Garamond', serif",
+    "bodyFont": "'Inter', sans-serif",
+    "radius": "0px",
+    "surfaceRaised": "#e7dfd2",
+    "line": "rgba(27,26,24,.18)",
+    "darkSoft": "#181815",
+    "darkRaised": "#24241f",
+    "success": "#667c67",
+    "danger": "#9a4037",
+    "sheetRadius": "18px"
+  },
+  "integration": {
+    "homeUrl": "../index.html",
+    "bookingUrl": "../index.html#prenota",
+    "contactsUrl": "../index.html#contatti",
+    "kitchenUrl": "../cucina.html",
+    "cellarUrl": "../cantina.html",
+    "mode": "standalone",
+    "menuBaseUrl": "./"
+  }
+}

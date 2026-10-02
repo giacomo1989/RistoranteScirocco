@@ -3,9 +3,20 @@ let UI=null;
 let lang=localStorage.getItem('scirocco_lang')||'it',data={wines:[]},menuData={products:[],categories:[]},activeType='sparkling',activeCountry='all',guideStep=0,guide={type:null,style:null,food:null};
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],t=o=>o?.[lang]||o?.it||'',money=n=>new Intl.NumberFormat(lang==='en'?'en-GB':lang==='es'?'es-ES':'it-IT',{style:'currency',currency:'EUR',minimumFractionDigits:0}).format(n);
 function ui(){return UI.wine}
+const WINE_STYLE_STORE='scirocco_admin_wine_library_v2';
+const DEFAULT_GUIDE_STYLES=[
+ {id:'fresh',label:'Fresco',descriptors:['Vivo','Agile','Immediato']},
+ {id:'mineral',label:'Minerale',descriptors:['Teso','Sapido','Verticale']},
+ {id:'elegant',label:'Elegante',descriptors:['Fine','Equilibrato','Persistente']},
+ {id:'structured',label:'Strutturato',descriptors:['Intenso','Complesso','Profondo']},
+ {id:'aromatic',label:'Aromatico',descriptors:['Espressivo','Fragrante','Avvolgente']},
+ {id:'soft',label:'Morbido',descriptors:['Rotondo','Armonioso','Vellutato']}
+];
+function guideStyles(){try{const lib=JSON.parse(localStorage.getItem(WINE_STYLE_STORE));if(Array.isArray(lib?.styles)&&lib.styles.length&&typeof lib.styles[0]==='object')return lib.styles.filter(st=>st.id&&st.label&&Array.isArray(st.descriptors)&&st.descriptors.length===3)}catch(e){}return DEFAULT_GUIDE_STYLES}
+function refreshGuideStyles(){characterKeys=guideStyles().map(st=>st.id);if(!characterKeys.length)characterKeys=DEFAULT_GUIDE_STYLES.map(st=>st.id);if(characterWheelIndex>=characterKeys.length)characterWheelIndex=0}
 function applyUI(){
  const u=ui();document.documentElement.lang=lang;
- $('#winePageTitle').textContent=u.title;$('#winePageIntro').textContent=u.intro;$('#wineFoodLabel').textContent=u.foodMenu;$('#wineListLabel').textContent=u.wineList;
+ $('#winePageTitle').textContent=u.title;$('#winePageIntro').textContent=u.intro;$('#wineFoodLabel').textContent=u.foodMenu;$('#wineListLabel').textContent=u.wineList;const dl=$('#menuDrinksLabel');if(dl)dl.textContent=UI.menu?.drinksList||'BEVANDE';
  $('#wineEntryListTitle').textContent=u.entryList;$('#wineEntryListText').textContent=u.entryListText;$('#wineEntryGuideTitle').textContent=u.entryGuide;$('#wineEntryGuideText').textContent=u.entryGuideText;
  $('#wineBackHome').textContent=u.back;const guideBackHome=$('#guideBackHome');if(guideBackHome)guideBackHome.textContent=u.back;$('#wineCatalogEyebrow').textContent=u.catalogEyebrow;$('#wineCatalogTitle').textContent=u.catalogTitle;
  $('#guideTitle').textContent=u.guideTitle;$('#guideIntro').textContent=u.guideIntro;$('#wineFoodPairingsTitle').textContent=u.perfectWith;
@@ -106,6 +117,7 @@ const guideDescriptors={
  }
 };
 function guideDesc(group,key){
+ if(group==='style'){const st=guideStyles().find(x=>x.id===key);if(st)return st.descriptors.join(' · ')}
  const item=guideDescriptors[group]&&guideDescriptors[group][key];
  return item?(item[lang]||item.it):'';
 }
@@ -113,7 +125,7 @@ function updateTastePath(){
  const u=ui();
  const values=[
   guide.type?u.categories[guide.type]:'—',
-  guide.style?u.styles[guide.style]:'—',
+  guide.style?characterWheelLabel(guide.style):'—',
   guide.food?u.foods[guide.food]:'—'
  ];
  const tastePath=$('#wineTastePath');
@@ -134,10 +146,10 @@ function guideOptionMarkup(group,key,label){
  return `<button type="button" class="wine-choice" data-guide-value="${key}"><span class="wine-choice-label">${label}</span><small>${guideDesc(group,key)}</small><b>→</b></button>`;
 }
 
-const characterKeys=['fresh','mineral','elegant','structured','aromatic','soft'];
+let characterKeys=guideStyles().map(st=>st.id);
 let characterWheelIndex=0;
 let wineWheelAnimating=false;
-function characterWheelLabel(key){return ui().styles[key]||key}
+function characterWheelLabel(key){const st=guideStyles().find(x=>x.id===key);return st?st.label:(ui().styles[key]||key)}
 function wheelOffset(index,current,total){let d=index-current;if(d>total/2)d-=total;if(d<-total/2)d+=total;return d}
 function renderCharacterWheel(){
  const track=$('#wineWheelTrack'),counter=$('#wineWheelCounter'),confirm=$('#wineWheelConfirm');
@@ -232,6 +244,7 @@ function moveCharacterWheel(delta){
 function confirmCharacterWheel(){guide.style=characterKeys[characterWheelIndex];const c=$('#wineWheelConfirm');if(c)c.classList.add('is-selected');setTimeout(()=>showGuideStep(2),220)}
 function syncCharacterWheel(){const selected=guide.style?characterKeys.indexOf(guide.style):-1;characterWheelIndex=selected>=0?selected:0;renderCharacterWheel()}
 function renderGuide(){
+ refreshGuideStyles();
  const u=ui();
  const sets=[
   ['type',Object.entries(u.categories)],
@@ -394,6 +407,48 @@ function initEvents(){
  $$('[data-menu-lang]').forEach(b=>b.onclick=async()=>{lang=b.dataset.menuLang;localStorage.setItem('scirocco_lang',lang);UI=await fetch(`languages/${lang}.json`).then(r=>r.json());applyUI();const p=$('#menuLangPopover');if(p)p.classList.remove('open')});
  const toggle=$('#menuLangToggle'),pop=$('#menuLangPopover');if(toggle&&pop)toggle.onclick=()=>pop.classList.toggle('open');
 }
+
+/* ===== AI Sommelier experience ===== */
+let aiDishContext=null;
+const AI_SOMMELIER_ENDPOINT='/api/ai-sommelier';
+const aiCopy={
+ it:{title:'Il tuo Sommelier',intro:'Raccontami cosa stai cercando. Ti consiglierò qualcosa esclusivamente dalla nostra cantina.',label:'COSA TI PIACEREBBE BERE?',placeholder:'Vorrei una bollicina fresca, non troppo secca, sui 50 €…',ask:'CHIEDI AL SOMMELIER',styles:'OPPURE PARTI DAL CARATTERE',thinking:'STO CERCANDO NELLA NOSTRA CANTINA…',reset:'NUOVA RICERCA',context:'STAI ABBINANDO IL VINO A',remove:'RIMUOVI',suggestions:['Con il mio piatto','Bollicine','Qualcosa di fresco','Sorprendimi'],answer:'Dalla nostra cantina sceglierei queste etichette: interpretano bene quello che stai cercando e restano coerenti con la cucina di Scirocco.',dishAnswer:n=>`Per ${n} cercherei freschezza, equilibrio e una buona continuità con il piatto. Queste sono le bottiglie della nostra cantina che vedo meglio.`},
+ en:{title:'Your Sommelier',intro:'Tell me what you are looking for. I will recommend only wines that are actually in our cellar.',label:'WHAT WOULD YOU LIKE TO DRINK?',placeholder:'I’d like a fresh sparkling wine, not too dry, around €50…',ask:'ASK THE SOMMELIER',styles:'OR START WITH A STYLE',thinking:'SEARCHING OUR CELLAR…',reset:'NEW SEARCH',context:'YOU ARE PAIRING WINE WITH',remove:'REMOVE',suggestions:['With my dish','Sparkling','Something fresh','Surprise me'],answer:'From our cellar, I would choose these labels: they fit what you are looking for and stay in tune with Scirocco’s cuisine.',dishAnswer:n=>`For ${n}, I would look for freshness, balance and a natural continuity with the dish. These are the bottles from our cellar I would choose.`},
+ es:{title:'Tu Sumiller',intro:'Cuéntame qué estás buscando. Te recomendaré únicamente vinos que están realmente en nuestra bodega.',label:'¿QUÉ TE APETECE BEBER?',placeholder:'Quiero un espumoso fresco, no demasiado seco, sobre 50 €…',ask:'PREGUNTA AL SUMILLER',styles:'O EMPIEZA POR EL CARÁCTER',thinking:'BUSCANDO EN NUESTRA BODEGA…',reset:'NUEVA BÚSQUEDA',context:'ESTÁS MARIDANDO EL VINO CON',remove:'QUITAR',suggestions:['Con mi plato','Espumosos','Algo fresco','Sorpréndeme'],answer:'De nuestra bodega elegiría estas etiquetas: encajan con lo que buscas y mantienen la armonía con la cocina de Scirocco.',dishAnswer:n=>`Para ${n}, buscaría frescura, equilibrio y continuidad con el plato. Estas son las botellas de nuestra bodega que mejor veo.`}
+};
+function ac(){return aiCopy[lang]||aiCopy.it}
+function renderGuide(){
+ refreshGuideStyles();const c=ac();
+ $('#guideTitle').textContent=c.title;$('#guideIntro').textContent=c.intro;
+ $('#wineAiLabel').textContent=c.label;$('#wineAiPrompt').placeholder=c.placeholder;$('#wineAiAskLabel').textContent=c.ask;$('#wineAiStylesLabel').textContent=c.styles;$('#wineAiThinkingText').textContent=c.thinking;$('#wineAiResetLabel').textContent=c.reset;
+ $('#wineAiSuggestions').innerHTML=c.suggestions.map((x,i)=>`<button type="button" data-ai-suggestion="${i}">${x}</button>`).join('');
+ $('#wineAiStyleGrid').innerHTML=guideStyles().map(st=>`<button type="button" data-ai-style="${st.id}">${st.label.toUpperCase()}</button>`).join('');
+ renderAiContext();
+}
+function renderAiContext(){const box=$('#wineAiContext');if(!box)return;if(!aiDishContext){box.hidden=true;box.innerHTML='';return}const c=ac();box.hidden=false;box.innerHTML=`<span><small>${c.context}</small><br><strong>${t(aiDishContext.name)}</strong></span><button type="button" id="removeAiDish">${c.remove}</button>`;$('#removeAiDish').onclick=()=>{aiDishContext=null;renderAiContext()}}
+function aiTextBlob(w){return [w.type,w.country,w.region,w.denomination,w.producer,t(w.name),...(w.grapes||[]),...(w.style||[]),w.dosage,w.vintage,w.aging].filter(Boolean).join(' ').toLowerCase()}
+function localSommelier(prompt,styleId){
+ const q=(prompt||'').toLowerCase();let maxPrice=null;const m=q.match(/(?:€|euro|eur)?\s*(\d{2,3})\s*(?:€|euro|eur)?/);if(m)maxPrice=Number(m[1]);
+ const typeWords={sparkling:['bollic','spark','espum','champagne','prosecco','cava'],white:['bianc','white','blanc','blanco'],red:['ross','red','rouge','tinto'],rose:['rosat','rosé','rose','rosado']};let wantedType=null;Object.entries(typeWords).some(([k,ws])=>ws.some(x=>q.includes(x))?(wantedType=k,true):false);
+ let wantedStyle=styleId||null;for(const st of guideStyles()){if(q.includes(st.label.toLowerCase()))wantedStyle=st.id}
+ const dish=aiDishContext;return data.wines.filter(w=>w.active).map(w=>{let score=0;if(wantedType)score+=w.type===wantedType?5:-2;if(wantedStyle)score+=(w.style||[]).includes(wantedStyle)?5:0;if(maxPrice)score+=Number(w.price)<=maxPrice?3:-4;if(dish&&(w.foodPairings||[]).includes(dish.id))score+=8;const blob=aiTextBlob(w);['fresc','mineral','morb','aromat','eleg','struttur','secco','dry','ital','franc','spagn'].forEach(k=>{if(q.includes(k)&&blob.includes(k))score+=1});return {w,score}}).sort((a,b)=>b.score-a.score||((a.w.order??999)-(b.w.order??999))).slice(0,3).map(x=>x.w)
+}
+async function askSommelier(prompt,styleId=null){
+ const thinking=$('#wineAiThinking'),answer=$('#wineAiAnswer');thinking.hidden=false;answer.hidden=true;
+ let wines=null,copy=null;
+ try{const response=await fetch(AI_SOMMELIER_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({language:lang,query:prompt||'',dishId:aiDishContext?.id||null,styleId,availableWines:data.wines.filter(w=>w.active).map(w=>w.id)})});if(response.ok){const result=await response.json();if(Array.isArray(result.wineIds))wines=result.wineIds.map(id=>data.wines.find(w=>w.id===id&&w.active)).filter(Boolean).slice(0,3);copy=result.message||null}}catch(e){}
+ if(!wines?.length)wines=localSommelier(prompt,styleId);await new Promise(r=>setTimeout(r,520));thinking.hidden=true;renderAiResults(wines,copy);answer.hidden=false;answer.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function wineReason(w){const c=ac();if(aiDishContext&&(w.foodPairings||[]).includes(aiDishContext.id))return lang==='en'?'A direct pairing already selected by the restaurant for this dish.':lang==='es'?'Un maridaje directo seleccionado por el restaurante para este plato.':'Un abbinamento diretto già selezionato dal ristorante per questo piatto.';const styles=(w.style||[]).map(characterWheelLabel).join(' · ');return styles?`${styles} · ${w.denomination||w.region||''}`:(w.denomination||w.region||'')}
+function renderAiResults(wines,copy){const c=ac();$('#wineAiAnswerCopy').textContent=copy||(aiDishContext?c.dishAnswer(t(aiDishContext.name)):c.answer);$('#wineAiResults').innerHTML=wines.length?wines.map(w=>`<button class="wine-ai-result-card" type="button" data-ai-wine="${w.id}"><img src="${w.image||''}" alt=""><span class="wine-ai-result-copy"><small>${w.producer||''}</small><strong>${t(w.name)}</strong><em>${[w.denomination,w.region].filter(Boolean).join(' · ')}</em><p>${wineReason(w)}</p></span><span class="wine-ai-result-price"><b>${money(w.price)}</b><i>${ui().discoverWine} →</i></span></button>`).join(''):`<p>${ui().noResults}</p>`;$$('[data-ai-wine]').forEach(b=>b.onclick=()=>openWine(b.dataset.aiWine))}
+function initAiSommelierEvents(){
+ const ask=$('#wineAiAsk');if(ask)ask.onclick=()=>askSommelier($('#wineAiPrompt').value.trim());
+ const prompt=$('#wineAiPrompt');if(prompt)prompt.onkeydown=e=>{if((e.metaKey||e.ctrlKey)&&e.key==='Enter')askSommelier(prompt.value.trim())};
+ $('#wineAiSuggestions')?.addEventListener('click',e=>{const b=e.target.closest('[data-ai-suggestion]');if(!b)return;const i=Number(b.dataset.aiSuggestion);if(i===0&&aiDishContext)return askSommelier(t(aiDishContext.name));if(i===0&&!aiDishContext){prompt.focus();prompt.placeholder=lang==='en'?'Tell me what you are eating…':lang==='es'?'Dime qué vas a comer…':'Dimmi cosa stai mangiando…';return}const qs=[null,lang==='en'?'sparkling':lang==='es'?'espumoso':'bollicine',lang==='en'?'fresh':lang==='es'?'fresco':'fresco',''];prompt.value=qs[i]??'';askSommelier(prompt.value)});
+ $('#wineAiStyleGrid')?.addEventListener('click',e=>{const b=e.target.closest('[data-ai-style]');if(b)askSommelier('',b.dataset.aiStyle)});
+ $('#wineAiReset').onclick=()=>{$('#wineAiPrompt').value='';$('#wineAiAnswer').hidden=true;$('#wineAiPrompt').focus()};
+}
+
 async function init(){
  try{
   const [languageResponse,wineResponse,menuResponse]=await Promise.all([
@@ -407,9 +462,11 @@ async function init(){
  }catch(e){
   console.error('Wine/menu data',e);
  }
+ refreshGuideStyles();
  applyUI();
- initEvents();
- const params=new URLSearchParams(location.search),wine=params.get('vino');
+ initEvents();initAiSommelierEvents();
+ const params=new URLSearchParams(location.search),wine=params.get('vino'),dishId=params.get('piatto');
+ if(dishId){aiDishContext=menuData.products.find(p=>p.id===dishId&&p.active)||null;show('guide');renderGuide();}
  if(wine)openWine(wine);
  renderCatalog();
 }

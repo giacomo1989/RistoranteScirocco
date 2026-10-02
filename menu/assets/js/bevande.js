@@ -1,0 +1,22 @@
+(() => {
+let UI=null,data,lang=localStorage.getItem('scirocco_lang')||'it',activeCategory='bevande',current=null;
+const $=s=>document.querySelector(s),t=o=>o?.[lang]||o?.it||'',money=n=>new Intl.NumberFormat(lang==='en'?'en-GB':lang==='es'?'es-ES':'it-IT',{style:'currency',currency:'EUR',minimumFractionDigits:0}).format(n);
+const list=$('#menuList'),bar=$('#menuCategoryBar'),sheet=$('#dishSheet'),backdrop=$('#dishBackdrop');
+function applyUI(){document.documentElement.lang=lang;$('#drinksTitle').textContent=UI.drinks.title;$('#drinksIntro').textContent=UI.drinks.intro;$('#menuFoodLabel').textContent=UI.drinks.foodMenu;$('#menuWineLabel').textContent=UI.drinks.wineList;$('#menuDrinksLabel').textContent=UI.drinks.drinksList;$('#menuLangToggle').textContent=lang.toUpperCase();document.querySelectorAll('[data-menu-lang]').forEach(b=>b.classList.toggle('active',b.dataset.menuLang===lang));renderCategories();renderMenu()}
+function renderCategories(){bar.innerHTML=data.categories.sort((a,b)=>a.order-b.order).map(c=>`<button data-category="${c.id}" class="${c.id===activeCategory?'active':''}">${t(c.name)}</button>`).join('');bar.querySelectorAll('button').forEach(b=>b.onclick=()=>{activeCategory=b.dataset.category;history.replaceState(null,'',`?categoria=${activeCategory}`);renderCategories();renderMenu()})}
+function renderMenu(){const cat=data.categories.find(c=>c.id===activeCategory)||data.categories[0],ps=data.products.filter(p=>p.active!==false&&p.category===activeCategory).sort((a,b)=>(a.order||0)-(b.order||0));list.innerHTML=`<div class="menu-section-heading"><span>0${cat.order}</span><h2>${t(cat.name)}</h2></div><div class="menu-products">${ps.map(p=>{const thumb=(p.images?.[0]||p.image||'');return `<button class="menu-product" data-item="${p.id}">${thumb?`<img class="menu-product-thumb" src="${thumb}" alt="" loading="lazy">`:`<span class="menu-product-thumb menu-product-thumb--empty"></span>`}<div class="menu-product-copy"><h3>${t(p.name)}</h3><p>${t(p.shortDescription)}</p></div><strong>${money(p.price)}</strong><span class="menu-product-arrow">›</span></button>`}).join('')}</div>`;list.querySelectorAll('[data-item]').forEach(b=>b.onclick=()=>openItem(b.dataset.item))}
+function openItem(id){
+ const p=data.products.find(x=>x.id===id&&x.active!==false);if(!p)return;current=id;
+ const img=p.images?.[0]||p.image||'',cat=data.categories.find(c=>c.id===p.category);
+ const gallery=$('#drinkSheetGallery'),image=$('#drinkSheetImage');
+ gallery.classList.toggle('is-empty',!img);image.hidden=!img;if(img){image.src=img;image.alt=t(p.name)}else{image.removeAttribute('src');image.alt=''}
+ $('#drinkSheetCategory').textContent=t(cat?.name);$('#drinkSheetName').textContent=t(p.name);$('#drinkSheetDescription').textContent=t(p.description)||t(p.shortDescription)||'';
+ const labels=lang==='en'?{format:'FORMAT',alcohol:'ALCOHOL'}:lang==='es'?{format:'FORMATO',alcohol:'GRADUACIÓN'}:{format:'FORMATO',alcohol:'GRADAZIONE'};
+ const facts=[];if(p.format)facts.push([labels.format,p.format]);if(p.alcohol!==undefined&&p.alcohol!==null&&p.alcohol!=='')facts.push([labels.alcohol,`${p.alcohol}% vol`]);
+ $('#drinkSheetFacts').innerHTML=facts.map(x=>`<div class="drink-fact"><span>${x[0]}</span><span>${x[1]}</span></div>`).join('');$('#drinkSheetFacts').hidden=!facts.length;$('#drinkSheetPrice').textContent=money(p.price);
+ sheet.classList.add('open');sheet.setAttribute('aria-hidden','false');backdrop.hidden=false;requestAnimationFrame(()=>backdrop.classList.add('show'));document.body.classList.add('sheet-open')
+}
+function close(){sheet.classList.remove('open');sheet.setAttribute('aria-hidden','true');backdrop.classList.remove('show');document.body.classList.remove('sheet-open');current=null;setTimeout(()=>backdrop.hidden=true,250)}
+async function init(){UI=await fetch(`languages/${lang}.json`).then(r=>r.json());data=await fetch('data/drinks.json').then(r=>r.json());const q=new URLSearchParams(location.search),c=q.get('categoria');if(c&&data.categories.some(x=>x.id===c))activeCategory=c;applyUI()}
+$('#dishClose').onclick=close;backdrop.onclick=close;document.addEventListener('keydown',e=>{if(e.key==='Escape'&&current)close()});$('#menuLangToggle').onclick=()=>$('#menuLangPopover').classList.toggle('open');document.querySelectorAll('[data-menu-lang]').forEach(b=>b.onclick=async()=>{lang=b.dataset.menuLang;localStorage.setItem('scirocco_lang',lang);UI=await fetch(`languages/${lang}.json`).then(r=>r.json());$('#menuLangPopover').classList.remove('open');applyUI()});init().catch(console.error);
+})();

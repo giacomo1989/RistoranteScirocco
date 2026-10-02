@@ -6,8 +6,8 @@ body.menu-page header,
 body.menu-page .site-header,
 .menu-page header.site-header,
 .menu-page .header {
-  background: #1b1a18 !important;
-  color: #fff !important;
+  background: var(--gm-text) !important;
+  color: var(--gm-white) !important;
   border-bottom: 1px solid rgba(255,255,255,.10);
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
@@ -18,7 +18,7 @@ body.menu-page .site-header a,
 body.menu-page .site-header button,
 .menu-page .header a,
 .menu-page .header button {
-  color: #fff !important;
+  color: var(--gm-white) !important;
 }
 
 body.menu-page #menuCategoryBar{
@@ -32,7 +32,7 @@ body.menu-page #menuCategoryBar{
   height:66px;
   object-fit:cover;
   display:block;
-  background:#e7dfd2;
+  background:var(--gm-surface-3);
 }
 .menu-product-copy{min-width:0}
 
@@ -50,3 +50,22 @@ body.menu-page #menuCategoryBar{
 .menu-product-thumb--empty{
   visibility:hidden;
 }
+
+/* ===== V16 — Scheda Bevande: stessa struttura editoriale della scheda vino ===== */
+.drink-sheet .dish-sheet-panel{min-height:100%;background:var(--gm-surface)}
+.drink-sheet-gallery{height:270px;background:var(--gm-surface-2);overflow:hidden}
+.drink-sheet-gallery img{width:100%;height:100%;object-fit:cover;display:block}
+.drink-sheet-gallery.is-empty{display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#e8e0d2,#d9cfbf)}
+.drink-sheet-gallery.is-empty::after{content:'SCIROCCO';font:500 10px/1 var(--gm-font-body);letter-spacing:.22em;opacity:.3}
+.drink-sheet-category{margin:0 0 8px}
+.drink-sheet-facts{margin:22px 0;border-top:1px solid rgba(27,26,24,.13)}
+.drink-fact{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-bottom:1px solid rgba(27,26,24,.13);font:400 11px/1.4 var(--gm-font-body)}
+.drink-fact span:first-child{color:var(--gm-muted-2)}
+.drink-fact span:last-child{text-align:right}
+.drink-sheet-price{font:500 22px/1 var(--gm-font-display);margin:20px 0 8px}
+@media(max-width:720px){
+  .drink-sheet-gallery{height:270px}
+}
+
+/* AI Sommelier gateway inside dish sheet */
+.dish-ai-sommelier{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin-top:10px;padding:14px 15px;border:1px solid rgba(27,26,24,.18);color:var(--gm-text);text-decoration:none;background:var(--gm-surface-2)}.dish-ai-sommelier span{color:var(--gm-accent-strong)}.dish-ai-sommelier b{font:600 8px var(--gm-font-body);letter-spacing:.13em}.dish-ai-sommelier i{font:400 16px var(--gm-font-body);font-style:normal}.dish-ai-sommelier:hover{background:#e6dece}
