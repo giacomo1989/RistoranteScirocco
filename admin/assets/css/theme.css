@@ -1,0 +1,7 @@
+/* GIACOMO MENU Admin — semantic theme bridge.
+   Same restaurant palette, admin-specific semantic aliases. */
+:root{
+ --gm-bg:#f3efe7;--gm-surface:#f4f0e8;--gm-surface-2:#eee8dc;--gm-text:#1b1a18;--gm-text-strong:#1b1b19;
+ --gm-muted:#716b62;--gm-accent:#c6a96b;--gm-accent-strong:#9a7a3e;--gm-dark:#11110e;--gm-on-dark:#f3efe7;
+ --gm-success:#667c67;--gm-danger:#9a4037;--gm-font-display:'Cormorant Garamond',serif;--gm-font-body:'Inter',sans-serif;
+}
