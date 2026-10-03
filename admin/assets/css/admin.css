@@ -214,3 +214,238 @@
 .wine-scan-option small{margin-top:6px;color:#7b7166;font:400 10px/1.35 Inter,sans-serif}
 .wine-scan-cancel{width:100%}
 @media(max-width:760px){.wine-scan-options{grid-template-columns:1fr}.wine-scan-option{min-height:92px;display:grid;grid-template-columns:38px 1fr;grid-template-rows:auto auto;column-gap:10px;justify-content:stretch}.wine-scan-option span{grid-row:1/3;margin:0;align-self:center}.wine-scan-option small{margin-top:4px}}
+
+
+/* Admin V29 — AI editorial style picker */
+.ai-style-picker-box{width:min(650px,92vw)}
+.ai-style-choices{display:grid;gap:9px;margin:20px 0 22px}
+.ai-style-choice{position:relative;display:block;border:1px solid var(--admin-border,#d8cec2);background:var(--admin-surface,#f8f4ed);padding:16px 18px;cursor:pointer;transition:border-color .18s ease,background .18s ease,transform .18s ease}
+.ai-style-choice:hover{transform:translateY(-1px);border-color:var(--admin-text-muted,#8b8176)}
+.ai-style-choice.is-selected{background:var(--admin-ink,#292621);border-color:var(--admin-ink,#292621);color:var(--admin-paper,#f5efe6)}
+.ai-style-choice input{position:absolute;opacity:0;pointer-events:none}
+.ai-style-choice-title{display:block;font:600 10px/1 Inter,sans-serif;letter-spacing:.15em}
+.ai-style-choice-description{display:block;margin-top:7px;font:400 12px/1.45 Inter,sans-serif;letter-spacing:.01em;opacity:.72}
+.ai-style-choice.is-selected .ai-style-choice-description{opacity:.78}
+@media(max-width:760px){.ai-style-choice{padding:15px}.ai-style-picker-box{width:94vw}}
+
+
+/* Admin V30 — mobile parity and neutral SCIROCCO controls */
+.admin-tab,.category-filter,.country-filter,.btn,.catalog-search-wrap button,.catalog-match{
+  color:var(--ink);-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;
+}
+.admin-tab:focus,.admin-tab:focus-visible,.category-filter:focus,.category-filter:focus-visible,
+.country-filter:focus,.country-filter:focus-visible,.btn:focus,.btn:focus-visible,
+.catalog-search-wrap button:focus,.catalog-search-wrap button:focus-visible{
+  outline:1px solid var(--gm-accent-strong);outline-offset:1px;
+}
+.admin-tab.is-active,.category-filter.is-active{color:#fff}
+.country-filter.is-active{color:#fff}
+.btn.ghost{color:var(--ink)}
+.catalog-search-wrap .btn.ghost{background:var(--paper);color:var(--ink);border-color:var(--line)}
+.catalog-match,.catalog-match b,.catalog-match strong,.catalog-match em{color:var(--ink)}
+
+/* Give the country row breathing room below wine-type filters on all viewports. */
+.country-filters:not([hidden]){margin-top:10px;padding-top:4px}
+
+@media(max-width:800px){
+  /* Keep the desktop information architecture: list on the left, cover/editor on the right. */
+  .admin-workspace{display:grid;grid-template-columns:minmax(150px,42%) minmax(0,58%);min-height:calc(100vh - 154px);align-items:stretch}
+  .product-panel{height:calc(100vh - 154px);min-height:560px;border-right:1px solid var(--line);border-bottom:0}
+  .editor-panel{min-width:0;height:calc(100vh - 154px);min-height:560px;overflow:auto}
+  .empty-editor{height:100%;min-height:560px}
+  .empty-editor:before{background-size:cover}
+  .empty-editor-copy{padding:14px}
+  .cover-create{max-width:100%}
+  .cover-create b{font-size:8px;letter-spacing:.12em}
+  .cover-plus{font-size:28px}
+  .product-form{padding:22px 14px 54px}
+
+  .panel-head{padding:18px 12px 12px;align-items:flex-end;gap:6px}
+  .panel-head h2{font-size:20px}
+  .panel-head .eyebrow{font-size:8px}
+  .count{font-size:9px}
+  .search-wrap{padding:0 12px 12px}
+  .category-filters,.country-filters{padding-left:12px;padding-right:12px}
+
+  /* Food: 7 selectors = 4 + 3. Drinks: 6 selectors = 3 + 3. */
+  body[data-kind="food"] .category-filters,
+  body[data-kind="drinks"] .category-filters{display:grid;overflow:visible;gap:5px}
+  body[data-kind="food"] .category-filters{grid-template-columns:repeat(4,minmax(0,1fr))}
+  body[data-kind="drinks"] .category-filters{grid-template-columns:repeat(3,minmax(0,1fr))}
+  body[data-kind="food"] .category-filter,
+  body[data-kind="drinks"] .category-filter{min-width:0;width:100%;padding:7px 2px;font-size:6.5px;letter-spacing:.035em;text-align:center}
+
+  /* Wine type/country filters remain horizontally usable, with clear separation between rows. */
+  body[data-kind="wine"] .category-filters{padding-bottom:10px}
+  body[data-kind="wine"] .country-filters{margin-top:8px;padding-top:8px}
+
+  .product-row{grid-template-columns:18px 32px minmax(0,1fr);gap:5px;padding:10px 8px}
+  .product-thumb{width:32px;height:32px}
+  .product-name{font-size:14px}
+  .product-meta{font-size:7px}
+  .row-actions{grid-column:2/4;justify-content:flex-end}
+  .icon-btn{width:26px;height:26px}
+  .drag-handle{width:18px}
+
+  /* Native mobile browsers must not inject blue into catalog/search/cancel actions. */
+  .catalog-search-wrap .btn,.editor-actions .btn.ghost,.wine-scan-cancel{color:var(--ink)!important;background:var(--paper)!important}
+  .catalog-match strong,.catalog-match b,.catalog-match em{color:var(--ink)!important}
+}
+
+@media(max-width:520px){
+  .admin-top{padding:16px 12px;gap:13px}
+  .admin-tab{padding:11px 4px;font-size:8px;letter-spacing:.06em;color:var(--ink)}
+  .admin-tab.is-active{color:#fff}
+  .admin-workspace{grid-template-columns:minmax(142px,43%) minmax(0,57%);min-height:calc(100vh - 139px)}
+  .product-panel,.editor-panel{height:calc(100vh - 139px)}
+  .editor-head{display:grid;gap:12px;align-items:start}
+  .editor-head h2{font-size:25px}
+  .editor-actions{padding:12px 8px;margin-left:-8px;margin-right:-8px;gap:6px}
+  .editor-actions .btn{padding:11px 9px;font-size:7px;letter-spacing:.07em}
+}
+
+/* V31 — mobile master/detail navigation */
+.mobile-create-card{display:none}
+@media(max-width:800px){
+  /* Browsing: the product list owns the full viewport width. */
+  .admin-workspace{display:block;min-height:calc(100vh - 154px)}
+  .product-panel{width:100%;height:auto;min-height:calc(100vh - 154px);border-right:0}
+  .editor-panel{display:none}
+
+  .mobile-create-card{position:relative;isolation:isolate;display:grid;place-content:center;width:calc(100% - 24px);aspect-ratio:5/3;margin:0 12px 16px;border:0;overflow:hidden;color:#fff;cursor:pointer;background:#171410}
+  .mobile-create-card:before{content:"";position:absolute;inset:0;z-index:-2;background-position:center;background-size:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .mobile-create-card:after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(15,13,11,.32)}
+  .mobile-create-card--food:before{background-image:url(../images/admin-empty-cover.jpg)}
+  .mobile-create-card--wine:before{background-image:url(../images/admin-wine-cover.png)}
+  .mobile-create-card--drinks:before{background-image:url(../images/admin-drinks-cover.jpg)}
+  .mobile-create-card:active:before{transform:scale(1.012)}
+  .mobile-create-plus{font:300 32px/1 Inter,sans-serif;margin-bottom:8px}
+  .mobile-create-card b{font:500 9px/1.2 Inter,sans-serif;letter-spacing:.16em}
+
+  /* Editing: persistent compact product rail + full editor beside it. */
+  body.is-editing .admin-workspace{display:grid;grid-template-columns:minmax(116px,31%) minmax(0,69%);align-items:stretch}
+  body.is-editing .product-panel{height:calc(100vh - 154px);min-height:560px;border-right:1px solid var(--line);overflow:hidden}
+  body.is-editing .editor-panel{display:block;height:calc(100vh - 154px);min-height:560px;overflow:auto;min-width:0}
+  body.is-editing .mobile-create-card,
+  body.is-editing .search-wrap,
+  body.is-editing .category-filters,
+  body.is-editing .country-filters,
+  body.is-editing .count{display:none!important}
+  body.is-editing .panel-head{padding:14px 8px 10px}
+  body.is-editing .panel-head h2{font-size:16px}
+  body.is-editing .panel-head .eyebrow{font-size:6.5px;letter-spacing:.12em}
+  body.is-editing .product-list{border-top:1px solid var(--line);overflow-y:auto;overflow-x:hidden}
+  body.is-editing .product-row{display:grid;grid-template-columns:42px minmax(0,1fr);gap:6px;padding:10px 7px;align-items:start}
+  body.is-editing .product-thumb{grid-column:1;width:42px;height:42px}
+  body.is-editing .product-main{grid-column:2;min-width:0;padding-top:2px}
+  body.is-editing .product-name{font-size:12px;line-height:1.05;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  body.is-editing .product-meta{display:none}
+  body.is-editing .row-actions{grid-column:1/3;display:flex;justify-content:flex-start;gap:0;margin-top:1px}
+  body.is-editing .drag-handle{grid-column:1/3;grid-row:3;width:24px;height:24px;margin:0;padding:0}
+  body.is-editing .visibility-dot{display:none}
+  body.is-editing .icon-btn{width:25px;height:25px}
+  body.is-editing .icon-btn svg{width:13px;height:13px}
+  body.is-editing .product-form{padding:18px 10px 54px}
+  body.is-editing .editor-head{gap:8px}
+  body.is-editing .editor-head h2{font-size:23px;overflow-wrap:anywhere}
+}
+@media(max-width:520px){
+  .mobile-create-card{width:calc(100% - 20px);margin:0 10px 14px}
+  body.is-editing .admin-workspace{grid-template-columns:minmax(108px,32%) minmax(0,68%);min-height:calc(100vh - 139px)}
+  body.is-editing .product-panel,body.is-editing .editor-panel{height:calc(100vh - 139px)}
+  body.is-editing .product-row{grid-template-columns:36px minmax(0,1fr);padding:9px 5px;gap:5px}
+  body.is-editing .product-thumb{width:36px;height:36px}
+  body.is-editing .product-name{font-size:11px}
+  body.is-editing .icon-btn{width:23px;height:23px}
+  body.is-editing .drag-handle{width:23px;height:23px}
+  body.is-editing .product-form{padding:16px 8px 52px}
+}
+
+/* V32 — compact paired fields in the mobile editor */
+.mobile-pair-row{display:contents}
+@media(max-width:800px){
+  body.is-editing .mobile-pair-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;grid-column:1/-1;align-items:start}
+  body.is-editing .mobile-pair-row>.field{min-width:0}
+  body.is-editing .mobile-pair-row input,
+  body.is-editing .mobile-pair-row select{padding-left:7px;padding-right:7px;font-size:10px}
+  body.is-editing .mobile-pair-row .field label{font-size:7px;letter-spacing:.08em}
+  body.is-editing .wine-vintage-dosage .vintage-year{grid-column:1/-1}
+  body.is-editing .ai-ingredients-field{grid-column:1/-1}
+}
+
+/* V33 — grape type multi-selector */
+.grape-type-block{margin-top:2px;margin-bottom:6px}
+.grape-type-tabs{display:flex;gap:0;border-bottom:1px solid var(--line);width:max-content;max-width:100%}
+.grape-type-tab{position:relative;display:block}
+.grape-type-tab input{position:absolute;opacity:0;pointer-events:none}
+.grape-type-tab span{display:block;padding:9px 16px 8px;font:500 9px Inter,sans-serif;letter-spacing:.12em;color:#81786d;border-bottom:2px solid transparent;cursor:pointer;transition:.18s ease}
+.grape-type-tab input:checked+span{color:var(--dark);border-bottom-color:var(--dark)}
+.grape-type-tab span:hover{color:var(--dark)}
+.grape-group[hidden]{display:none!important}
+@media(max-width:760px){.grape-type-tabs{width:100%}.grape-type-tab{flex:1}.grape-type-tab span{text-align:center;padding-left:8px;padding-right:8px}}
+
+/* V34 — compact field selectors */
+.field-selector{width:100%;min-height:42px;border:1px solid var(--line);background:transparent;color:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:0 13px;cursor:pointer;font:500 9px Inter,sans-serif;letter-spacing:.12em;text-align:left}
+.field-selector:hover{border-color:#9e9386}.field-selector b{font-size:14px;font-weight:400}.selector-summary{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;min-height:18px}.selector-chip{border:1px solid var(--line);background:#f7f2e9;padding:5px 8px;font:500 8px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--dark)}.selector-empty{font:500 8px Inter,sans-serif;letter-spacing:.1em;color:var(--muted)}.selector-hidden-inputs{display:none}.grape-selector-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grape-selector-card{min-width:0}.choice-sheet{width:min(520px,92vw);max-height:82vh;overflow:auto}.choice-sheet-options{display:grid;gap:6px;margin:18px 0}.choice-sheet-option{width:100%;border:1px solid var(--line);background:transparent;color:var(--dark);min-height:42px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;text-align:left;cursor:pointer;font:500 10px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}.choice-sheet-option.is-selected{background:var(--dark);color:#fff;border-color:var(--dark)}.choice-sheet-option b{font-size:12px}.choice-sheet .confirm-actions{position:sticky;bottom:0;background:var(--surface,#f8f4ed);padding-top:10px}
+@media(max-width:760px){.grape-selector-grid{grid-template-columns:1fr 1fr;gap:8px}.field-selector{padding-left:9px;padding-right:9px;font-size:8px}.selector-chip{font-size:7px;padding:4px 6px}.choice-sheet{width:94vw}}
+
+/* Admin V35 — language toolbar + empty aging state */
+.ai-lang-tabs-row{display:flex;align-items:flex-end;gap:12px;border-bottom:1px solid #ddd4c8;margin-bottom:16px}
+.ai-lang-tabs-row .ai-lang-tabs{flex:1;border-bottom:0;margin-bottom:0}
+.ai-lang-tabs-row .manage-content-languages{margin:0 0 7px auto;white-space:nowrap}
+.language-choice.is-fixed{background:#eee8df;border-color:#b8aa9b;cursor:default}
+.language-choice.is-fixed input:checked{opacity:1!important;border-color:#2d2925;background:#2d2925}
+.language-choice.is-fixed input:checked::after{content:'✓';color:#f6f0e7;font:700 10px/1 Inter,sans-serif}
+.language-choice.is-fixed span,.language-choice.is-fixed b{color:#2d2925}
+.aging-help{margin:8px 0 0;color:#8a8075;font:400 10px/1.5 Inter,sans-serif}
+.aging-rows:empty{display:none}
+@media(max-width:760px){.ai-lang-tabs-row{gap:8px}.ai-lang-tabs-row .manage-content-languages{font-size:8px;padding-inline:4px}}
+
+/* Admin V35.1 — language tabs alignment/fixed-language cleanup */
+.ai-lang-tabs-row{border-bottom:0}
+.ai-lang-tabs-row .ai-lang-tabs{border-bottom:1px solid #ddd4c8}
+.ai-lang-tabs-row .manage-content-languages{border:0!important;border-left:0!important;padding-left:0}
+.ai-lang-tabs-row .manage-content-languages::before,.ai-lang-tabs-row .manage-content-languages::after{content:none!important;display:none!important}
+.language-choice.is-fixed input:checked::after{content:none!important}
+.language-choice.is-fixed input:checked::before{transform:scale(1)}
+
+/* V35.2 — language manager / tabs polish */
+.language-choice.is-fixed{
+  background:#393630;
+  border-color:#393630;
+  color:#f5efe5;
+  cursor:default;
+}
+.language-choice.is-fixed input{
+  visibility:hidden;
+  pointer-events:none;
+}
+.language-choice.is-fixed span,
+.language-choice.is-fixed b{color:#f5efe5}
+
+/* Keep language tabs horizontally scrollable when many languages are active,
+   but remove the native scrollbar/track from the interface. */
+.ai-lang-tabs{
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.ai-lang-tabs::-webkit-scrollbar{
+  width:0;
+  height:0;
+  display:none;
+}
+
+/* V35.3 — fixed Italian language: selected but intentionally non-interactive */
+.language-choice.is-fixed:has(input:checked){
+  background:#514d47;
+  border-color:#514d47;
+  color:#f5efe5;
+  cursor:default;
+}
+.language-choice.is-fixed:has(input:checked) span,
+.language-choice.is-fixed:has(input:checked) b{
+  color:#f5efe5;
+}
+
+/* V35.4 — Food ingredients directly after name, compact height */
+.ai-lang-panel .ai-ingredients-field textarea{min-height:74px;height:74px}

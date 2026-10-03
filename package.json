@@ -1,0 +1,7 @@
+{
+  "name": "giacomo-menu-scirocco",
+  "private": true,
+  "version": "0.28.0",
+  "description": "SCIROCCO demo instance of GIACOMO MENU",
+  "engines": { "node": ">=20" }
+}
