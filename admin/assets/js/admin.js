@@ -181,10 +181,18 @@ function aiContext(form){
  return payload
 }
 async function callAiContent(action,payload){
- const res=await fetch('/api/ai-content',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,...payload})});
- let data={};try{data=await res.json()}catch{}
- if(!res.ok){const err=new Error(data.error||'ai-error');err.status=res.status;throw err}
- return data
+ try{
+  const res=await fetch('/api/ai-content',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,...payload})});
+  if(!res.ok){
+   let errorMsg='ai-error';
+   try{const errorData=await res.json();if(errorData&&errorData.error)errorMsg=errorData.error}catch{}
+   const err=new Error(errorMsg);err.status=res.status;throw err
+  }
+  return await res.json()
+ }catch(networkError){
+  if(networkError.status)throw networkError;
+  const err=new Error('Network error or server unreachable');err.status=0;throw err
+ }
 }
 function setAiStatus(text,error=false){const el=$('#aiCopyStatus');if(!el)return;el.textContent=text;el.classList.toggle('is-error',error)}
 const AI_COPY_STYLES={

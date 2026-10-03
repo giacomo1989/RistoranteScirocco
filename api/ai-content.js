@@ -13,10 +13,23 @@ function extractOutput(json){
 async function askOpenAI(instructions,input){
   if(!process.env.OPENAI_API_KEY) throw Object.assign(new Error('OPENAI_API_KEY missing'),{status:503,code:'api_key_missing'});
   const r=await fetch(OPENAI_URL,{method:'POST',headers:{'Authorization':`Bearer ${process.env.OPENAI_API_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({model:MODEL,instructions,input,temperature:0.4,text:{format:{type:'json_object'}}})});
-  const data=await r.json();
-  if(!r.ok) throw Object.assign(new Error(data?.error?.message||'OpenAI request failed'),{status:r.status||502,code:'openai_error'});
+  const rawBody=await r.text();
+  let data=null;
+  try{data=rawBody?JSON.parse(rawBody):null}catch{}
+  if(!r.ok){
+    const apiMessage=data?.error?.message||rawBody||'OpenAI request failed';
+    console.error('[ai-content] OpenAI API error',{status:r.status,model:MODEL,type:data?.error?.type||null,code:data?.error?.code||null,param:data?.error?.param||null,message:apiMessage});
+    throw Object.assign(new Error(apiMessage),{status:r.status||502,code:'openai_error'});
+  }
+  if(!data){
+    console.error('[ai-content] OpenAI returned a non-JSON success response',{status:r.status,model:MODEL,bodyPreview:rawBody.slice(0,500)});
+    throw Object.assign(new Error('Invalid OpenAI response'),{status:502,code:'invalid_ai_response'});
+  }
   const raw=extractOutput(data);
-  try{return JSON.parse(raw)}catch{throw Object.assign(new Error('Invalid structured response'),{status:502,code:'invalid_ai_response'})}
+  try{return JSON.parse(raw)}catch{
+    console.error('[ai-content] Invalid structured OpenAI output',{status:r.status,model:MODEL,outputPreview:raw.slice(0,500)});
+    throw Object.assign(new Error('Invalid structured response'),{status:502,code:'invalid_ai_response'})
+  }
 }
 function generationInstructions(language){return `You write concise, elegant restaurant-menu copy in ${lang(language)}. Use ONLY facts supplied in the product context. Never invent ingredients, provenance, awards, vintages, production methods, tasting facts or claims. Do not repeat the product name mechanically. shortDescription must be one compact menu line; description must be polished but concise (normally 1-3 sentences). Return only JSON with exactly: {"shortDescription":"...","description":"..."}.`}
 function translationInstructions(source,targets,preserve){return `Translate restaurant menu content from ${lang(source)} into: ${targets.map(lang).join(', ')}. Preserve meaning, tone, punctuation and factual content; do not add facts. ${preserve?'Wine producer names, cuvées, denominations, appellations, grape names and other proper names must remain unchanged unless a conventional localized form is clearly required.':''} Return only JSON shaped exactly as {"translations":{"xx":{"name":"...","shortDescription":"...","description":"..."}}}, with one key for every requested target language code.`}
