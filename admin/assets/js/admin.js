@@ -211,7 +211,30 @@ function openAiStylePicker(){
  wrap.querySelector('[data-close]').onclick=()=>wrap.remove();wrap.onclick=e=>{if(e.target===wrap)wrap.remove()};
  wrap.querySelector('[data-generate]').onclick=()=>{const style=wrap.querySelector('input[name="aiCopyStyle"]:checked')?.value||'elegant';sessionStorage.setItem('gm_ai_copy_style',style);wrap.remove();generateAiCopy(style)};
 }
-async function generateAiCopy(style='elegant'){const form=$('#productForm');setAiStatus('GENERAZIONE…');try{const data=await callAiContent('generate',{context:aiContext(form),language:'it',style});if(data.shortDescription!=null)setPathInput(form,'shortDescription.it',data.shortDescription);if(data.description!=null)setPathInput(form,'description.it',data.description);setAiStatus('BOZZA GENERATA — CONTROLLA IL TESTO')}catch(e){setAiStatus(e.message==='api_key_missing'?'CONFIGURA OPENAI_API_KEY SU VERCEL':'ERRORE AI',true)}}
+async function generateAiCopy(style='elegant') {
+ const form=$('#productForm');
+ const context=aiContext(form);
+ const payload={context,language:'it',style};
+
+ console.log('=== AI CONTENT DEBUG ===');
+ console.log('Action:','generate');
+ console.log('Style:',style);
+ console.log('Context:',context);
+ console.log('Language:','it');
+ console.log('Payload inviato:',payload);
+ console.log('========================');
+
+ setAiStatus('GENERAZIONE…');
+ try{
+  const data=await callAiContent('generate',payload);
+  if(data.shortDescription!=null)setPathInput(form,'shortDescription.it',data.shortDescription);
+  if(data.description!=null)setPathInput(form,'description.it',data.description);
+  setAiStatus('BOZZA GENERATA — CONTROLLA IL TESTO')
+ }catch(e){
+  console.error('AI ERROR:',e);
+  setAiStatus(e.message==='api_key_missing'?'CONFIGURA OPENAI_API_KEY SU VERCEL':'ERRORE AI',true)
+ }
+}
 async function translateAiCopy(){const form=$('#productForm'),source='it',targets=contentLanguages().filter(l=>l!==source),name=getVal(form,`name.${source}`),shortDescription=getVal(form,`shortDescription.${source}`),description=getVal(form,`description.${source}`);if(!name&&!shortDescription&&!description){setAiStatus('INSERISCI PRIMA I CONTENUTI IN ITALIANO',true);return}setAiStatus('TRADUZIONE…');try{const data=await callAiContent('translate',{sourceLanguage:source,targetLanguages:targets,name,shortDescription,description,preserveProperNames:kind==='wine'});for(const l of targets){if(data.translations?.[l]?.name!=null)setPathInput(form,`name.${l}`,data.translations[l].name);if(data.translations?.[l]?.shortDescription!=null)setPathInput(form,`shortDescription.${l}`,data.translations[l].shortDescription);if(data.translations?.[l]?.description!=null)setPathInput(form,`description.${l}`,data.translations[l].description)}setAiStatus('TRADUZIONI AGGIORNATE')}catch(e){setAiStatus(e.message==='api_key_missing'?'CONFIGURA OPENAI_API_KEY SU VERCEL':'ERRORE AI',true)}}
 function setPathInput(form,name,value){const el=form.elements[name];if(el)el.value=value}
 function openLanguageManager(){const current=contentLanguages();const choices=Object.entries(LANGUAGE_CATALOG).map(([id,label])=>`<label class="language-choice ${id==='it'?'is-fixed':''}"><input type="checkbox" value="${id}" ${current.includes(id)||id==='it'?'checked':''} ${id==='it'?'disabled':''}><span>${id.toUpperCase()}</span><b>${label}</b></label>`).join('');const wrap=document.createElement('div');wrap.className='modal-backdrop dynamic-modal';wrap.innerHTML=`<div class="confirm-box language-manager-box"><p class="eyebrow">CONTENUTI</p><h2>Lingue attive</h2><p class="manager-help">Le descrizioni AI vengono tradotte automaticamente in tutte le lingue attive. Italiano resta la lingua principale.</p><div class="language-choices">${choices}</div><div class="confirm-actions"><button class="btn ghost" data-close>ANNULLA</button><button class="btn primary" data-save>SALVA LINGUE</button></div></div>`;document.body.appendChild(wrap);wrap.querySelector('[data-close]').onclick=()=>wrap.remove();wrap.onclick=e=>{if(e.target===wrap)wrap.remove()};wrap.querySelector('[data-save]').onclick=()=>{const langs=['it',...Array.from(wrap.querySelectorAll('input:not(:disabled):checked')).map(i=>i.value).filter(v=>v&&v!=='it')];saveContentLanguages(langs);const id=selectedId;wrap.remove();if(id)openEdit(id)}}

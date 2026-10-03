@@ -1,6 +1,11 @@
 const OPENAI_URL = 'https://api.openai.com/v1/responses';
 const MODEL = process.env.OPENAI_MODEL || 'gpt-6-luna';
 const LANGUAGES = {it:'Italian',en:'English',es:'Spanish',fr:'French',de:'German',pt:'Portuguese'};
+const WRITING_STYLES = {
+  elegant: 'ELEGANT — evocative, contemporary and essential. Use refined but restrained language, with elegant sensory expression. Avoid clichés, excessive adjectives and marketing language.',
+  authentic: 'AUTHENTIC — warm, familiar, traditional and direct. Use natural, welcoming language and favor simplicity and genuine cuisine. Avoid excessive technicality and artificial sophistication.',
+  gastronomic: 'GASTRONOMIC — refined, minimal and technical. Focus on ingredients and composition, using precise culinary language that remains readable for a restaurant guest. Avoid excessive poetry and unsupported culinary claims.'
+};
 
 function send(res,status,data){res.status(status).json(data)}
 function text(v,max=6000){return typeof v==='string'?v.trim().slice(0,max):''}
@@ -12,7 +17,7 @@ function extractOutput(json){
 }
 async function askOpenAI(instructions,input){
   if(!process.env.OPENAI_API_KEY) throw Object.assign(new Error('OPENAI_API_KEY missing'),{status:503,code:'api_key_missing'});
-  const r=await fetch(OPENAI_URL,{method:'POST',headers:{'Authorization':`Bearer ${process.env.OPENAI_API_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({model:MODEL,instructions,input,temperature:0.4,text:{format:{type:'json_object'}}})});
+  const r=await fetch(OPENAI_URL,{method:'POST',headers:{'Authorization':`Bearer ${process.env.OPENAI_API_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({model:MODEL,instructions,input,text:{format:{type:'json_object'}}})});
   const rawBody=await r.text();
   let data=null;
   try{data=rawBody?JSON.parse(rawBody):null}catch{}
@@ -31,7 +36,7 @@ async function askOpenAI(instructions,input){
     throw Object.assign(new Error('Invalid structured response'),{status:502,code:'invalid_ai_response'})
   }
 }
-function generationInstructions(language){return `You write concise, elegant restaurant-menu copy in ${lang(language)}. Use ONLY facts supplied in the product context. Never invent ingredients, provenance, awards, vintages, production methods, tasting facts or claims. Do not repeat the product name mechanically. shortDescription must be one compact menu line; description must be polished but concise (normally 1-3 sentences). Return only JSON with exactly: {"shortDescription":"...","description":"..."}.`}
+function generationInstructions(language,style){const styleInstructions=WRITING_STYLES[style]||WRITING_STYLES.elegant;return `You write restaurant-menu copy in ${lang(language)}. Writing style: ${styleInstructions} Use ONLY facts supplied in the product context. Never invent ingredients, provenance, awards, vintages, production methods, tasting facts or claims. Do not repeat the product name mechanically. shortDescription must be one compact menu line; description must be polished but concise (normally 1-3 sentences). Return only JSON with exactly: {\"shortDescription\":\"...\",\"description\":\"...\"}.`}
 function translationInstructions(source,targets,preserve){return `Translate restaurant menu content from ${lang(source)} into: ${targets.map(lang).join(', ')}. Preserve meaning, tone, punctuation and factual content; do not add facts. ${preserve?'Wine producer names, cuvées, denominations, appellations, grape names and other proper names must remain unchanged unless a conventional localized form is clearly required.':''} Return only JSON shaped exactly as {"translations":{"xx":{"name":"...","shortDescription":"...","description":"..."}}}, with one key for every requested target language code.`}
 
 export default async function handler(req,res){
@@ -41,8 +46,12 @@ export default async function handler(req,res){
     if(body.action==='generate'){
       const language=text(body.language,10)||'it';
       const context=body.context && typeof body.context==='object'?body.context:{};
+      const requestedStyle=text(body.style,30).toLowerCase()||'elegant';
+      const style=WRITING_STYLES[requestedStyle]?requestedStyle:'elegant';
+      const instructions=generationInstructions(language,style);
+      console.log('[AI STYLE DEBUG]',{receivedStyle:requestedStyle,resolvedStyle:style,styleInstructions:WRITING_STYLES[style],instructions});
       if(!text(context.name,300)) return send(res,400,{error:'name_required'});
-      const result=await askOpenAI(generationInstructions(language),`PRODUCT CONTEXT (JSON):\n${JSON.stringify(context)}`);
+      const result=await askOpenAI(instructions,`PRODUCT CONTEXT (JSON):\n${JSON.stringify(context)}`);
       return send(res,200,{shortDescription:text(result.shortDescription,1000),description:text(result.description,3000)});
     }
     if(body.action==='translate'){
