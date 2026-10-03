@@ -1460,3 +1460,41 @@ body.wine-page header button,
 .wine-ai-answer{padding-top:18px}.wine-ai-answer-copy{font:400 clamp(20px,2.5vw,29px)/1.25 var(--gm-font-display);max-width:760px;margin:0 0 26px;color:var(--gm-surface-2)}.wine-ai-reset{display:block;margin:28px auto 0;border:0;background:none;color:rgba(243,239,231,.55);font:500 8px var(--gm-font-body);letter-spacing:.14em;cursor:pointer}.wine-ai-reset:hover{color:var(--gm-accent)}
 .wine-ai-result-card{display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:center;width:100%;padding:18px 0;border:0;border-top:1px solid rgba(243,239,231,.14);background:transparent;color:var(--gm-bg);text-align:left;cursor:pointer}.wine-ai-result-card:last-child{border-bottom:1px solid rgba(243,239,231,.14)}.wine-ai-result-card img{width:150px;height:120px;object-fit:cover}.wine-ai-result-copy{display:flex;flex-direction:column;gap:5px}.wine-ai-result-copy small{font:500 8px var(--gm-font-body);letter-spacing:.15em;opacity:.52}.wine-ai-result-copy strong{font:400 28px/1 var(--gm-font-display)}.wine-ai-result-copy em{font:400 10px var(--gm-font-body);font-style:normal;opacity:.55}.wine-ai-result-copy p{font:300 11px/1.5 var(--gm-font-body);opacity:.72;margin:7px 0 0;max-width:620px}.wine-ai-result-price{text-align:right}.wine-ai-result-price b{display:block;font:400 23px var(--gm-font-display)}.wine-ai-result-price i{font:500 8px var(--gm-font-body);font-style:normal;letter-spacing:.12em;color:var(--gm-accent)}
 @media(max-width:900px){#wineGuide.wine-ai-guide{width:calc(100% - 32px);padding:30px 18px;margin-bottom:55px;min-height:0}.wine-ai-head{margin-bottom:28px}.wine-ai-compose{grid-template-columns:1fr}.wine-ai-compose button{min-height:52px;border-left:0;border-top:1px solid rgba(243,239,231,.18)}.wine-ai-compose textarea{min-height:92px;font-size:18px}.wine-ai-result-card{grid-template-columns:82px 1fr auto;gap:12px}.wine-ai-result-card img{width:82px;height:96px}.wine-ai-result-copy strong{font-size:20px}.wine-ai-result-copy p{font-size:10px}.wine-ai-result-price b{font-size:18px}.wine-ai-result-price i{display:none}}
+
+/* V36 — desktop entry cards: cleaner labels without numbering/arrows */
+@media (min-width:901px){
+  .wine-entry-card .wine-entry-number,
+  .wine-entry-card .wine-entry-arrow{display:none}
+}
+/* New search belongs to the result header, before the recommendations. */
+.wine-ai-answer .wine-ai-reset{margin:0 0 18px 0}
+
+/* V37 — compact Sommelier character multi-selector */
+#wineGuide.wine-ai-guide{min-height:0}
+.wine-ai-character-wrap{position:relative;display:inline-flex}
+.wine-ai-character-popover{position:absolute;z-index:12;left:0;top:calc(100% + 8px);width:min(330px,82vw);padding:12px;background:var(--gm-dark);border:1px solid rgba(243,239,231,.2);box-shadow:0 18px 40px rgba(0,0,0,.28);display:flex;flex-wrap:wrap;gap:7px}
+.wine-ai-character-popover[hidden]{display:none}
+.wine-ai-character-popover [data-ai-character]{border:1px solid rgba(243,239,231,.16);background:transparent;color:rgba(243,239,231,.72);padding:9px 11px;font:500 8px var(--gm-font-body);letter-spacing:.08em;cursor:pointer}
+.wine-ai-character-popover [data-ai-character].is-selected{border-color:var(--gm-accent);background:rgba(198,169,107,.14);color:var(--gm-accent)}
+.wine-ai-character-popover .wine-ai-character-apply{flex-basis:100%;margin-top:5px;border:0;background:var(--gm-surface-2);color:var(--gm-text);padding:10px;font:600 8px var(--gm-font-body);letter-spacing:.12em;cursor:pointer}
+.wine-ai-answer:not([hidden]){margin-top:18px;border-top:1px solid rgba(243,239,231,.14);padding-top:22px}
+@media(max-width:900px){.wine-ai-character-popover{position:fixed;left:16px;right:16px;top:auto;bottom:18px;width:auto}.wine-ai-panel{padding-bottom:20px}}
+
+
+/* V38 — Sommelier full-width answer + optional suggestion selectors */
+#wineGuide.wine-ai-guide:not([hidden]){display:block}
+#wineGuide.wine-ai-guide{grid-template-columns:none}
+.wine-ai-panel{width:100%}
+.wine-ai-answer{width:100%;max-width:none;grid-column:1/-1}
+.wine-ai-answer-copy{max-width:none}
+.wine-ai-suggestions{align-items:center}
+.wine-ai-suggestions-label{font:500 8px/1 var(--gm-font-body);letter-spacing:.16em;color:rgba(243,239,231,.42);margin-right:4px}
+.wine-ai-type-popover [data-ai-type]{border:1px solid rgba(243,239,231,.16);background:transparent;color:rgba(243,239,231,.72);padding:9px 11px;font:500 8px var(--gm-font-body);letter-spacing:.08em;cursor:pointer}
+.wine-ai-type-popover [data-ai-type].is-selected{border-color:var(--gm-accent);background:rgba(198,169,107,.14);color:var(--gm-accent)}
+.wine-ai-type-popover .wine-ai-type-apply{flex-basis:100%;margin-top:5px;border:0;background:var(--gm-surface-2);color:var(--gm-text);padding:10px;font:600 8px var(--gm-font-body);letter-spacing:.12em;cursor:pointer}
+@media(max-width:900px){.wine-ai-suggestions-label{flex-basis:100%;margin:0 0 2px}.wine-ai-type-popover{position:fixed;left:16px;right:16px;top:auto;bottom:18px;width:auto}}
+
+/* V39 — single wine type + inline new search */
+.wine-ai-reset-inline{margin:10px 0 0!important;text-align:left}
+.wine-ai-reset-inline[hidden]{display:none!important}
+@media(max-width:900px){.wine-ai-reset-inline{margin-top:10px!important}}

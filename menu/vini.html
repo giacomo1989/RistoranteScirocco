@@ -72,7 +72,6 @@
 
 <section class="wine-catalog" id="wineCatalog">
 <div class="wine-section-head">
-<button class="wine-back" id="closeWineList" type="button">← <span id="wineBackHome"></span></button>
 <p class="eyebrow" id="wineCatalogEyebrow"></p>
 <h2 id="wineCatalogTitle"></h2>
 </div>
@@ -93,23 +92,19 @@
 <p id="guideIntro"></p>
 </div>
 <div class="wine-ai-panel">
-<div class="wine-ai-context" id="wineAiContext" hidden></div>
 <label class="wine-ai-label" for="wineAiPrompt" id="wineAiLabel">COSA TI PIACEREBBE BERE?</label>
 <div class="wine-ai-compose">
 <textarea id="wineAiPrompt" rows="3" maxlength="500" placeholder="Vorrei una bollicina fresca, non troppo secca, sui 50 €…"></textarea>
 <button type="button" id="wineAiAsk"><span>✦</span><b id="wineAiAskLabel">CHIEDI AL SOMMELIER</b></button>
 </div>
 <div class="wine-ai-suggestions" id="wineAiSuggestions" aria-label="Suggerimenti rapidi"></div>
+<button class="wine-ai-reset wine-ai-reset-inline" id="wineAiReset" type="button" hidden>↻ <span id="wineAiResetLabel">NUOVA RICERCA</span></button>
 </div>
-<div class="wine-ai-styles">
-<div class="wine-ai-styles-head"><small id="wineAiStylesLabel">OPPURE PARTI DAL CARATTERE</small><span></span></div>
-<div class="wine-ai-style-grid" id="wineAiStyleGrid"></div>
-</div>
+
 <div class="wine-ai-thinking" id="wineAiThinking" hidden><span id="wineAiThinkingText">STO CERCANDO NELLA NOSTRA CANTINA…</span><i></i></div>
 <div class="wine-ai-answer" id="wineAiAnswer" hidden>
 <p class="wine-ai-answer-copy" id="wineAiAnswerCopy"></p>
 <div id="wineAiResults"></div>
-<button class="wine-ai-reset" id="wineAiReset" type="button">↻ <span id="wineAiResetLabel">NUOVA RICERCA</span></button>
 </div>
 </section>
 </main>
