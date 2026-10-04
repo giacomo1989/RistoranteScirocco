@@ -216,14 +216,6 @@ async function generateAiCopy(style='elegant') {
  const context=aiContext(form);
  const payload={context,language:'it',style};
 
- console.log('=== AI CONTENT DEBUG ===');
- console.log('Action:','generate');
- console.log('Style:',style);
- console.log('Context:',context);
- console.log('Language:','it');
- console.log('Payload inviato:',payload);
- console.log('========================');
-
  setAiStatus('GENERAZIONE…');
  try{
   const data=await callAiContent('generate',payload);

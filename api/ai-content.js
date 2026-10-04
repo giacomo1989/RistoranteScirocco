@@ -36,7 +36,18 @@ async function askOpenAI(instructions,input){
     throw Object.assign(new Error('Invalid structured response'),{status:502,code:'invalid_ai_response'})
   }
 }
-function generationInstructions(language,style){const styleInstructions=WRITING_STYLES[style]||WRITING_STYLES.elegant;return `You write restaurant-menu copy in ${lang(language)}. Writing style: ${styleInstructions} Use ONLY facts supplied in the product context. Never invent ingredients, provenance, awards, vintages, production methods, tasting facts or claims. Do not repeat the product name mechanically. shortDescription must be one compact menu line; description must be polished but concise (normally 1-3 sentences). Return only JSON with exactly: {\"shortDescription\":\"...\",\"description\":\"...\"}.`}
+function generationInstructions(language,style){
+  const styleInstructions=WRITING_STYLES[style]||WRITING_STYLES.elegant;
+  return `You write restaurant-menu copy in ${lang(language)}. Writing style: ${styleInstructions}
+
+Use only the supplied product facts for factual claims. You MAY use general culinary knowledge to explain how the listed ingredients interact in terms of flavor, texture, balance, contrast, intensity and overall gastronomic character. Do not invent ingredients, provenance, preparation methods, cooking techniques, awards, vintages, production methods or product-specific facts that were not provided. Do not merely restate or enumerate the ingredients, and do not repeat the product name mechanically.
+
+SHORT DESCRIPTION: Write one distinctive, compact menu line that communicates the identity, character or main sensory idea of the dish. It must add useful information beyond the product name and must not simply list its ingredients.
+
+FULL DESCRIPTION: Explain what makes the combination interesting. When supported by the supplied ingredients, describe their culinary relationship through balance, contrast, texture, intensity or complementary flavors. Help the guest understand why the ingredients work together. Normally write 2-3 concise sentences.
+
+Return only JSON with exactly: {\"shortDescription\":\"...\",\"description\":\"...\"}.`;
+}
 function translationInstructions(source,targets,preserve){return `Translate restaurant menu content from ${lang(source)} into: ${targets.map(lang).join(', ')}. Preserve meaning, tone, punctuation and factual content; do not add facts. ${preserve?'Wine producer names, cuvées, denominations, appellations, grape names and other proper names must remain unchanged unless a conventional localized form is clearly required.':''} Return only JSON shaped exactly as {"translations":{"xx":{"name":"...","shortDescription":"...","description":"..."}}}, with one key for every requested target language code.`}
 
 export default async function handler(req,res){
@@ -49,9 +60,11 @@ export default async function handler(req,res){
       const requestedStyle=text(body.style,30).toLowerCase()||'elegant';
       const style=WRITING_STYLES[requestedStyle]?requestedStyle:'elegant';
       const instructions=generationInstructions(language,style);
-      console.log('[AI STYLE DEBUG]',{receivedStyle:requestedStyle,resolvedStyle:style,styleInstructions:WRITING_STYLES[style],instructions});
       if(!text(context.name,300)) return send(res,400,{error:'name_required'});
+      const started=Date.now();
+      console.log('[ai-content] generation start',{model:MODEL,language,receivedStyle:requestedStyle,resolvedStyle:style,kind:text(context.kind,30)||null});
       const result=await askOpenAI(instructions,`PRODUCT CONTEXT (JSON):\n${JSON.stringify(context)}`);
+      console.log('[ai-content] generation success',{model:MODEL,language,resolvedStyle:style,kind:text(context.kind,30)||null,durationMs:Date.now()-started});
       return send(res,200,{shortDescription:text(result.shortDescription,1000),description:text(result.description,3000)});
     }
     if(body.action==='translate'){
@@ -60,7 +73,10 @@ export default async function handler(req,res){
       if(!targets.length) return send(res,400,{error:'target_languages_required'});
       const content={name:text(body.name,500),shortDescription:text(body.shortDescription,1500),description:text(body.description,5000)};
       if(!content.name&&!content.shortDescription&&!content.description) return send(res,400,{error:'content_required'});
+      const started=Date.now();
+      console.log('[ai-content] translation start',{model:MODEL,source,targets,preserveProperNames:!!body.preserveProperNames});
       const result=await askOpenAI(translationInstructions(source,targets,!!body.preserveProperNames),`SOURCE CONTENT (JSON):\n${JSON.stringify(content)}`);
+      console.log('[ai-content] translation success',{model:MODEL,source,targets,durationMs:Date.now()-started});
       const translations={};
       for(const code of targets){const v=result?.translations?.[code]||{};translations[code]={name:text(v.name,500),shortDescription:text(v.shortDescription,1500),description:text(v.description,5000)}}
       return send(res,200,{translations});
