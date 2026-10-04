@@ -44,7 +44,16 @@ Use only the supplied product facts for factual claims. You MAY use general culi
 
 SHORT DESCRIPTION: Write one distinctive, compact menu line that communicates the identity, character or main sensory idea of the dish. It must add useful information beyond the product name and must not simply list its ingredients.
 
+The selected writing style MUST substantially affect BOTH shortDescription and description. Apply it not only to vocabulary, but also to sentence structure, narrative perspective and the kind of gastronomic information emphasized. The full description must not become a neutral factual explanation with only superficial stylistic changes. When the same product context is generated with different styles, the resulting full descriptions should be clearly distinguishable.
+
 FULL DESCRIPTION: Explain what makes the combination interesting. When supported by the supplied ingredients, describe their culinary relationship through balance, contrast, texture, intensity or complementary flavors. Help the guest understand why the ingredients work together. Normally write 2-3 concise sentences.
+
+STYLE-SPECIFIC FULL DESCRIPTION RULES:
+- ELEGANT: emphasize harmony, sensory elegance, balance and refinement. Use fluid, evocative but restrained prose.
+- AUTHENTIC: emphasize simplicity, ingredient identity, immediacy and the natural relationship between the elements. Use warm, direct and unforced language.
+- GASTRONOMIC: analyze the culinary relationship between the ingredients. Emphasize flavor structure, texture, intensity, contrast, balance and persistence using precise gastronomic language.
+
+Do not generate the same full description across different styles with only minor wording changes.
 
 Return only JSON with exactly: {\"shortDescription\":\"...\",\"description\":\"...\"}.`;
 }
