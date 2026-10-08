@@ -2354,8 +2354,7 @@ body {
     overflow: hidden;
     color: #fff;
     cursor: pointer;
-    background: #171410;
-    border-radius: 10px;
+    background: #171410
   }
 
   .mobile-create-card:before {
@@ -4444,4 +4443,262 @@ body[data-kind="drinks"] .drink-main-name { margin-bottom: 10px; }
 .search-wrap input,
 .search-wrap button {
   border-radius: 10px !important;
+}
+
+/* Admin product list — larger thumbnails and drag handle */
+.product-row {
+  grid-template-columns: 38px 62px minmax(0, 1fr) auto !important;
+  gap: 10px !important;
+  align-items: center;
+}
+
+.product-thumb {
+  width: 62px !important;
+  height: 62px !important;
+}
+
+.drag-handle {
+  width: 38px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  touch-action: none;
+}
+
+.drag-handle svg {
+  width: 23px !important;
+  height: 23px !important;
+}
+
+.product-row.is-draggable .drag-handle {
+  cursor: grab;
+}
+
+.product-row.is-draggable .drag-handle:active {
+  cursor: grabbing;
+}
+
+@media(max-width:800px) {
+  .product-row {
+    grid-template-columns: 34px 54px minmax(0, 1fr) auto !important;
+    gap: 7px !important;
+  }
+
+  .product-thumb {
+    width: 54px !important;
+    height: 54px !important;
+  }
+
+  .drag-handle {
+    width: 34px !important;
+    height: 40px !important;
+  }
+
+  .drag-handle svg {
+    width: 21px !important;
+    height: 21px !important;
+  }
+}
+
+/* Admin product rows — drag | square photo | title/meta | 2x2 actions */
+.product-row {
+  grid-template-columns: 42px 72px minmax(0, 1fr) 72px !important;
+  gap: 12px !important;
+  align-items: center !important;
+  padding: 14px 16px !important;
+}
+
+.product-thumb {
+  width: 72px !important;
+  height: 72px !important;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  flex: 0 0 auto;
+}
+
+.product-main {
+  min-width: 0;
+  align-self: center;
+}
+
+.product-name {
+  margin: 0;
+}
+
+.product-meta {
+  margin-top: 5px;
+}
+
+.drag-handle {
+  width: 42px !important;
+  height: 52px !important;
+  padding: 0 !important;
+  align-self: center;
+  justify-self: center;
+  touch-action: none;
+}
+
+.drag-handle svg {
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.product-actions-grid {
+  display: grid !important;
+  grid-template-columns: 32px 32px;
+  grid-template-rows: 32px 32px;
+  gap: 5px 6px !important;
+  align-items: center;
+  justify-items: center;
+  justify-content: end;
+  width: 70px;
+}
+
+.product-actions-grid .visibility-dot {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0 !important;
+  align-self: center;
+  justify-self: center;
+}
+
+.product-actions-grid .hide {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.product-actions-grid .edit {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.product-actions-grid .delete {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.product-actions-grid .icon-btn {
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+}
+
+@media(max-width:800px) {
+  .product-row {
+    grid-template-columns: 34px 64px minmax(0, 1fr) 66px !important;
+    gap: 8px !important;
+    padding: 12px 10px !important;
+  }
+
+  .product-thumb {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  .drag-handle {
+    width: 34px !important;
+    height: 48px !important;
+  }
+
+  .drag-handle svg {
+    width: 23px !important;
+    height: 23px !important;
+  }
+
+  .product-actions-grid {
+    grid-template-columns: 30px 30px;
+    grid-template-rows: 30px 30px;
+    gap: 4px !important;
+    width: 64px;
+  }
+
+  .product-actions-grid .icon-btn {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+
+@media(max-width:520px) {
+  .product-row {
+    grid-template-columns: 30px 58px minmax(0, 1fr) 60px !important;
+    gap: 7px !important;
+    padding: 11px 8px !important;
+  }
+
+  .product-thumb {
+    width: 58px !important;
+    height: 58px !important;
+  }
+
+  .drag-handle {
+    width: 30px !important;
+    height: 44px !important;
+  }
+
+  .drag-handle svg {
+    width: 21px !important;
+    height: 21px !important;
+  }
+
+  .product-actions-grid {
+    grid-template-columns: 28px 28px;
+    grid-template-rows: 28px 28px;
+    width: 60px;
+  }
+
+  .product-actions-grid .icon-btn {
+    width: 28px !important;
+    height: 28px !important;
+  }
+}
+
+
+/* FINAL product-row layout — actions stay in the far-right column */
+.product-row {
+  display: grid !important;
+  grid-template-columns: 42px 72px minmax(0, 1fr) 72px !important;
+  grid-template-areas: "drag thumb main actions" !important;
+  align-items: center !important;
+}
+
+.product-row > .drag-handle {
+  grid-area: drag !important;
+}
+
+.product-row > .product-thumb {
+  grid-area: thumb !important;
+}
+
+.product-row > .product-main {
+  grid-area: main !important;
+  min-width: 0 !important;
+}
+
+.product-row > .product-actions-grid {
+  grid-area: actions !important;
+  justify-self: end !important;
+  align-self: center !important;
+  margin-left: auto !important;
+}
+
+@media(max-width:800px) {
+  .product-row {
+    display: grid !important;
+    grid-template-columns: 34px 64px minmax(0, 1fr) 66px !important;
+    grid-template-areas: "drag thumb main actions" !important;
+  }
+}
+
+@media(max-width:520px) {
+  .product-row {
+    display: grid !important;
+    grid-template-columns: 30px 58px minmax(0, 1fr) 60px !important;
+    grid-template-areas: "drag thumb main actions" !important;
+  }
+}
+
+/* Drag handle: native row drag starts only from this control */
+.product-row.is-draggable .drag-handle {
+  pointer-events: auto !important;
+  user-select: none;
+  -webkit-user-select: none;
 }
