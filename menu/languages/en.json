@@ -98,5 +98,11 @@
     "previousPhoto": "Previous photo",
     "nextPhoto": "Next photo",
     "noImage": "No image uploaded"
+  },
+  "adminWineStyle": {
+    "sectionTitle": "WINE STYLE",
+    "selectLabel": "SELECT WINE STYLE",
+    "addLabel": "＋ ADD STYLE",
+    "deleteLabel": "DELETE STYLE"
   }
 }

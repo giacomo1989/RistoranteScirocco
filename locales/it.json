@@ -210,5 +210,11 @@
       "title": "Scopri tutti i piatti nel nostro menu.",
       "button": "SCOPRI IL MENU →"
     }
+  },
+  "adminWineStyle": {
+    "sectionTitle": "STILE DEL VINO",
+    "selectLabel": "SELEZIONA STILE DEL VINO",
+    "addLabel": "＋ AGGIUNGI STILE",
+    "deleteLabel": "ELIMINA STILE"
   }
 }

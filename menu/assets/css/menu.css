@@ -23,8 +23,8 @@ body.menu-page .site-header button,
 
 body.menu-page > .digital-menu-main #menuCategoryBar{
   position:sticky !important;
-  top:0 !important;
-  /* Standalone food/drinks pages only. Unified menu sections are controlled by shell.css. */
+  top:112px !important;
+  /* V57 — value verified in Safari simulator: Food category bar stops exactly below the 58px header + 54px menu-card-selector. */
 }
 
 /* V44.9 — unified DOM: do not let the legacy standalone #menuCategoryBar top:0 rule
@@ -92,7 +92,7 @@ body.menu-page .menu-shell-stage .menu-module-section > .menu-category-bar{
 .dish-gallery-arrow::before{
   position:absolute;
   left:50%;
-  top:50%;
+  top:46%;
   transform:translate(-50%,-50%);
   font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
   font-weight:200;

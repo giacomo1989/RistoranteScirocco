@@ -7,6 +7,7 @@
     z-index:40;
     background:var(--gm-surface);
     margin-bottom:18px;
+    width: 100vw;
   }
 
   /* V44.9 — Food and Drinks use the same sticky rule in the unified DOM.
@@ -15,7 +16,7 @@
   .menu-module-section[data-menu-module="food"] > .menu-category-bar,
   .menu-module-section[data-menu-module="drinks"] > .menu-category-bar{
     position:sticky !important;
-    top:58px !important;
+    top:calc(58px + var(--shell-selector-height,54px)) !important;
     z-index:12;
     background:var(--gm-surface);
   }
@@ -134,4 +135,48 @@
     z-index:2;
     background:var(--gm-surface);
   }
+}
+
+/* V44.27 — Unified mobile Drinks: override the legacy standalone #menuCategoryBar
+   top:0 rule with enough specificity. Stop exactly below the sticky card selector. */
+@media(max-width:900px){
+  body.menu-page > .digital-menu-main .menu-module-section[data-menu-module="drinks"] > #menuCategoryBar{
+    position:sticky !important;
+    top:calc(58px + var(--shell-selector-height,54px)) !important;
+    z-index:12;
+    background:var(--gm-surface);
+  }
+}
+
+/* V44.28 — Unified mobile Food: match the confirmed Drinks sticky behavior.
+   Stop exactly below the sticky card selector; Wine remains unchanged. */
+@media(max-width:900px){
+  body.menu-page > .digital-menu-main .menu-module-section[data-menu-module="food"] > #menuCategoryBar{
+    position:sticky !important;
+    top:calc(58px + var(--shell-selector-height,54px)) !important;
+    z-index:12;
+    background:var(--gm-surface);
+  }
+}
+body.menu-page > .digital-menu-main
+
+.menu-module-section[data-menu-module="food"] > #menuCategoryBar {
+
+    position: sticky !important;
+
+    top: 112px !important;
+
+    z-index: 12;
+
+    background: var(--gm-surface);
+
+}
+@media (max-width: 720px) {
+
+    .menu-shell-main {
+
+        padding-bottom: 300px;
+
+    }
+
 }

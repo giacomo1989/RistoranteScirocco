@@ -346,7 +346,7 @@ body {
   border: 1px solid var(--line);
   background: #f8f5ef;
   padding: 11px 12px;
-  color: var(--ink);
+  color: #8b8176;
   font: 400 12px/1.5 Inter;
   outline: none
 }
@@ -866,7 +866,8 @@ body {
   padding: 8px;
   font: 500 8px Inter;
   letter-spacing: .08em;
-  cursor: pointer
+  cursor: pointer;
+  color: #1d1b19;
 }
 
 .tag-new {
@@ -1374,7 +1375,8 @@ body {
 }
 
 .aging-builder>.text-action {
-  margin-top: 12px
+  margin-top: 0px;
+  font-size: 12px;
 }
 
 .wine-style-options {
@@ -3096,7 +3098,7 @@ body {
     width: 100%;
     font-size: 10px;
     padding-left: 7px;
-    padding-right: 22px
+    padding-right: 22px;
   }
 
   .remove-relation {
@@ -3368,3 +3370,158 @@ body {
     padding-top: 16px !important;
   }
 }
+.relation-row select {
+    color: #1b1b19;
+}
+
+.relation-row select:focus,
+.relation-row select:focus-visible {
+    outline: none;
+    box-shadow: none;
+    border-color: #9B762E;
+    color: #1b1b19;
+}
+
+/* V44.31 — Wine editor: aligned Vitigni/Affinamento section headers */
+.section-title-row.wine-detail-title-row {
+  align-items: center;
+  border-bottom: 1px solid var(--line) !important;
+  margin-bottom: 15px;
+}
+
+.section-title-row.wine-detail-title-row .form-section-title {
+  margin: 0;
+  padding-bottom: 8px;
+}
+
+.section-title-row.wine-detail-title-row .text-action {
+  margin: 0 0 8px;
+}
+
+.aging-builder > .aging-help:first-child {
+  margin-top: 0;
+}
+
+/* Admin — keep aging controls on one row on mobile */
+@media(max-width:800px) {
+  .aging-row {
+    grid-template-columns: minmax(0, 1.45fr) minmax(64px, .7fr) minmax(72px, .7fr) 34px;
+    gap: 6px;
+    align-items: end;
+  }
+
+  .aging-row .field:first-child {
+    grid-column: auto;
+  }
+
+  .aging-row .remove-aging {
+    grid-column: auto;
+    justify-self: stretch;
+  }
+
+  .aging-row .field {
+    min-width: 0;
+  }
+}
+
+/* V44.32 — Wine style section aligned with Vitigni/Affinamento */
+.wine-style-section .wine-detail-title-row {
+  margin-bottom: 15px;
+}
+
+.wine-style-selector-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.wine-style-selector-row .field-selector {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.wine-style-selector-row .text-action {
+  flex: 0 0 auto;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.wine-style-choice-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 42px;
+  align-items: stretch;
+  border-bottom: 1px solid var(--line);
+}
+
+.wine-style-choice-toggle {
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 12px;
+  text-align: left;
+  cursor: pointer;
+  font: 500 10px Inter, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.wine-style-choice-row.is-selected .wine-style-choice-toggle {
+  background: #f7f2e9;
+}
+
+.wine-style-choice-delete {
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: transparent;
+  color: var(--dark);
+  cursor: pointer;
+  font: 300 20px/1 Inter, sans-serif;
+}
+
+.wine-style-choice-delete:hover {
+  background: #f7f2e9;
+}
+
+@media(max-width:800px) {
+  .wine-style-selector-row { gap: 10px; }
+  .wine-style-selector-row .field-selector { font-size: 8px; padding-inline: 10px; }
+  .wine-style-selector-row .text-action { font-size: 8px; }
+}
+
+/* Wine style selector — delete icon */
+.wine-style-choice-delete {
+  color: rgba(176, 54, 54, .72) !important;
+  font-size: 16px;
+  line-height: 1;
+}
+.wine-style-choice-delete:hover,
+.wine-style-choice-delete:focus-visible {
+  color: rgba(176, 54, 54, .92) !important;
+}
+
+/* Admin — Wine style selector/editor card */
+.wine-style-card{width:min(760px,92vw);max-height:88vh;overflow:auto}
+.wine-style-card-list{display:grid;margin-top:8px}
+.wine-style-card-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #e3ddd4}
+.wine-style-card-row:first-child{border-top:1px solid #e3ddd4}
+.wine-style-select-area{min-width:0;border:0;background:transparent;text-align:left;padding:0;cursor:pointer;color:var(--ink)}
+.wine-style-card-name{font:600 12px/1.3 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}
+.wine-style-card-descriptors{display:flex;gap:7px 12px;flex-wrap:wrap;color:#746b61;font:400 12px/1.45 Inter,sans-serif}
+.wine-style-card-descriptors span:not(:last-child)::after{content:'·';margin-left:12px;color:#aaa197}
+.wine-style-card-row.is-selected .wine-style-card-name::before{content:'✓';margin-right:8px;color:#9b762e}
+.wine-style-card-actions{display:flex;align-items:center;gap:2px}
+.wine-style-card-actions .icon-btn{border-left:0!important;border-right:0!important}
+.wine-style-card-actions .delete{color:#a85f59}
+.wine-style-card-edit-fields{grid-column:1/2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.wine-style-card-edit-fields[hidden]{display:none}
+.wine-style-add-row{width:100%;border:0;border-bottom:1px solid #e3ddd4;background:transparent;text-align:left;padding:17px 0;cursor:pointer;color:#9b762e;font:600 10px Inter,sans-serif;letter-spacing:.12em}
+.wine-style-new-card{padding:16px 0;border-bottom:1px solid #e3ddd4}
+.wine-style-new-card[hidden]{display:none}
+.wine-style-new-card>.field{margin-bottom:10px}
+@media(max-width:720px){.wine-style-card{width:94vw}.wine-style-card-row{gap:8px;padding:14px 0}.wine-style-card-edit-fields{grid-template-columns:1fr}.wine-style-card-actions{gap:0}.wine-style-card-actions .icon-btn{width:34px;height:34px}}

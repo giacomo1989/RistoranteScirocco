@@ -98,5 +98,11 @@
     "previousPhoto": "Foto anterior",
     "nextPhoto": "Foto siguiente",
     "noImage": "Ninguna imagen cargada"
+  },
+  "adminWineStyle": {
+    "sectionTitle": "ESTILO DEL VINO",
+    "selectLabel": "SELECCIONA ESTILO DEL VINO",
+    "addLabel": "＋ AÑADIR ESTILO",
+    "deleteLabel": "ELIMINAR ESTILO"
   }
 }

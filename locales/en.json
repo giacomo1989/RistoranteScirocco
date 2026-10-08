@@ -210,5 +210,11 @@
       "title": "Discover all the dishes on our menu.",
       "button": "DISCOVER THE MENU →"
     }
+  },
+  "adminWineStyle": {
+    "sectionTitle": "WINE STYLE",
+    "selectLabel": "SELECT WINE STYLE",
+    "addLabel": "＋ ADD STYLE",
+    "deleteLabel": "DELETE STYLE"
   }
 }

@@ -66,7 +66,9 @@ init().catch(console.error);
 (function(){
   const bar=moduleRoot.querySelector('#menuCategoryBar');
   const mobileHeader=document.querySelector('.menu-mobile-header');
+  const menuSelector=document.querySelector('.menu-card-selector');
   const desktopHeader=document.querySelector('#header.menu-desktop-header');
+
   if(!bar)return;
 
   function isVisible(el){
@@ -86,7 +88,12 @@ init().catch(console.error);
       ? Math.ceil(activeHeader.getBoundingClientRect().height)
       : 0;
 
-    bar.style.setProperty('top', headerHeight+'px', 'important');
+    const selectorHeight =
+      isVisible(menuSelector)
+        ? Math.ceil(menuSelector.getBoundingClientRect().height)
+        : 0;
+
+    bar.style.setProperty('top', topOffset+'px', 'important');
   }
 
   syncCategoryTop();
@@ -99,6 +106,7 @@ init().catch(console.error);
     const ro=new ResizeObserver(syncCategoryTop);
     if(mobileHeader)ro.observe(mobileHeader);
     if(desktopHeader)ro.observe(desktopHeader);
+    if(menuSelector)ro.observe(menuSelector);
   }
 })();
 window.addEventListener('giacomo-menu:open-food',e=>{const d=e.detail;openDish(typeof d==='object'?d.id:d,typeof d==='object'?d.update!==false:true)});
