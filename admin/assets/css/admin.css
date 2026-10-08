@@ -314,7 +314,7 @@ body {
 
 .field-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .95fr) minmax(0, .8fr);
   gap: 16px 20px
 }
 
@@ -325,7 +325,8 @@ body {
 .field {
   display: flex;
   flex-direction: column;
-  gap: 7px
+  gap: 7px;
+  margin-bottom: 10px;
 }
 
 .field.full {
@@ -1001,7 +1002,7 @@ body {
   inset: 0;
   z-index: -2;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-color: #171410;
   background-repeat: no-repeat;
   transition: transform 1s cubic-bezier(.2, .7, .2, 1);
@@ -1747,7 +1748,8 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  cursor: pointer
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 .catalog-scan-btn input {
@@ -2352,7 +2354,8 @@ body {
     overflow: hidden;
     color: #fff;
     cursor: pointer;
-    background: #171410
+    background: #171410;
+    border-radius: 10px;
   }
 
   .mobile-create-card:before {
@@ -3073,7 +3076,7 @@ body {
 
 @media(min-width:801px) {
   .admin-workspace {
-    grid-template-columns: minmax(410px, 38%) minmax(0, 62%)
+    grid-template-columns: minmax(410px, 60%) minmax(0, 62%)
   }
 }
 
@@ -3152,12 +3155,14 @@ body {
   background: transparent !important;
   padding: 11px 12px !important;
   outline: none;
-  font: 400 12px Inter, sans-serif
+  font: 400 12px Inter, sans-serif;
+  border-radius: 10px;
 }
 
 .catalog-search-wrap .btn.ghost {
   border: 1px solid var(--line) !important;
-  background: transparent !important
+  background: transparent !important;
+  border-radius: 10px;
 }
 
 @media(max-width:800px) {
@@ -3179,7 +3184,8 @@ body {
   position: relative;
   display: grid;
   place-items: center;
-  color: var(--text)
+  color: var(--text);
+  border-radius: 10px;
 }
 
 .gm-product-thumb-admin .gm-image-fallback-icon {
@@ -3511,10 +3517,9 @@ body {
 .wine-style-card-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #e3ddd4}
 .wine-style-card-row:first-child{border-top:1px solid #e3ddd4}
 .wine-style-select-area{min-width:0;border:0;background:transparent;text-align:left;padding:0;cursor:pointer;color:var(--ink)}
-.wine-style-card-name{font:600 12px/1.3 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}
-.wine-style-card-descriptors{display:flex;gap:7px 12px;flex-wrap:wrap;color:#746b61;font:400 12px/1.45 Inter,sans-serif}
+.wine-style-card-name{font:600 12px/1.3 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px;    margin-left: 15px;}
+.wine-style-card-descriptors{display:flex;gap:7px 12px;flex-wrap:wrap;color:#746b61;font:400 12px/1.45 Inter,sans-serif; margin-left: 15px;}
 .wine-style-card-descriptors span:not(:last-child)::after{content:'·';margin-left:12px;color:#aaa197}
-.wine-style-card-row.is-selected .wine-style-card-name::before{content:'✓';margin-right:8px;color:#9b762e}
 .wine-style-card-actions{display:flex;align-items:center;gap:2px}
 .wine-style-card-actions .icon-btn{border-left:0!important;border-right:0!important}
 .wine-style-card-actions .delete{color:#a85f59}
@@ -3525,3 +3530,918 @@ body {
 .wine-style-new-card[hidden]{display:none}
 .wine-style-new-card>.field{margin-bottom:10px}
 @media(max-width:720px){.wine-style-card{width:94vw}.wine-style-card-row{gap:8px;padding:14px 0}.wine-style-card-edit-fields{grid-template-columns:1fr}.wine-style-card-actions{gap:0}.wine-style-card-actions .icon-btn{width:34px;height:34px}}
+
+/* Food characteristics — unified selector/editor card */
+.food-tags-section .wine-detail-title-row{border-bottom:1px solid #d9d2c8;padding-bottom:12px;margin-bottom:14px}
+.characteristic-card{width:min(700px,92vw);max-height:88vh;overflow:auto}
+.characteristic-card-list{display:grid;margin-top:8px}
+.characteristic-card-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #e3ddd4}
+.characteristic-card-row:first-child{border-top:1px solid #e3ddd4}
+.characteristic-select-area{min-width:0;border:0;background:transparent;text-align:left;padding:0;cursor:pointer;color:var(--ink)}
+.characteristic-card-name{font:600 12px/1.3 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase; padding: 10px;}
+.characteristic-card-actions{display:flex;align-items:center;gap:2px}
+.characteristic-card-actions .icon-btn{border-left:0!important;border-right:0!important}
+.characteristic-card-actions .delete{color:#a85f59}
+.characteristic-edit-field{grid-column:1/2}
+.characteristic-edit-field[hidden]{display:none}
+.characteristic-add-row{width:100%;border:0;border-bottom:1px solid #e3ddd4;background:transparent;text-align:left;padding:17px 0;cursor:pointer;color:#9b762e;font:600 10px Inter,sans-serif;letter-spacing:.12em}
+.characteristic-new-card{padding:16px 0;border-bottom:1px solid #e3ddd4}
+.characteristic-new-card[hidden]{display:none}
+@media(max-width:720px){.characteristic-card{width:94vw}.characteristic-card-row{gap:8px;padding:14px 0}.characteristic-card-actions{gap:0}.characteristic-card-actions .icon-btn{width:34px;height:34px}}
+
+/* Admin editor trial — 10px radius ONLY inside New/Edit Food, Wine and Drink forms */
+#productForm .field input,
+#productForm .field select,
+#productForm .field textarea,
+#productForm .field-selector,
+#productForm .relation-row select,
+#productForm .tag-check span,
+#productForm .upload-button,
+#productForm .image-preview,
+#productForm .remove-relation,
+#productForm .remove-aging,
+#productForm .ai-action,
+#productForm .wine-scan-option,
+#productForm .ai-style-choice,
+#productForm .wine-style-manage-row,
+#productForm .wine-style-new,
+#productForm .wine-style-card,
+#productForm .characteristic-card,
+#productForm .confirm-box {
+  border-radius: 10px;
+}
+
+#productForm .image-preview img {
+  border-radius: 9px;
+}
+
+
+/* V35 — drinks: category, volume and price on one mobile row */
+.drink-main-row {
+  display: contents;
+}
+
+@media(max-width:800px) {
+  body.is-editing .drink-main-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .95fr) minmax(0, .8fr);
+    gap: 8px;
+    grid-column: 1/-1;
+    align-items: start;
+  }
+
+  body.is-editing .drink-main-row > .field {
+    min-width: 0;
+  }
+
+  body.is-editing .drink-main-row input,
+  body.is-editing .drink-main-row select {
+    min-width: 0;
+    width: 100%;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-size: 10px;
+  }
+
+  body.is-editing .drink-main-row .field label {
+    font-size: 7px;
+    letter-spacing: .08em;
+  }
+}
+
+
+/* V35 — Food editor: category, price and featured stay on one row on mobile */
+@media(max-width:800px) {
+  body[data-kind="food"].is-editing .food-main-fields {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, .72fr) minmax(0, .93fr);
+    gap: 8px;
+    align-items: start;
+  }
+  body[data-kind="food"].is-editing .food-main-fields > .field {
+    min-width: 0;
+  }
+  body[data-kind="food"].is-editing .food-main-fields input,
+  body[data-kind="food"].is-editing .food-main-fields select {
+    min-width: 0;
+    width: 100%;
+    padding-left: 7px;
+    padding-right: 7px;
+    font-size: 10px;
+  }
+  body[data-kind="food"].is-editing .food-main-fields .field label {
+    font-size: 7px;
+    letter-spacing: .08em;
+    white-space: nowrap;
+  }
+}
+
+
+/* Drinks — name inside main data */
+body[data-kind="drinks"] .drink-main-name { margin-bottom: 10px; }
+
+/* Wine aging — vessel, duration, unit and remove aligned on one row */
+.aging-row {
+  align-items: end;
+}
+
+.aging-row .remove-aging {
+  align-self: end;
+  margin: 0 !important;
+  height: 38px;
+  min-height: 38px;
+}
+
+@media(max-width:800px) {
+  .aging-row {
+    grid-template-columns: minmax(0,1.45fr) minmax(58px,.7fr) minmax(68px,.7fr) 34px;
+    align-items: end;
+  }
+
+  .aging-row .remove-aging {
+    grid-column: auto;
+    align-self: end;
+    justify-self: stretch;
+    margin: 0 !important;
+    height: 38px;
+    min-height: 38px;
+  }
+}
+
+/* V35.4 — definitive aging-row alignment */
+#productForm .aging-row {
+  display: grid !important;
+  grid-template-columns: minmax(150px,1.4fr) minmax(90px,.7fr) minmax(100px,.7fr) 38px !important;
+  gap: 8px;
+  align-items: end !important;
+}
+
+#productForm .aging-row > .field {
+  display: grid;
+  grid-template-rows: auto 38px;
+  gap: 7px;
+  min-width: 0;
+  margin: 0 !important;
+}
+
+#productForm .aging-row > .field > input,
+#productForm .aging-row > .field > select {
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px !important;
+  min-height: 38px !important;
+  margin: 0 !important;
+}
+
+#productForm .aging-row > .remove-aging {
+  box-sizing: border-box;
+  width: 38px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  align-self: end !important;
+  justify-self: stretch !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+@media(max-width:800px) {
+  #productForm .aging-row {
+    grid-template-columns: minmax(0,1.45fr) minmax(56px,.7fr) minmax(66px,.7fr) 38px !important;
+    gap: 6px;
+  }
+
+  #productForm .aging-row > .field:first-child,
+  #productForm .aging-row > .remove-aging {
+    grid-column: auto !important;
+  }
+}
+
+/* Vitigni — same card language as Stile del vino, delete only */
+.grape-manager-card .grape-card-row {
+  grid-template-columns: minmax(0,1fr) 42px;
+}
+.grape-manager-card .grape-select-area {
+  min-height: 52px;
+}
+.grape-manager-card .wine-style-card-actions {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grape-manager-card .grape-new-card {
+  margin-top: 10px;
+}
+
+/* Vitigni modal — layout test before extending to other management cards */
+.dynamic-modal:has(.grape-manager-card) {
+  box-sizing: border-box;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-top: calc(var(--admin-top-height, 72px) + 18px) !important;
+  padding-bottom: 18px !important;
+}
+
+.grape-manager-card {
+  box-sizing: border-box;
+  width: min(680px, calc(100vw - 32px));
+  max-height: calc(100dvh - var(--admin-top-height, 72px) - 54px);
+  overflow-y: auto;
+  margin: 0 auto !important;
+  border-radius: 10px !important;
+}
+
+.grape-manager-card .wine-style-card-row,
+.grape-manager-card .wine-style-select-area,
+.grape-manager-card .wine-style-card-actions,
+.grape-manager-card .wine-style-add-row,
+.grape-manager-card .wine-style-new-card,
+.grape-manager-card .field input,
+.grape-manager-card .field select,
+.grape-manager-card .field textarea,
+.grape-manager-card .btn,
+.grape-manager-card .icon-btn {
+  border-radius: 10px !important;
+}
+
+@media(max-width:800px) {
+  .dynamic-modal:has(.grape-manager-card) {
+    padding: calc(var(--admin-top-height, 58px) + 12px) 12px 12px !important;
+  }
+
+  .grape-manager-card {
+    width: 100%;
+    max-height: calc(100dvh - var(--admin-top-height, 58px) - 36px);
+  }
+}
+
+/* Vitigni modal — compact card below admin top, sticky title/actions */
+.dynamic-modal:has(.grape-manager-card) {
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box;
+  padding: 18px 16px !important;
+  padding-top: calc(var(--admin-top-height, 118px) + 18px) !important;
+}
+
+.grape-manager-card {
+  width: min(680px, calc(100vw - 32px));
+  height: auto !important;
+  max-height: calc(100dvh - var(--admin-top-height, 118px) - 36px) !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  overflow-y: auto !important;
+  border-radius: 0 !important;
+  position: relative;
+}
+
+/* Undo rounded inner grape rows/boxes from previous test */
+.grape-manager-card .wine-style-card-row,
+.grape-manager-card .wine-style-select-area,
+.grape-manager-card .wine-style-card-actions,
+.grape-manager-card .wine-style-add-row,
+.grape-manager-card .wine-style-new-card,
+.grape-manager-card .field input,
+.grape-manager-card .field select,
+.grape-manager-card .field textarea,
+.grape-manager-card .icon-btn {
+  border-radius: 0 !important;
+}
+
+/* Title area stays fixed while grape list scrolls beneath it */
+.grape-manager-card > .eyebrow,
+.grape-manager-card > h2 {
+  position: sticky;
+  z-index: 8;
+  background: var(--paper, #f7f3eb);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.grape-manager-card > .eyebrow {
+  top: 0;
+  padding: 22px 24px 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.grape-manager-card > h2 {
+  top: 34px;
+  padding: 4px 24px 18px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Content keeps its normal straight separators */
+.grape-manager-card .grape-card-list,
+.grape-manager-card > .wine-style-add-row,
+.grape-manager-card > .grape-new-card {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+/* Bottom actions stay fixed and list/content slides underneath */
+.grape-manager-card > .confirm-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 9;
+  background: var(--paper, #f7f3eb);
+  margin: 0 !important;
+  padding: 16px 24px 22px;
+}
+
+/* Radius only on Cancel / Save */
+.grape-manager-card > .confirm-actions .btn {
+  border-radius: 10px !important;
+}
+
+@media(max-width:800px) {
+  .dynamic-modal:has(.grape-manager-card) {
+    padding: 10px 12px !important;
+    padding-top: calc(var(--admin-top-height, 146px) + 10px) !important;
+  }
+
+  .grape-manager-card {
+    width: min(370px, 100%) !important;
+    max-height: calc(100dvh - var(--admin-top-height, 146px) - 20px) !important;
+  }
+
+  .grape-manager-card > .eyebrow {
+    padding: 18px 20px 0;
+  }
+
+  .grape-manager-card > h2 {
+    top: 30px;
+    padding: 4px 20px 16px;
+  }
+
+  .grape-manager-card .grape-card-list,
+  .grape-manager-card > .wine-style-add-row,
+  .grape-manager-card > .grape-new-card {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .grape-manager-card > .confirm-actions {
+    padding: 14px 20px 18px;
+  }
+}
+
+/* Vitigni modal — restore wider card */
+.grape-manager-card {
+  width: min(760px, calc(100vw - 32px)) !important;
+}
+
+@media(max-width:800px) {
+  .grape-manager-card {
+    max-width: 85% !important;
+  }
+}
+
+/* Vitigni — sticky search + add controls, desktop and mobile */
+.grape-manager-card > .grape-sticky-tools {
+  position: sticky;
+  top: 86px;
+  z-index: 8;
+  background: var(--paper, #f7f3eb);
+  padding: 0 24px 14px;
+}
+
+.grape-search {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.grape-search-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 14px 10px 40px;
+  border-radius: 0 !important;
+}
+
+.grape-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.grape-sticky-tools .wine-style-add-row {
+  width: 100%;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.grape-manager-card .grape-card-list {
+  margin-top: 0 !important;
+}
+
+/* The add form scrolls with the catalogue; only header/tools/actions stay fixed. */
+.grape-manager-card > .grape-new-card {
+  position: static !important;
+}
+
+@media(max-width:800px) {
+  .grape-manager-card > .grape-sticky-tools {
+    top: 78px;
+    padding: 0 20px 12px;
+  }
+
+  .grape-search-input {
+    min-height: 40px;
+  }
+}
+
+/* Vitigni — requested final sizing and existing catalog-search visual language */
+.grape-manager-card {
+  border-radius: 10px !important;
+}
+
+.grape-manager-card .grape-search {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.grape-manager-card .grape-search input {
+  min-width: 0;
+  width: 100%;
+  padding: 10px 12px !important;
+  min-height: 42px;
+  border-radius: 10px !important;
+}
+
+.grape-manager-card .grape-search-icon {
+  display: none !important;
+}
+
+/* Vitigni — inline add field directly below "+ AGGIUNGI VITIGNO" */
+.grape-manager-card .grape-sticky-tools .grape-new-card {
+  margin: 10px 0 0 !important;
+}
+
+.grape-manager-card .grape-new-input-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 42px;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.grape-manager-card .grape-new-input-row .new-grape-name {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border-radius: 10px !important;
+}
+
+.grape-manager-card .grape-new-confirm {
+  min-width: 42px;
+  min-height: 42px;
+  padding: 0;
+  border: 1px solid #d8d0c5;
+  background: transparent;
+  color: inherit;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Vitigni — selected state: soft champagne highlight */
+.grape-manager-card .grape-card-row {
+  transition: background-color .32s ease, border-color .32s ease;
+}
+
+.grape-manager-card .grape-card-row.is-selected {
+  background: #eee2c7;
+  border-color: #d7c39a;
+}
+
+.grape-manager-card .grape-card-row.is-selected .grape-select-area {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grape-manager-card .grape-card-row {
+    transition: none;
+  }
+}
+
+/* Vitigni — selection only on the selectable name area, never on trash area */
+.grape-manager-card .grape-card-row,
+.grape-manager-card .grape-card-row.is-selected {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+.grape-manager-card .grape-select-area {
+  transition: background-color .32s ease, border-color .32s ease;
+  border-radius: 10px !important;
+}
+
+.grape-manager-card .grape-card-row.is-selected .grape-select-area {
+  background: #eee2c7 !important;
+  border-radius: 10px !important;
+}
+
+/* No selection checkmark */
+.grape-manager-card .grape-card-row.is-selected::before,
+.grape-manager-card .grape-card-row.is-selected::after,
+.grape-manager-card .grape-card-row.is-selected .grape-select-area::before,
+.grape-manager-card .grape-card-row.is-selected .grape-select-area::after {
+  content: none !important;
+  display: none !important;
+}
+
+.grape-manager-card .grape-card-row.is-selected .grape-card-actions,
+.grape-manager-card .grape-card-row.is-selected .grape-card-delete {
+  background: transparent !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grape-manager-card .grape-select-area {
+    transition: none;
+  }
+}
+
+/* STILE DEL VINO — card geometry aligned with the Vitigni card */
+.dynamic-modal:has(.wine-style-card:not(.grape-manager-card)) {
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box;
+  padding: 18px 16px !important;
+  padding-top: calc(var(--admin-top-height, 118px) + 18px) !important;
+}
+
+.wine-style-card:not(.grape-manager-card) {
+  width: min(760px, calc(100vw - 32px)) !important;
+  height: auto !important;
+  max-height: calc(100dvh - var(--admin-top-height, 118px) - 36px) !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  overflow-y: auto !important;
+  border-radius: 10px !important;
+  position: relative;
+}
+
+/* Title remains visible at the top while the style list scrolls */
+.wine-style-card:not(.grape-manager-card) > .eyebrow,
+.wine-style-card:not(.grape-manager-card) > h2 {
+  position: sticky;
+  z-index: 8;
+  background: var(--paper, #f7f3eb);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.wine-style-card:not(.grape-manager-card) > .eyebrow {
+  top: 0;
+  padding: 22px 24px 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.wine-style-card:not(.grape-manager-card) > h2 {
+  top: 34px;
+  padding: 4px 24px 18px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Keep the existing content spacing/behavior */
+.wine-style-card:not(.grape-manager-card) > .wine-style-card-list,
+.wine-style-card:not(.grape-manager-card) > .wine-style-add-row,
+.wine-style-card:not(.grape-manager-card) > .wine-style-new-card {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+/* Bottom actions remain visible */
+.wine-style-card:not(.grape-manager-card) > .confirm-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 9;
+  background: var(--paper, #f7f3eb);
+  margin: 0 !important;
+  padding: 16px 24px 22px;
+}
+
+.wine-style-card:not(.grape-manager-card) > .confirm-actions .btn {
+  border-radius: 10px !important;
+}
+
+@media(max-width:800px) {
+  .dynamic-modal:has(.wine-style-card:not(.grape-manager-card)) {
+    padding: 10px 12px !important;
+    padding-top: calc(var(--admin-top-height, 146px) + 10px) !important;
+  }
+
+  .wine-style-card:not(.grape-manager-card) {
+    max-width: 85% !important;
+    max-height: calc(100dvh - var(--admin-top-height, 146px) - 20px) !important;
+  }
+
+  .wine-style-card:not(.grape-manager-card) > .eyebrow {
+    padding: 18px 20px 0;
+  }
+
+  .wine-style-card:not(.grape-manager-card) > h2 {
+    top: 30px;
+    padding: 4px 20px 16px;
+  }
+
+  .wine-style-card:not(.grape-manager-card) > .wine-style-card-list,
+  .wine-style-card:not(.grape-manager-card) > .wine-style-add-row,
+  .wine-style-card:not(.grape-manager-card) > .wine-style-new-card {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .wine-style-card:not(.grape-manager-card) > .confirm-actions {
+    padding: 14px 20px 18px;
+  }
+}
+
+/* STILE DEL VINO — add control below title, matching Vitigni card */
+.wine-style-card:not(.grape-manager-card) > .wine-style-sticky-tools {
+  position: sticky;
+  top: 86px;
+  z-index: 8;
+  background: var(--paper, #f7f3eb);
+  padding: 0 24px 14px;
+}
+
+.wine-style-card:not(.grape-manager-card) > .wine-style-sticky-tools .wine-style-add-row {
+  width: 100%;
+  margin: 0 !important;
+}
+
+/* Same selected visual used by UVA BIANCA / UVA NERA */
+.wine-style-card:not(.grape-manager-card) .wine-style-card-row,
+.wine-style-card:not(.grape-manager-card) .wine-style-card-row.is-selected {
+  background: transparent !important;
+}
+
+.wine-style-card:not(.grape-manager-card) .wine-style-select-area {
+  border-radius: 10px !important;
+  transition: background-color .32s ease, border-color .32s ease;
+}
+
+.wine-style-card:not(.grape-manager-card) .wine-style-card-row.is-selected .wine-style-select-area {
+  background: #eee2c7 !important;
+  border-radius: 10px !important;
+}
+
+/* Edit/delete area never receives the champagne selection */
+.wine-style-card:not(.grape-manager-card) .wine-style-card-row.is-selected .wine-style-card-actions,
+.wine-style-card:not(.grape-manager-card) .wine-style-card-row.is-selected .icon-btn {
+  background: transparent !important;
+}
+
+@media(max-width:800px) {
+  .wine-style-card:not(.grape-manager-card) > .wine-style-sticky-tools {
+    top: 78px;
+    padding: 0 20px 12px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .wine-style-card:not(.grape-manager-card) .wine-style-select-area {
+    transition: none;
+  }
+}
+
+/* STILE DEL VINO — new style form opens directly below + AGGIUNGI STILE */
+.wine-style-card:not(.grape-manager-card) > .wine-style-sticky-tools .wine-style-new-card {
+  margin: 10px 0 0 !important;
+}
+
+.wine-style-card:not(.grape-manager-card) > .wine-style-sticky-tools .wine-style-new-card input {
+  border-radius: 10px;
+}
+
+/* CARATTERISTICHE — same card/interaction language as STILE DEL VINO */
+.dynamic-modal:has(.characteristic-card) {
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box;
+  padding: 18px 16px !important;
+  padding-top: calc(var(--admin-top-height, 118px) + 18px) !important;
+}
+
+.characteristic-card {
+  width: min(760px, calc(100vw - 32px)) !important;
+  height: auto !important;
+  max-height: calc(100dvh - var(--admin-top-height, 118px) - 36px) !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  overflow-y: auto !important;
+  border-radius: 10px !important;
+  position: relative;
+}
+
+.characteristic-card > .eyebrow,
+.characteristic-card > h2 {
+  position: sticky;
+  z-index: 8;
+  background: var(--paper, #f7f3eb);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.characteristic-card > .eyebrow {
+  top: 0;
+  padding: 22px 24px 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.characteristic-card > h2 {
+  top: 34px;
+  padding: 4px 24px 18px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.characteristic-card > .characteristic-sticky-tools {
+  position: sticky;
+  top: 86px;
+  z-index: 8;
+  background: var(--paper, #f7f3eb);
+  padding: 0 24px 14px;
+}
+
+.characteristic-card > .characteristic-sticky-tools .characteristic-add-row {
+  width: 100%;
+  margin: 0 !important;
+}
+
+.characteristic-card > .characteristic-sticky-tools .characteristic-new-card {
+  margin: 10px 0 0 !important;
+}
+
+.characteristic-card > .characteristic-sticky-tools .characteristic-new-card input {
+  border-radius: 10px !important;
+}
+
+.characteristic-card > .characteristic-card-list {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.characteristic-card > .confirm-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 9;
+  background: var(--paper, #f7f3eb);
+  margin: 0 !important;
+  padding: 16px 24px 22px;
+}
+
+.characteristic-card > .confirm-actions .btn {
+  border-radius: 10px !important;
+}
+
+/* Selection: champagne only on selectable box, no marker/check */
+.characteristic-card .characteristic-card-row,
+.characteristic-card .characteristic-card-row.is-selected {
+  background: transparent !important;
+}
+
+.characteristic-card .characteristic-select-area {
+  border-radius: 10px !important;
+  transition: background-color .32s ease, border-color .32s ease;
+}
+
+.characteristic-card .characteristic-card-row.is-selected .characteristic-select-area {
+  background: #eee2c7 !important;
+  border-radius: 10px !important;
+}
+
+.characteristic-card .characteristic-card-row.is-selected::before,
+.characteristic-card .characteristic-card-row.is-selected::after,
+.characteristic-card .characteristic-card-row.is-selected .characteristic-select-area::before,
+.characteristic-card .characteristic-card-row.is-selected .characteristic-select-area::after {
+  content: none !important;
+  display: none !important;
+}
+
+.characteristic-card .characteristic-card-row.is-selected .characteristic-card-actions,
+.characteristic-card .characteristic-card-row.is-selected .icon-btn {
+  background: transparent !important;
+}
+
+@media(max-width:800px) {
+  .dynamic-modal:has(.characteristic-card) {
+    padding: 10px 12px !important;
+    padding-top: calc(var(--admin-top-height, 146px) + 10px) !important;
+  }
+
+  .characteristic-card {
+    max-width: 85% !important;
+    max-height: calc(100dvh - var(--admin-top-height, 146px) - 20px) !important;
+  }
+
+  .characteristic-card > .eyebrow {
+    padding: 18px 20px 0;
+  }
+
+  .characteristic-card > h2 {
+    top: 30px;
+    padding: 4px 20px 16px;
+  }
+
+  .characteristic-card > .characteristic-sticky-tools {
+    top: 78px;
+    padding: 0 20px 12px;
+  }
+
+  .characteristic-card > .characteristic-card-list {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .characteristic-card > .confirm-actions {
+    padding: 14px 20px 18px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .characteristic-card .characteristic-select-area {
+    transition: none;
+  }
+}
+
+/* Uniform card background: list area matches title and bottom actions */
+.grape-manager-card,
+.grape-manager-card .grape-card-list,
+.grape-manager-card .grape-card-row,
+.grape-manager-card .grape-select-area,
+.grape-manager-card .grape-card-actions,
+
+.wine-style-card:not(.grape-manager-card),
+.wine-style-card:not(.grape-manager-card) > .wine-style-card-list,
+.wine-style-card:not(.grape-manager-card) .wine-style-card-row,
+.wine-style-card:not(.grape-manager-card) .wine-style-select-area,
+.wine-style-card:not(.grape-manager-card) .wine-style-card-actions,
+
+.characteristic-card,
+.characteristic-card > .characteristic-card-list,
+.characteristic-card .characteristic-card-row,
+.characteristic-card .characteristic-select-area,
+.characteristic-card .characteristic-card-actions {
+  background-color: var(--paper, #f7f3eb);
+}
+
+/* Preserve champagne highlight on selected selectable boxes */
+.grape-manager-card .grape-card-row.is-selected .grape-select-area,
+.wine-style-card:not(.grape-manager-card) .wine-style-card-row.is-selected .wine-style-select-area,
+.characteristic-card .characteristic-card-row.is-selected .characteristic-select-area {
+  background-color: #eee2c7 !important;
+}
+
+/* Empty editor covers the entire editor panel: no top/bottom letterboxing */
+.empty-editor:before,
+.empty-editor--drinks {
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Admin controls — consistent 10px radius on desktop and mobile */
+.admin-tabs {
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+.admin-tab {
+  border-radius: 10px !important;
+}
+
+.category-filters .category-filter,
+.country-filters .country-filter {
+  border-radius: 10px !important;
+}
+
+
+/* Admin search — same 10px radius for Menu Cibo, Carta Vini and Bevande */
+.search-wrap {
+  border-radius: 10px !important;
+}
+
+.search-wrap input,
+.search-wrap button {
+  border-radius: 10px !important;
+}

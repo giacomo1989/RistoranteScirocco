@@ -180,3 +180,30 @@ body.menu-page > .digital-menu-main
     }
 
 }
+/* V44.29 — Mobile Food/Drinks categories: one horizontal row, swipe when needed. */
+@media (max-width: 900px) {
+  body.menu-page > .digital-menu-main .menu-module-section[data-menu-module="food"] > #menuCategoryBar,
+  body.menu-page > .digital-menu-main .menu-module-section[data-menu-module="drinks"] > #menuCategoryBar {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap;
+  }
+
+  body.menu-page > .digital-menu-main .menu-module-section[data-menu-module="food"] > #menuCategoryBar::-webkit-scrollbar,
+  body.menu-page > .digital-menu-main .menu-module-section[data-menu-module="drinks"] > #menuCategoryBar::-webkit-scrollbar {
+    display: none;
+  }
+
+  body.menu-page > .digital-menu-main .menu-module-section[data-menu-module="food"] > #menuCategoryBar button,
+  body.menu-page > .digital-menu-main .menu-module-section[data-menu-module="drinks"] > #menuCategoryBar button {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: max-content !important;
+    white-space: nowrap !important;
+  }
+}
