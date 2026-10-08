@@ -1,13 +1,84 @@
 <!doctype html>
-<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Scirocco | Admin</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="admin/assets/css/theme.css"><link rel="stylesheet" href="admin/assets/css/admin.css"></head>
-<body><div class="admin-shell">
-<header class="admin-top"><div><p class="eyebrow">SCIROCCO</p><h1>Amministrazione</h1></div><div class="admin-tabs" role="tablist"><button class="admin-tab is-active" data-kind="food">MENU CIBO</button><button class="admin-tab" data-kind="wine">CARTA VINI</button><button class="admin-tab" data-kind="drinks">BEVANDE</button></div></header>
-<div class="admin-workspace">
-<aside class="product-panel"><div class="panel-head"><div><p class="eyebrow" id="listEyebrow">PRODOTTI</p><h2 id="listTitle">Menu cibo</h2></div><span class="count" id="productCount"></span></div><button class="mobile-create-card mobile-create-card--food" id="mobileCreate" type="button" aria-label="Nuovo piatto"><span class="mobile-create-plus">＋</span><b id="mobileCreateLabel">NUOVO PIATTO</b></button><div class="search-wrap"><input id="productSearch" type="search" placeholder="Cerca…" aria-label="Cerca prodotto"></div><div class="category-filters" id="categoryFilters" aria-label="Filtra per categoria"></div><div class="country-filters" id="countryFilters" aria-label="Filtra per paese" hidden></div><div class="product-list" id="productList"></div></aside>
-<main class="editor-panel"><div class="empty-editor empty-editor--food" id="emptyEditor"><div class="empty-editor-copy"><button class="cover-create" id="coverCreate" type="button" aria-label="Nuovo piatto"><span class="cover-plus">＋</span><b id="coverCreateLabel">NUOVO PIATTO</b></button><p>Oppure seleziona un prodotto dalla lista</p></div></div><form id="productForm" class="product-form" hidden><div class="editor-head"><div><p class="eyebrow" id="editorEyebrow">MODIFICA PRODOTTO</p><h2 id="editorTitle"></h2></div><label class="active-control"><input id="field-active" type="checkbox"><span></span><b>VISIBILE</b></label></div><div id="formFields"></div><div class="editor-actions"><button type="button" class="btn ghost" id="cancelEdit">ANNULLA</button><button type="submit" class="btn primary">SALVA MODIFICHE</button></div></form></main>
-</div></div>
-<div class="modal-backdrop" id="confirmBackdrop" hidden><div class="confirm-box" role="dialog" aria-modal="true" aria-labelledby="confirmTitle"><p class="eyebrow">CONFERMA</p><h2 id="confirmTitle">Eliminare il prodotto?</h2><p id="confirmText"></p><div class="confirm-actions"><button class="btn ghost" id="confirmCancel">ANNULLA</button><button class="btn danger" id="confirmDelete">ELIMINA</button></div></div></div>
-<div class="toast" id="toast" aria-live="polite"></div>
-<script src="admin/assets/js/admin.js"></script></body></html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Scirocco | Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="admin/assets/css/theme.css">
+    <link rel="stylesheet" href="admin/assets/css/admin.css">
+</head>
+
+<body>
+    <div class="admin-shell">
+        <header class="admin-top">
+            <div>
+                <p class="eyebrow">SCIROCCO</p>
+                <h1>Amministrazione</h1>
+            </div>
+            <div class="admin-tabs" role="tablist"><button class="admin-tab is-active" data-kind="food">MENU
+                    CIBO</button><button class="admin-tab" data-kind="wine">CARTA VINI</button><button class="admin-tab"
+                    data-kind="drinks">BEVANDE</button></div>
+        </header>
+        <div class="admin-workspace">
+            <aside class="product-panel">
+                <div class="panel-head">
+                    <div>
+                        <p class="eyebrow" id="listEyebrow">PRODOTTI</p>
+                        <h2 id="listTitle">Menu cibo</h2>
+                    </div><span class="count" id="productCount"></span>
+                </div><button class="mobile-create-card mobile-create-card--food" id="mobileCreate" type="button"
+                    aria-label="Nuovo piatto"><span class="mobile-create-plus">＋</span><b id="mobileCreateLabel">NUOVO
+                        PIATTO</b></button>
+                <div class="search-wrap">
+                    <div class="search-field"><input id="productSearch" type="search" placeholder="Cerca…"
+                            aria-label="Cerca prodotto"><button id="clearProductSearch" class="search-clear"
+                            type="button" aria-label="Cancella ricerca">×</button></div>
+                </div>
+                <div class="category-filters" id="categoryFilters" aria-label="Filtra per categoria"></div>
+                <div class="country-filters" id="countryFilters" aria-label="Filtra per paese" hidden></div>
+                <div class="product-list" id="productList"></div>
+            </aside>
+            <main class="editor-panel">
+                <div class="empty-editor empty-editor--food" id="emptyEditor">
+                    <div class="empty-editor-copy"><button class="cover-create" id="coverCreate" type="button"
+                            aria-label="Nuovo piatto"><span class="cover-plus">＋</span><b id="coverCreateLabel">NUOVO
+                                PIATTO</b></button>
+                        <p>Oppure seleziona un prodotto dalla lista</p>
+                    </div>
+                </div>
+                <form id="productForm" class="product-form" hidden>
+                    <div class="editor-head">
+                        <div>
+                            <p class="eyebrow" id="editorEyebrow">MODIFICA PRODOTTO</p>
+                            <h2 id="editorTitle"></h2>
+                        </div><label class="active-control"><input id="field-active"
+                                type="checkbox"><span></span><b>VISIBILE</b></label>
+                    </div>
+                    <div id="formFields"></div>
+                    <div class="editor-actions"><button type="button" class="btn ghost"
+                            id="cancelEdit">ANNULLA</button><button type="submit" class="btn primary">SALVA
+                            MODIFICHE</button></div>
+                </form>
+            </main>
+        </div>
+    </div>
+    <div class="modal-backdrop" id="confirmBackdrop" hidden>
+        <div class="confirm-box" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+            <p class="eyebrow">CONFERMA</p>
+            <h2 id="confirmTitle">Eliminare il prodotto?</h2>
+            <p id="confirmText"></p>
+            <div class="confirm-actions"><button class="btn ghost" id="confirmCancel">ANNULLA</button><button
+                    class="btn danger" id="confirmDelete">ELIMINA</button></div>
+        </div>
+    </div>
+    <div class="toast" id="toast" aria-live="polite"></div>
+    <script src="admin/assets/js/admin.js"></script>
+</body>
+
+</html>

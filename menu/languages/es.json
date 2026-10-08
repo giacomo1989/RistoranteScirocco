@@ -96,6 +96,7 @@
     "drinksList": "BEBIDAS",
     "close": "Cerrar",
     "previousPhoto": "Foto anterior",
-    "nextPhoto": "Foto siguiente"
+    "nextPhoto": "Foto siguiente",
+    "noImage": "Ninguna imagen cargada"
   }
 }

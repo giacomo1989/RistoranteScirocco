@@ -16,13 +16,8 @@
 <body class="digital-menu-page menu-page wine-page">
 <header class="menu-mobile-header">
   <a class="menu-mobile-brand" href="../index.html">SCIROCCO</a>
-  <a href="../cantina.html" class="menu-mobile-cellar">CANTINA</a>
-  <button id="menuLangToggle" class="menu-mobile-more" aria-label="Lingua">IT</button>
-  <div class="menu-lang-popover" id="menuLangPopover">
-    <button data-menu-lang="it">IT</button>
-    <button data-menu-lang="en">EN</button>
-    <button data-menu-lang="es">ES</button>
-  </div>
+  
+  <div class="menu-mobile-languages" aria-label="Lingua"><button type="button" data-mobile-lang="it">IT</button><span>·</span><button type="button" data-mobile-lang="en">EN</button><span>·</span><button type="button" data-mobile-lang="es">ES</button></div>
 </header>
 
 <header class="header menu-desktop-header" id="header">
@@ -49,24 +44,20 @@
 </section>
 
 <nav class="menu-card-selector" aria-label="Carta digitale">
-<a class="menu-card-selector__item" href="menu.html">
+<a class="menu-card-selector__item" href="menu.html?section=food" target="_top">
 <span class="menu-card-selector__label" id="wineFoodLabel"></span>
 </a>
-<a class="menu-card-selector__item is-active" href="vini.html" aria-current="page">
+<a class="menu-card-selector__item is-active" href="menu.html?section=wine" target="_top" aria-current="page">
 <span class="menu-card-selector__label" id="wineListLabel"></span>
 </a>
-<a class="menu-card-selector__item" href="bevande.html"><span class="menu-card-selector__label" id="menuDrinksLabel">BEVANDE</span></a></nav>
+<a class="menu-card-selector__item" href="menu.html?section=drinks" target="_top"><span class="menu-card-selector__label" id="menuDrinksLabel">BEVANDE</span></a></nav>
 
 <section class="wine-entry-grid" aria-label="Esplora la carta vini">
 <button class="wine-entry-card is-active" id="openWineList" type="button">
-<span class="wine-entry-number">01</span>
 <span class="wine-entry-copy"><strong id="wineEntryListTitle"></strong><small id="wineEntryListText"></small></span>
-<span class="wine-entry-arrow">→</span>
 </button>
 <button class="wine-entry-card" id="openWineGuide" type="button">
-<span class="wine-entry-number">02</span>
 <span class="wine-entry-copy"><strong id="wineEntryGuideTitle"></strong><small id="wineEntryGuideText"></small></span>
-<span class="wine-entry-arrow">→</span>
 </button>
 </section>
 
@@ -97,8 +88,10 @@
 <textarea id="wineAiPrompt" rows="3" maxlength="500" placeholder="Vorrei una bollicina fresca, non troppo secca, sui 50 €…"></textarea>
 <button type="button" id="wineAiAsk"><span>✦</span><b id="wineAiAskLabel">CHIEDI AL SOMMELIER</b></button>
 </div>
+<div class="wine-ai-suggestions-row">
 <div class="wine-ai-suggestions" id="wineAiSuggestions" aria-label="Suggerimenti rapidi"></div>
 <button class="wine-ai-reset wine-ai-reset-inline" id="wineAiReset" type="button" hidden>↻ <span id="wineAiResetLabel">NUOVA RICERCA</span></button>
+</div>
 </div>
 
 <div class="wine-ai-thinking" id="wineAiThinking" hidden><span id="wineAiThinkingText">STO CERCANDO NELLA NOSTRA CANTINA…</span><i></i></div>

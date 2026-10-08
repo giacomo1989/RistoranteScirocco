@@ -78,14 +78,45 @@ function persist(k=kind){localStorage.setItem(STORE[k],JSON.stringify(datasets[k
 function ensureTags(){if(localStorage.getItem(STORE.tags))return;const tags=[...new Set((datasets.food.products||[]).flatMap(p=>p.tags||[]))];localStorage.setItem(STORE.tags,JSON.stringify(tags.length?tags:['vegetariano','vegano','senza-glutine','crudo','piccante']))}
 function getTags(){try{return JSON.parse(localStorage.getItem(STORE.tags)||'[]')}catch{return []}}
 function saveTags(tags){localStorage.setItem(STORE.tags,JSON.stringify(tags))}
-function bind(){$$('.admin-tab').forEach(b=>b.onclick=()=>switchKind(b.dataset.kind));$('#productSearch').oninput=renderList;$('#coverCreate').onclick=createNew;$('#mobileCreate').onclick=createNew;$('#cancelEdit').onclick=closeEditor;$('#productForm').onsubmit=saveForm;$('#confirmCancel').onclick=closeConfirm;$('#confirmBackdrop').onclick=e=>{if(e.target.id==='confirmBackdrop')closeConfirm()};$('#confirmDelete').onclick=deleteConfirmed}
+function bind(){$$('.admin-tab').forEach(b=>b.onclick=()=>switchKind(b.dataset.kind));$('#productSearch').oninput=()=>{updateSearchClear();renderList()};$('#clearProductSearch').onclick=()=>{$('#productSearch').value='';updateSearchClear();renderList();$('#productSearch').focus()};updateSearchClear();$('#coverCreate').onclick=createNew;$('#mobileCreate').onclick=createNew;$('#cancelEdit').onclick=closeEditor;$('#productForm').onsubmit=saveForm;$('#confirmCancel').onclick=closeConfirm;$('#confirmBackdrop').onclick=e=>{if(e.target.id==='confirmBackdrop')closeConfirm()};$('#confirmDelete').onclick=deleteConfirmed}
 function switchKind(k){kind=k;document.body.dataset.kind=k;selectedId=null;$$('.admin-tab').forEach(b=>b.classList.toggle('is-active',b.dataset.kind===k));const isFood=k==='food',isWine=k==='wine';$('#listTitle').textContent=isFood?'Menu cibo':isWine?'Carta vini':'Bevande';$('#listEyebrow').textContent=isWine?'BOTTIGLIE':'PRODOTTI';$('#coverCreateLabel').textContent=isFood?'NUOVO PIATTO':isWine?'NUOVA BOTTIGLIA':'NUOVA BEVANDA';$('#coverCreate').setAttribute('aria-label',isFood?'Nuovo piatto':isWine?'Nuova bottiglia':'Nuova bevanda');$('#mobileCreateLabel').textContent=isFood?'NUOVO PIATTO':isWine?'NUOVA BOTTIGLIA':'NUOVA BEVANDA';$('#mobileCreate').setAttribute('aria-label',isFood?'Nuovo piatto':isWine?'Nuova bottiglia':'Nuova bevanda');$('#mobileCreate').className=`mobile-create-card mobile-create-card--${isFood?'food':isWine?'wine':'drinks'}`;$('#emptyEditor').classList.toggle('empty-editor--food',isFood);$('#emptyEditor').classList.toggle('empty-editor--wine',isWine);$('#emptyEditor').classList.toggle('empty-editor--drinks',k==='drinks');$('#productSearch').value='';closeEditor();renderCategoryFilters();renderCountryFilters();renderList()}
 function categoryOptions(){return kind==='food'?(datasets.food.categories||[]).map(c=>({id:c.id,label:c.name?.it||c.id.toUpperCase()})):kind==='wine'?WINE_CATEGORIES:DRINK_CATEGORIES}
 function renderCategoryFilters(){const host=$('#categoryFilters'),opts=[{id:'all',label:'TUTTI'},...categoryOptions()];host.innerHTML=opts.map(c=>`<button type="button" class="category-filter ${activeCategory[kind]===c.id?'is-active':''}" data-category="${esc(c.id)}">${esc(c.label)}</button>`).join('');$$('#categoryFilters .category-filter').forEach(b=>b.onclick=()=>{activeCategory[kind]=b.dataset.category;renderCategoryFilters();renderCountryFilters();renderList()})}
 function renderCountryFilters(){const host=$('#countryFilters');if(kind!=='wine'){host.hidden=true;host.innerHTML='';return}host.hidden=false;host.innerHTML=WINE_COUNTRIES.map(c=>`<button type="button" class="country-filter ${activeWineCountry===c.id?'is-active':''}" data-country="${c.id}">${c.label}</button>`).join('');$$('#countryFilters .country-filter').forEach(b=>b.onclick=()=>{activeWineCountry=b.dataset.country;renderCountryFilters();renderList()})}
 function matchesWineCountry(x){if(activeWineCountry==='all')return true;if(activeWineCountry==='rest')return !['italy','france','spain'].includes(String(x.country||'').toLowerCase());return String(x.country||'').toLowerCase()===activeWineCountry}
 function filtered(){const q=$('#productSearch').value.trim().toLowerCase(),cat=activeCategory[kind];return items().filter(x=>(cat==='all'||(kind==='food'||kind==='drinks'?x.category:x.type)===cat)&&(kind!=='wine'||matchesWineCountry(x))&&[x.name?.it,x.producer,x.id].some(v=>String(v||'').toLowerCase().includes(q))).sort((a,b)=>(a.order??999)-(b.order??999))}
-function renderList(){const list=filtered(),canDrag=activeCategory[kind]!=='all'&&!$('#productSearch').value&&!(kind==='wine'&&activeWineCountry!=='all');$('#productCount').textContent=`${list.length} / ${items().length}`;$('#productList').innerHTML=list.map(x=>`<div class="product-row ${x.active===false?'is-hidden':''} ${x.id===selectedId?'is-selected':''} ${canDrag?'is-draggable':''}" data-id="${esc(x.id)}" draggable="${canDrag}"><button class="drag-handle" type="button" title="Trascina per riordinare" ${canDrag?'':'disabled'}>${icon.grip}</button><div class="product-thumb ${x.image?'':'is-empty'}">${x.image?`<img src="${esc(x.image)}" alt="">`:'<span>·</span>'}</div><div class="product-main"><div class="product-name">${esc(x.name?.it||x.id)}</div><div class="product-meta">${kind==='food'||kind==='drinks'?esc(x.category):esc([x.producer,x.denomination].filter(Boolean).join(' · '))}</div></div><div class="row-actions"><span class="visibility-dot"></span><button class="icon-btn hide" type="button">${icon.eye}</button><button class="icon-btn edit" type="button">${icon.edit}</button><button class="icon-btn delete" type="button">${icon.trash}</button></div></div>`).join('');$$('.product-row').forEach(r=>{r.querySelector('.product-main').onclick=()=>openEdit(r.dataset.id);r.querySelector('.edit').onclick=()=>openEdit(r.dataset.id);r.querySelector('.hide').onclick=()=>toggleVisibility(r.dataset.id);r.querySelector('.delete').onclick=()=>askDelete(r.dataset.id);if(canDrag){r.ondragstart=()=>{dragId=r.dataset.id;r.classList.add('is-dragging')};r.ondragend=()=>{dragId=null;r.classList.remove('is-dragging');$$('.product-row').forEach(x=>x.classList.remove('drag-over'))};r.ondragover=e=>{e.preventDefault();if(r.dataset.id!==dragId)r.classList.add('drag-over')};r.ondragleave=()=>r.classList.remove('drag-over');r.ondrop=e=>{e.preventDefault();r.classList.remove('drag-over');reorder(dragId,r.dataset.id)}}})}
+function updateSearchClear(){const b=$('#clearProductSearch');if(b)b.classList.toggle('is-visible',!!$('#productSearch').value)}
+function openProductCard(id){
+ const base='menu/';
+ // Freeze the exact datasets currently visible in Admin for the whole preview session.
+ // Every Food/Wine/Drink card opened from this overlay reads this same snapshot.
+ const previewToken=`admin-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+ const previewPayload={food:datasets.food,wine:datasets.wine,drinks:datasets.drinks};
+ try{sessionStorage.setItem(`giacomo_menu_preview_${previewToken}`,JSON.stringify(previewPayload))}catch(e){console.warn('[Admin preview] snapshot unavailable',e)}
+ const previewUrl=(previewKind,previewId)=>{
+  const q=new URLSearchParams({adminPreview:'1',previewToken});
+  if(previewKind==='food')q.set('piatto',previewId);
+  else if(previewKind==='wine')q.set('vino',previewId);
+  else q.set('bevanda',previewId);
+  const file=previewKind==='food'?'food.html':previewKind==='wine'?'vini.html':'bevande.html';
+  return `${base}${file}?${q.toString()}`
+ };
+ const overlay=document.createElement('div');overlay.className='admin-product-preview';
+ overlay.innerHTML=`<iframe src="${previewUrl(kind,id)}" title="Anteprima prodotto"></iframe>`;
+ document.body.appendChild(overlay);document.body.classList.add('product-preview-open');
+ const frame=overlay.querySelector('iframe');
+ const close=()=>{overlay.remove();document.body.classList.remove('product-preview-open');window.removeEventListener('message',onPreviewMessage);try{sessionStorage.removeItem(`giacomo_menu_preview_${previewToken}`)}catch{}};
+ const onPreviewMessage=e=>{
+  if(e.source!==frame.contentWindow)return;
+  if(e.data==='giacomo-menu:close-product-preview'){close();return}
+  if(e.data&&e.data.type==='giacomo-menu:open-product'&&['food','wine','drinks'].includes(e.data.kind)&&e.data.id){frame.src=previewUrl(e.data.kind,e.data.id)}
+ };
+ window.addEventListener('message',onPreviewMessage);
+ document.addEventListener('keydown',function escPreview(e){if(e.key==='Escape'){close();document.removeEventListener('keydown',escPreview)}},{once:true});
+}
+const ADMIN_IMAGE_FALLBACK={food:`<svg class="gm-image-fallback-icon gm-image-fallback-fish" viewBox="0 0 180 100" aria-hidden="true"><path d="M20 50 C42 24 84 20 124 48 C139 37 151 31 163 29 C158 41 157 59 163 71 C151 69 139 63 124 52 C84 80 42 76 20 50 Z M52 49 C70 40 91 40 108 49 C91 58 70 58 52 49 Z"/><circle cx="43" cy="43" r="2.3"/></svg>`,wine:`<svg class="gm-image-fallback-icon gm-image-fallback-bottle" viewBox="0 0 110 170" aria-hidden="true"><path d="M43 12 H67 V38 C67 46 73 51 79 57 C85 63 88 72 88 82 V151 C88 157 83 161 77 161 H33 C27 161 22 157 22 151 V82 C22 72 25 63 31 57 C37 51 43 46 43 38 Z M43 26 H67 M29 78 H81"/></svg>`,drinks:`<svg class="gm-image-fallback-icon gm-image-fallback-cocktail" viewBox="0 0 140 160" aria-hidden="true"><path d="M20 24 H120 L76 82 V132 H101 M49 132 H101 M64 82 L20 24 M76 82 L120 24 M43 48 H97 M88 39 C101 28 112 29 121 35 C111 43 100 46 88 39 Z"/></svg>`};
+function productThumbMarkup(x){const src=x.image||'';return `<div class="product-thumb gm-product-thumb-admin">${ADMIN_IMAGE_FALLBACK[kind]}${src?`<img src="${esc(src)}" alt="">`:''}</div>`}
+function renderList(){const list=filtered(),canDrag=activeCategory[kind]!=='all'&&!$('#productSearch').value&&!(kind==='wine'&&activeWineCountry!=='all');$('#productCount').textContent=`${list.length} / ${items().length}`;$('#productList').innerHTML=list.map(x=>`<div class="product-row ${x.active===false?'is-hidden':''} ${x.id===selectedId?'is-selected':''} ${canDrag?'is-draggable':''}" data-id="${esc(x.id)}" draggable="${canDrag}"><button class="drag-handle" type="button" title="Trascina per riordinare" ${canDrag?'':'disabled'}>${icon.grip}</button>${productThumbMarkup(x)}<div class="product-main"><div class="product-name">${esc(x.name?.it||x.id)}</div><div class="product-meta">${kind==='food'||kind==='drinks'?esc(x.category):esc([x.producer,x.denomination].filter(Boolean).join(' · '))}</div></div><div class="row-actions"><span class="visibility-dot"></span><button class="icon-btn hide" type="button">${icon.eye}</button><button class="icon-btn edit" type="button">${icon.edit}</button><button class="icon-btn delete" type="button">${icon.trash}</button></div></div>`).join('');$$('.product-thumb img').forEach(img=>img.onerror=()=>img.remove());$$('.product-row').forEach(r=>{r.onclick=e=>{if(!e.target.closest('.drag-handle,.row-actions'))openProductCard(r.dataset.id)};r.querySelector('.edit').onclick=e=>{e.stopPropagation();openEdit(r.dataset.id)};r.querySelector('.hide').onclick=e=>{e.stopPropagation();toggleVisibility(r.dataset.id)};r.querySelector('.delete').onclick=e=>{e.stopPropagation();askDelete(r.dataset.id)};r.querySelector('.drag-handle').onclick=e=>e.stopPropagation();if(canDrag){r.ondragstart=()=>{dragId=r.dataset.id;r.classList.add('is-dragging')};r.ondragend=()=>{dragId=null;r.classList.remove('is-dragging');$$('.product-row').forEach(x=>x.classList.remove('drag-over'))};r.ondragover=e=>{e.preventDefault();if(r.dataset.id!==dragId)r.classList.add('drag-over')};r.ondragleave=()=>r.classList.remove('drag-over');r.ondrop=e=>{e.preventDefault();r.classList.remove('drag-over');reorder(dragId,r.dataset.id)}}})}
 function reorder(fromId,toId){if(!fromId||fromId===toId)return;const visible=filtered(),ids=visible.map(x=>x.id),from=ids.indexOf(fromId),to=ids.indexOf(toId);if(from<0||to<0)return;ids.splice(to,0,ids.splice(from,1)[0]);ids.forEach((id,i)=>{const x=items().find(p=>p.id===id);if(x)x.order=i+1});persist();renderList();toast('Ordine aggiornato')}
 function normalizeCategory(cat){const arr=items().filter(x=>(kind==='food'||kind==='drinks'?x.category:x.type)===cat).sort((a,b)=>(a.order??999)-(b.order??999));arr.forEach((x,i)=>x.order=i+1)}
 function toggleVisibility(id){const x=items().find(i=>i.id===id);x.active=x.active===false;persist();renderList();toast(x.active?'Prodotto visibile':'Prodotto nascosto');if(selectedId===id)$('#field-active').checked=x.active}
@@ -264,3 +295,27 @@ function showSaveOverlay({isNew,mode}){
 }
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),1800)}
 init().catch(err=>{console.error('SCIROCCO ADMIN INIT ERROR:',err);$('#emptyEditor').innerHTML=`<h2>Impossibile caricare i dati</h2><p>${esc(err.message)}</p><p>Apri questa pagina tramite localhost.</p>`});
+
+/* V47 — keep mobile sticky offsets synced to the real rendered heights. */
+(function wireMobileStickyOffsets(){
+ const root=document.documentElement;
+ const top=document.querySelector('.admin-top');
+ const categories=document.querySelector('.category-filters');
+ if(!top||!categories)return;
+ const sync=()=>{
+  if(window.innerWidth>800){
+   root.style.removeProperty('--admin-mobile-top-h');
+   root.style.removeProperty('--admin-mobile-category-h');
+   return;
+  }
+  root.style.setProperty('--admin-mobile-top-h',`${Math.ceil(top.getBoundingClientRect().height)}px`);
+  root.style.setProperty('--admin-mobile-category-h',`${Math.ceil(categories.getBoundingClientRect().height)}px`);
+ };
+ sync();
+ window.addEventListener('resize',sync,{passive:true});
+ if('ResizeObserver' in window){
+  const ro=new ResizeObserver(sync);
+  ro.observe(top);
+  ro.observe(categories);
+ }
+})();

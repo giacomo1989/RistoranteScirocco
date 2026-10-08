@@ -1,19 +1,82 @@
-<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Menu digitale Scirocco"><title>Scirocco | Menu</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/theme.css">
-<link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/menu.css">
-
-</head><body class="digital-menu-page menu-page">
-<header class="menu-mobile-header"><a class="menu-mobile-brand" href="../index.html">SCIROCCO</a><a href="../cantina.html" class="menu-mobile-cellar">CANTINA</a><button id="menuLangToggle" class="menu-mobile-more" aria-label="Lingua">IT</button><div class="menu-lang-popover" id="menuLangPopover"><button data-menu-lang="it">IT</button><button data-menu-lang="en">EN</button><button data-menu-lang="es">ES</button></div></header>
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Menu digitale Scirocco"><title>Scirocco | Menu</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/theme.css"><link rel="stylesheet" href="assets/css/style.css?v=44.18"><link rel="stylesheet" href="assets/css/menu.css?v=44.25"><link rel="stylesheet" href="assets/css/vini.css"><link rel="stylesheet" href="assets/css/shell.css?v=44.26"></head><body class="digital-menu-page menu-page">
+<header class="menu-mobile-header"><a class="menu-mobile-brand" href="../index.html">SCIROCCO</a><div class="menu-mobile-languages" aria-label="Lingua"><button type="button" data-mobile-lang="it">IT</button><span>·</span><button type="button" data-mobile-lang="en">EN</button><span>·</span><button type="button" data-mobile-lang="es">ES</button></div></header>
 <header class="header menu-desktop-header" id="header"><a class="brand" href="../index.html"><span>SCIROCCO</span><small>CUCINA MEDITERRANEA</small></a><nav class="nav"><a href="../index.html">HOME</a><a href="../cucina.html">CUCINA</a><a href="../cantina.html">CANTINA</a><a href="../index.html#contatti">CONTATTI</a></nav><div class="language-switcher"><button data-menu-lang="it">IT</button><span>·</span><button data-menu-lang="en">EN</button><span>·</span><button data-menu-lang="es">ES</button></div><a class="btn btn-outline" href="../index.html#prenota">PRENOTA</a></header>
-<main class="digital-menu-main"><section class="menu-intro"><p class="eyebrow" id="menuEyebrow">SCIROCCO</p><h1 id="menuTitle"></h1><p id="menuIntro"></p></section><nav class="menu-card-selector" aria-label="Carta digitale">
-<a class="menu-card-selector__item is-active" href="menu.html" aria-current="page">
-<span class="menu-card-selector__label" id="menuFoodLabel"></span>
-</a>
-<a class="menu-card-selector__item" href="vini.html">
-<span class="menu-card-selector__label" id="menuWineLabel"></span>
-</a>
-<a class="menu-card-selector__item" href="bevande.html"><span class="menu-card-selector__label" id="menuDrinksLabel">BEVANDE</span></a>
-</nav><nav class="menu-category-bar" id="menuCategoryBar" aria-label="Categorie menu"></nav><section class="menu-list" id="menuList" aria-live="polite"></section></main>
-<div class="dish-sheet-backdrop" id="dishBackdrop" hidden></div><aside class="dish-sheet" id="dishSheet" aria-hidden="true" role="dialog" aria-modal="true"><div class="dish-sheet-handle"></div><button class="dish-sheet-close" id="dishClose" aria-label="Chiudi">×</button><div id="dishSheetContent"></div></aside>
-<script src="assets/js/restaurant-config.js"></script>
-<script src="assets/js/menu.js"></script>
-</body></html>
+<main class="digital-menu-main menu-shell-main"><section class="menu-intro"><p class="eyebrow">SCIROCCO</p><h1 id="shellTitle">IL MENU</h1><p id="shellIntro"></p></section><nav class="menu-card-selector" aria-label="Carta digitale"><a class="menu-card-selector__item" data-shell-section="food" href="?section=food"><span class="menu-card-selector__label">MENU CIBO</span></a><a class="menu-card-selector__item" data-shell-section="wine" href="?section=wine"><span class="menu-card-selector__label">CARTA VINI</span></a><a class="menu-card-selector__item" data-shell-section="drinks" href="?section=drinks"><span class="menu-card-selector__label">BEVANDE</span></a></nav><section class="menu-shell-stage" id="shellStage" aria-live="polite">
+<section class="menu-module-section" data-menu-module="food"><nav aria-label="Categorie menu" class="menu-category-bar" id="menuCategoryBar"></nav>
+<section aria-live="polite" class="menu-list" id="menuList"></section>
+<div class="dish-sheet-backdrop" hidden="" id="dishBackdrop"></div>
+<aside aria-hidden="true" aria-modal="true" class="dish-sheet" id="dishSheet" role="dialog"><div class="dish-sheet-handle"></div><button aria-label="Chiudi" class="dish-sheet-close" id="dishClose">×</button><div id="dishSheetContent"></div></aside></section>
+<section class="menu-module-section wine-page" data-menu-module="wine" hidden><section aria-label="Esplora la carta vini" class="wine-entry-grid">
+<button class="wine-entry-card is-active" id="openWineList" type="button">
+<span class="wine-entry-copy"><strong id="wineEntryListTitle"></strong><small id="wineEntryListText"></small></span>
+</button>
+<button class="wine-entry-card" id="openWineGuide" type="button">
+<span class="wine-entry-copy"><strong id="wineEntryGuideTitle"></strong><small id="wineEntryGuideText"></small></span>
+</button>
+</section>
+<section class="wine-catalog" id="wineCatalog">
+<div class="wine-section-head">
+<p class="eyebrow" id="wineCatalogEyebrow"></p>
+<h2 id="wineCatalogTitle"></h2>
+</div>
+<div class="wine-sticky-controls">
+<nav aria-label="Categorie vini" class="wine-category-bar" id="wineCategoryBar">
+<button class="is-active" data-wine-category="sparkling"></button>
+<button data-wine-category="white"></button>
+<button data-wine-category="red"></button>
+<button data-wine-category="rose"></button>
+</nav>
+<div class="wine-filter-stack" id="wineFilterStack"></div>
+</div>
+<div aria-live="polite" class="wine-products" id="wineProducts"></div>
+</section>
+<section class="wine-guide wine-ai-guide" hidden="" id="wineGuide">
+<div class="wine-ai-head">
+<p class="eyebrow" id="aiSommelierEyebrow">SOMMELIER DIGITALE</p>
+<h2 id="guideTitle"></h2>
+<p id="guideIntro"></p>
+</div>
+<div class="wine-ai-panel">
+<label class="wine-ai-label" for="wineAiPrompt" id="wineAiLabel">COSA TI PIACEREBBE BERE?</label>
+<div class="wine-ai-compose">
+<textarea id="wineAiPrompt" maxlength="500" placeholder="Vorrei una bollicina fresca, non troppo secca, sui 50 €…" rows="3"></textarea>
+<button id="wineAiAsk" type="button"><span>✦</span><b id="wineAiAskLabel">CHIEDI AL SOMMELIER</b></button>
+</div>
+<div class="wine-ai-suggestions-row">
+<div aria-label="Suggerimenti rapidi" class="wine-ai-suggestions" id="wineAiSuggestions"></div>
+<button class="wine-ai-reset wine-ai-reset-inline" hidden="" id="wineAiReset" type="button">↻ <span id="wineAiResetLabel">NUOVA RICERCA</span></button>
+</div>
+</div>
+<div class="wine-ai-thinking" hidden="" id="wineAiThinking"><span id="wineAiThinkingText">STO CERCANDO NELLA NOSTRA CANTINA…</span><i></i></div>
+<div class="wine-ai-answer" hidden="" id="wineAiAnswer">
+<p class="wine-ai-answer-copy" id="wineAiAnswerCopy"></p>
+<div id="wineAiResults"></div>
+</div>
+</section>
+<div class="dish-backdrop wine-backdrop" hidden="" id="wineBackdrop"></div>
+<section aria-hidden="true" class="dish-sheet wine-sheet" id="wineSheet">
+<div class="dish-sheet-panel">
+<button aria-label="Chiudi" class="dish-sheet-close" id="wineSheetClose" type="button">×</button>
+<div class="dish-sheet-gallery wine-sheet-gallery">
+<img alt="" id="wineSheetImage"/>
+</div>
+<div class="dish-sheet-body">
+<p class="eyebrow" id="wineSheetMeta"></p>
+<h2 id="wineSheetName"></h2>
+<p class="wine-sheet-producer" id="wineSheetProducer"></p>
+<p class="dish-sheet-description" id="wineSheetDescription"></p>
+<div class="wine-sheet-facts" id="wineSheetFacts"></div>
+<div class="wine-sheet-price" id="wineSheetPrice"></div>
+<div class="dish-related-block" id="wineFoodPairingsBlock">
+<p class="eyebrow" id="wineFoodPairingsTitle"></p>
+<div class="dish-related-list" id="wineFoodPairings"></div>
+</div>
+</div>
+</div>
+</section></section>
+<section class="menu-module-section" data-menu-module="drinks" hidden><nav aria-label="Categorie menu" class="menu-category-bar" id="menuCategoryBar"></nav>
+<section aria-live="polite" class="menu-list" id="menuList"></section>
+<div class="dish-sheet-backdrop" hidden="" id="dishBackdrop"></div>
+<aside aria-hidden="true" aria-modal="true" class="dish-sheet drink-sheet" id="dishSheet" role="dialog"><div class="dish-sheet-panel"><div class="dish-sheet-handle"></div><button aria-label="Chiudi" class="dish-sheet-close" id="dishClose">×</button><div class="drink-sheet-gallery" id="drinkSheetGallery"><img alt="" id="drinkSheetImage"/></div><div class="dish-sheet-body"><p class="eyebrow drink-sheet-category" id="drinkSheetCategory"></p><div class="dish-sheet-title"><div><h2 id="drinkSheetName"></h2></div></div><p class="dish-sheet-description" id="drinkSheetDescription"></p><div class="drink-sheet-facts" id="drinkSheetFacts"></div><div class="drink-sheet-price" id="drinkSheetPrice"></div></div></div></aside></section>
+</section></main>
+<script src="assets/js/restaurant-config.js"></script><script src="assets/js/menu.js?v=44.22"></script><script src="assets/js/vini.js?v=44.22"></script><script src="assets/js/bevande.js"></script><script src="assets/js/shell.js?v=44.24"></script></body></html>

@@ -1064,7 +1064,7 @@ body.wine-page header button,
 
   .wine-page #wineCategoryBar{
     position:sticky;
-    top:58px;
+    top:0!important;
     z-index:12;
     display:grid;
     grid-template-columns:repeat(4,minmax(0,1fr));
@@ -1498,3 +1498,42 @@ body.wine-page header button,
 .wine-ai-reset-inline{margin:10px 0 0!important;text-align:left}
 .wine-ai-reset-inline[hidden]{display:none!important}
 @media(max-width:900px){.wine-ai-reset-inline{margin-top:10px!important}}
+
+/* V42.1 Sommelier */
+.wine-ai-loader{position:fixed;inset:0;z-index:250;display:grid;place-items:center;background:rgba(25,23,20,.72);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);opacity:0;transition:opacity .22s ease}
+.wine-ai-loader.is-visible{opacity:1}.wine-ai-loader.is-leaving{opacity:0}
+.wine-ai-loader-inner{display:grid;justify-items:center;gap:18px;color:#e9dfcf}
+.wine-ai-loader-bottle{width:94px;height:150px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:720;stroke-dashoffset:720;animation:wineBottleDraw calc(var(--wine-ai-loader-duration) * .82) cubic-bezier(.42,0,.2,1) .12s forwards}
+.wine-ai-loader-label{font:500 8px var(--gm-font-body);letter-spacing:.2em;color:#e9dfcf}
+@keyframes wineBottleDraw{to{stroke-dashoffset:0}}
+@media(min-width:901px){.wine-ai-panel{display:grid;grid-template-columns:1fr auto}.wine-ai-label,.wine-ai-compose{grid-column:1/-1}.wine-ai-suggestions{grid-column:1;margin-right:18px}.wine-ai-reset-inline{grid-column:2;grid-row:3;align-self:center;justify-self:end;margin:14px 0 0!important;white-space:nowrap}}
+@media(max-width:900px){.wine-ai-panel{display:flex;flex-direction:column}.wine-ai-reset-inline{order:3;width:100%;margin:14px 0 4px!important;padding:12px 0!important;border-top:1px solid rgba(243,239,231,.15)!important;border-bottom:1px solid rgba(243,239,231,.15)!important;text-align:left}.wine-ai-suggestions{order:4}.wine-ai-suggestions-label{flex-basis:100%}}
+
+/* V42.2 — New Search shares the Suggestions row on desktop */
+.wine-ai-suggestions-row{display:flex;align-items:center;gap:14px;margin-top:14px}
+.wine-ai-suggestions-row .wine-ai-suggestions{flex:1;min-width:0;margin:0}
+.wine-ai-suggestions-row .wine-ai-reset-inline{flex:0 0 auto;margin:0!important;white-space:nowrap}
+@media(min-width:901px){.wine-ai-panel{display:block}.wine-ai-suggestions-row{width:100%}}
+@media(max-width:900px){.wine-ai-suggestions-row{display:flex;flex-direction:column;align-items:stretch;gap:4px;margin-top:14px}.wine-ai-suggestions-row .wine-ai-reset-inline{order:1;width:100%;margin:0 0 4px!important}.wine-ai-suggestions-row .wine-ai-suggestions{order:2;width:100%;margin:0}}
+
+/* Wine detail: related food cards stay two per row on all viewport sizes. */
+.dish-related-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+/* V43.15 — unified Menu mobile: keep both Wine filter rows visible and move
+   them as one sticky stack. Their original spacing is preserved; only bottles
+   continue scrolling underneath. */
+@media(max-width:720px){
+  html.menu-shell-child #wineCategoryBar,
+  html.menu-shell-child #wineFilterStack{
+    transform:translateY(var(--wine-shell-sticky-shift, 0px));
+    position:relative;
+    background:var(--gm-surface);
+  }
+  html.menu-shell-child #wineCategoryBar{z-index:24;}
+  html.menu-shell-child #wineFilterStack{z-index:23;}
+  html.menu-shell-child #wineProducts{position:relative;z-index:1;}
+}

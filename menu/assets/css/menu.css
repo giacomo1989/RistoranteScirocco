@@ -21,9 +21,16 @@ body.menu-page .site-header button,
   color: var(--gm-white) !important;
 }
 
-body.menu-page #menuCategoryBar{
+body.menu-page > .digital-menu-main #menuCategoryBar{
   position:sticky !important;
-  /* z-index intentionally untouched: preserve original stacking below product sheet */
+  top:0 !important;
+  /* Standalone food/drinks pages only. Unified menu sections are controlled by shell.css. */
+}
+
+/* V44.9 — unified DOM: do not let the legacy standalone #menuCategoryBar top:0 rule
+   override the shell positioning for Food/Drinks modules. */
+body.menu-page .menu-shell-stage .menu-module-section > .menu-category-bar{
+  position:sticky !important;
 }
 
 /* ===== Miniature interattive — Menu Cibo ===== */
@@ -54,9 +61,9 @@ body.menu-page #menuCategoryBar{
 /* ===== V16 — Scheda Bevande: stessa struttura editoriale della scheda vino ===== */
 .drink-sheet .dish-sheet-panel{min-height:100%;background:var(--gm-surface)}
 .drink-sheet-gallery{height:270px;background:var(--gm-surface-2);overflow:hidden}
-.drink-sheet-gallery img{width:100%;height:100%;object-fit:cover;display:block}
+.drink-sheet-gallery img{width:100%;height:100%;object-fit:cover}
 .drink-sheet-gallery.is-empty{display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#e8e0d2,#d9cfbf)}
-.drink-sheet-gallery.is-empty::after{content:'SCIROCCO';font:500 10px/1 var(--gm-font-body);letter-spacing:.22em;opacity:.3}
+.drink-sheet-gallery.is-empty::after{content:attr(data-empty-label);font:500 10px/1 var(--gm-font-body);letter-spacing:.22em;opacity:.3}
 .drink-sheet-category{margin:0 0 8px}
 .drink-sheet-facts{margin:22px 0;border-top:1px solid rgba(27,26,24,.13)}
 .drink-fact{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-bottom:1px solid rgba(27,26,24,.13);font:400 11px/1.4 var(--gm-font-body)}
@@ -68,4 +75,79 @@ body.menu-page #menuCategoryBar{
 }
 
 /* AI Sommelier gateway inside dish sheet */
-.dish-ai-sommelier{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin-top:10px;padding:14px 15px;border:1px solid rgba(27,26,24,.18);color:var(--gm-text);text-decoration:none;background:var(--gm-surface-2)}.dish-ai-sommelier span{color:var(--gm-accent-strong)}.dish-ai-sommelier b{font:600 8px var(--gm-font-body);letter-spacing:.13em}.dish-ai-sommelier i{font:400 16px var(--gm-font-body);font-style:normal}.dish-ai-sommelier:hover{background:#e6dece}
+.dish-ai-sommelier{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;margin-top:10px;padding:14px 15px;border:1px solid rgba(27,26,24,.18);color:var(--gm-text);text-decoration:none;background:var(--gm-surface-2)}.dish-ai-sommelier span{color:var(--gm-accent-strong)}.dish-ai-sommelier b{font:600 8px var(--gm-font-body);letter-spacing:.13em}.dish-ai-sommelier i{font:400 16px var(--gm-font-body);font-style:normal}.dish-ai-sommelier:hover{background:#e6dece}
+
+/* V43.8 — Food product card: related proposals stay 2-up on mobile; Sommelier CTA spans the full row. */
+.dish-detail-block.related .dish-ai-sommelier{grid-column:1/-1;}
+@media(max-width:900px){
+  .dish-detail-block.related{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+
+/* V43.10 — optical centering for Food product-card circular controls. */
+.dish-sheet-close,
+.dish-gallery-arrow{
+  font-size:0;
+}
+.dish-sheet-close::before,
+.dish-gallery-arrow::before{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
+  font-weight:200;
+  line-height:1;
+  pointer-events:none;
+}
+.dish-sheet-close::before{content:'×';font-size:24px;}
+.dish-gallery-arrow.prev::before{content:'‹';font-size:31px;}
+.dish-gallery-arrow.next::before{content:'›';font-size:31px;}
+@media(max-width:900px){
+  .dish-sheet-close::before{font-size:23px;}
+  .dish-gallery-arrow.prev::before,
+  .dish-gallery-arrow.next::before{font-size:27px;}
+}
+
+/* V44.4 — product image fallback: reuse the existing Giacomo Menu loader symbols. */
+.gm-product-thumb{position:relative;display:grid;place-items:center;overflow:hidden;background:var(--gm-surface-3)}
+.gm-product-thumb .menu-product-thumb,.gm-product-thumb .wine-product-image{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+.gm-image-fallback-icon{display:block;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;opacity:.28;color:var(--gm-text-strong)}
+.gm-product-thumb-food,.gm-product-thumb-drinks{width:66px;height:66px}.gm-product-thumb-wine{width:78px;height:94px}
+.gm-product-thumb-food .gm-image-fallback-icon{width:72%;height:72%}.gm-product-thumb-wine .gm-image-fallback-icon{width:45%;height:72%}.gm-product-thumb-drinks .gm-image-fallback-icon{width:58%;height:68%}
+.gm-card-image-fallback,.wine-sheet-gallery,.drink-sheet-gallery{position:relative}
+.gm-card-image-fallback>.gm-image-fallback-icon,.wine-sheet-gallery>.gm-image-fallback-icon,.drink-sheet-gallery>.gm-image-fallback-icon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:0;width:96px;height:96px;opacity:.24}
+.gm-card-image-fallback>.dish-sheet-image,.wine-sheet-gallery>img,.drink-sheet-gallery>img{position:relative;z-index:1}
+@media(min-width:901px){.gm-product-thumb-food,.gm-product-thumb-drinks{width:76px;height:76px}}
+@media(max-width:900px){.gm-product-thumb-food,.gm-product-thumb-drinks{width:58px;height:58px}}
+@media(max-width:720px){.gm-product-thumb-wine{width:48px;height:72px}}
+
+/* V44.5 — keep the Wine thumbnail wrapper aligned with the Wine list grid.
+   V44.4 introduced a 78px fallback wrapper that overflowed the 62px column
+   between 721px and 900px, visually eating the gap before producer/name. */
+@media (max-width:900px) and (min-width:721px){
+  .gm-product-thumb-wine{width:62px;height:78px}
+}
+
+/* V44.25 — Wine list thumbnail geometry.
+   Keep the media wrapper exactly the same size as the visible wine image,
+   preserve the same image-to-copy spacing used by the other product lists,
+   and show the fallback surface/icon only when no usable image is present. */
+.gm-product-thumb-wine{
+  width:58px;
+  height:82px;
+}
+.gm-product-thumb-wine:has(> img){
+  background:transparent;
+}
+.gm-product-thumb-wine:has(> img) > .gm-image-fallback-icon{
+  display:none;
+}
+.wine-product{
+  column-gap:28px;
+}
+@media(max-width:900px){
+  .wine-product{column-gap:12px;}
+}
+@media(max-width:720px){
+  .gm-product-thumb-wine{width:48px;height:72px;}
+}

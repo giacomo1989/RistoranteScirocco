@@ -96,6 +96,7 @@
     "drinksList": "DRINKS",
     "close": "Close",
     "previousPhoto": "Previous photo",
-    "nextPhoto": "Next photo"
+    "nextPhoto": "Next photo",
+    "noImage": "No image uploaded"
   }
 }

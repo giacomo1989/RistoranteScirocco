@@ -1,0 +1,137 @@
+.menu-shell-main .menu-intro{padding-bottom:0}.menu-shell-main>.menu-card-selector{margin-bottom:20px}.menu-shell-stage{width:100%;min-height:60vh}.menu-module-section[hidden]{display:none!important}.menu-module-section{width:100%}.menu-module-section>.menu-category-bar,.menu-module-section>.menu-list{width:100%}.menu-module-section.wine-page .wine-entry-grid,.menu-module-section.wine-page .wine-catalog,.menu-module-section.wine-page .wine-guide{position:relative}.menu-module-section .dish-sheet,.menu-module-section .dish-sheet-backdrop,.menu-module-section .wine-backdrop{z-index:100}
+
+@media(max-width:720px){
+  .menu-shell-main>.menu-card-selector{
+    position:sticky;
+    top:58px;
+    z-index:40;
+    background:var(--gm-surface);
+    margin-bottom:18px;
+  }
+
+  /* V44.9 — Food and Drinks use the same sticky rule in the unified DOM.
+     The main selector stays above them (z-index 40), so category bars stop at
+     the 58px mobile-header edge and slide underneath the selector exactly alike. */
+  .menu-module-section[data-menu-module="food"] > .menu-category-bar,
+  .menu-module-section[data-menu-module="drinks"] > .menu-category-bar{
+    position:sticky !important;
+    top:58px !important;
+    z-index:12;
+    background:var(--gm-surface);
+  }
+
+  /* V44.2 — Wine controls are one real sticky surface. The opaque wrapper
+     masks bottles across both rows and their original 22px internal gap. */
+  .menu-module-section.wine-page .wine-sticky-controls{
+    position:sticky;
+    top:calc(58px + var(--shell-selector-height,44px) + 18px);
+    z-index:30;
+    width:100%;
+    padding:0 0 4px;
+    background:var(--gm-surface);
+  }
+
+  .menu-module-section.wine-page #wineCategoryBar{
+    position:relative;
+    top:0!important;
+    z-index:2;
+    background:var(--gm-surface);
+  }
+
+  .menu-module-section.wine-page #wineFilterStack{
+    position:relative;
+    top:0!important;
+    z-index:2;
+    margin-top:22px;
+    background:var(--gm-surface);
+  }
+}
+
+/* V44.3 — extend the Wine sticky surface through the intentional 18px gap
+   below the main selector, without moving either control row. */
+@media(max-width:720px){
+  .menu-module-section.wine-page .wine-sticky-controls::before{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:-18px;
+    height:18px;
+    background:var(--gm-surface);
+    pointer-events:none;
+  }
+}
+
+
+/* V44.10 — iOS Safari unified modules: disable scroll anchoring around the
+   hidden/revealed module boundary. Sticky category bars then stay in the same
+   compositor coordinate system as the already-visible Food bar. */
+@media(max-width:720px){
+  .menu-shell-main,
+  .menu-shell-main > .menu-card-selector,
+  .menu-shell-stage,
+  .menu-module-section,
+  .menu-module-section > .menu-category-bar{
+    overflow-anchor:none;
+  }
+}
+
+/* V44.19 — Safari/iOS verified live: target the actual Drinks bar in the unified DOM.
+   The visible bar was confirmed as sticky with top:0; top:58px prevents it crossing the mobile header. */
+@media(max-width:900px){
+  .menu-module-section[data-menu-module="drinks"] > .menu-category-bar{
+    position:sticky !important;
+    top:58px !important;
+  }
+}
+
+/* V44.18 — Safari verified mobile language reset. Loaded last by unified menu shell. */
+.menu-mobile-header [data-mobile-lang] {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  color: #fff !important;
+  font: 500 12px var(--sans) !important;
+  line-height: 1 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+}
+.menu-mobile-header [data-mobile-lang].active {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+/* Cross-product cards are overlays: expose only the target card, never its catalog. */
+.menu-module-section.is-cross-card-host > :not(#wineBackdrop):not(#wineSheet):not(#dishBackdrop):not(#dishSheet){display:none!important}
+.menu-module-section.is-cross-card-host{min-height:0!important;height:0!important}
+
+/* V44.26 — Desktop Wine: keep the two-row wine controls anchored to the
+   viewport top while the wine list scrolls underneath. Mobile is unchanged. */
+@media (min-width:721px){
+  .menu-module-section.wine-page .wine-sticky-controls{
+    position:sticky;
+    top:92px;
+    z-index:30;
+    width:100%;
+    background:var(--gm-surface);
+  }
+
+  .menu-module-section.wine-page #wineCategoryBar,
+  .menu-module-section.wine-page #wineFilterStack{
+    position:relative;
+    top:0;
+    z-index:2;
+    background:var(--gm-surface);
+  }
+}

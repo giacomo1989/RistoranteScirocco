@@ -1,7 +1,12 @@
 (() => {
+const WINE_FALLBACK=`<svg class="gm-image-fallback-icon gm-image-fallback-bottle" viewBox="0 0 110 170" aria-hidden="true"><path d="M43 12 H67 V38 C67 46 73 51 79 57 C85 63 88 72 88 82 V151 C88 157 83 161 77 161 H33 C27 161 22 157 22 151 V82 C22 72 25 63 31 57 C37 51 43 46 43 38 Z M43 26 H67 M29 78 H81"/></svg>`;
+const moduleRoot=document.querySelector('[data-menu-module="wine"]')||document;
+
+const pageParams=new URLSearchParams(location.search),adminPreview=pageParams.get('adminPreview')==='1',previewToken=pageParams.get('previewToken');if(adminPreview)document.body.classList.add('admin-embedded-preview');
+function adminSnapshot(){if(!adminPreview||!previewToken)return null;try{return JSON.parse(sessionStorage.getItem(`giacomo_menu_preview_${previewToken}`)||'null')}catch(e){console.warn('[Admin preview] invalid snapshot',e);return null}}
 let UI=null;
 let lang=localStorage.getItem('scirocco_lang')||'it',data={wines:[]},menuData={products:[],categories:[]},activeType='sparkling',activeCountry='all',guideStep=0,guide={type:null,style:null,food:null};
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],t=o=>o?.[lang]||o?.it||'',money=n=>new Intl.NumberFormat(lang==='en'?'en-GB':lang==='es'?'es-ES':'it-IT',{style:'currency',currency:'EUR',minimumFractionDigits:0}).format(n);
+const $=s=>moduleRoot.querySelector(s),$$=s=>[...moduleRoot.querySelectorAll(s)],t=o=>o?.[lang]||o?.it||'',money=n=>new Intl.NumberFormat(lang==='en'?'en-GB':lang==='es'?'es-ES':'it-IT',{style:'currency',currency:'EUR',minimumFractionDigits:0}).format(n);
 function ui(){return UI.wine}
 const WINE_STYLE_STORE='scirocco_admin_wine_library_v2';
 const DEFAULT_GUIDE_STYLES=[
@@ -16,13 +21,13 @@ function guideStyles(){try{const lib=JSON.parse(localStorage.getItem(WINE_STYLE_
 function refreshGuideStyles(){characterKeys=guideStyles().map(st=>st.id);if(!characterKeys.length)characterKeys=DEFAULT_GUIDE_STYLES.map(st=>st.id);if(characterWheelIndex>=characterKeys.length)characterWheelIndex=0}
 function applyUI(){
  const u=ui();document.documentElement.lang=lang;
- $('#winePageTitle').textContent=u.title;$('#winePageIntro').textContent=u.intro;$('#wineFoodLabel').textContent=u.foodMenu;$('#wineListLabel').textContent=u.wineList;const dl=$('#menuDrinksLabel');if(dl)dl.textContent=UI.menu?.drinksList||'BEVANDE';
+ const wpt=$('#winePageTitle'),wpi=$('#winePageIntro'),wfl=$('#wineFoodLabel'),wll=$('#wineListLabel');if(wpt)wpt.textContent=u.title;if(wpi)wpi.textContent=u.intro;if(wfl)wfl.textContent=u.foodMenu;if(wll)wll.textContent=u.wineList;const dl=$('#menuDrinksLabel');if(dl)dl.textContent=UI.menu?.drinksList||'BEVANDE';
  $('#wineEntryListTitle').textContent=u.entryList;$('#wineEntryListText').textContent=u.entryListText;$('#wineEntryGuideTitle').textContent=u.entryGuide;$('#wineEntryGuideText').textContent=u.entryGuideText;
  const wineBackHome=$('#wineBackHome');if(wineBackHome)wineBackHome.textContent=u.back;const guideBackHome=$('#guideBackHome');if(guideBackHome)guideBackHome.textContent=u.back;$('#wineCatalogEyebrow').textContent=u.catalogEyebrow;$('#wineCatalogTitle').textContent=u.catalogTitle;
  $('#guideTitle').textContent=u.guideTitle;$('#guideIntro').textContent=u.guideIntro;$('#wineFoodPairingsTitle').textContent=u.perfectWith;
  $$('#wineCategoryBar [data-wine-category]').forEach(b=>b.textContent=u.categories[b.dataset.wineCategory]);
  const toggle=$('#menuLangToggle');if(toggle)toggle.textContent=lang.toUpperCase();
- $$('[data-menu-lang]').forEach(b=>b.classList.toggle('active',b.dataset.menuLang===lang));
+ $$('[data-menu-lang],[data-mobile-lang]').forEach(b=>b.classList.toggle('active',(b.dataset.mobileLang||b.dataset.menuLang)===lang));
  if(!$('#wineCatalog').hidden)renderCatalog();if(!$('#wineGuide').hidden)renderGuide();
 }
 function elementDocumentTop(el){
@@ -89,7 +94,8 @@ function renderCatalog(){
  $('#wineFilterStack').innerHTML=['all',...available].map(c=>`<button class="wine-filter ${c===activeCountry?'is-active':''}" data-country="${c}">${u.countries[c]||c.toUpperCase()}</button>`).join('');
  $$('#wineFilterStack button').forEach(b=>b.onclick=()=>updateCatalogKeepingNav(()=>{activeCountry=b.dataset.country}));
  const list=data.wines.filter(w=>w.active&&w.type===activeType&&(activeCountry==='all'||w.country===activeCountry)).sort((a,b)=>(a.order||99)-(b.order||99));
- $('#wineProducts').innerHTML=list.map(w=>`<button class="wine-product" data-wine="${w.id}"><img class="wine-product-image" src="${w.image}" alt=""><span class="wine-product-copy"><span class="wine-product-producer">${w.producer}</span><span class="wine-product-name">${t(w.name)}</span><span class="wine-product-meta">${w.denomination} · ${w.grapes.join(', ')}${w.vintage&&w.vintage!=='NV'?' · '+w.vintage:''}</span></span><span class="wine-product-price">${money(w.price)}</span><span class="wine-product-arrow">›</span></button>`).join('');
+ $('#wineProducts').innerHTML=list.map(w=>`<button class="wine-product" data-wine="${w.id}"><span class="gm-product-thumb gm-product-thumb-wine">${WINE_FALLBACK}${w.image?`<img class="wine-product-image" src="${w.image}" alt="">`:``}</span><span class="wine-product-copy"><span class="wine-product-producer">${w.producer}</span><span class="wine-product-name">${t(w.name)}</span><span class="wine-product-meta">${w.denomination} · ${w.grapes.join(', ')}${w.vintage&&w.vintage!=='NV'?' · '+w.vintage:''}</span></span><span class="wine-product-price">${money(w.price)}</span><span class="wine-product-arrow">›</span></button>`).join('');
+ $$('#wineProducts .gm-product-thumb img').forEach(img=>img.onerror=()=>img.remove());
  $$('#wineProducts [data-wine]').forEach(b=>b.onclick=()=>openWine(b.dataset.wine));
 }
 const guideDescriptors={
@@ -364,22 +370,41 @@ function renderGuideResults(){
 }
 function openWine(id){
  const w=data.wines.find(x=>x.id===id);if(!w)return;const u=ui();
- $('#wineSheetImage').src=w.image||'';$('#wineSheetImage').alt=t(w.name);$('#wineSheetMeta').textContent=`${w.denomination} · ${w.region}`;$('#wineSheetName').textContent=t(w.name);$('#wineSheetProducer').textContent=w.producer;$('#wineSheetDescription').textContent=t(w.description);
+ {const gallery=$('#wineSheetImage').parentElement,img=$('#wineSheetImage');if(!gallery.querySelector('.gm-image-fallback-icon'))gallery.insertAdjacentHTML('afterbegin',WINE_FALLBACK);img.hidden=!w.image;if(w.image){img.src=w.image;img.alt=t(w.name);img.onerror=()=>{img.hidden=true;img.removeAttribute('src')}}else{img.removeAttribute('src');img.alt=''}};$('#wineSheetMeta').textContent=`${w.denomination} · ${w.region}`;$('#wineSheetName').textContent=t(w.name);$('#wineSheetProducer').textContent=w.producer;$('#wineSheetDescription').textContent=t(w.description);
  const facts=[[u.facts.denomination,w.denomination],[u.facts.grapes,w.grapes.join(', ')],[u.facts.vintage,w.vintage],[u.facts.dosage,w.dosage],[u.facts.aging,w.aging],[u.facts.format,w.format]].filter(x=>x[1]);
  $('#wineSheetFacts').innerHTML=facts.map(x=>`<div class="wine-fact"><span>${x[0]}</span><span>${x[1]}</span></div>`).join('');$('#wineSheetPrice').textContent=money(w.price);
  const pair=w.foodPairings||[];
  const foodCards=pair.map(id=>{
-  const p=menuData.products.find(x=>x.id===id&&x.active);
+  const p=menuData.products.find(x=>x.id===id&&(adminPreview||x.active));
   if(!p)return '';
   const category=menuData.categories.find(c=>c.id===p.category);
-  return `<a class="dish-related-card" data-food="${p.id}" href="menu.html?piatto=${encodeURIComponent(p.id)}"><small>${category?t(category.name):''}</small><strong>${t(p.name)}</strong><span>${money(p.price)}</span></a>`;
+  return adminPreview?`<button type="button" class="dish-related-card" data-food="${p.id}"><small>${category?t(category.name):''}</small><strong>${t(p.name)}</strong><span>${money(p.price)}</span></button>`:`<a class="dish-related-card" data-food="${p.id}" href="menu.html?section=food&piatto=${encodeURIComponent(p.id)}"><small>${category?t(category.name):''}</small><strong>${t(p.name)}</strong><span>${money(p.price)}</span></a>`;
  }).join('');
  $('#wineFoodPairingsBlock').hidden=!foodCards;
  $('#wineFoodPairings').innerHTML=foodCards;
+ if(adminPreview)$$('#wineFoodPairings [data-food]').forEach(card=>card.onclick=e=>{e.preventDefault();window.parent.postMessage({type:'giacomo-menu:open-product',kind:'food',id:card.dataset.food},'*')});
+ if(!adminPreview&&window.parent!==window)window.parent.postMessage({type:'giacomo-menu:wine-sheet',open:true},'*');
  $('#wineBackdrop').hidden=false;$('#wineSheet').setAttribute('aria-hidden','false');document.body.classList.add('sheet-open');requestAnimationFrame(()=>{$('#wineSheet').classList.add('open');$('#wineBackdrop').classList.add('open')});
 }
-function closeWine(){$('#wineSheet').classList.remove('open');$('#wineBackdrop').classList.remove('open');$('#wineSheet').setAttribute('aria-hidden','true');document.body.classList.remove('sheet-open');setTimeout(()=>{$('#wineBackdrop').hidden=true},220)}
+window.addEventListener('giacomo-menu:open-wine',e=>openWine(e.detail));
+window.addEventListener('giacomo-menu:close-wine',()=>closeWine());
+function closeWine(){if(adminPreview&&window.parent!==window){window.parent.postMessage('giacomo-menu:close-product-preview','*');return}if(window.parent!==window)window.parent.postMessage({type:'giacomo-menu:wine-sheet',open:false},'*');$('#wineSheet').classList.remove('open');$('#wineBackdrop').classList.remove('open');$('#wineSheet').setAttribute('aria-hidden','true');document.body.classList.remove('sheet-open');setTimeout(()=>{$('#wineBackdrop').hidden=true;window.dispatchEvent(new CustomEvent('giacomo-menu:wine-closed'))},220)}
 function initEvents(){
+ // In Admin Preview every Food relation must stay inside the Admin overlay.
+ // Capture the click before any anchor/default navigation can send the user to menu.html.
+ if(adminPreview&&!document.documentElement.dataset.adminFoodPreviewGuard){
+  document.documentElement.dataset.adminFoodPreviewGuard='1';
+  document.addEventListener('click',e=>{
+   const foodLink=e.target.closest('[data-food]');
+   if(!foodLink)return;
+   const foodId=foodLink.dataset.food;
+   if(!foodId)return;
+   e.preventDefault();
+   e.stopPropagation();
+   if(typeof e.stopImmediatePropagation==='function')e.stopImmediatePropagation();
+   window.parent.postMessage({type:'giacomo-menu:open-product',kind:'food',id:foodId},'*');
+  },true);
+ }
  const wineGuide=$('#wineGuide');
  if(wineGuide&&!wineGuide.dataset.eventsBound){
   wineGuide.addEventListener('click',handleGuideClick);
@@ -404,8 +429,8 @@ function initEvents(){
   activeCountry='all';
  }));
  $('#wineSheetClose').onclick=closeWine;$('#wineBackdrop').onclick=closeWine;
- $$('[data-menu-lang]').forEach(b=>b.onclick=async()=>{lang=b.dataset.menuLang;localStorage.setItem('scirocco_lang',lang);UI=await fetch(`languages/${lang}.json`).then(r=>r.json());applyUI();const p=$('#menuLangPopover');if(p)p.classList.remove('open')});
- const toggle=$('#menuLangToggle'),pop=$('#menuLangPopover');if(toggle&&pop)toggle.onclick=()=>pop.classList.toggle('open');
+ if(moduleRoot===document)$$('[data-menu-lang],[data-mobile-lang]').forEach(b=>b.onclick=async()=>{lang=b.dataset.mobileLang||b.dataset.menuLang;localStorage.setItem('scirocco_lang',lang);UI=await fetch(`languages/${lang}.json`).then(r=>r.json());applyUI();const p=$('#menuLangPopover');if(p)p.classList.remove('open')});window.addEventListener('giacomo-menu:language',async e=>{lang=e.detail;UI=await fetch(`languages/${lang}.json`).then(r=>r.json());applyUI()});
+ const toggle=$('#menuLangToggle'),pop=$('#menuLangPopover');if(moduleRoot===document&&toggle&&pop)toggle.onclick=()=>pop.classList.toggle('open');
 }
 
 /* ===== AI Sommelier experience ===== */
@@ -432,11 +457,18 @@ function localSommelier(prompt,styleIds,typeIds=[]){
  const wantedStyles=Array.isArray(styleIds)?styleIds.filter(Boolean):(styleIds?[styleIds]:[]);for(const st of guideStyles()){if(q.includes(st.label.toLowerCase())&&!wantedStyles.includes(st.id))wantedStyles.push(st.id)}
  const dish=aiDishContext;return data.wines.filter(w=>w.active).map(w=>{let score=0;if(wantedTypes.length)score+=wantedTypes.includes(w.type)?5:-2;if(wantedStyles.length)score+=wantedStyles.reduce((n,id)=>n+((w.style||[]).includes(id)?5:0),0);if(maxPrice)score+=Number(w.price)<=maxPrice?3:-4;if(dish&&(w.foodPairings||[]).includes(dish.id))score+=8;const blob=aiTextBlob(w);['fresc','mineral','morb','aromat','eleg','struttur','secco','dry','ital','franc','spagn'].forEach(k=>{if(q.includes(k)&&blob.includes(k))score+=1});return {w,score}}).sort((a,b)=>b.score-a.score||((a.w.order??999)-(b.w.order??999))).slice(0,3).map(x=>x.w)
 }
+function showSommelierBottleLoader(){
+ const node=document.createElement('div');node.className='wine-ai-loader';node.style.setProperty('--wine-ai-loader-duration','3000ms');
+ node.innerHTML=`<div class="wine-ai-loader-inner"><svg class="wine-ai-loader-bottle" viewBox="0 0 110 170" aria-hidden="true"><path d="M43 12 H67 V38 C67 46 73 51 79 57 C85 63 88 72 88 82 V151 C88 157 83 161 77 161 H33 C27 161 22 157 22 151 V82 C22 72 25 63 31 57 C37 51 43 46 43 38 Z M43 26 H67 M29 78 H81"/></svg><div class="wine-ai-loader-label">SOMMELIER</div></div>`;
+ document.body.appendChild(node);requestAnimationFrame(()=>node.classList.add('is-visible'));const started=performance.now();
+ return async()=>{const wait=Math.max(0,3000-(performance.now()-started));if(wait)await new Promise(r=>setTimeout(r,wait));node.classList.add('is-leaving');await new Promise(r=>setTimeout(r,260));node.remove()}
+}
 async function askSommelier(prompt,styleIds=[],typeIds=[]){
+ const finishLoader=showSommelierBottleLoader();
  const thinking=$('#wineAiThinking'),answer=$('#wineAiAnswer'),reset=$('#wineAiReset');thinking.hidden=false;answer.hidden=true;if(reset)reset.hidden=true;
  let wines=null,copy=null;
  try{const response=await fetch(AI_SOMMELIER_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({language:lang,query:prompt||'',dishId:aiDishContext?.id||null,styleIds:Array.isArray(styleIds)?styleIds:(styleIds?[styleIds]:[]),styleId:Array.isArray(styleIds)?(styleIds[0]||null):styleIds,typeIds:Array.isArray(typeIds)?typeIds:[],availableWines:data.wines.filter(w=>w.active).map(w=>w.id)})});if(response.ok){const result=await response.json();if(Array.isArray(result.wineIds))wines=result.wineIds.map(id=>data.wines.find(w=>w.id===id&&w.active)).filter(Boolean).slice(0,3);copy=result.message||null}}catch(e){}
- if(!wines?.length)wines=localSommelier(prompt,styleIds,typeIds);await new Promise(r=>setTimeout(r,520));thinking.hidden=true;renderAiResults(wines,copy);answer.hidden=false;if(reset)reset.hidden=false;answer.scrollIntoView({behavior:'smooth',block:'start'});
+ if(!wines?.length)wines=localSommelier(prompt,styleIds,typeIds);await finishLoader();thinking.hidden=true;renderAiResults(wines,copy);answer.hidden=false;if(reset)reset.hidden=false;answer.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function wineReason(w){const c=ac();if(aiDishContext&&(w.foodPairings||[]).includes(aiDishContext.id))return lang==='en'?'A direct pairing already selected by the restaurant for this dish.':lang==='es'?'Un maridaje directo seleccionado por el restaurante para este plato.':'Un abbinamento diretto già selezionato dal ristorante per questo piatto.';const styles=(w.style||[]).map(characterWheelLabel).join(' · ');return styles?`${styles} · ${w.denomination||w.region||''}`:(w.denomination||w.region||'')}
 function renderAiResults(wines,copy){const c=ac();$('#wineAiAnswerCopy').textContent=copy||(aiDishContext?c.dishAnswer(t(aiDishContext.name)):c.answer);$('#wineAiResults').innerHTML=wines.length?wines.map(w=>`<button class="wine-ai-result-card" type="button" data-ai-wine="${w.id}"><img src="${w.image||''}" alt=""><span class="wine-ai-result-copy"><small>${w.producer||''}</small><strong>${t(w.name)}</strong><em>${[w.denomination,w.region].filter(Boolean).join(' · ')}</em><p>${wineReason(w)}</p></span><span class="wine-ai-result-price"><b>${money(w.price)}</b><i>${ui().discoverWine} →</i></span></button>`).join(''):`<p>${ui().noResults}</p>`;$$('[data-ai-wine]').forEach(b=>b.onclick=()=>openWine(b.dataset.aiWine))}
@@ -467,8 +499,9 @@ async function init(){
    fetch('data/menu.json')
   ]);
   UI=await languageResponse.json();
-  data=await wineResponse.json();
-  menuData=await menuResponse.json();
+  const publicWine=await wineResponse.json(),publicMenu=await menuResponse.json(),snapshot=adminSnapshot();
+  data=snapshot?.wine||publicWine;
+  menuData=snapshot?.food||publicMenu;
  }catch(e){
   console.error('Wine/menu data',e);
  }

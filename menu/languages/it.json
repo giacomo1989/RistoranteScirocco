@@ -96,6 +96,7 @@
     "drinksList": "BEVANDE",
     "close": "Chiudi",
     "previousPhoto": "Foto precedente",
-    "nextPhoto": "Foto successiva"
+    "nextPhoto": "Foto successiva",
+    "noImage": "Nessuna immagine caricata"
   }
 }
