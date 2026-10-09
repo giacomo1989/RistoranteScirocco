@@ -116,7 +116,7 @@ body {
 .product-list {
   overflow: auto;
   flex: 1;
-  border-top: 1px solid var(--line)
+  
 }
 
 .product-row {
@@ -364,14 +364,14 @@ body {
 
 .editor-actions {
   position: sticky;
-  bottom: 0;
+  bottom: -52px;
   z-index: 12;
   min-height: 70px;
   padding: 14px 16px;
   margin: 28px -16px 0;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 9px;
   background: rgba(242, 238, 230, .90);
   border-top: 1px solid rgba(36, 34, 31, .12);
@@ -1830,7 +1830,7 @@ body {
 .catalog-scanning {
   display: grid;
   gap: 6px;
-  padding: 13px 4px
+  padding: 0px 20px
 }
 
 .catalog-empty b,
@@ -2162,7 +2162,7 @@ body {
   }
 
   .panel-head h2 {
-    font-size: 20px
+    font-size: 26px
   }
 
   .panel-head .eyebrow {
@@ -2314,7 +2314,8 @@ body {
   .editor-actions .btn {
     padding: 11px 9px;
     font-size: 7px;
-    letter-spacing: .07em
+    letter-spacing: .07em;
+    border-radius: 10px;
   }
 }
 
@@ -3347,7 +3348,7 @@ body {
     position: sticky !important;
     top: var(--admin-mobile-top-h, 124px) !important;
     z-index: 90 !important;
-    background: #f7f4ee !important;
+    background: #f3efe7 !important;
     background-image: none !important;
     opacity: 1 !important;
     padding-top: 10px;
@@ -3357,7 +3358,7 @@ body {
     position: sticky !important;
     top: calc(var(--admin-mobile-top-h, 134px) + var(--admin-mobile-category-h, 32px)) !important;
     z-index: 89 !important;
-    background: #f7f4ee !important;
+    background: #f3efe7 !important;
     background-image: none !important;
     opacity: 1 !important;
   }
@@ -3524,8 +3525,8 @@ body {
 .wine-style-card-actions .delete{color:#a85f59}
 .wine-style-card-edit-fields{grid-column:1/2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .wine-style-card-edit-fields[hidden]{display:none}
-.wine-style-add-row{width:100%;border:0;border-bottom:1px solid #e3ddd4;background:transparent;text-align:left;padding:17px 0;cursor:pointer;color:#9b762e;font:600 10px Inter,sans-serif;letter-spacing:.12em}
-.wine-style-new-card{padding:16px 0;border-bottom:1px solid #e3ddd4}
+.wine-style-add-row{width:100%;border:0;background:transparent;text-align:left;cursor:pointer;color:#9b762e;font:600 10px Inter,sans-serif;letter-spacing:.12em}
+.wine-style-new-card{padding:16px 0;}
 .wine-style-new-card[hidden]{display:none}
 .wine-style-new-card>.field{margin-bottom:10px}
 @media(max-width:720px){.wine-style-card{width:94vw}.wine-style-card-row{gap:8px;padding:14px 0}.wine-style-card-edit-fields{grid-template-columns:1fr}.wine-style-card-actions{gap:0}.wine-style-card-actions .icon-btn{width:34px;height:34px}}
@@ -3764,9 +3765,13 @@ body[data-kind="drinks"] .drink-main-name { margin-bottom: 10px; }
 .grape-manager-card .field textarea,
 .grape-manager-card .btn,
 .grape-manager-card .icon-btn {
-  border-radius: 10px !important;
+  border-radius: 0px;
 }
 
+.new-choice-name, .new-library-name {
+  border-radius: 10px !important;
+  background: #f8f5ef !important;
+}
 @media(max-width:800px) {
   .dynamic-modal:has(.grape-manager-card) {
     padding: calc(var(--admin-top-height, 58px) + 12px) 12px 12px !important;
@@ -3798,18 +3803,7 @@ body[data-kind="drinks"] .drink-main-name { margin-bottom: 10px; }
   position: relative;
 }
 
-/* Undo rounded inner grape rows/boxes from previous test */
-.grape-manager-card .wine-style-card-row,
-.grape-manager-card .wine-style-select-area,
-.grape-manager-card .wine-style-card-actions,
-.grape-manager-card .wine-style-add-row,
-.grape-manager-card .wine-style-new-card,
-.grape-manager-card .field input,
-.grape-manager-card .field select,
-.grape-manager-card .field textarea,
-.grape-manager-card .icon-btn {
-  border-radius: 0 !important;
-}
+
 
 /* Title area stays fixed while grape list scrolls beneath it */
 .grape-manager-card > .eyebrow,
@@ -3978,6 +3972,7 @@ body[data-kind="drinks"] .drink-main-name { margin-bottom: 10px; }
   padding: 10px 12px !important;
   min-height: 42px;
   border-radius: 10px !important;
+  background: #f7f5f0 !important;
 }
 
 .grape-manager-card .grape-search-icon {
@@ -4001,6 +3996,7 @@ body[data-kind="drinks"] .drink-main-name { margin-bottom: 10px; }
   min-width: 0;
   box-sizing: border-box;
   border-radius: 10px !important;
+  background: #f8f5ef;
 }
 
 .grape-manager-card .grape-new-confirm {
@@ -4701,4 +4697,483 @@ body[data-kind="drinks"] .drink-main-name { margin-bottom: 10px; }
   pointer-events: auto !important;
   user-select: none;
   -webkit-user-select: none;
+}
+
+
+/* MOBILE V62 — compact sticky product controls.
+   Left: title/count + search. Right: square create card.
+   Filters below. Product list scrolls underneath. Desktop untouched. */
+.mobile-product-controls,
+.mobile-product-controls-top,
+.mobile-product-controls-left {
+  display: contents;
+}
+
+@media (max-width: 800px) {
+  .mobile-product-controls {
+    display: block !important;
+    position: sticky !important;
+    top: var(--admin-mobile-top-h, 118px) !important;
+    z-index: 45 !important;
+    background: var(--paper, #f7f3eb) !important;
+    padding: 10px 10px 9px !important;
+  }
+
+  .mobile-product-controls-top {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 40% !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+    height: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .mobile-product-controls-left {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    min-width: 0 !important;
+    gap: 8px !important;
+  }
+
+  .mobile-product-controls-left .panel-head {
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: space-between !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .mobile-product-controls-left .panel-head .eyebrow {
+    display: none !important;
+  }
+
+  .mobile-product-controls-left .panel-head h2 {
+    margin: 0 !important;
+  }
+
+  .mobile-product-controls-left .panel-head .count {
+    margin: 0 30px 5px 8px !important;
+    white-space: nowrap !important;
+  }
+
+  .mobile-product-controls-left .search-wrap {
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Override the original mobile-create hero/background completely. */
+  .mobile-product-controls #mobileCreate.mobile-create-card,
+  .mobile-product-controls #mobileCreate.mobile-create-card--food,
+  .mobile-product-controls #mobileCreate.mobile-create-card--wine,
+  .mobile-product-controls #mobileCreate.mobile-create-card--drinks {
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 96px !important;
+    min-width: 100% !important;
+    min-height: 96px !important;
+    max-width: 96px !important;
+    max-height: 96px !important;
+    aspect-ratio: 1 / 1 !important;
+    margin: 0 !important;
+    padding: 10px 7px !important;
+    border-radius: 10px !important;
+    background-image: none !important;
+    background: #17150f !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    align-self: start !important;
+    overflow: hidden !important;
+    z-index: auto !important;
+  }
+
+  .mobile-product-controls #mobileCreate::before,
+  .mobile-product-controls #mobileCreate::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .mobile-product-controls #mobileCreate .mobile-create-plus {
+    font-size: 23px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+
+  .mobile-product-controls #mobileCreate b {
+    font-size: 8px !important;
+    line-height: 1.15 !important;
+    letter-spacing: .10em !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+
+  .mobile-product-controls > .category-filters,
+  .mobile-product-controls > .country-filters {
+    position: static !important;
+    inset: auto !important;
+    z-index: auto !important;
+    margin: 10px 0 0 !important;
+  }
+
+  .product-panel > .product-list {
+    min-height: 100dvh !important;
+    padding-top: 0 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .mobile-product-controls-top {
+    grid-template-columns: minmax(0, 1fr) 88px !important;
+  }
+  .mobile-product-controls #mobileCreate.mobile-create-card,
+  .mobile-product-controls #mobileCreate.mobile-create-card--food,
+  .mobile-product-controls #mobileCreate.mobile-create-card--wine,
+  .mobile-product-controls #mobileCreate.mobile-create-card--drinks {
+    width: 88px !important;
+    height: 88px !important;
+    min-width: 88px !important;
+    min-height: 88px !important;
+    max-width: 88px !important;
+    max-height: 88px !important;
+  }
+}
+
+
+
+/* V64 — restore original create-card imagery in the compact mobile header */
+@media (max-width: 800px) {
+  .mobile-product-controls #mobileCreate.mobile-create-card {
+    position: relative !important;
+    isolation: isolate !important;
+    background: #171410 !important;
+    background-image: none !important;
+  }
+
+  .mobile-product-controls #mobileCreate::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: -2 !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .mobile-product-controls #mobileCreate::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: -1 !important;
+    background: rgba(15, 13, 11, .32) !important;
+  }
+
+  .mobile-product-controls #mobileCreate.mobile-create-card--food::before {
+    background-image: url(../images/admin-empty-cover.jpg) !important;
+  }
+
+  .mobile-product-controls #mobileCreate.mobile-create-card--wine::before {
+    background-image: url(../images/admin-wine-cover.png) !important;
+  }
+
+  .mobile-product-controls #mobileCreate.mobile-create-card--drinks::before {
+    background-image: url(../images/admin-drinks-cover.jpg) !important;
+  }
+
+  .mobile-product-controls #mobileCreate .mobile-create-plus,
+  .mobile-product-controls #mobileCreate b {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+}
+
+
+/* V65 — Admin lists: image + category/type / product name / short description */
+.product-row .product-main{
+  min-width:0;
+}
+.product-row .product-category{
+  margin:0 0 4px;
+  font-size:9px;
+  line-height:1.1;
+  font-weight:500;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  opacity:.62;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.product-row .product-name{
+  margin:0 0 4px;
+}
+.product-row .product-meta{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+
+/* V66 — Mobile Admin editor presented as a product-style modal card.
+   Container/presentation only: form fields and editor logic stay untouched. */
+@media (max-width: 800px) {
+  body.is-editing {
+    overflow: hidden !important;
+  }
+
+  body.is-editing::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 180;
+    background: rgba(20, 18, 15, .48);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+  }
+
+  body.is-editing .admin-workspace {
+    display: block !important;
+    min-height: 0 !important;
+  }
+
+  body.is-editing .product-panel {
+    display: none !important;
+  }
+
+  body.is-editing .editor-panel {
+    display: block !important;
+    position: fixed !important;
+    z-index: 190 !important;
+    left: 5% !important;
+    right: 5% !important;
+    top: 10% !important;
+    bottom: 10% !important;
+    width: 90% !important;
+    max-width: 90% !important;
+    height: 80% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    border-radius: 18px !important;
+    background: #f7f4ee !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,.24) !important;
+  }
+
+  body.is-editing .editor-panel .product-form {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    margin: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    background: #f3efe7;
+  }
+}
+
+@media (max-width: 520px) {
+  body.is-editing .editor-panel {
+    left: 5% !important;
+    right: 5% !important;
+    top: 10% !important;
+    bottom: 10% !important;
+    width: 90% !important;
+    height: 80% !important;
+    min-height: 0 !important;
+  }
+}
+
+
+/* V67 — Wine library selector cards + modal stacking above mobile editor */
+.dynamic-modal,
+.modal-backdrop.dynamic-modal,
+.wine-library-modal {
+  z-index: 1200 !important;
+}
+.dynamic-modal .confirm-box {
+  position: relative;
+  z-index: 1201;
+}
+.wine-library-option {
+  width: 100%;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  cursor: pointer;
+  text-align: left;
+  background: #f3efe7;
+}
+.wine-library-option > b {
+  margin-left: auto;
+  padding-right: 4px;
+}
+
+
+/* V70 — Custom wine selectors use the exact visual language of .field select */
+#productForm .wine-single-selector,
+#productForm .grape-selector-trigger,
+#productForm #wineStyleSelector {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 10px !important;
+  background-color: #f8f5ef !important;
+  color: #8b8176 !important;
+  padding: 11px 28px 11px 12px !important;
+  font: 400 12px/1.5 Inter !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  outline: none !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+#productForm .wine-single-selector > span,
+#productForm .grape-selector-trigger > span,
+#productForm #wineStyleSelector > span {
+  color: #8b8176 !important;
+  font: 400 12px/1.5 Inter !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+#productForm .wine-single-selector .wine-native-chevron,
+#productForm .grape-selector-trigger .wine-native-chevron,
+#productForm #wineStyleSelector .wine-native-chevron {
+  position: absolute !important;
+  right: 11px !important;
+  top: 50% !important;
+  width: 8px !important;
+  height: 8px !important;
+  margin: 0 !important;
+  transform: translateY(-50%) !important;
+  font-size: 0 !important;
+  background:
+    linear-gradient(45deg, transparent 50%, #6f6961 50%) left center / 4px 4px no-repeat,
+    linear-gradient(135deg, #6f6961 50%, transparent 50%) right center / 4px 4px no-repeat !important;
+  border: 0 !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+}
+@media (max-width: 800px) {
+  #productForm .wine-single-selector,
+  #productForm .grape-selector-trigger,
+  #productForm #wineStyleSelector {
+    padding-left: 7px !important;
+    padding-right: 28px !important;
+    font-size: 10px !important;
+  }
+  #productForm .wine-single-selector > span,
+  #productForm .grape-selector-trigger > span,
+  #productForm #wineStyleSelector > span {
+    font-size: 10px !important;
+  }
+}
+
+
+/* V71 — Food characteristics selector matches native admin selects */
+#productForm #foodTagsSelector {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 10px !important;
+  background-color: #f8f5ef !important;
+  color: #8b8176 !important;
+  padding: 11px 28px 11px 12px !important;
+  font: 400 12px/1.5 Inter !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  outline: none !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+#productForm #foodTagsSelector > span {
+  color: #8b8176 !important;
+  font: 400 12px/1.5 Inter !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+#productForm #foodTagsSelector .food-native-chevron {
+  position: absolute !important;
+  right: 11px !important;
+  top: 50% !important;
+  width: 8px !important;
+  height: 8px !important;
+  margin: 0 !important;
+  transform: translateY(-50%) !important;
+  font-size: 0 !important;
+  background:
+    linear-gradient(45deg, transparent 50%, #6f6961 50%) left center / 4px 4px no-repeat,
+    linear-gradient(135deg, #6f6961 50%, transparent 50%) right center / 4px 4px no-repeat !important;
+  border: 0 !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+}
+@media (max-width: 800px) {
+  #productForm #foodTagsSelector {
+    padding-left: 7px !important;
+    padding-right: 28px !important;
+    font-size: 10px !important;
+  }
+  #productForm #foodTagsSelector > span {
+    font-size: 10px !important;
+  }
+}
+
+
+/* V72 — Wine selection cards: warm background + selection by colour only */
+.dynamic-modal.wine-library-modal .grape-manager-card,
+.dynamic-modal.wine-library-modal .grape-manager-card .wine-style-card-list,
+.dynamic-modal.wine-library-modal .grape-manager-card .wine-style-card-row,
+.dynamic-modal.wine-library-modal .grape-manager-card .wine-style-select-area,
+.dynamic-modal.wine-library-modal .grape-manager-card .wine-style-card-actions,
+.dynamic-modal.wine-library-modal .grape-manager-card .wine-style-add-row,
+.dynamic-modal.wine-library-modal .grape-manager-card .wine-style-new-card,
+.dynamic-modal.wine-library-modal .grape-manager-card .field input,
+.dynamic-modal.wine-library-modal .grape-manager-card .field select,
+.dynamic-modal.wine-library-modal .grape-manager-card .field textarea,
+.dynamic-modal.wine-library-modal .grape-manager-card .icon-btn,
+.dynamic-modal.wine-library-modal .grape-manager-card .grape-sticky-tools,
+.dynamic-modal.wine-library-modal .grape-manager-card .confirm-actions {
+  background-color: #f3efe7;
+}
+
+/* No tick/check selector: selected option is communicated only by champagne fill */
+.dynamic-modal.wine-library-modal .wine-library-option.is-selected,
+.dynamic-modal.wine-library-modal .wine-library-option.is-selected .wine-style-select-area {
+  background-color: #eee2c7 !important;
+}
+.dynamic-modal.wine-library-modal .wine-library-option.is-selected::before,
+.dynamic-modal.wine-library-modal .wine-library-option.is-selected::after,
+.dynamic-modal.wine-library-modal .wine-library-option.is-selected .wine-style-select-area::before,
+.dynamic-modal.wine-library-modal .wine-library-option.is-selected .wine-style-select-area::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Filled wine fields use the same champagne state as UVA BIANCA / UVA NERA */
+#productForm .field:has(> input[type="hidden"][value]:not([value=""])) > .wine-single-selector {
+  background-color: #eee2c7 !important;
+  border-color: #d7c39a !important;
 }

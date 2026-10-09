@@ -27,21 +27,28 @@
         </header>
         <div class="admin-workspace">
             <aside class="product-panel">
-                <div class="panel-head">
+                <div class="mobile-product-controls">
+                    <div class="mobile-product-controls-top">
+                        <div class="mobile-product-controls-left">
+                            <div class="panel-head">
                     <div>
                         <p class="eyebrow" id="listEyebrow">PRODOTTI</p>
                         <h2 id="listTitle">Menu cibo</h2>
                     </div><span class="count" id="productCount"></span>
-                </div><button class="mobile-create-card mobile-create-card--food" id="mobileCreate" type="button"
-                    aria-label="Nuovo piatto"><span class="mobile-create-plus">＋</span><b id="mobileCreateLabel">NUOVO
-                        PIATTO</b></button>
-                <div class="search-wrap">
+                </div>
+                            <div class="search-wrap">
                     <div class="search-field"><input id="productSearch" type="search" placeholder="Cerca…"
                             aria-label="Cerca prodotto"><button id="clearProductSearch" class="search-clear"
                             type="button" aria-label="Cancella ricerca">×</button></div>
                 </div>
-                <div class="category-filters" id="categoryFilters" aria-label="Filtra per categoria"></div>
-                <div class="country-filters" id="countryFilters" aria-label="Filtra per paese" hidden></div>
+                        </div>
+                        <button class="mobile-create-card mobile-create-card--food" id="mobileCreate" type="button"
+                    aria-label="Nuovo piatto"><span class="mobile-create-plus">＋</span><b id="mobileCreateLabel">NUOVO
+                        PIATTO</b></button>
+                    </div>
+                    <div class="category-filters" id="categoryFilters" aria-label="Filtra per categoria"></div>
+                    <div class="country-filters" id="countryFilters" aria-label="Filtra per paese" hidden></div>
+                </div>
                 <div class="product-list" id="productList"></div>
             </aside>
             <main class="editor-panel">
