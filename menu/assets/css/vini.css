@@ -1537,3 +1537,8 @@ body.wine-page header button,
   html.menu-shell-child #wineFilterStack{z-index:23;}
   html.menu-shell-child #wineProducts{position:relative;z-index:1;}
 }
+
+
+/* Carta vini: lista prodotti allineata a Menu Cibo / Bevande.
+   I wine-sticky-controls restano invariati. */
+.wine-page .wine-products{padding-top:20px}

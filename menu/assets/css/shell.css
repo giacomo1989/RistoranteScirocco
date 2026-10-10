@@ -7,7 +7,7 @@
     z-index:40;
     background:var(--gm-surface);
     margin-bottom:18px;
-    width: 100vw;
+    width: 99vw;
   }
 
   /* V44.9 — Food and Drinks use the same sticky rule in the unified DOM.
@@ -102,7 +102,7 @@
   min-height: 0 !important;
   width: auto !important;
   height: auto !important;
-  color: #fff !important;
+  color: #1b1a18 !important;
   font: 500 12px var(--sans) !important;
   line-height: 1 !important;
   letter-spacing: .12em !important;

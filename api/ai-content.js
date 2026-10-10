@@ -57,7 +57,7 @@ Do not generate the same full description across different styles with only mino
 
 Return only JSON with exactly: {\"shortDescription\":\"...\",\"description\":\"...\"}.`;
 }
-function translationInstructions(source,targets,preserve){return `Translate restaurant menu content from ${lang(source)} into: ${targets.map(lang).join(', ')}. Preserve meaning, tone, punctuation and factual content; do not add facts. ${preserve?'Wine producer names, cuvées, denominations, appellations, grape names and other proper names must remain unchanged unless a conventional localized form is clearly required.':''} Return only JSON shaped exactly as {"translations":{"xx":{"name":"...","shortDescription":"...","description":"..."}}}, with one key for every requested target language code.`}
+function translationInstructions(source,targets,preserve,translateProductName){return `Translate restaurant menu content from ${lang(source)} into: ${targets.map(lang).join(', ')}. Preserve meaning, tone, punctuation and factual content; do not add facts. ${preserve?'Wine producer names, cuvées, denominations, appellations, grape names and other proper names must remain unchanged unless a conventional localized form is clearly required.':''} ${translateProductName?'For the product name, translate only generic/descriptive words (for example water, beer, juice or tonic) while preserving brands, trademarks, proper names and commercial product names unchanged.':''} Return only JSON shaped exactly as {"translations":{"xx":{"name":"...","shortDescription":"...","description":"..."}}}, with one key for every requested target language code.`}
 
 export default async function handler(req,res){
   if(req.method!=='POST') return send(res,405,{error:'method_not_allowed'});
@@ -84,7 +84,7 @@ export default async function handler(req,res){
       if(!content.name&&!content.shortDescription&&!content.description) return send(res,400,{error:'content_required'});
       const started=Date.now();
       console.log('[ai-content] translation start',{model:MODEL,source,targets,preserveProperNames:!!body.preserveProperNames});
-      const result=await askOpenAI(translationInstructions(source,targets,!!body.preserveProperNames),`SOURCE CONTENT (JSON):\n${JSON.stringify(content)}`);
+      const result=await askOpenAI(translationInstructions(source,targets,!!body.preserveProperNames,!!body.translateProductName),`SOURCE CONTENT (JSON):\n${JSON.stringify(content)}`);
       console.log('[ai-content] translation success',{model:MODEL,source,targets,durationMs:Date.now()-started});
       const translations={};
       for(const code of targets){const v=result?.translations?.[code]||{};translations[code]={name:text(v.name,500),shortDescription:text(v.shortDescription,1500),description:text(v.description,5000)}}

@@ -3873,7 +3873,8 @@ footer p {
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
-    min-height: 94px
+    min-height: 94px;
+    border-radius: 12px;
 }
 
 .dish-related-card strong {
@@ -3886,7 +3887,8 @@ footer p {
 }
 
 .dish-related-card.wine {
-    text-decoration: none
+    text-decoration: none;
+    border-radius: 12px;
 }
 
 @media(max-width:900px) {
@@ -3955,7 +3957,7 @@ footer p {
     }
 
     .digital-menu-main {
-        padding: 91px 0 48px
+        padding: 50px 0 48px
     }
 
     .menu-intro {
@@ -4246,10 +4248,9 @@ footer p {
 /* ===== MENU / WINE SELECTOR — editorial, squared ===== */
 .menu-card-selector {
     width: min(1180px, calc(100% - 40px));
-    margin: 0 auto 20px;
+    margin: 26px auto 2px;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    border: 1px solid rgba(27, 26, 24, .22);
     background: var(--gm-surface);
 }
 
@@ -4265,10 +4266,6 @@ footer p {
     border-radius: 0;
     font-family: var(--gm-font-body);
     transition: background .2s ease, color .2s ease;
-}
-
-.menu-card-selector__item+.menu-card-selector__item {
-    border-left: 1px solid rgba(27, 26, 24, .22);
 }
 
 .menu-card-selector__item.is-active {
@@ -4360,8 +4357,8 @@ footer p {
     .menu-category-bar button {
         width: 100% !important;
         min-width: 0 !important;
-        padding: 13px 3px !important;
-        font-size: 10px !important;
+        padding: 16px 6px !important;
+        font-size: 12px !important;
         line-height: 1.15 !important;
         letter-spacing: .08em !important;
         white-space: nowrap;
@@ -4539,4 +4536,57 @@ body.admin-embedded-preview .wine-backdrop {
 .menu-mobile-header [data-mobile-lang].active {
     text-decoration: underline;
     text-underline-offset: 3px;
+}
+/* V58 — Categorie menu: indicatore liquid unico e fluido */
+.menu-category-bar{
+    --liquid-x: 0px;
+    --liquid-w: 0px;
+    position: sticky;
+}
+.menu-category-bar::before{
+    content:"";
+    position:absolute;
+    z-index:0;
+    top:7px;
+    left:0;
+    width:var(--liquid-w);
+    height:calc(100% - 14px);
+    border-radius:999px;
+    background:#eee2c7;
+    transform:translateX(var(--liquid-x));
+    transition:transform .42s cubic-bezier(.22,.8,.22,1), width .42s cubic-bezier(.22,.8,.22,1);
+    pointer-events:none;
+}
+.menu-category-bar button{
+    position:relative;
+    z-index:1;
+    transition:opacity .28s ease, color .28s ease;
+}
+.menu-category-bar button.active:after{display:none !important}
+
+/* V58 — Selettore Menu Cibo / Carta Vini / Bevande allineato alle tab Admin */
+.menu-card-selector{
+    border-radius:12px !important;
+    overflow:hidden;
+    background:transparent;
+}
+.menu-card-selector__item{
+    min-height:0;
+    padding:13px 22px;
+    justify-content:center;
+    border-radius:12px !important;
+    font-family:Inter, var(--gm-font-body), sans-serif;
+}
+.menu-card-selector__label{
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:.12em;
+}
+.menu-card-selector__item.is-active{
+    background:var(--gm-text);
+    color:#fff;
+}
+@media(max-width:720px){
+    .menu-card-selector__item{padding:13px 6px;min-height:0}
+    .menu-card-selector__label{font-size:10px;letter-spacing:.12em}
 }
